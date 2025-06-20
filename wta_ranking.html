@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>wta幸存者冠军排名</title>
+        <title>WTA幸存者冠军排名</title>
         
     <style>
         body {
@@ -23,42 +23,48 @@
             box-shadow: 0 0 20px rgba(0,0,0,0.1);
             border-radius: 8px;
         }
-        table {
+        .data-table {
             width: 100%;
             border-collapse: collapse;
             margin: 25px 0;
             font-size: 0.9em;
             min-width: 800px;
         }
-        thead tr {
+        .data-table thead tr {
             background-color: #2c3e50;
             color: #ffffff;
             text-align: left;
         }
-        th, td {
+        .data-table th, 
+        .data-table td {
             padding: 12px 15px;
             text-align: center;
         }
-        tbody tr {
+        .data-table tbody tr {
             border-bottom: 1px solid #dddddd;
         }
-        tbody tr:nth-of-type(even) {
+        .data-table tbody tr:nth-of-type(even) {
             background-color: #f3f3f3;
         }
-        tbody tr:last-of-type {
+        .data-table tbody tr:last-of-type {
             border-bottom: 2px solid #2c3e50;
         }
-        tbody tr:hover {
+        .data-table tbody tr:hover {
             background-color: #f1f1f1;
             font-weight: bold;
         }
-        th {
+        .data-table th {
             position: sticky;
             top: 0;
         }
-        .search-container {
+        .controls-container {
             margin: 20px 0;
             text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
         }
         #searchInput {
             padding: 10px;
@@ -66,16 +72,61 @@
             border: 1px solid #ddd;
             border-radius: 4px;
         }
+        #rowsPerPage {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            gap: 10px;
+        }
+        .pagination button {
+            padding: 8px 16px;
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .pagination button:hover {
+            background-color: #1a252f;
+        }
+        .pagination button:disabled {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+        }
+        .page-info {
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+        }
+        .hidden {
+            display: none;
+        }
     </style>
     
     </head>
     <body>
         <div class="container">
-            <h1>wta幸存者冠军排名</h1>
-            <div class="search-container">
-                <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="搜索用户名或分数...">
+            <h1>WTA幸存者冠军排名</h1>
+            <div class="controls-container">
+                <div>
+                    <input type="text" id="searchInput" placeholder="搜索用户名或分数...">
+                </div>
+                <div>
+                    <select id="rowsPerPage">
+                        <option value="10">每页10行</option>
+                        <option value="25">每页25行</option>
+                        <option value="50">每页50行</option>
+                        <option value="100">每页100行</option>
+                        <option value="0">显示全部</option>
+                    </select>
+                </div>
             </div>
-            <table border="0" class="dataframe display">
+            <table border="0" class="dataframe data-table">
 <thead>
 <tr style="text-align: right;">
 <th>排名</th>
@@ -26325,31 +26376,107 @@
 </tr>
 </tbody>
 </table>
+            <div class="pagination">
+                <button id="prevPage" disabled>上一页</button>
+                <div class="page-info" id="pageInfo">第1页</div>
+                <button id="nextPage">下一页</button>
+            </div>
         </div>
         
         <script>
-            function searchTable() {
-                var input, filter, table, tr, td, i, j, txtValue, found;
-                input = document.getElementById("searchInput");
-                filter = input.value.toUpperCase();
-                table = document.querySelector("table");
-                tr = table.getElementsByTagName("tr");
+            // 初始化变量
+            const table = document.querySelector('.data-table');
+            const allRows = Array.from(table.querySelectorAll('tbody tr'));
+            let filteredRows = [...allRows];
+            let currentPage = 1;
+            let rowsPerPage = 10;
+            
+            // 初始化分页
+            function initPagination() {
+                // 给所有行添加data-index属性
+                allRows.forEach((row, index) => {
+                    row.setAttribute('data-index', index);
+                });
                 
-                for (i = 1; i < tr.length; i++) {
-                    found = false;
-                    td = tr[i].getElementsByTagName("td");
-                    for (j = 0; j < td.length; j++) {
-                        if (td[j]) {
-                            txtValue = td[j].textContent || td[j].innerText;
-                            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                                found = true;
-                                break;
-                            }
-                        }
-                    }
-                    tr[i].style.display = found ? "" : "none";
+                // 添加事件监听
+                document.getElementById('searchInput').addEventListener('input', filterTable);
+                document.getElementById('rowsPerPage').addEventListener('change', changeRowsPerPage);
+                document.getElementById('prevPage').addEventListener('click', prevPage);
+                document.getElementById('nextPage').addEventListener('click', nextPage);
+                
+                // 初始渲染
+                updateTable();
+            }
+            
+            // 更新表格显示
+            function updateTable() {
+                // 计算总页数
+                const totalRows = filteredRows.length;
+                const totalPages = rowsPerPage === 0 ? 1 : Math.ceil(totalRows / rowsPerPage);
+                
+                // 计算当前页的行范围
+                const startIndex = (currentPage - 1) * rowsPerPage;
+                const endIndex = rowsPerPage === 0 ? totalRows : startIndex + rowsPerPage;
+                
+                // 隐藏所有行
+                allRows.forEach(row => row.classList.add('hidden'));
+                
+                // 显示当前页的行
+                filteredRows.slice(startIndex, endIndex).forEach(row => {
+                    row.classList.remove('hidden');
+                });
+                
+                // 更新分页信息
+                document.getElementById('pageInfo').textContent = `第${currentPage}页/共${totalPages}页`;
+                
+                // 更新按钮状态
+                document.getElementById('prevPage').disabled = currentPage <= 1;
+                document.getElementById('nextPage').disabled = currentPage >= totalPages || rowsPerPage === 0;
+            }
+            
+            // 搜索过滤
+            function filterTable() {
+                const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+                
+                filteredRows = allRows.filter(row => {
+                    const cells = row.querySelectorAll('td');
+                    return Array.from(cells).some(cell => 
+                        cell.textContent.toLowerCase().includes(searchTerm)
+                    );
+                });
+                
+                currentPage = 1;
+                updateTable();
+            }
+            
+            // 更改每页行数
+            function changeRowsPerPage() {
+                rowsPerPage = parseInt(document.getElementById('rowsPerPage').value);
+                currentPage = 1;
+                updateTable();
+            }
+            
+            // 上一页
+            function prevPage() {
+                if (currentPage > 1) {
+                    currentPage--;
+                    updateTable();
                 }
             }
+            
+            // 下一页
+            function nextPage() {
+                const totalRows = filteredRows.length;
+                const totalPages = rowsPerPage === 0 ? 1 : Math.ceil(totalRows / rowsPerPage);
+                
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    updateTable();
+                }
+            }
+            
+            // 初始化分页
+            document.addEventListener('DOMContentLoaded', initPagination);
         </script>
     </body>
     </html>
