@@ -91,6 +91,13 @@
             margin: 20px 0;
             gap: 10px;
         }
+        .data-table-wrapper {
+            overflow-x: auto;
+            cursor: grab;
+        }
+        .data-table-wrapper:active {
+            cursor: grabbing;
+        }
         .pagination button {
             padding: 8px 16px;
             background-color: #2c3e50;
@@ -136,7 +143,7 @@
         <div class="container">
             <h1>ATP幸存者冠军排名</h1>
             <div style="text-align: center; color: #888; font-size: 0.9em; margin-bottom: 10px;">
-                页面数据更新时间：2025-06-28 18:47:14
+                页面数据更新时间：2025-06-28 18:56:21
             </div>
             <div class="choice-info"><strong>今日选择情况：</strong><ul><li>格里科斯普：7人</li><li>穆泰：4人</li></ul></div>
             <div class="controls-container">
@@ -29661,6 +29668,33 @@
         }
 
         document.addEventListener('DOMContentLoaded', initPagination);
+        // === 鼠标拖拽横向滚动功能 ===
+        const wrapper = document.querySelector('.data-table-wrapper');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        
+        wrapper.addEventListener('mousedown', (e) => {
+            isDown = true;
+            wrapper.classList.add('active');
+            startX = e.pageX - wrapper.offsetLeft;
+            scrollLeft = wrapper.scrollLeft;
+        });
+        wrapper.addEventListener('mouseleave', () => {
+            isDown = false;
+            wrapper.classList.remove('active');
+        });
+        wrapper.addEventListener('mouseup', () => {
+            isDown = false;
+            wrapper.classList.remove('active');
+        });
+        wrapper.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - wrapper.offsetLeft;
+            const walk = (x - startX);
+            wrapper.scrollLeft = scrollLeft - walk;
+        });
     </script>
     
     </body>
