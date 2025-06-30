@@ -129,6 +129,34 @@
             display: inline-block;
             margin: 0 12px;
         }
+        /* 新增的下拉筛选控件样式 */
+        .filter-container {
+            display: flex;
+            margin-top: 5px;
+            align-items: center;
+            justify-content: center;
+        }
+        .filter-select {
+            width: 100px;
+            padding: 3px;
+            font-size: 12px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            background-color: white;
+        }
+        .clear-button {
+            padding: 3px 6px;
+            margin-left: 4px;
+            font-size: 12px;
+            border: none;
+            border-radius: 3px;
+            background-color: #f44336;
+            color: white;
+            cursor: pointer;
+        }
+        .clear-button:hover {
+            background-color: #d32f2f;
+        }
     </style>
     
     </head>
@@ -136,9 +164,9 @@
         <div class="container">
             <h1>WTA幸存者冠军排名</h1>
             <div style="text-align: center; color: #888; font-size: 0.9em; margin-bottom: 10px;">
-                页面数据更新时间：2025-06-30 12:33:26
+                页面数据更新时间：2025-06-30 12:56:10
             </div>
-            <div class="choice-info"><strong>今日选择情况：</strong><ul><li>拉杜卡努：69</li><li>斯维托丽娜：42</li><li>克鲁格：24</li><li>蕾-费尔南德斯：20</li><li>贾贝乌尔：18</li><li>大坂直美：16</li><li>萨巴莲卡：14</li><li>凯斯：13</li><li>梅尔滕斯：11</li><li>保利尼：10</li><li>诺斯科娃：7</li><li>扎拉祖哈：6</li><li>郑钦文：5</li><li>帕芙柳琴科娃：3</li><li>斯特恩斯：2</li><li>达特：2</li><li>维基奇：2</li><li>明尼恩：2</li><li>马尔蒂奇：1</li><li>张帅：1</li><li>拉希莫娃：1</li><li>戈卢比奇：1</li><li>利斯：1</li><li>帕里：1</li><li>凯斯勒：1</li><li>汤姆亚诺维奇：1</li><li>阿尼西莫娃：1</li><li>玛雅：1</li><li>施内德：1</li></ul></div>
+            <div class="choice-info"><strong>今日选择情况：</strong><ul><li>拉杜卡努：70</li><li>斯维托丽娜：42</li><li>克鲁格：24</li><li>蕾-费尔南德斯：22</li><li>贾贝乌尔：19</li><li>大坂直美：16</li><li>萨巴莲卡：14</li><li>凯斯：13</li><li>梅尔滕斯：11</li><li>保利尼：10</li><li>诺斯科娃：7</li><li>扎拉祖哈：6</li><li>郑钦文：5</li><li>帕芙柳琴科娃：3</li><li>施内德：2</li><li>明尼恩：2</li><li>斯特恩斯：2</li><li>达特：2</li><li>维基奇：2</li><li>帕里：1</li><li>阿尼西莫娃：1</li><li>汤姆亚诺维奇：1</li><li>凯斯勒：1</li><li>马尔蒂奇：1</li><li>利斯：1</li><li>戈卢比奇：1</li><li>拉希莫娃：1</li><li>张帅：1</li><li>玛雅：1</li></ul></div>
             <div class="controls-container">
                 <div>
                     <input type="text" id="searchInput" placeholder="搜索用户名或分数...">
@@ -2771,8 +2799,8 @@
 <td>1422</td>
 <td></td>
 <td>存活</td>
-<td></td>
-<td></td>
+<td>贾贝乌尔</td>
+<td>蕾-费尔南德斯</td>
 <td>0</td>
 <td>30</td>
 <td>240</td>
@@ -3794,8 +3822,8 @@
 <td>1243</td>
 <td></td>
 <td>存活</td>
-<td></td>
-<td></td>
+<td>施内德</td>
+<td>保利尼</td>
 <td>0</td>
 <td>185</td>
 <td>335</td>
@@ -8183,8 +8211,8 @@
 <td>613</td>
 <td></td>
 <td>存活</td>
-<td></td>
-<td></td>
+<td>蕾-费尔南德斯</td>
+<td>保利尼</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -11978,8 +12006,8 @@
 <td>240</td>
 <td></td>
 <td>存活</td>
-<td></td>
-<td></td>
+<td>拉杜卡努</td>
+<td>大坂直美</td>
 <td>0</td>
 <td>0</td>
 <td>240</td>
@@ -15344,8 +15372,8 @@
 <td>90</td>
 <td></td>
 <td>存活</td>
-<td></td>
-<td></td>
+<td>蕾-费尔南德斯</td>
+<td>斯维托丽娜</td>
 <td>0</td>
 <td>30</td>
 <td>50</td>
@@ -33273,7 +33301,8 @@
         let filteredRows = [...allRows];
         let currentPage = 1;
         let rowsPerPage = 10;
-
+        let columnFilters = {};
+    
         function initPagination() {
             allRows.forEach((row, index) => {
                 row.setAttribute('data-index', index);
@@ -33282,9 +33311,80 @@
             document.getElementById('rowsPerPage').addEventListener('change', changeRowsPerPage);
             document.getElementById('prevPage').addEventListener('click', prevPage);
             document.getElementById('nextPage').addEventListener('click', nextPage);
+            initHeaderFilters();
             updateTable();
         }
-
+    
+        function initHeaderFilters() {
+            const headers = table.querySelectorAll('thead th');
+            headers.forEach((header, index) => {
+                // 跳过前两列（索引0和1）
+                if (index < 4) return;
+    
+                const filterContainer = document.createElement('div');
+                filterContainer.className = 'filter-container';
+    
+                // 创建下拉选择框
+                const filterSelect = document.createElement('select');
+                filterSelect.className = 'filter-select';
+                filterSelect.dataset.columnIndex = index;
+                
+                // 添加默认选项
+                const defaultOption = document.createElement('option');
+                defaultOption.value = '';
+                defaultOption.textContent = '全部';
+                filterSelect.appendChild(defaultOption);
+    
+                // 收集该列所有唯一值
+                const columnValues = new Set();
+                allRows.forEach(row => {
+                    const cell = row.querySelector(`td:nth-child(${index + 1})`);
+                    if (cell) columnValues.add(cell.textContent.trim());
+                });
+    
+                // 按字母排序后添加到下拉菜单
+                Array.from(columnValues).sort().forEach(value => {
+                    const option = document.createElement('option');
+                    option.value = value;
+                    option.textContent = value;
+                    filterSelect.appendChild(option);
+                });
+    
+                // 添加清除按钮
+                const clearButton = document.createElement('button');
+                clearButton.textContent = '×';
+                clearButton.className = 'clear-button';
+                clearButton.dataset.columnIndex = index;
+    
+                filterContainer.appendChild(filterSelect);
+                filterContainer.appendChild(clearButton);
+                header.appendChild(filterContainer);
+    
+                // 事件监听
+                filterSelect.addEventListener('change', () => 
+                    applyColumnFilter(index, filterSelect.value)
+                );
+                clearButton.addEventListener('click', () => {
+                    filterSelect.value = '';
+                    clearColumnFilter(index);
+                });
+            });
+        }
+    
+        function applyColumnFilter(columnIndex, filterValue) {
+            if (filterValue.trim() === '') {
+                delete columnFilters[columnIndex];
+            } else {
+                columnFilters[columnIndex] = filterValue.toLowerCase();
+            }
+            filterTable();
+        }
+    
+        function clearColumnFilter(columnIndex) {
+            delete columnFilters[columnIndex];
+            filterTable();
+        }
+    
         function updateTable() {
             const totalRows = filteredRows.length;
             const totalPages = rowsPerPage === 0 ? 1 : Math.ceil(totalRows / rowsPerPage);
@@ -33298,32 +33398,48 @@
             document.getElementById('prevPage').disabled = currentPage <= 1;
             document.getElementById('nextPage').disabled = currentPage >= totalPages || rowsPerPage === 0;
         }
-
+    
         function filterTable() {
             const searchTerm = document.getElementById('searchInput').value.toLowerCase();
             filteredRows = allRows.filter(row => {
                 const cells = row.querySelectorAll('td');
-                return Array.from(cells).some(cell => 
-                    cell.textContent.toLowerCase().includes(searchTerm)
-                );
+                
+                // 全局搜索
+                const globalMatch = searchTerm === '' || 
+                    Array.from(cells).some(cell => 
+                        cell.textContent.toLowerCase().includes(searchTerm)
+                    );
+                if (!globalMatch) return false;
+                
+                // 列筛选
+                for (const [columnIndex, filterValue] of Object.entries(columnFilters)) {
+                    const cellIndex = parseInt(columnIndex);
+                    if (cellIndex < cells.length) {
+                        const cellText = cells[cellIndex].textContent.toLowerCase();
+                        if (!cellText.includes(filterValue)) {
+                            return false;
+                        }
+                    }
+                }
+                return true;
             });
             currentPage = 1;
             updateTable();
         }
-
+    
         function changeRowsPerPage() {
             rowsPerPage = parseInt(document.getElementById('rowsPerPage').value);
             currentPage = 1;
             updateTable();
         }
-
+    
         function prevPage() {
             if (currentPage > 1) {
                 currentPage--;
                 updateTable();
             }
         }
-
+    
         function nextPage() {
             const totalRows = filteredRows.length;
             const totalPages = rowsPerPage === 0 ? 1 : Math.ceil(totalRows / rowsPerPage);
@@ -33332,7 +33448,7 @@
                 updateTable();
             }
         }
-
+    
         document.addEventListener('DOMContentLoaded', initPagination);
     </script>
     
