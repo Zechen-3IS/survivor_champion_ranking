@@ -164,7 +164,7 @@
         <div class="container">
             <h1>WTA幸存者冠军排名</h1>
             <div style="text-align: center; color: #888; font-size: 0.9em; margin-bottom: 10px;">
-                页面数据更新时间：2025-06-30 12:56:10
+                页面数据更新时间：2025-06-30 13:12:52
             </div>
             <div class="choice-info"><strong>今日选择情况：</strong><ul><li>拉杜卡努：70</li><li>斯维托丽娜：42</li><li>克鲁格：24</li><li>蕾-费尔南德斯：22</li><li>贾贝乌尔：19</li><li>大坂直美：16</li><li>萨巴莲卡：14</li><li>凯斯：13</li><li>梅尔滕斯：11</li><li>保利尼：10</li><li>诺斯科娃：7</li><li>扎拉祖哈：6</li><li>郑钦文：5</li><li>帕芙柳琴科娃：3</li><li>施内德：2</li><li>明尼恩：2</li><li>斯特恩斯：2</li><li>达特：2</li><li>维基奇：2</li><li>帕里：1</li><li>阿尼西莫娃：1</li><li>汤姆亚诺维奇：1</li><li>凯斯勒：1</li><li>马尔蒂奇：1</li><li>利斯：1</li><li>戈卢比奇：1</li><li>拉希莫娃：1</li><li>张帅：1</li><li>玛雅：1</li></ul></div>
             <div class="controls-container">
@@ -33318,39 +33318,46 @@
         function initHeaderFilters() {
             const headers = table.querySelectorAll('thead th');
             headers.forEach((header, index) => {
-                // 跳过前两列（索引0和1）
                 if (index < 4) return;
     
                 const filterContainer = document.createElement('div');
                 filterContainer.className = 'filter-container';
     
-                // 创建下拉选择框
                 const filterSelect = document.createElement('select');
                 filterSelect.className = 'filter-select';
                 filterSelect.dataset.columnIndex = index;
-                
-                // 添加默认选项
+    
                 const defaultOption = document.createElement('option');
                 defaultOption.value = '';
                 defaultOption.textContent = '全部';
                 filterSelect.appendChild(defaultOption);
     
-                // 收集该列所有唯一值
                 const columnValues = new Set();
                 allRows.forEach(row => {
                     const cell = row.querySelector(`td:nth-child(${index + 1})`);
                     if (cell) columnValues.add(cell.textContent.trim());
                 });
     
-                // 按字母排序后添加到下拉菜单
-                Array.from(columnValues).sort().forEach(value => {
-                    const option = document.createElement('option');
-                    option.value = value;
-                    option.textContent = value;
-                    filterSelect.appendChild(option);
-                });
+                Array.from(columnValues)
+                    .sort((a, b) => {
+                        if (index >= 7) {  // 第8列及以后按数值降序
+                            const numA = parseFloat(a.replace(/[^0-9.\-]/g, ''));
+                            const numB = parseFloat(b.replace(/[^0-9.\-]/g, ''));
+                            const isNumA = !isNaN(numA);
+                            const isNumB = !isNaN(numB);
+                            if (isNumA && isNumB) {
+                                return numB - numA;
+                            }
+                        }
+                        return a.localeCompare(b, 'zh');
+                    })
+                    .forEach(value => {
+                        const option = document.createElement('option');
+                        option.value = value;
+                        option.textContent = value;
+                        filterSelect.appendChild(option);
+                    });
     
-                // 添加清除按钮
                 const clearButton = document.createElement('button');
                 clearButton.textContent = '×';
                 clearButton.className = 'clear-button';
@@ -33360,7 +33367,6 @@
                 filterContainer.appendChild(clearButton);
                 header.appendChild(filterContainer);
     
-                // 事件监听
                 filterSelect.addEventListener('change', () => 
                     applyColumnFilter(index, filterSelect.value)
                 );
@@ -33403,15 +33409,12 @@
             const searchTerm = document.getElementById('searchInput').value.toLowerCase();
             filteredRows = allRows.filter(row => {
                 const cells = row.querySelectorAll('td');
-                
-                // 全局搜索
                 const globalMatch = searchTerm === '' || 
                     Array.from(cells).some(cell => 
                         cell.textContent.toLowerCase().includes(searchTerm)
                     );
                 if (!globalMatch) return false;
-                
-                // 列筛选
+    
                 for (const [columnIndex, filterValue] of Object.entries(columnFilters)) {
                     const cellIndex = parseInt(columnIndex);
                     if (cellIndex < cells.length) {
