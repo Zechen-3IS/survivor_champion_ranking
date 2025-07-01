@@ -129,24 +129,86 @@
             display: inline-block;
             margin: 0 12px;
         }
-        /* 新增的下拉筛选控件样式 */
+        /* 多选筛选控件样式 */
         .filter-container {
             display: flex;
+            flex-direction: column;
             margin-top: 5px;
             align-items: center;
             justify-content: center;
         }
-        .filter-select {
+        .filter-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .filter-button {
             width: 100px;
             padding: 3px;
             font-size: 12px;
             border: 1px solid #ddd;
             border-radius: 3px;
             background-color: white;
+            cursor: pointer;
+            text-align: left;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: #333;
+        }
+        .filter-button::after {
+            content: "▼";
+            float: right;
+            font-size: 10px;
+        }
+        .filter-options {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 120px;
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .filter-options.show {
+            display: block;
+        }
+        .filter-option {
+            padding: 5px 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            color: #333;
+            background-color: white;
+        }
+        .filter-option:hover {
+            background-color: #f1f1f1;
+        }
+        .filter-option label {
+            cursor: pointer;
+            color: #333;
+            margin-left: 5px;
+            width: 100%;
+        }
+        .filter-option input {
+            margin-right: 5px;
+            cursor: pointer;
+        }
+        .filter-option input:checked + label {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .filter-summary {
+            font-size: 11px;
+            color: #666;
+            margin-top: 3px;
+            text-align: center;
         }
         .clear-button {
             padding: 3px 6px;
-            margin-left: 4px;
+            margin-top: 3px;
             font-size: 12px;
             border: none;
             border-radius: 3px;
@@ -157,6 +219,33 @@
         .clear-button:hover {
             background-color: #d32f2f;
         }
+        .match-count {
+            text-align: center;
+            margin: 10px 0;
+            font-size: 14px;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+        .select-all-container {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .select-all-btn, .deselect-all-btn {
+            padding: 2px 5px;
+            font-size: 11px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            background-color: #f8f8f8;
+            cursor: pointer;
+        }
+        .select-all-btn:hover {
+            background-color: #e6f7ff;
+        }
+        .deselect-all-btn:hover {
+            background-color: #fff2f0;
+        }
     </style>
     
     </head>
@@ -164,7 +253,7 @@
         <div class="container">
             <h1>WTA幸存者冠军排名</h1>
             <div style="text-align: center; color: #888; font-size: 0.9em; margin-bottom: 10px;">
-                页面数据更新时间：2025-07-01 12:39:25
+                页面数据更新时间：2025-07-01 13:08:57
             </div>
             <div class="choice-info"><strong>今日选择情况：</strong><ul><li>亚历山德罗娃：26</li><li>库德梅托娃：22</li><li>米-安德烈耶娃：22</li><li>科斯秋克：19</li><li>阿扎伦卡：14</li><li>卡萨特金娜：14</li><li>佩古拉：10</li><li>雷巴金娜：7</li><li>萨姆索诺娃：5</li><li>伊-约维奇：4</li><li>希维昂泰克：4</li><li>陶森：4</li><li>玛利亚：3</li><li>巴蒂斯特：3</li><li>卡林斯卡娅：3</li><li>高芙：3</li><li>科林斯：2</li><li>埃-纳瓦罗：2</li><li>克宁：2</li><li>尤万：1</li><li>克赖奇科娃：1</li><li>拉门斯：1</li><li>王欣瑜：1</li><li>斯塔罗杜布采娃：1</li><li>博萨斯：1</li><li>阿瓦涅相：1</li><li>里纳特：1</li><li>伯雷奇：1</li><li>布林科娃：1</li><li>多勒海德：1</li><li>郑钦文：1</li><li>泰赫曼：1</li></ul></div>
             <div class="controls-container">
@@ -181,6 +270,7 @@
                     </select>
                 </div>
             </div>
+            <div id="matchCount" class="match-count">共找到 1034 条记录</div>
             <div class="data-table-wrapper">
                 <table border="0" class="dataframe data-table">
 <thead>
@@ -39907,165 +39997,291 @@
             </div>
         </div>
         
-    <script>
-        const table = document.querySelector('.data-table');
-        const allRows = Array.from(table.querySelectorAll('tbody tr'));
-        let filteredRows = [...allRows];
-        let currentPage = 1;
-        let rowsPerPage = 10;
-        let columnFilters = {};
-    
-        function initPagination() {
-            allRows.forEach((row, index) => {
-                row.setAttribute('data-index', index);
-            });
-            document.getElementById('searchInput').addEventListener('input', filterTable);
-            document.getElementById('rowsPerPage').addEventListener('change', changeRowsPerPage);
-            document.getElementById('prevPage').addEventListener('click', prevPage);
-            document.getElementById('nextPage').addEventListener('click', nextPage);
-            initHeaderFilters();
-            updateTable();
-        }
-    
-        function initHeaderFilters() {
-            const headers = table.querySelectorAll('thead th');
-            headers.forEach((header, index) => {
-                if (index < 4) return;
-    
-                const filterContainer = document.createElement('div');
-                filterContainer.className = 'filter-container';
-    
-                const filterSelect = document.createElement('select');
-                filterSelect.className = 'filter-select';
-                filterSelect.dataset.columnIndex = index;
-    
-                const defaultOption = document.createElement('option');
-                defaultOption.value = '';
-                defaultOption.textContent = '全部';
-                filterSelect.appendChild(defaultOption);
-    
-                const columnValues = new Set();
-                allRows.forEach(row => {
-                    const cell = row.querySelector(`td:nth-child(${index + 1})`);
-                    if (cell) columnValues.add(cell.textContent.trim());
+        <script>
+            const table = document.querySelector('.data-table');
+            const allRows = Array.from(table.querySelectorAll('tbody tr'));
+            let filteredRows = [...allRows];
+            let currentPage = 1;
+            let rowsPerPage = 10;
+            let columnFilters = {};
+            
+            function initPagination() {
+                allRows.forEach((row, index) => {
+                    row.setAttribute('data-index', index);
                 });
-    
-                Array.from(columnValues)
-                    .sort((a, b) => {
-                        if (index >= 7) {  // 第8列及以后按数值降序
-                            const numA = parseFloat(a.replace(/[^0-9.\-]/g, ''));
-                            const numB = parseFloat(b.replace(/[^0-9.\-]/g, ''));
-                            const isNumA = !isNaN(numA);
-                            const isNumB = !isNaN(numB);
-                            if (isNumA && isNumB) {
-                                return numB - numA;
+                document.getElementById('searchInput').addEventListener('input', filterTable);
+                document.getElementById('rowsPerPage').addEventListener('change', changeRowsPerPage);
+                document.getElementById('prevPage').addEventListener('click', prevPage);
+                document.getElementById('nextPage').addEventListener('click', nextPage);
+                initHeaderFilters();
+                updateTable();
+            }
+            
+            function initHeaderFilters() {
+                // 全局点击事件监听，点击空白处收回复选框
+                document.addEventListener('click', function(event) {
+                    if (!event.target.closest('.filter-button') && 
+                        !event.target.closest('.filter-options') &&
+                        !event.target.closest('.select-all-btn') &&
+                        !event.target.closest('.deselect-all-btn')) {
+                        document.querySelectorAll('.filter-options').forEach(option => {
+                            option.classList.remove('show');
+                        });
+                    }
+                });
+        
+                const headers = table.querySelectorAll('thead th');
+                headers.forEach((header, index) => {
+                    if (index < 4) return;
+                    
+                    const filterContainer = document.createElement('div');
+                    filterContainer.className = 'filter-container';
+                    
+                    const dropdown = document.createElement('div');
+                    dropdown.className = 'filter-dropdown';
+                    
+                    const button = document.createElement('button');
+                    button.className = 'filter-button';
+                    button.textContent = '筛选';
+                    button.dataset.columnIndex = index;
+                    
+                    const options = document.createElement('div');
+                    options.className = 'filter-options';
+                    options.dataset.columnIndex = index;
+                    
+                    // 添加全选/取消全选按钮
+                    const selectAllContainer = document.createElement('div');
+                    selectAllContainer.className = 'select-all-container';
+                    
+                    const selectAllBtn = document.createElement('button');
+                    selectAllBtn.className = 'select-all-btn';
+                    selectAllBtn.textContent = '全选';
+                    selectAllBtn.dataset.columnIndex = index;
+                    
+                    const deselectAllBtn = document.createElement('button');
+                    deselectAllBtn.className = 'deselect-all-btn';
+                    deselectAllBtn.textContent = '取消';
+                    deselectAllBtn.dataset.columnIndex = index;
+                    
+                    selectAllContainer.appendChild(selectAllBtn);
+                    selectAllContainer.appendChild(deselectAllBtn);
+                    options.appendChild(selectAllContainer);
+                    
+                    const columnValues = new Set();
+                    allRows.forEach(row => {
+                        const cell = row.querySelector(`td:nth-child(${index + 1})`);
+                        if (cell) columnValues.add(cell.textContent.trim());
+                    });
+                    
+                    // 从本地存储加载已选状态
+                    const savedFilters = JSON.parse(localStorage.getItem('columnFilters')) || {};
+                    const savedValues = savedFilters[index] || [];
+                    
+                    Array.from(columnValues)
+                        .sort((a, b) => {
+                            if (index >= 7) {
+                                const numA = parseFloat(a.replace(/[^0-9.\-]/g, ''));
+                                const numB = parseFloat(b.replace(/[^0-9.\-]/g, ''));
+                                const isNumA = !isNaN(numA);
+                                const isNumB = !isNaN(numB);
+                                if (isNumA && isNumB) return numB - numA;
+                            }
+                            return a.localeCompare(b, 'zh');
+                        })
+                        .forEach(value => {
+                            const option = document.createElement('div');
+                            option.className = 'filter-option';
+                            
+                            const checkbox = document.createElement('input');
+                            checkbox.type = 'checkbox';
+                            checkbox.value = value;
+                            checkbox.id = `filter-${index}-${value.replace(/\s+/g, '-')}`;
+                            if (savedValues.includes(value)) {
+                                checkbox.checked = true;
+                            }
+                            
+                            const label = document.createElement('label');
+                            label.htmlFor = checkbox.id;
+                            label.textContent = value;
+                            
+                            option.appendChild(checkbox);
+                            option.appendChild(label);
+                            options.appendChild(option);
+                        });
+                    
+                    const summary = document.createElement('div');
+                    summary.className = 'filter-summary';
+                    summary.textContent = savedValues.length > 0 ? `${savedValues.length}项选中` : '0项选中';
+                    summary.dataset.columnIndex = index;
+                    
+                    const clearButton = document.createElement('button');
+                    clearButton.className = 'clear-button';
+                    clearButton.textContent = '清除';
+                    clearButton.dataset.columnIndex = index;
+                    
+                    dropdown.appendChild(button);
+                    dropdown.appendChild(options);
+                    filterContainer.appendChild(dropdown);
+                    filterContainer.appendChild(summary);
+                    filterContainer.appendChild(clearButton);
+                    header.appendChild(filterContainer);
+                    
+                    // 点击按钮显示/隐藏选项
+                    button.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        document.querySelectorAll('.filter-options').forEach(opt => {
+                            if (opt !== options) opt.classList.remove('show');
+                        });
+                        options.classList.toggle('show');
+                    });
+                    
+                    // 全选功能
+                    selectAllBtn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        const columnIdx = parseInt(this.dataset.columnIndex);
+                        document.querySelectorAll(`.filter-options[data-column-index="${columnIdx}"] input[type="checkbox"]`).forEach(cb => {
+                            cb.checked = true;
+                        });
+                        updateColumnFilter(columnIdx);
+                    });
+                    
+                    // 取消全选功能
+                    deselectAllBtn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        const columnIdx = parseInt(this.dataset.columnIndex);
+                        document.querySelectorAll(`.filter-options[data-column-index="${columnIdx}"] input[type="checkbox"]`).forEach(cb => {
+                            cb.checked = false;
+                        });
+                        updateColumnFilter(columnIdx);
+                    });
+                    
+                    // 点击选项时更新筛选
+                    options.addEventListener('change', function(e) {
+                        e.stopPropagation();
+                        if (e.target.tagName === 'INPUT') {
+                            updateColumnFilter(index);
+                        }
+                    });
+                    
+                    // 清除筛选
+                    clearButton.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        const columnIndex = parseInt(this.dataset.columnIndex);
+                        document.querySelectorAll(`.filter-options[data-column-index="${columnIndex}"] input[type="checkbox"]`).forEach(checkbox => {
+                            checkbox.checked = false;
+                        });
+                        clearColumnFilter(columnIndex);
+                    });
+                });
+                
+                // 初始化时应用保存的筛选
+                const savedFilters = JSON.parse(localStorage.getItem('columnFilters')) || {};
+                if (Object.keys(savedFilters).length > 0) {
+                    columnFilters = savedFilters;
+                    filterTable();
+                }
+            }
+            
+            function updateColumnFilter(columnIndex) {
+                const checkboxes = document.querySelectorAll(`.filter-options[data-column-index="${columnIndex}"] input:checked`);
+                const selectedValues = Array.from(checkboxes).map(cb => cb.value);
+                const summary = document.querySelector(`.filter-summary[data-column-index="${columnIndex}"]`);
+                
+                if (selectedValues.length === 0) {
+                    delete columnFilters[columnIndex];
+                    summary.textContent = '0项选中';
+                } else {
+                    columnFilters[columnIndex] = selectedValues;
+                    summary.textContent = `${selectedValues.length}项选中`;
+                }
+                
+                // 保存筛选状态到本地存储
+                localStorage.setItem('columnFilters', JSON.stringify(columnFilters));
+                filterTable();
+            }
+            
+            function clearColumnFilter(columnIndex) {
+                delete columnFilters[columnIndex];
+                document.querySelector(`.filter-summary[data-column-index="${columnIndex}"]`).textContent = '0项选中';
+                localStorage.setItem('columnFilters', JSON.stringify(columnFilters));
+                filterTable();
+            }
+            
+            function updateTable() {
+                const totalRows = filteredRows.length;
+                const totalPages = rowsPerPage === 0 ? 1 : Math.ceil(totalRows / rowsPerPage);
+                const startIndex = (currentPage - 1) * rowsPerPage;
+                const endIndex = rowsPerPage === 0 ? totalRows : startIndex + rowsPerPage;
+                
+                allRows.forEach(row => row.classList.add('hidden'));
+                filteredRows.slice(startIndex, endIndex).forEach(row => {
+                    row.classList.remove('hidden');
+                });
+                
+                document.getElementById('pageInfo').textContent = '第' + currentPage + '页/共' + totalPages + '页';
+                document.getElementById('prevPage').disabled = currentPage <= 1;
+                document.getElementById('nextPage').disabled = currentPage >= totalPages || rowsPerPage === 0;
+                
+                // 更新匹配记录数显示
+                const matchCountElement = document.getElementById('matchCount');
+                if (matchCountElement) {
+                    matchCountElement.textContent = `共找到 ${totalRows} 条匹配记录`;
+                }
+            }
+            
+            function filterTable() {
+                const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+                filteredRows = allRows.filter(row => {
+                    const cells = row.querySelectorAll('td');
+                    
+                    // 全局搜索匹配
+                    const globalMatch = searchTerm === '' || 
+                        Array.from(cells).some(cell => 
+                            cell.textContent.toLowerCase().includes(searchTerm)
+                        );
+                    if (!globalMatch) return false;
+                    
+                    // 列筛选匹配
+                    for (const [columnIndex, filterValues] of Object.entries(columnFilters)) {
+                        const cellIndex = parseInt(columnIndex);
+                        if (cellIndex < cells.length) {
+                            const cellText = cells[cellIndex].textContent.trim();
+                            if (!filterValues.includes(cellText)) {
+                                return false;
                             }
                         }
-                        return a.localeCompare(b, 'zh');
-                    })
-                    .forEach(value => {
-                        const option = document.createElement('option');
-                        option.value = value;
-                        option.textContent = value;
-                        filterSelect.appendChild(option);
-                    });
-    
-                const clearButton = document.createElement('button');
-                clearButton.textContent = '×';
-                clearButton.className = 'clear-button';
-                clearButton.dataset.columnIndex = index;
-    
-                filterContainer.appendChild(filterSelect);
-                filterContainer.appendChild(clearButton);
-                header.appendChild(filterContainer);
-    
-                filterSelect.addEventListener('change', () => 
-                    applyColumnFilter(index, filterSelect.value)
-                );
-                clearButton.addEventListener('click', () => {
-                    filterSelect.value = '';
-                    clearColumnFilter(index);
-                });
-            });
-        }
-    
-        function applyColumnFilter(columnIndex, filterValue) {
-            if (filterValue.trim() === '') {
-                delete columnFilters[columnIndex];
-            } else {
-                columnFilters[columnIndex] = filterValue.toLowerCase();
-            }
-            filterTable();
-        }
-    
-        function clearColumnFilter(columnIndex) {
-            delete columnFilters[columnIndex];
-            filterTable();
-        }
-    
-        function updateTable() {
-            const totalRows = filteredRows.length;
-            const totalPages = rowsPerPage === 0 ? 1 : Math.ceil(totalRows / rowsPerPage);
-            const startIndex = (currentPage - 1) * rowsPerPage;
-            const endIndex = rowsPerPage === 0 ? totalRows : startIndex + rowsPerPage;
-            allRows.forEach(row => row.classList.add('hidden'));
-            filteredRows.slice(startIndex, endIndex).forEach(row => {
-                row.classList.remove('hidden');
-            });
-            document.getElementById('pageInfo').textContent = '第' + currentPage + '页/共' + totalPages + '页';
-            document.getElementById('prevPage').disabled = currentPage <= 1;
-            document.getElementById('nextPage').disabled = currentPage >= totalPages || rowsPerPage === 0;
-        }
-    
-        function filterTable() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            filteredRows = allRows.filter(row => {
-                const cells = row.querySelectorAll('td');
-                const globalMatch = searchTerm === '' || 
-                    Array.from(cells).some(cell => 
-                        cell.textContent.toLowerCase().includes(searchTerm)
-                    );
-                if (!globalMatch) return false;
-    
-                for (const [columnIndex, filterValue] of Object.entries(columnFilters)) {
-                    const cellIndex = parseInt(columnIndex);
-                    if (cellIndex < cells.length) {
-                        const cellText = cells[cellIndex].textContent.toLowerCase();
-                        if (!cellText.includes(filterValue)) {
-                            return false;
-                        }
                     }
+                    return true;
+                });
+                
+                currentPage = 1;
+                updateTable();
+            }
+            
+            function changeRowsPerPage() {
+                rowsPerPage = parseInt(document.getElementById('rowsPerPage').value);
+                currentPage = 1;
+                updateTable();
+            }
+            
+            function prevPage() {
+                if (currentPage > 1) {
+                    currentPage--;
+                    updateTable();
                 }
-                return true;
-            });
-            currentPage = 1;
-            updateTable();
-        }
-    
-        function changeRowsPerPage() {
-            rowsPerPage = parseInt(document.getElementById('rowsPerPage').value);
-            currentPage = 1;
-            updateTable();
-        }
-    
-        function prevPage() {
-            if (currentPage > 1) {
-                currentPage--;
-                updateTable();
             }
-        }
-    
-        function nextPage() {
-            const totalRows = filteredRows.length;
-            const totalPages = rowsPerPage === 0 ? 1 : Math.ceil(totalRows / rowsPerPage);
-            if (currentPage < totalPages) {
-                currentPage++;
-                updateTable();
+            
+            function nextPage() {
+                const totalRows = filteredRows.length;
+                const totalPages = rowsPerPage === 0 ? 1 : Math.ceil(totalRows / rowsPerPage);
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    updateTable();
+                }
             }
-        }
-    
-        document.addEventListener('DOMContentLoaded', initPagination);
-    </script>
+            
+            document.addEventListener('DOMContentLoaded', initPagination);
+        </script>
     
     </body>
     </html>
