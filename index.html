@@ -81,9 +81,15 @@
                 display: flex;
                 transition: transform 0.3s ease;
             }
-    
-            .card:hover {
+            
+            .card-link {
+                text-decoration: none;
+                color: inherit;
+            }
+            
+            .card-link:hover .card {
                 transform: translateY(-5px);
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             }
     
             .card-icon {
@@ -162,51 +168,55 @@
         <div class="container">
             <header>
                 <h1>签表幸存者排名</h1>
-                <p class="subtitle">开发者：旧纳</p>
+                <p class="subtitle">网球赛事冠军追踪系统</p>
             </header>
             
             <h2>上周赛事结果</h2>
             <div class="card-container">
                 
-        <div class="card champion-card">
-            <div class="card-icon">🏆</div>
-            <div class="card-content">
-                <h3>WTA上周赛事</h3>
-                <p>巴特洪堡<br>恭喜wennuan78夺冠</p>
+            <div class="card champion-card">
+                <div class="card-icon">🏆</div>
+                <div class="card-content">
+                    <h3>WTA上周赛事</h3>
+                    <p>巴特洪堡<br>恭喜wennuan78夺冠</p>
+                </div>
             </div>
-        </div>
-        
+            
                 
-        <div class="card champion-card">
-            <div class="card-icon">🏆</div>
-            <div class="card-content">
-                <h3>ATP上周赛事</h3>
-                <p>马洛卡<br>恭喜Dagenais, 木的讷, 543236280, 浙江土特产, 跟我一起摆烂, 顶***家, 客家阿V2夺冠</p>
+            <div class="card champion-card">
+                <div class="card-icon">🏆</div>
+                <div class="card-content">
+                    <h3>ATP上周赛事</h3>
+                    <p>马洛卡<br>恭喜Dagenais, 木的讷, 543236280, 浙江土特产, 跟我一起摆烂, 顶***家, 客家阿V2夺冠</p>
+                </div>
             </div>
-        </div>
-        
+            
             </div>
             
             <h2>本周赛事</h2>
             <div class="card-container">
                 
-        <div class="card ">
-            <div class="card-icon">🎾</div>
-            <div class="card-content">
-                <h3>WTA本周赛事</h3>
-                <p>温网</p>
-            </div>
-        </div>
-        
+            <a href="https://www.live-tennis.cn/zh/survivor/event/WC/2025/WS/my" class="card-link">
+                <div class="card ">
+                    <div class="card-icon">🎾</div>
+                    <div class="card-content">
+                        <h3>WTA本周赛事</h3>
+                        <p>温网</p>
+                    </div>
+                </div>
+            </a>
+            
                 
-        <div class="card ">
-            <div class="card-icon">🎾</div>
-            <div class="card-content">
-                <h3>ATP本周赛事</h3>
-                <p>温网</p>
-            </div>
-        </div>
-        
+            <a href="https://www.live-tennis.cn/zh/survivor/event/WC/2025/MS/my" class="card-link">
+                <div class="card ">
+                    <div class="card-icon">🎾</div>
+                    <div class="card-content">
+                        <h3>ATP本周赛事</h3>
+                        <p>温网</p>
+                    </div>
+                </div>
+            </a>
+            
             </div>
             
             <h2>排名查询</h2>
