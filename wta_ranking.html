@@ -265,7 +265,7 @@
         }
         .filter-summary {
             font-size: 11px;
-            color: var(--text-color);
+            color: var(table-header-text);
             margin-top: 3px;
             text-align: center;
         }
@@ -327,6 +327,66 @@
             padding: 8px 12px;
             border: 1px solid var(--table-border);
         }
+        .stats-container {
+            margin: 20px auto;
+            text-align: center;
+            max-width: 800px;
+        }
+        .toggle-stats-btn {
+            padding: 8px 16px;
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .toggle-stats-btn:hover {
+            background-color: var(--button-hover);
+        }
+        .btn-text {
+            font-weight: bold;
+        }
+        .arrow-icon {
+            font-size: 0.8em;
+            transition: transform 0.3s;
+        }
+        .stats-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+            font-size: 0.9em;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+        .stats-table th {
+            background-color: var(--table-header-bg);
+            color: var(--table-header-text);
+            padding: 8px 12px;
+            border: 1px solid var(--table-border);
+            text-align: center;
+        }
+        .stats-table td {
+            padding: 8px 12px;
+            border: 1px solid var(--table-border);
+            text-align: center;
+            background-color: var(--bg-color);
+        }
+        .stats-table tr:nth-child(even) td {
+            background-color: var(--table-row-even);
+        }
+        .stats-table tr:hover td {
+            background-color: var(--table-row-hover);
+            font-weight: bold;
+        }
+        .hidden {
+            display: none;
+        }
     </style>
     
     </head>
@@ -334,83 +394,69 @@
         <div class="container">
             <h1>WTA幸存者冠军排名</h1>
             <div style="text-align: center; color: #888; font-size: 0.9em; margin-bottom: 10px;">
-                页面数据更新时间：2025-07-05 17:58:02
+                页面数据更新时间：2025-07-05 21:41:45
             </div>
             <div class="participant-info"><strong>参赛人数：</strong> 458 <strong style="margin-left:10px;">存活人数：</strong> 61 </div> 
-            <div class="choice-info"><strong>今日选择情况：</strong> 总选择人数：53 <ul><li>米-安德烈耶娃：13</li><li>亚历山德罗娃：13</li><li>雷巴金娜：9</li><li>本西奇：6</li><li>萨姆索诺娃：6</li><li>亚斯特列姆斯卡：4</li><li>埃-纳瓦罗：1</li><li>科林斯：1</li></ul></div>
+            <div class="choice-info"><strong>今日选择情况：</strong> 总选择人数：59 <ul><li>米-安德烈耶娃：15</li><li>亚历山德罗娃：14</li><li>雷巴金娜：9</li><li>本西奇：6</li><li>萨姆索诺娃：6</li><li>亚斯特列姆斯卡：5</li><li>希维昂泰克：1</li><li>埃-纳瓦罗：1</li><li>克赖奇科娃：1</li><li>科林斯：1</li></ul></div>
             
-        <div style="margin: 20px auto; text-align: center; font-size: 0.95em;">
-            <button id="toggleStatsBtn" style="padding: 5px 15px; background-color: #2c3e50; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.95em;">
-                显示统计信息 ▼
-            </button>
-            <div id="statsTable" style="display: none; margin-top: 10px;">
-                <h3 style="margin-bottom: 10px; font-size: 0.95em;">各轮次杀手球员统计</h3>
-                <table style="margin: 0 auto; border-collapse: collapse; border: 1px solid #ddd; font-size: 0.95em;">
-                    <thead>
-                        <tr style="background-color: #f2f2f2;">
-                            <th style="padding: 8px 12px; border: 1px solid #ddd;">天数</th>
-                            <th style="padding: 8px 12px; border: 1px solid #ddd;">杀手球员1</th>
-                            <th style="padding: 8px 12px; border: 1px solid #ddd;">死亡人数1</th>
-                            <th style="padding: 8px 12px; border: 1px solid #ddd;">杀手球员2</th>
-                            <th style="padding: 8px 12px; border: 1px solid #ddd;">死亡人数2</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-        
-                    <tr>
-                        <td style="padding: 8px 12px; border: 1px solid #ddd;">1</td>
-                        <td style="padding: 8px 12px; border: 1px solid #ddd;">贾贝乌尔</td>
-                        <td style="padding: 8px 12px; border: 1px solid #ddd;">25</td>
-                        <td style="padding: 8px 12px; border: 1px solid #ddd;">张帅</td>
-                        <td style="padding: 8px 12px; border: 1px solid #ddd;">4</td>
-                    </tr>
-        
-                    <tr>
-                        <td style="padding: 8px 12px; border: 1px solid #ddd;">2</td>
-                        <td style="padding: 8px 12px; border: 1px solid #ddd;">科斯秋克</td>
-                        <td style="padding: 8px 12px; border: 1px solid #ddd;">39</td>
-                        <td style="padding: 8px 12px; border: 1px solid #ddd;">阿扎伦卡</td>
-                        <td style="padding: 8px 12px; border: 1px solid #ddd;">34</td>
-                    </tr>
-        
-                    <tr>
-                        <td style="padding: 8px 12px; border: 1px solid #ddd;">3</td>
-                        <td style="padding: 8px 12px; border: 1px solid #ddd;">博尔特</td>
-                        <td style="padding: 8px 12px; border: 1px solid #ddd;">68</td>
-                        <td style="padding: 8px 12px; border: 1px solid #ddd;">保利尼</td>
-                        <td style="padding: 8px 12px; border: 1px solid #ddd;">14</td>
-                    </tr>
-        
-                    <tr>
-                        <td style="padding: 8px 12px; border: 1px solid #ddd;">4</td>
-                        <td style="padding: 8px 12px; border: 1px solid #ddd;">王欣瑜</td>
-                        <td style="padding: 8px 12px; border: 1px solid #ddd;">20</td>
-                        <td style="padding: 8px 12px; border: 1px solid #ddd;">克宁</td>
-                        <td style="padding: 8px 12px; border: 1px solid #ddd;">1</td>
-                    </tr>
-        
-                    <tr>
-                        <td style="padding: 8px 12px; border: 1px solid #ddd;">5</td>
-                        <td style="padding: 8px 12px; border: 1px solid #ddd;">凯斯</td>
-                        <td style="padding: 8px 12px; border: 1px solid #ddd;">15</td>
-                        <td style="padding: 8px 12px; border: 1px solid #ddd;">斯维托丽娜</td>
-                        <td style="padding: 8px 12px; border: 1px solid #ddd;">15</td>
-                    </tr>
-        
-                </tbody>
-            </table>
+    <div class="stats-container">
+        <button class="toggle-stats-btn" onclick="toggleStatsTable('statsTable1')">
+            <span class="btn-text">显示每日杀手统计</span>
+            <span class="arrow-icon">▼</span>
+        </button>
+        <div id="statsTable1" class="hidden">
+            <table border="0" class="dataframe stats-table">
+<thead>
+<tr style="text-align: right;">
+<th>天数</th>
+<th>杀手球员1</th>
+<th>死亡人数1</th>
+<th>杀手球员2</th>
+<th>死亡人数2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>贾贝乌尔</td>
+<td>25</td>
+<td>张帅</td>
+<td>4</td>
+</tr>
+<tr>
+<td>2</td>
+<td>科斯秋克</td>
+<td>39</td>
+<td>阿扎伦卡</td>
+<td>34</td>
+</tr>
+<tr>
+<td>3</td>
+<td>博尔特</td>
+<td>68</td>
+<td>保利尼</td>
+<td>14</td>
+</tr>
+<tr>
+<td>4</td>
+<td>王欣瑜</td>
+<td>20</td>
+<td>克宁</td>
+<td>1</td>
+</tr>
+<tr>
+<td>5</td>
+<td>凯斯</td>
+<td>15</td>
+<td>斯维托丽娜</td>
+<td>15</td>
+</tr>
+</tbody>
+</table>
         </div>
     </div>
     
-    <script>
-        document.getElementById('toggleStatsBtn').addEventListener('click', function() {
-            const statsTable = document.getElementById('statsTable');
-            const isHidden = statsTable.style.display === 'none';
-            statsTable.style.display = isHidden ? 'block' : 'none';
-            this.innerHTML = isHidden ? '隐藏统计信息 ▲' : '显示统计信息 ▼';
-        });
-    </script>
-    
+            
             <div class="controls-container">
                 <div>
                     <input type="text" id="searchInput" placeholder="搜索用户名或分数...">
@@ -817,8 +863,8 @@
                         </span>
 </td>
 <td>存活</td>
-<td></td>
-<td></td>
+<td>米-安德烈耶娃</td>
+<td>雷巴金娜</td>
 <td></td>
 <td>5</td>
 <td>185</td>
@@ -4869,8 +4915,8 @@
                         </span>
 </td>
 <td>存活</td>
-<td></td>
-<td></td>
+<td>米-安德烈耶娃</td>
+<td>亚历山德罗娃</td>
 <td></td>
 <td>5</td>
 <td>185</td>
@@ -5191,7 +5237,7 @@
                         </span>
 </td>
 <td>存活</td>
-<td></td>
+<td>亚斯特列姆斯卡</td>
 <td></td>
 <td></td>
 <td>5</td>
@@ -6198,8 +6244,8 @@
                         </span>
 </td>
 <td>存活</td>
-<td></td>
-<td></td>
+<td>希维昂泰克</td>
+<td>亚历山德罗娃</td>
 <td></td>
 <td>5</td>
 <td>185</td>
@@ -12698,8 +12744,8 @@
                         </span>
 </td>
 <td>存活</td>
-<td></td>
-<td></td>
+<td>克赖奇科娃</td>
+<td>科林斯</td>
 <td></td>
 <td>5</td>
 <td>185</td>
@@ -17069,7 +17115,7 @@
 </tr>
 <tr style="background-color: #e6f7ff;">
 <td>410</td>
-<td>Iridescent29</td>
+<td>李***山</td>
 <td>185</td>
 <td>
 <span style="display: inline-flex; align-items: center;">
@@ -17080,7 +17126,7 @@
 </td>
 <td>存活</td>
 <td>亚历山德罗娃</td>
-<td>米-安德烈耶娃</td>
+<td>克赖奇科娃</td>
 <td></td>
 <td>5</td>
 <td>185</td>
@@ -17110,7 +17156,7 @@
 </tr>
 <tr style="background-color: #e6f7ff;">
 <td>410</td>
-<td>儒***8</td>
+<td>Iridescent29</td>
 <td>185</td>
 <td>
 <span style="display: inline-flex; align-items: center;">
@@ -17120,8 +17166,8 @@
                         </span>
 </td>
 <td>存活</td>
-<td>本西奇</td>
-<td></td>
+<td>亚历山德罗娃</td>
+<td>米-安德烈耶娃</td>
 <td></td>
 <td>5</td>
 <td>185</td>
@@ -17233,6 +17279,47 @@
 </tr>
 <tr style="background-color: #e6f7ff;">
 <td>410</td>
+<td>儒***8</td>
+<td>185</td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
+</svg>307
+                        </span>
+</td>
+<td>存活</td>
+<td>本西奇</td>
+<td></td>
+<td></td>
+<td>5</td>
+<td>185</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><del>0</del></td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+<td><del>0</del></td>
+<td><del>0</del></td>
+<td>0</td>
+<td>0</td>
+<td><del>0</del></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr style="background-color: #e6f7ff;">
+<td>410</td>
 <td>箐斓丶</td>
 <td>185</td>
 <td>
@@ -17286,47 +17373,6 @@
 <td>存活</td>
 <td>亚历山德罗娃</td>
 <td>萨姆索诺娃</td>
-<td></td>
-<td>5</td>
-<td>185</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td><del>0</del></td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-<td><del>0</del></td>
-<td><del>0</del></td>
-<td>0</td>
-<td>0</td>
-<td><del>0</del></td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr style="background-color: #e6f7ff;">
-<td>410</td>
-<td>李***山</td>
-<td>185</td>
-<td>
-<span style="display: inline-flex; align-items: center;">
-<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
-<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
-</svg>307
-                        </span>
-</td>
-<td>存活</td>
-<td></td>
-<td></td>
 <td></td>
 <td>5</td>
 <td>185</td>
@@ -18668,6 +18714,47 @@
 </tr>
 <tr>
 <td>449</td>
+<td>Aaron凯旋</td>
+<td>130</td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
+</svg>268
+                        </span>
+</td>
+<td>球员输球</td>
+<td></td>
+<td></td>
+<td>斯维托丽娜</td>
+<td>4</td>
+<td>130</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><del>0</del></td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+<td><del>0</del></td>
+<td><del>0</del></td>
+<td>0</td>
+<td>0</td>
+<td><del>0</del></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>449</td>
 <td>饭炒饭炒饭-</td>
 <td>130</td>
 <td>
@@ -18709,7 +18796,7 @@
 </tr>
 <tr>
 <td>449</td>
-<td>澳奥-</td>
+<td>龙呆呆看世界</td>
 <td>130</td>
 <td>
 <span style="display: inline-flex; align-items: center;">
@@ -18721,48 +18808,7 @@
 <td>球员输球</td>
 <td></td>
 <td></td>
-<td>大坂直美</td>
-<td>4</td>
-<td>130</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td><del>0</del></td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-<td><del>0</del></td>
-<td><del>0</del></td>
-<td>0</td>
-<td>0</td>
-<td><del>0</del></td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr>
-<td>449</td>
-<td>Aaron凯旋</td>
-<td>130</td>
-<td>
-<span style="display: inline-flex; align-items: center;">
-<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
-<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
-</svg>268
-                        </span>
-</td>
-<td>球员输球</td>
-<td></td>
-<td></td>
-<td>斯维托丽娜</td>
+<td>凯斯</td>
 <td>4</td>
 <td>130</td>
 <td>0</td>
@@ -19201,7 +19247,7 @@
 </tr>
 <tr>
 <td>449</td>
-<td>龙呆呆看世界</td>
+<td>澳奥-</td>
 <td>130</td>
 <td>
 <span style="display: inline-flex; align-items: center;">
@@ -19213,7 +19259,7 @@
 <td>球员输球</td>
 <td></td>
 <td></td>
-<td>凯斯</td>
+<td>大坂直美</td>
 <td>4</td>
 <td>130</td>
 <td>0</td>
@@ -42943,6 +42989,23 @@
                     updateTable();
                 }
             }
+        function toggleStatsTable(tableId) {
+            const table = document.getElementById(tableId);
+            const isHidden = table.classList.toggle('hidden');
+            const btn = table.previousElementSibling;
+            const btnText = btn.querySelector('.btn-text');
+            const arrowIcon = btn.querySelector('.arrow-icon');
+            
+            if (isHidden) {
+                btnText.textContent = btnText.textContent.replace('隐藏', '显示');
+                arrowIcon.textContent = '▼';
+                arrowIcon.style.transform = 'rotate(0deg)';
+            } else {
+                btnText.textContent = btnText.textContent.replace('显示', '隐藏');
+                arrowIcon.textContent = '▲';
+                arrowIcon.style.transform = 'rotate(0deg)';
+            }
+        }
             
             document.addEventListener('DOMContentLoaded', initPagination);
         </script>
