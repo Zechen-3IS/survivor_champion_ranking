@@ -259,10 +259,69 @@
         <div class="container">
             <h1>ATP幸存者冠军排名</h1>
             <div style="text-align: center; color: #888; font-size: 0.9em; margin-bottom: 10px;">
-                页面数据更新时间：2025-07-05 15:07:41
+                页面数据更新时间：2025-07-05 16:54:14
             </div>
-            <div class="participant-info"><strong>参赛人数：</strong> 417 <strong style="margin-left:10px;">存活人数：</strong> 71 </div>
-            <div class="choice-info"><strong>今日选择情况：</strong> 总选择人数：45 <ul><li>德约科维奇：11</li><li>迪米特洛夫：11</li><li>德米纳尔：10</li><li>谢尔顿：9</li><li>中岛布兰登：2</li><li>西里奇：2</li></ul></div>
+            <div class="participant-info"><strong>参赛人数：</strong> 417 <strong style="margin-left:10px;">存活人数：</strong> 71 </div> 
+            <div class="choice-info"><strong>今日选择情况：</strong> 总选择人数：71 <ul><li>德米纳尔：13</li><li>迪米特洛夫：13</li><li>德约科维奇：11</li><li>谢尔顿：9</li><li>西里奇：3</li><li>中岛布兰登：2</li></ul></div>
+            
+    <div style="margin: 20px auto; text-align: center; font-size: 0.95em;">
+        <h3 style="margin-bottom: 10px; font-size: 0.95em;">杀手球员统计</h3>
+        <table style="margin: 0 auto; border-collapse: collapse; border: 1px solid #ddd; font-size: 0.95em;">
+            <thead>
+                <tr style="background-color: #f2f2f2;">
+                    <th style="padding: 8px 12px; border: 1px solid #ddd;">天数</th>
+                    <th style="padding: 8px 12px; border: 1px solid #ddd;">杀手球员1</th>
+                    <th style="padding: 8px 12px; border: 1px solid #ddd;">死亡人数1</th>
+                    <th style="padding: 8px 12px; border: 1px solid #ddd;">杀手球员2</th>
+                    <th style="padding: 8px 12px; border: 1px solid #ddd;">死亡人数2</th>
+                </tr>
+            </thead>
+            <tbody>
+    
+            <tr>
+                <td style="padding: 8px 12px; border: 1px solid #ddd;">1</td>
+                <td style="padding: 8px 12px; border: 1px solid #ddd;">波佩林</td>
+                <td style="padding: 8px 12px; border: 1px solid #ddd;">35</td>
+                <td style="padding: 8px 12px; border: 1px solid #ddd;">贝雷蒂尼</td>
+                <td style="padding: 8px 12px; border: 1px solid #ddd;">20</td>
+            </tr>
+        
+            <tr>
+                <td style="padding: 8px 12px; border: 1px solid #ddd;">2</td>
+                <td style="padding: 8px 12px; border: 1px solid #ddd;">沙波瓦洛夫</td>
+                <td style="padding: 8px 12px; border: 1px solid #ddd;">28</td>
+                <td style="padding: 8px 12px; border: 1px solid #ddd;">阿里斯</td>
+                <td style="padding: 8px 12px; border: 1px solid #ddd;">10</td>
+            </tr>
+        
+            <tr>
+                <td style="padding: 8px 12px; border: 1px solid #ddd;">3</td>
+                <td style="padding: 8px 12px; border: 1px solid #ddd;">莱赫奇卡</td>
+                <td style="padding: 8px 12px; border: 1px solid #ddd;">45</td>
+                <td style="padding: 8px 12px; border: 1px solid #ddd;">蒂亚福</td>
+                <td style="padding: 8px 12px; border: 1px solid #ddd;">6</td>
+            </tr>
+        
+            <tr>
+                <td style="padding: 8px 12px; border: 1px solid #ddd;">4</td>
+                <td style="padding: 8px 12px; border: 1px solid #ddd;">保罗</td>
+                <td style="padding: 8px 12px; border: 1px solid #ddd;">48</td>
+                <td style="padding: 8px 12px; border: 1px solid #ddd;">马哈奇</td>
+                <td style="padding: 8px 12px; border: 1px solid #ddd;">41</td>
+            </tr>
+        
+            <tr>
+                <td style="padding: 8px 12px; border: 1px solid #ddd;">5</td>
+                <td style="padding: 8px 12px; border: 1px solid #ddd;">丰塞卡</td>
+                <td style="padding: 8px 12px; border: 1px solid #ddd;">6</td>
+                <td style="padding: 8px 12px; border: 1px solid #ddd;">达尔德里</td>
+                <td style="padding: 8px 12px; border: 1px solid #ddd;">2</td>
+            </tr>
+        
+            </tbody>
+        </table>
+    </div>
+    
             <div class="controls-container">
                 <div>
                     <input type="text" id="searchInput" placeholder="搜索用户名或分数...">
@@ -289,7 +348,8 @@
 <th>状态</th>
 <th>主选球员</th>
 <th>备选球员</th>
-<th>致死球员</th>
+<th>杀手球员</th>
+<th>存活天数</th>
 <th>🎾温网</th>
 <th>澳网</th>
 <th>法网</th>
@@ -328,9 +388,10 @@
                         </span>
 </td>
 <td>存活</td>
+<td>NaN</td>
+<td>NaN</td>
 <td></td>
-<td></td>
-<td></td>
+<td>4</td>
 <td>150</td>
 <td>2000</td>
 <td>50</td>
@@ -370,6 +431,7 @@
 <td></td>
 <td></td>
 <td>贝雷蒂尼</td>
+<td>0</td>
 <td>10</td>
 <td>1300</td>
 <td>1300</td>
@@ -409,6 +471,7 @@
 <td>德约科维奇</td>
 <td>谢尔顿</td>
 <td></td>
+<td>4</td>
 <td>150</td>
 <td>1300</td>
 <td>50</td>
@@ -448,6 +511,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>1300</td>
 <td>800</td>
@@ -481,6 +545,7 @@
 <td></td>
 <td></td>
 <td>波佩林</td>
+<td>0</td>
 <td>10</td>
 <td>1300</td>
 <td>75</td>
@@ -520,6 +585,7 @@
 <td></td>
 <td></td>
 <td>沙波瓦洛夫</td>
+<td>1</td>
 <td>30</td>
 <td>1300</td>
 <td>50</td>
@@ -560,6 +626,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>800</td>
 <td>36</td>
 <td>0</td>
@@ -592,6 +659,7 @@
 <td></td>
 <td></td>
 <td>波佩林</td>
+<td>0</td>
 <td>10</td>
 <td>1300</td>
 <td>50</td>
@@ -631,6 +699,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>1300</td>
 <td>75</td>
@@ -670,6 +739,7 @@
 <td></td>
 <td></td>
 <td>沙波瓦洛夫</td>
+<td>1</td>
 <td>30</td>
 <td>1300</td>
 <td>50</td>
@@ -703,6 +773,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>1300</td>
 <td>50</td>
@@ -742,6 +813,7 @@
 <td>德米纳尔</td>
 <td>迪米特洛夫</td>
 <td></td>
+<td>4</td>
 <td>150</td>
 <td>1300</td>
 <td>100</td>
@@ -781,6 +853,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>1300</td>
 <td>50</td>
@@ -820,6 +893,7 @@
 <td></td>
 <td></td>
 <td>波佩林</td>
+<td>0</td>
 <td>10</td>
 <td>800</td>
 <td>600</td>
@@ -859,6 +933,7 @@
 <td></td>
 <td></td>
 <td>波佩林</td>
+<td>0</td>
 <td>10</td>
 <td>800</td>
 <td>50</td>
@@ -898,6 +973,7 @@
 <td>德米纳尔</td>
 <td>西里奇</td>
 <td></td>
+<td>4</td>
 <td>150</td>
 <td>1300</td>
 <td>75</td>
@@ -937,6 +1013,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>1300</td>
 <td>75</td>
@@ -973,9 +1050,10 @@
                         </span>
 </td>
 <td>存活</td>
+<td>NaN</td>
+<td>NaN</td>
 <td></td>
-<td></td>
-<td></td>
+<td>4</td>
 <td>150</td>
 <td>600</td>
 <td>50</td>
@@ -1015,6 +1093,7 @@
 <td>德约科维奇</td>
 <td>迪米特洛夫</td>
 <td></td>
+<td>4</td>
 <td>150</td>
 <td>800</td>
 <td>50</td>
@@ -1054,6 +1133,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>1300</td>
 <td>36</td>
@@ -1093,6 +1173,7 @@
 <td>中岛布兰登</td>
 <td>辛纳</td>
 <td></td>
+<td>4</td>
 <td>150</td>
 <td>1300</td>
 <td>36</td>
@@ -1132,6 +1213,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>1300</td>
 <td>0</td>
@@ -1171,6 +1253,7 @@
 <td></td>
 <td></td>
 <td>马哈奇</td>
+<td>3</td>
 <td>75</td>
 <td>800</td>
 <td>50</td>
@@ -1207,9 +1290,10 @@
                         </span>
 </td>
 <td>存活</td>
+<td>NaN</td>
+<td>NaN</td>
 <td></td>
-<td></td>
-<td></td>
+<td>4</td>
 <td>150</td>
 <td>800</td>
 <td>50</td>
@@ -1243,6 +1327,7 @@
 <td></td>
 <td></td>
 <td>阿里斯</td>
+<td>1</td>
 <td>30</td>
 <td>0</td>
 <td>2000</td>
@@ -1282,6 +1367,7 @@
 <td>西里奇</td>
 <td>辛纳</td>
 <td></td>
+<td>4</td>
 <td>150</td>
 <td>800</td>
 <td>50</td>
@@ -1322,6 +1408,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>1300</td>
 <td>300</td>
 <td>0</td>
@@ -1360,6 +1447,7 @@
 <td></td>
 <td></td>
 <td>波佩林</td>
+<td>0</td>
 <td>10</td>
 <td>800</td>
 <td>50</td>
@@ -1399,6 +1487,7 @@
 <td></td>
 <td></td>
 <td>波佩林</td>
+<td>0</td>
 <td>10</td>
 <td>1300</td>
 <td>36</td>
@@ -1438,6 +1527,7 @@
 <td></td>
 <td></td>
 <td>马哈奇</td>
+<td>3</td>
 <td>75</td>
 <td>1300</td>
 <td>50</td>
@@ -1477,6 +1567,7 @@
 <td></td>
 <td></td>
 <td>沙波瓦洛夫</td>
+<td>1</td>
 <td>30</td>
 <td>1300</td>
 <td>10</td>
@@ -1516,6 +1607,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>800</td>
 <td>50</td>
@@ -1555,6 +1647,7 @@
 <td></td>
 <td></td>
 <td>贝雷蒂尼</td>
+<td>0</td>
 <td>10</td>
 <td>1300</td>
 <td>50</td>
@@ -1588,6 +1681,7 @@
 <td></td>
 <td></td>
 <td>波佩林</td>
+<td>0</td>
 <td>10</td>
 <td>800</td>
 <td>50</td>
@@ -1627,6 +1721,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>50</td>
 <td>50</td>
@@ -1667,6 +1762,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>1300</td>
 <td>23</td>
 <td>0</td>
@@ -1705,6 +1801,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>400</td>
 <td>300</td>
@@ -1744,6 +1841,7 @@
 <td></td>
 <td></td>
 <td>波佩林</td>
+<td>0</td>
 <td>10</td>
 <td>1300</td>
 <td>75</td>
@@ -1783,6 +1881,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>800</td>
 <td>36</td>
@@ -1822,6 +1921,7 @@
 <td>德米纳尔</td>
 <td>辛纳</td>
 <td></td>
+<td>4</td>
 <td>150</td>
 <td>1300</td>
 <td>50</td>
@@ -1861,6 +1961,7 @@
 <td></td>
 <td></td>
 <td>波佩林</td>
+<td>0</td>
 <td>10</td>
 <td>1300</td>
 <td>75</td>
@@ -1900,6 +2001,7 @@
 <td>德米纳尔</td>
 <td>德约科维奇</td>
 <td></td>
+<td>4</td>
 <td>150</td>
 <td>1300</td>
 <td>50</td>
@@ -1940,6 +2042,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>1300</td>
 <td>0</td>
 <td>0</td>
@@ -1978,6 +2081,7 @@
 <td>德米纳尔</td>
 <td>迪米特洛夫</td>
 <td></td>
+<td>4</td>
 <td>150</td>
 <td>800</td>
 <td>50</td>
@@ -2017,6 +2121,7 @@
 <td></td>
 <td></td>
 <td>纳沃内</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>1300</td>
@@ -2056,6 +2161,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>800</td>
 <td>50</td>
@@ -2095,6 +2201,7 @@
 <td></td>
 <td></td>
 <td>沙波瓦洛夫</td>
+<td>1</td>
 <td>30</td>
 <td>800</td>
 <td>75</td>
@@ -2134,6 +2241,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>800</td>
 <td>50</td>
@@ -2173,6 +2281,7 @@
 <td></td>
 <td></td>
 <td>马哈奇</td>
+<td>3</td>
 <td>75</td>
 <td>1300</td>
 <td>10</td>
@@ -2212,6 +2321,7 @@
 <td></td>
 <td></td>
 <td>马哈奇</td>
+<td>3</td>
 <td>75</td>
 <td>36</td>
 <td>300</td>
@@ -2251,6 +2361,7 @@
 <td></td>
 <td></td>
 <td>丰塞卡</td>
+<td>4</td>
 <td>100</td>
 <td>1300</td>
 <td>10</td>
@@ -2290,6 +2401,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>1300</td>
 <td>50</td>
@@ -2329,6 +2441,7 @@
 <td>谢尔顿</td>
 <td>德约科维奇</td>
 <td></td>
+<td>4</td>
 <td>150</td>
 <td>800</td>
 <td>50</td>
@@ -2362,6 +2475,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>1300</td>
 <td>75</td>
@@ -2401,6 +2515,7 @@
 <td></td>
 <td></td>
 <td>沙波瓦洛夫</td>
+<td>1</td>
 <td>30</td>
 <td>800</td>
 <td>75</td>
@@ -2440,6 +2555,7 @@
 <td></td>
 <td></td>
 <td>贝雷蒂尼</td>
+<td>0</td>
 <td>10</td>
 <td>800</td>
 <td>50</td>
@@ -2479,6 +2595,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>1300</td>
 <td>50</td>
@@ -2518,6 +2635,7 @@
 <td></td>
 <td></td>
 <td>沙波瓦洛夫</td>
+<td>1</td>
 <td>30</td>
 <td>1300</td>
 <td>300</td>
@@ -2557,6 +2675,7 @@
 <td></td>
 <td></td>
 <td>阿里斯</td>
+<td>1</td>
 <td>30</td>
 <td>23</td>
 <td>50</td>
@@ -2590,6 +2709,7 @@
 <td></td>
 <td></td>
 <td>波佩林</td>
+<td>0</td>
 <td>10</td>
 <td>800</td>
 <td>75</td>
@@ -2629,6 +2749,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>75</td>
 <td>50</td>
@@ -2668,6 +2789,7 @@
 <td>德约科维奇</td>
 <td></td>
 <td></td>
+<td>4</td>
 <td>150</td>
 <td>23</td>
 <td>50</td>
@@ -2707,6 +2829,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>23</td>
 <td>50</td>
@@ -2746,6 +2869,7 @@
 <td></td>
 <td></td>
 <td>贝雷蒂尼</td>
+<td>0</td>
 <td>10</td>
 <td>600</td>
 <td>50</td>
@@ -2785,6 +2909,7 @@
 <td></td>
 <td></td>
 <td>马哈奇</td>
+<td>3</td>
 <td>75</td>
 <td>1300</td>
 <td>36</td>
@@ -2824,6 +2949,7 @@
 <td></td>
 <td></td>
 <td>梅杰多维奇</td>
+<td>1</td>
 <td>30</td>
 <td>36</td>
 <td>800</td>
@@ -2860,9 +2986,10 @@
                         </span>
 </td>
 <td>存活</td>
+<td>NaN</td>
+<td>NaN</td>
 <td></td>
-<td></td>
-<td></td>
+<td>4</td>
 <td>150</td>
 <td>400</td>
 <td>36</td>
@@ -2902,6 +3029,7 @@
 <td></td>
 <td></td>
 <td>马哈奇</td>
+<td>3</td>
 <td>75</td>
 <td>150</td>
 <td>10</td>
@@ -2942,6 +3070,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>800</td>
 <td>50</td>
 <td>0</td>
@@ -2980,6 +3109,7 @@
 <td></td>
 <td></td>
 <td>马哈奇</td>
+<td>3</td>
 <td>75</td>
 <td>600</td>
 <td>300</td>
@@ -3019,6 +3149,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>1300</td>
@@ -3058,6 +3189,7 @@
 <td></td>
 <td></td>
 <td>梅德韦杰夫</td>
+<td>0</td>
 <td>10</td>
 <td>150</td>
 <td>50</td>
@@ -3097,6 +3229,7 @@
 <td></td>
 <td></td>
 <td>西西帕斯</td>
+<td>0</td>
 <td>10</td>
 <td>150</td>
 <td>50</td>
@@ -3136,6 +3269,7 @@
 <td></td>
 <td></td>
 <td>波佩林</td>
+<td>0</td>
 <td>10</td>
 <td>400</td>
 <td>300</td>
@@ -3175,6 +3309,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>300</td>
@@ -3215,6 +3350,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>1300</td>
 <td>0</td>
 <td>0</td>
@@ -3253,6 +3389,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>50</td>
 <td>36</td>
@@ -3292,6 +3429,7 @@
 <td></td>
 <td></td>
 <td>萨菲乌林</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>50</td>
@@ -3331,6 +3469,7 @@
 <td></td>
 <td></td>
 <td>西西帕斯</td>
+<td>0</td>
 <td>10</td>
 <td>300</td>
 <td>50</td>
@@ -3370,6 +3509,7 @@
 <td></td>
 <td></td>
 <td>波佩林</td>
+<td>0</td>
 <td>10</td>
 <td>600</td>
 <td>300</td>
@@ -3409,6 +3549,7 @@
 <td></td>
 <td></td>
 <td>贝雷蒂尼</td>
+<td>0</td>
 <td>10</td>
 <td>800</td>
 <td>75</td>
@@ -3449,6 +3590,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>600</td>
 <td>0</td>
 <td>0</td>
@@ -3487,6 +3629,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>800</td>
 <td>23</td>
@@ -3526,6 +3669,7 @@
 <td></td>
 <td></td>
 <td>贝雷蒂尼</td>
+<td>0</td>
 <td>10</td>
 <td>50</td>
 <td>400</td>
@@ -3565,6 +3709,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>400</td>
 <td>36</td>
@@ -3604,6 +3749,7 @@
 <td></td>
 <td></td>
 <td>马哈奇</td>
+<td>3</td>
 <td>75</td>
 <td>150</td>
 <td>50</td>
@@ -3640,9 +3786,10 @@
                         </span>
 </td>
 <td>存活</td>
+<td>NaN</td>
+<td>NaN</td>
 <td></td>
-<td></td>
-<td></td>
+<td>4</td>
 <td>150</td>
 <td>50</td>
 <td>75</td>
@@ -3682,6 +3829,7 @@
 <td>迪米特洛夫</td>
 <td>谢尔顿</td>
 <td></td>
+<td>4</td>
 <td>150</td>
 <td>23</td>
 <td>23</td>
@@ -3721,6 +3869,7 @@
 <td></td>
 <td></td>
 <td>波佩林</td>
+<td>0</td>
 <td>10</td>
 <td>36</td>
 <td>50</td>
@@ -3761,6 +3910,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>1300</td>
 <td>0</td>
 <td>0</td>
@@ -3800,6 +3950,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>1300</td>
 <td>0</td>
 <td>0</td>
@@ -3832,6 +3983,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>75</td>
 <td>75</td>
@@ -3871,6 +4023,7 @@
 <td></td>
 <td></td>
 <td>布勃利克</td>
+<td>1</td>
 <td>30</td>
 <td>600</td>
 <td>23</td>
@@ -3904,6 +4057,7 @@
 <td></td>
 <td></td>
 <td>蒂亚福</td>
+<td>2</td>
 <td>50</td>
 <td>50</td>
 <td>50</td>
@@ -3943,6 +4097,7 @@
 <td></td>
 <td></td>
 <td>西西帕斯</td>
+<td>0</td>
 <td>10</td>
 <td>800</td>
 <td>36</td>
@@ -3982,6 +4137,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>150</td>
 <td>300</td>
@@ -4021,6 +4177,7 @@
 <td></td>
 <td></td>
 <td>波佩林</td>
+<td>0</td>
 <td>10</td>
 <td>400</td>
 <td>50</td>
@@ -4054,6 +4211,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>0</td>
 <td>75</td>
@@ -4093,6 +4251,7 @@
 <td></td>
 <td></td>
 <td>德雷珀</td>
+<td>3</td>
 <td>75</td>
 <td>50</td>
 <td>300</td>
@@ -4133,6 +4292,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>75</td>
 <td>0</td>
 <td>0</td>
@@ -4171,6 +4331,7 @@
 <td></td>
 <td></td>
 <td>贝雷蒂尼</td>
+<td>0</td>
 <td>10</td>
 <td>50</td>
 <td>36</td>
@@ -4210,6 +4371,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>400</td>
 <td>300</td>
@@ -4249,6 +4411,7 @@
 <td></td>
 <td></td>
 <td>波佩林</td>
+<td>0</td>
 <td>10</td>
 <td>75</td>
 <td>75</td>
@@ -4288,6 +4451,7 @@
 <td></td>
 <td></td>
 <td>布勃利克</td>
+<td>1</td>
 <td>30</td>
 <td>50</td>
 <td>50</td>
@@ -4327,6 +4491,7 @@
 <td></td>
 <td></td>
 <td>穆泰</td>
+<td>3</td>
 <td>75</td>
 <td>36</td>
 <td>600</td>
@@ -4366,6 +4531,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>75</td>
 <td>75</td>
@@ -4405,6 +4571,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>400</td>
 <td>75</td>
@@ -4444,6 +4611,7 @@
 <td></td>
 <td></td>
 <td>马哈奇</td>
+<td>3</td>
 <td>75</td>
 <td>300</td>
 <td>50</td>
@@ -4483,6 +4651,7 @@
 <td></td>
 <td></td>
 <td>沙波瓦洛夫</td>
+<td>1</td>
 <td>30</td>
 <td>150</td>
 <td>23</td>
@@ -4522,6 +4691,7 @@
 <td>迪米特洛夫</td>
 <td>谢尔顿</td>
 <td></td>
+<td>4</td>
 <td>150</td>
 <td>300</td>
 <td>10</td>
@@ -4561,6 +4731,7 @@
 <td>德米纳尔</td>
 <td>辛纳</td>
 <td></td>
+<td>4</td>
 <td>150</td>
 <td>0</td>
 <td>10</td>
@@ -4600,6 +4771,7 @@
 <td></td>
 <td></td>
 <td>西西帕斯</td>
+<td>0</td>
 <td>10</td>
 <td>400</td>
 <td>300</td>
@@ -4640,6 +4812,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>800</td>
 <td>0</td>
 <td>0</td>
@@ -4678,6 +4851,7 @@
 <td></td>
 <td></td>
 <td>丰塞卡</td>
+<td>4</td>
 <td>100</td>
 <td>75</td>
 <td>50</td>
@@ -4717,6 +4891,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>300</td>
 <td>75</td>
@@ -4756,6 +4931,7 @@
 <td></td>
 <td></td>
 <td>沙波瓦洛夫</td>
+<td>1</td>
 <td>30</td>
 <td>0</td>
 <td>300</td>
@@ -4795,6 +4971,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>36</td>
 <td>50</td>
@@ -4834,6 +5011,7 @@
 <td></td>
 <td></td>
 <td>马哈奇</td>
+<td>3</td>
 <td>75</td>
 <td>800</td>
 <td>50</td>
@@ -4873,6 +5051,7 @@
 <td>谢尔顿</td>
 <td>辛纳</td>
 <td></td>
+<td>4</td>
 <td>150</td>
 <td>10</td>
 <td>50</td>
@@ -4912,6 +5091,7 @@
 <td></td>
 <td></td>
 <td>沙波瓦洛夫</td>
+<td>1</td>
 <td>30</td>
 <td>800</td>
 <td>50</td>
@@ -4951,6 +5131,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>1</td>
 <td>30</td>
 <td>10</td>
 <td>10</td>
@@ -4990,6 +5171,7 @@
 <td></td>
 <td></td>
 <td>阿里斯</td>
+<td>1</td>
 <td>30</td>
 <td>23</td>
 <td>36</td>
@@ -5029,6 +5211,7 @@
 <td></td>
 <td></td>
 <td>马哈奇</td>
+<td>3</td>
 <td>75</td>
 <td>150</td>
 <td>75</td>
@@ -5068,6 +5251,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>10</td>
 <td>75</td>
@@ -5107,6 +5291,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>0</td>
 <td>300</td>
@@ -5146,6 +5331,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>150</td>
 <td>10</td>
@@ -5185,6 +5371,7 @@
 <td></td>
 <td></td>
 <td>波佩林</td>
+<td>0</td>
 <td>10</td>
 <td>400</td>
 <td>36</td>
@@ -5224,6 +5411,7 @@
 <td></td>
 <td></td>
 <td>波佩林</td>
+<td>0</td>
 <td>10</td>
 <td>36</td>
 <td>300</td>
@@ -5263,6 +5451,7 @@
 <td>德约科维奇</td>
 <td></td>
 <td></td>
+<td>4</td>
 <td>150</td>
 <td>36</td>
 <td>50</td>
@@ -5302,6 +5491,7 @@
 <td>中岛布兰登</td>
 <td>门希克</td>
 <td></td>
+<td>4</td>
 <td>150</td>
 <td>23</td>
 <td>300</td>
@@ -5341,6 +5531,7 @@
 <td></td>
 <td></td>
 <td>马哈奇</td>
+<td>3</td>
 <td>75</td>
 <td>23</td>
 <td>36</td>
@@ -5380,6 +5571,7 @@
 <td>迪米特洛夫</td>
 <td>辛纳</td>
 <td></td>
+<td>4</td>
 <td>150</td>
 <td>400</td>
 <td>36</td>
@@ -5419,6 +5611,7 @@
 <td></td>
 <td></td>
 <td>马哈奇</td>
+<td>3</td>
 <td>75</td>
 <td>150</td>
 <td>50</td>
@@ -5455,9 +5648,10 @@
                         </span>
 </td>
 <td>存活</td>
+<td>迪米特洛夫</td>
+<td>德米纳尔</td>
 <td></td>
-<td></td>
-<td></td>
+<td>4</td>
 <td>150</td>
 <td>23</td>
 <td>300</td>
@@ -5497,6 +5691,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>800</td>
@@ -5536,6 +5731,7 @@
 <td></td>
 <td></td>
 <td>贝尔赫斯</td>
+<td>0</td>
 <td>10</td>
 <td>600</td>
 <td>50</td>
@@ -5575,6 +5771,7 @@
 <td></td>
 <td></td>
 <td>布鲁克斯比</td>
+<td>2</td>
 <td>50</td>
 <td>0</td>
 <td>800</td>
@@ -5614,6 +5811,7 @@
 <td></td>
 <td></td>
 <td>梅德韦杰夫</td>
+<td>0</td>
 <td>10</td>
 <td>100</td>
 <td>0</td>
@@ -5653,6 +5851,7 @@
 <td></td>
 <td></td>
 <td>马哈奇</td>
+<td>3</td>
 <td>75</td>
 <td>300</td>
 <td>300</td>
@@ -5692,6 +5891,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>50</td>
 <td>50</td>
@@ -5731,6 +5931,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>600</td>
@@ -5770,6 +5971,7 @@
 <td></td>
 <td></td>
 <td>布勃利克</td>
+<td>1</td>
 <td>30</td>
 <td>300</td>
 <td>10</td>
@@ -5809,6 +6011,7 @@
 <td></td>
 <td></td>
 <td>沙波瓦洛夫</td>
+<td>1</td>
 <td>30</td>
 <td>150</td>
 <td>300</td>
@@ -5849,6 +6052,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>50</td>
 <td>0</td>
 <td>0</td>
@@ -5887,6 +6091,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>75</td>
@@ -5926,6 +6131,7 @@
 <td></td>
 <td></td>
 <td>蒂亚福</td>
+<td>2</td>
 <td>50</td>
 <td>0</td>
 <td>600</td>
@@ -5965,6 +6171,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>0</td>
 <td>800</td>
@@ -6004,6 +6211,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>36</td>
 <td>75</td>
@@ -6043,6 +6251,7 @@
 <td></td>
 <td></td>
 <td>西西帕斯</td>
+<td>0</td>
 <td>10</td>
 <td>23</td>
 <td>23</td>
@@ -6082,6 +6291,7 @@
 <td>迪米特洛夫</td>
 <td>西里奇</td>
 <td></td>
+<td>4</td>
 <td>150</td>
 <td>75</td>
 <td>10</td>
@@ -6121,6 +6331,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>23</td>
 <td>10</td>
@@ -6160,6 +6371,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>300</td>
@@ -6199,6 +6411,7 @@
 <td></td>
 <td></td>
 <td>西西帕斯</td>
+<td>0</td>
 <td>10</td>
 <td>50</td>
 <td>10</td>
@@ -6238,6 +6451,7 @@
 <td></td>
 <td></td>
 <td>梅德韦杰夫</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>100</td>
@@ -6277,6 +6491,7 @@
 <td></td>
 <td></td>
 <td>梅德韦杰夫</td>
+<td>0</td>
 <td>10</td>
 <td>23</td>
 <td>75</td>
@@ -6316,6 +6531,7 @@
 <td></td>
 <td></td>
 <td>丰塞卡</td>
+<td>4</td>
 <td>100</td>
 <td>50</td>
 <td>36</td>
@@ -6355,6 +6571,7 @@
 <td>德约科维奇</td>
 <td></td>
 <td></td>
+<td>4</td>
 <td>150</td>
 <td>0</td>
 <td>300</td>
@@ -6395,6 +6612,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>800</td>
 <td>0</td>
 <td>0</td>
@@ -6434,6 +6652,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>800</td>
 <td>0</td>
 <td>0</td>
@@ -6472,6 +6691,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>200</td>
 <td>50</td>
@@ -6511,6 +6731,7 @@
 <td></td>
 <td></td>
 <td>马哈奇</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>23</td>
@@ -6551,6 +6772,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>400</td>
 <td>0</td>
 <td>0</td>
@@ -6589,6 +6811,7 @@
 <td></td>
 <td></td>
 <td>波佩林</td>
+<td>0</td>
 <td>10</td>
 <td>150</td>
 <td>10</td>
@@ -6628,6 +6851,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>0</td>
 <td>75</td>
@@ -6667,6 +6891,7 @@
 <td></td>
 <td></td>
 <td>马哈奇</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>10</td>
@@ -6706,6 +6931,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>50</td>
 <td>50</td>
@@ -6745,6 +6971,7 @@
 <td></td>
 <td></td>
 <td>马哈奇</td>
+<td>3</td>
 <td>75</td>
 <td>36</td>
 <td>300</td>
@@ -6784,6 +7011,7 @@
 <td></td>
 <td></td>
 <td>洛夫哈根</td>
+<td>1</td>
 <td>30</td>
 <td>23</td>
 <td>75</td>
@@ -6823,6 +7051,7 @@
 <td></td>
 <td></td>
 <td>沙波瓦洛夫</td>
+<td>1</td>
 <td>30</td>
 <td>50</td>
 <td>300</td>
@@ -6862,6 +7091,7 @@
 <td></td>
 <td></td>
 <td>贝雷蒂尼</td>
+<td>0</td>
 <td>10</td>
 <td>50</td>
 <td>36</td>
@@ -6901,6 +7131,7 @@
 <td></td>
 <td></td>
 <td>阿里斯</td>
+<td>1</td>
 <td>30</td>
 <td>10</td>
 <td>75</td>
@@ -6940,6 +7171,7 @@
 <td></td>
 <td></td>
 <td>布勃利克</td>
+<td>1</td>
 <td>30</td>
 <td>150</td>
 <td>50</td>
@@ -6979,6 +7211,7 @@
 <td></td>
 <td></td>
 <td>波佩林</td>
+<td>0</td>
 <td>10</td>
 <td>36</td>
 <td>50</td>
@@ -7018,6 +7251,7 @@
 <td>德约科维奇</td>
 <td>辛纳</td>
 <td></td>
+<td>4</td>
 <td>150</td>
 <td>0</td>
 <td>50</td>
@@ -7057,6 +7291,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>50</td>
 <td>50</td>
@@ -7096,6 +7331,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>150</td>
 <td>50</td>
@@ -7135,6 +7371,7 @@
 <td></td>
 <td></td>
 <td>西西帕斯</td>
+<td>0</td>
 <td>10</td>
 <td>23</td>
 <td>10</td>
@@ -7171,9 +7408,10 @@
                         </span>
 </td>
 <td>存活</td>
+<td>NaN</td>
+<td>NaN</td>
 <td></td>
-<td></td>
-<td></td>
+<td>4</td>
 <td>150</td>
 <td>10</td>
 <td>50</td>
@@ -7213,6 +7451,7 @@
 <td></td>
 <td></td>
 <td>马哈奇</td>
+<td>3</td>
 <td>75</td>
 <td>36</td>
 <td>10</td>
@@ -7252,6 +7491,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>0</td>
 <td>400</td>
@@ -7291,6 +7531,7 @@
 <td>谢尔顿</td>
 <td>德约科维奇</td>
 <td></td>
+<td>4</td>
 <td>150</td>
 <td>36</td>
 <td>75</td>
@@ -7330,6 +7571,7 @@
 <td></td>
 <td></td>
 <td>沙波瓦洛夫</td>
+<td>1</td>
 <td>30</td>
 <td>150</td>
 <td>50</td>
@@ -7369,6 +7611,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>300</td>
@@ -7408,6 +7651,7 @@
 <td></td>
 <td></td>
 <td>达尔德里</td>
+<td>4</td>
 <td>100</td>
 <td>10</td>
 <td>10</td>
@@ -7447,6 +7691,7 @@
 <td></td>
 <td></td>
 <td>波佩林</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>23</td>
@@ -7486,6 +7731,7 @@
 <td></td>
 <td></td>
 <td>西西帕斯</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>300</td>
@@ -7519,6 +7765,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>0</td>
 <td>50</td>
@@ -7558,6 +7805,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>150</td>
 <td>10</td>
@@ -7597,6 +7845,7 @@
 <td></td>
 <td></td>
 <td>马哈奇</td>
+<td>3</td>
 <td>75</td>
 <td>10</td>
 <td>50</td>
@@ -7636,6 +7885,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>36</td>
 <td>75</td>
@@ -7675,6 +7925,7 @@
 <td></td>
 <td></td>
 <td>沙波瓦洛夫</td>
+<td>1</td>
 <td>30</td>
 <td>75</td>
 <td>75</td>
@@ -7714,6 +7965,7 @@
 <td></td>
 <td></td>
 <td>马哈奇</td>
+<td>3</td>
 <td>75</td>
 <td>36</td>
 <td>50</td>
@@ -7759,6 +8011,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>650</td>
 <td>0</td>
 <td>0</td>
@@ -7792,6 +8045,7 @@
 <td></td>
 <td></td>
 <td>贝雷蒂尼</td>
+<td>0</td>
 <td>10</td>
 <td>150</td>
 <td>10</td>
@@ -7832,6 +8086,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>36</td>
 <td>0</td>
 <td>0</td>
@@ -7867,9 +8122,10 @@
                         </span>
 </td>
 <td>存活</td>
+<td>NaN</td>
+<td>NaN</td>
 <td></td>
-<td></td>
-<td></td>
+<td>4</td>
 <td>150</td>
 <td>0</td>
 <td>300</td>
@@ -7909,6 +8165,7 @@
 <td>德约科维奇</td>
 <td>西里奇</td>
 <td></td>
+<td>4</td>
 <td>150</td>
 <td>23</td>
 <td>36</td>
@@ -7948,6 +8205,7 @@
 <td></td>
 <td></td>
 <td>沙波瓦洛夫</td>
+<td>1</td>
 <td>30</td>
 <td>23</td>
 <td>75</td>
@@ -7987,6 +8245,7 @@
 <td></td>
 <td></td>
 <td>贝雷蒂尼</td>
+<td>0</td>
 <td>10</td>
 <td>150</td>
 <td>50</td>
@@ -8026,6 +8285,7 @@
 <td></td>
 <td></td>
 <td>马哈奇</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>300</td>
@@ -8066,6 +8326,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>600</td>
 <td>0</td>
 <td>0</td>
@@ -8104,6 +8365,7 @@
 <td></td>
 <td></td>
 <td>梅德韦杰夫</td>
+<td>0</td>
 <td>10</td>
 <td>50</td>
 <td>50</td>
@@ -8143,6 +8405,7 @@
 <td></td>
 <td></td>
 <td>穆塞蒂</td>
+<td>1</td>
 <td>30</td>
 <td>50</td>
 <td>10</td>
@@ -8182,6 +8445,7 @@
 <td>迪米特洛夫</td>
 <td>谢尔顿</td>
 <td></td>
+<td>4</td>
 <td>150</td>
 <td>0</td>
 <td>75</td>
@@ -8221,6 +8485,7 @@
 <td></td>
 <td></td>
 <td>马哈奇</td>
+<td>3</td>
 <td>75</td>
 <td>10</td>
 <td>75</td>
@@ -8257,9 +8522,10 @@
                         </span>
 </td>
 <td>存活</td>
+<td>德米纳尔</td>
+<td>迪米特洛夫</td>
 <td></td>
-<td></td>
-<td></td>
+<td>4</td>
 <td>150</td>
 <td>0</td>
 <td>36</td>
@@ -8303,6 +8569,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>50</td>
 <td>30</td>
 <td>0</td>
@@ -8338,6 +8605,7 @@
 <td></td>
 <td></td>
 <td>波佩林</td>
+<td>0</td>
 <td>10</td>
 <td>50</td>
 <td>50</td>
@@ -8377,6 +8645,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>36</td>
 <td>50</td>
@@ -8416,6 +8685,7 @@
 <td></td>
 <td></td>
 <td>奎因</td>
+<td>2</td>
 <td>50</td>
 <td>100</td>
 <td>23</td>
@@ -8456,6 +8726,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>400</td>
 <td>0</td>
 <td>0</td>
@@ -8494,6 +8765,7 @@
 <td></td>
 <td></td>
 <td>贝雷蒂尼</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>50</td>
@@ -8533,6 +8805,7 @@
 <td></td>
 <td></td>
 <td>梅德韦杰夫</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>300</td>
@@ -8576,6 +8849,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>20</td>
@@ -8608,9 +8882,10 @@
                         </span>
 </td>
 <td>存活</td>
+<td>NaN</td>
+<td>NaN</td>
 <td></td>
-<td></td>
-<td></td>
+<td>4</td>
 <td>150</td>
 <td>0</td>
 <td>75</td>
@@ -8650,6 +8925,7 @@
 <td></td>
 <td></td>
 <td>贝雷蒂尼</td>
+<td>0</td>
 <td>10</td>
 <td>23</td>
 <td>23</td>
@@ -8689,6 +8965,7 @@
 <td></td>
 <td></td>
 <td>贝雷蒂尼</td>
+<td>0</td>
 <td>10</td>
 <td>23</td>
 <td>23</td>
@@ -8728,6 +9005,7 @@
 <td>德约科维奇</td>
 <td>德米纳尔</td>
 <td></td>
+<td>4</td>
 <td>150</td>
 <td>150</td>
 <td>50</td>
@@ -8767,6 +9045,7 @@
 <td></td>
 <td></td>
 <td>贝尔赫斯</td>
+<td>0</td>
 <td>10</td>
 <td>36</td>
 <td>10</td>
@@ -8806,6 +9085,7 @@
 <td></td>
 <td></td>
 <td>马哈奇</td>
+<td>3</td>
 <td>75</td>
 <td>50</td>
 <td>300</td>
@@ -8845,6 +9125,7 @@
 <td></td>
 <td></td>
 <td>沙波瓦洛夫</td>
+<td>1</td>
 <td>30</td>
 <td>0</td>
 <td>10</td>
@@ -8881,9 +9162,10 @@
                         </span>
 </td>
 <td>存活</td>
+<td>NaN</td>
+<td>NaN</td>
 <td></td>
-<td></td>
-<td></td>
+<td>4</td>
 <td>150</td>
 <td>0</td>
 <td>50</td>
@@ -8923,6 +9205,7 @@
 <td></td>
 <td></td>
 <td>梅杰多维奇</td>
+<td>1</td>
 <td>30</td>
 <td>36</td>
 <td>50</td>
@@ -8962,6 +9245,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>300</td>
@@ -9001,6 +9285,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>75</td>
@@ -9041,6 +9326,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>150</td>
 <td>36</td>
 <td>0</td>
@@ -9076,9 +9362,10 @@
                         </span>
 </td>
 <td>存活</td>
+<td>NaN</td>
+<td>NaN</td>
 <td></td>
-<td></td>
-<td></td>
+<td>4</td>
 <td>150</td>
 <td>75</td>
 <td>36</td>
@@ -9118,6 +9405,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>3</td>
 <td>75</td>
 <td>400</td>
 <td>50</td>
@@ -9157,6 +9445,7 @@
 <td></td>
 <td></td>
 <td>波佩林</td>
+<td>0</td>
 <td>10</td>
 <td>300</td>
 <td>0</td>
@@ -9196,6 +9485,7 @@
 <td></td>
 <td></td>
 <td>马哈奇</td>
+<td>3</td>
 <td>75</td>
 <td>150</td>
 <td>50</td>
@@ -9235,6 +9525,7 @@
 <td></td>
 <td></td>
 <td>波佩林</td>
+<td>0</td>
 <td>10</td>
 <td>400</td>
 <td>100</td>
@@ -9274,6 +9565,7 @@
 <td></td>
 <td></td>
 <td>马哈奇</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>10</td>
@@ -9313,6 +9605,7 @@
 <td></td>
 <td></td>
 <td>丰塞卡</td>
+<td>4</td>
 <td>100</td>
 <td>10</td>
 <td>23</td>
@@ -9353,6 +9646,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>400</td>
 <td>0</td>
 <td>0</td>
@@ -9391,6 +9685,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>36</td>
 <td>300</td>
@@ -9430,6 +9725,7 @@
 <td>谢尔顿</td>
 <td></td>
 <td></td>
+<td>4</td>
 <td>150</td>
 <td>75</td>
 <td>75</td>
@@ -9469,6 +9765,7 @@
 <td>德约科维奇</td>
 <td>迪米特洛夫</td>
 <td></td>
+<td>4</td>
 <td>150</td>
 <td>0</td>
 <td>300</td>
@@ -9508,6 +9805,7 @@
 <td></td>
 <td></td>
 <td>马哈奇</td>
+<td>3</td>
 <td>75</td>
 <td>36</td>
 <td>50</td>
@@ -9548,6 +9846,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>23</td>
 <td>0</td>
 <td>0</td>
@@ -9586,6 +9885,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>75</td>
@@ -9625,6 +9925,7 @@
 <td></td>
 <td></td>
 <td>波佩林</td>
+<td>0</td>
 <td>10</td>
 <td>23</td>
 <td>300</td>
@@ -9668,6 +9969,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -9703,6 +10005,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>200</td>
@@ -9742,6 +10045,7 @@
 <td></td>
 <td></td>
 <td>马哈奇</td>
+<td>3</td>
 <td>75</td>
 <td>400</td>
 <td>10</td>
@@ -9781,6 +10085,7 @@
 <td></td>
 <td></td>
 <td>波佩林</td>
+<td>0</td>
 <td>10</td>
 <td>50</td>
 <td>50</td>
@@ -9820,6 +10125,7 @@
 <td></td>
 <td></td>
 <td>丰塞卡</td>
+<td>4</td>
 <td>100</td>
 <td>0</td>
 <td>50</td>
@@ -9863,6 +10169,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>400</td>
 <td>10</td>
 <td>30</td>
@@ -9898,6 +10205,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>23</td>
 <td>0</td>
@@ -9938,6 +10246,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>150</td>
 <td>0</td>
 <td>0</td>
@@ -9976,6 +10285,7 @@
 <td>德约科维奇</td>
 <td></td>
 <td></td>
+<td>4</td>
 <td>150</td>
 <td>0</td>
 <td>50</td>
@@ -10015,6 +10325,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>23</td>
 <td>50</td>
@@ -10055,6 +10366,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>400</td>
 <td>0</td>
 <td>0</td>
@@ -10093,6 +10405,7 @@
 <td></td>
 <td></td>
 <td>贝雷蒂尼</td>
+<td>0</td>
 <td>10</td>
 <td>23</td>
 <td>75</td>
@@ -10132,6 +10445,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>0</td>
 <td>300</td>
@@ -10171,6 +10485,7 @@
 <td></td>
 <td></td>
 <td>贝雷蒂尼</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>50</td>
@@ -10210,6 +10525,7 @@
 <td></td>
 <td></td>
 <td>波佩林</td>
+<td>0</td>
 <td>10</td>
 <td>100</td>
 <td>10</td>
@@ -10249,6 +10565,7 @@
 <td></td>
 <td></td>
 <td>西西帕斯</td>
+<td>0</td>
 <td>10</td>
 <td>23</td>
 <td>23</td>
@@ -10288,6 +10605,7 @@
 <td>迪米特洛夫</td>
 <td>西里奇</td>
 <td></td>
+<td>4</td>
 <td>150</td>
 <td>75</td>
 <td>10</td>
@@ -10324,9 +10642,10 @@
                         </span>
 </td>
 <td>存活</td>
+<td>NaN</td>
+<td>NaN</td>
 <td></td>
-<td></td>
-<td></td>
+<td>4</td>
 <td>150</td>
 <td>0</td>
 <td>75</td>
@@ -10366,6 +10685,7 @@
 <td></td>
 <td></td>
 <td>西西帕斯</td>
+<td>0</td>
 <td>10</td>
 <td>10</td>
 <td>0</td>
@@ -10405,6 +10725,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>0</td>
 <td>50</td>
@@ -10445,6 +10766,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>400</td>
 <td>0</td>
 <td>0</td>
@@ -10483,6 +10805,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>50</td>
 <td>50</td>
@@ -10522,6 +10845,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>2</td>
 <td>50</td>
 <td>36</td>
 <td>75</td>
@@ -10561,6 +10885,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>75</td>
@@ -10601,6 +10926,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>23</td>
 <td>10</td>
 <td>0</td>
@@ -10639,6 +10965,7 @@
 <td></td>
 <td></td>
 <td>格里科斯普</td>
+<td>0</td>
 <td>10</td>
 <td>150</td>
 <td>50</td>
@@ -10678,6 +11005,7 @@
 <td></td>
 <td></td>
 <td>贝雷蒂尼</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>36</td>
@@ -10717,6 +11045,7 @@
 <td></td>
 <td></td>
 <td>沙波瓦洛夫</td>
+<td>1</td>
 <td>30</td>
 <td>0</td>
 <td>50</td>
@@ -10756,6 +11085,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>2</td>
 <td>50</td>
 <td>0</td>
 <td>300</td>
@@ -10795,6 +11125,7 @@
 <td></td>
 <td></td>
 <td>阿里斯</td>
+<td>1</td>
 <td>30</td>
 <td>36</td>
 <td>10</td>
@@ -10834,6 +11165,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>0</td>
 <td>50</td>
@@ -10873,6 +11205,7 @@
 <td></td>
 <td></td>
 <td>西西帕斯</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>10</td>
@@ -10912,6 +11245,7 @@
 <td>西里奇</td>
 <td>谢尔顿</td>
 <td></td>
+<td>4</td>
 <td>150</td>
 <td>0</td>
 <td>50</td>
@@ -10951,6 +11285,7 @@
 <td>谢尔顿</td>
 <td>门希克</td>
 <td></td>
+<td>4</td>
 <td>150</td>
 <td>0</td>
 <td>150</td>
@@ -10990,6 +11325,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>0</td>
 <td>300</td>
@@ -11029,6 +11365,7 @@
 <td></td>
 <td></td>
 <td>马哈奇</td>
+<td>3</td>
 <td>75</td>
 <td>10</td>
 <td>50</td>
@@ -11084,6 +11421,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>330</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -11107,6 +11445,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -11162,6 +11501,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>330</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -11185,6 +11525,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>4</td>
 <td>100</td>
 <td>10</td>
 <td>75</td>
@@ -11226,6 +11567,7 @@
 <td></td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>150</td>
 <td>0</td>
 <td>0</td>
@@ -11263,6 +11605,7 @@
 <td>谢尔顿</td>
 <td></td>
 <td></td>
+<td>4</td>
 <td>150</td>
 <td>0</td>
 <td>50</td>
@@ -11302,6 +11645,7 @@
 <td></td>
 <td></td>
 <td>马哈奇</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>75</td>
@@ -11341,6 +11685,7 @@
 <td></td>
 <td></td>
 <td>蒂亚福</td>
+<td>2</td>
 <td>50</td>
 <td>0</td>
 <td>0</td>
@@ -11381,6 +11726,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>300</td>
 <td>0</td>
 <td>0</td>
@@ -11419,6 +11765,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>300</td>
@@ -11462,6 +11809,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>40</td>
 <td>10</td>
 <td>20</td>
@@ -11497,6 +11845,7 @@
 <td></td>
 <td></td>
 <td>波佩林</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>36</td>
@@ -11536,6 +11885,7 @@
 <td></td>
 <td></td>
 <td>沙波瓦洛夫</td>
+<td>1</td>
 <td>30</td>
 <td>0</td>
 <td>36</td>
@@ -11575,6 +11925,7 @@
 <td></td>
 <td></td>
 <td>马哈奇</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>10</td>
@@ -11614,6 +11965,7 @@
 <td></td>
 <td></td>
 <td>鲁内</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>10</td>
@@ -11653,6 +12005,7 @@
 <td>德米纳尔</td>
 <td></td>
 <td></td>
+<td>4</td>
 <td>150</td>
 <td>0</td>
 <td>10</td>
@@ -11692,6 +12045,7 @@
 <td></td>
 <td></td>
 <td>沙波瓦洛夫</td>
+<td>1</td>
 <td>30</td>
 <td>0</td>
 <td>36</td>
@@ -11728,9 +12082,10 @@
                         </span>
 </td>
 <td>存活</td>
+<td>NaN</td>
+<td>NaN</td>
 <td></td>
-<td></td>
-<td></td>
+<td>4</td>
 <td>150</td>
 <td>0</td>
 <td>50</td>
@@ -11770,6 +12125,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>36</td>
@@ -11810,6 +12166,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>23</td>
 <td>0</td>
 <td>0</td>
@@ -11848,6 +12205,7 @@
 <td></td>
 <td></td>
 <td>阿里斯</td>
+<td>1</td>
 <td>30</td>
 <td>50</td>
 <td>10</td>
@@ -11887,6 +12245,7 @@
 <td></td>
 <td></td>
 <td>鲁内</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>50</td>
@@ -11926,6 +12285,7 @@
 <td></td>
 <td></td>
 <td>波佩林</td>
+<td>0</td>
 <td>10</td>
 <td>75</td>
 <td>10</td>
@@ -11966,6 +12326,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>150</td>
 <td>0</td>
 <td>0</td>
@@ -12004,6 +12365,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>50</td>
@@ -12043,6 +12405,7 @@
 <td></td>
 <td></td>
 <td>德雷珀</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>36</td>
@@ -12082,6 +12445,7 @@
 <td></td>
 <td></td>
 <td>沙波瓦洛夫</td>
+<td>1</td>
 <td>30</td>
 <td>0</td>
 <td>36</td>
@@ -12121,6 +12485,7 @@
 <td></td>
 <td></td>
 <td>格里科斯普</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>23</td>
@@ -12161,6 +12526,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>150</td>
 <td>0</td>
 <td>0</td>
@@ -12199,6 +12565,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>23</td>
 <td>50</td>
@@ -12238,6 +12605,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>36</td>
 <td>75</td>
@@ -12277,6 +12645,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>36</td>
 <td>50</td>
@@ -12316,6 +12685,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>10</td>
@@ -12355,6 +12725,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>75</td>
@@ -12394,6 +12765,7 @@
 <td>迪米特洛夫</td>
 <td>德米纳尔</td>
 <td></td>
+<td>4</td>
 <td>150</td>
 <td>100</td>
 <td>0</td>
@@ -12433,6 +12805,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>4</td>
 <td>100</td>
 <td>36</td>
 <td>100</td>
@@ -12472,6 +12845,7 @@
 <td></td>
 <td></td>
 <td>马哈奇</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>75</td>
@@ -12511,6 +12885,7 @@
 <td>德米纳尔</td>
 <td>辛纳</td>
 <td></td>
+<td>4</td>
 <td>150</td>
 <td>0</td>
 <td>75</td>
@@ -12551,6 +12926,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>100</td>
 <td>0</td>
 <td>0</td>
@@ -12590,6 +12966,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>75</td>
 <td>50</td>
 <td>0</td>
@@ -12628,6 +13005,7 @@
 <td></td>
 <td></td>
 <td>邦齐</td>
+<td>2</td>
 <td>50</td>
 <td>36</td>
 <td>75</td>
@@ -12669,6 +13047,7 @@
 <td></td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>200</td>
 <td>0</td>
 <td>0</td>
@@ -12706,6 +13085,7 @@
 <td></td>
 <td></td>
 <td>马哈奇</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>0</td>
@@ -12742,9 +13122,10 @@
                         </span>
 </td>
 <td>存活</td>
+<td>NaN</td>
+<td>NaN</td>
 <td></td>
-<td></td>
-<td></td>
+<td>4</td>
 <td>150</td>
 <td>0</td>
 <td>50</td>
@@ -12784,6 +13165,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>50</td>
@@ -12823,6 +13205,7 @@
 <td></td>
 <td></td>
 <td>西西帕斯</td>
+<td>0</td>
 <td>10</td>
 <td>23</td>
 <td>150</td>
@@ -12863,6 +13246,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>75</td>
 <td>10</td>
 <td>0</td>
@@ -12901,6 +13285,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>150</td>
 <td>0</td>
@@ -12940,6 +13325,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>1</td>
 <td>30</td>
 <td>36</td>
 <td>10</td>
@@ -12979,6 +13365,7 @@
 <td></td>
 <td></td>
 <td>阿尔特迈尔</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>10</td>
@@ -13022,6 +13409,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>10</td>
 <td>10</td>
 <td>0</td>
@@ -13057,6 +13445,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>23</td>
 <td>0</td>
@@ -13100,6 +13489,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -13135,6 +13525,7 @@
 <td>德米纳尔</td>
 <td>谢尔顿</td>
 <td></td>
+<td>4</td>
 <td>150</td>
 <td>0</td>
 <td>36</td>
@@ -13168,6 +13559,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>0</td>
 <td>0</td>
@@ -13207,6 +13599,7 @@
 <td></td>
 <td></td>
 <td>蒂亚福</td>
+<td>2</td>
 <td>50</td>
 <td>0</td>
 <td>0</td>
@@ -13231,6 +13624,46 @@
 <td>13</td>
 <td>13</td>
 </tr>
+<tr>
+<td>334</td>
+<td>189******99</td>
+<td>201</td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>16
+                        </span>
+</td>
+<td>球员输球</td>
+<td></td>
+<td></td>
+<td>波佩林</td>
+<td>0</td>
+<td>10</td>
+<td>0</td>
+<td>10</td>
+<td>0</td>
+<td>50</td>
+<td>10</td>
+<td>40</td>
+<td>20</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>36</td>
+<td>0</td>
+<td>0</td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+<td>0</td>
+<td>25</td>
+</tr>
 <tr style="background-color: #e6f7ff;">
 <td>334</td>
 <td>批发市场大甩卖</td>
@@ -13246,6 +13679,7 @@
 <td>谢尔顿</td>
 <td></td>
 <td></td>
+<td>4</td>
 <td>150</td>
 <td>0</td>
 <td>0</td>
@@ -13271,45 +13705,6 @@
 <td><del>0</del></td>
 </tr>
 <tr>
-<td>334</td>
-<td>189******99</td>
-<td>201</td>
-<td>
-<span style="display: inline-flex; align-items: center;">
-<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
-<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
-</svg>16
-                        </span>
-</td>
-<td>球员输球</td>
-<td></td>
-<td></td>
-<td>波佩林</td>
-<td>10</td>
-<td>0</td>
-<td>10</td>
-<td>0</td>
-<td>50</td>
-<td>10</td>
-<td>40</td>
-<td>20</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>36</td>
-<td>0</td>
-<td>0</td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-<td>0</td>
-<td>25</td>
-</tr>
-<tr>
 <td>336</td>
 <td>Cheuk Ki Leung</td>
 <td>200</td>
@@ -13324,6 +13719,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>50</td>
@@ -13348,6 +13744,46 @@
 <td>0</td>
 <td><del>0</del></td>
 </tr>
+<tr>
+<td>336</td>
+<td>晋***皮</td>
+<td>200</td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>23
+                        </span>
+</td>
+<td>未参赛</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+<td>0</td>
+<td>200</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><del>0</del></td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+</tr>
 <tr style="background-color: #e6f7ff;">
 <td>336</td>
 <td>锦暔</td>
@@ -13360,9 +13796,10 @@
                         </span>
 </td>
 <td>存活</td>
+<td>NaN</td>
+<td>NaN</td>
 <td></td>
-<td></td>
-<td></td>
+<td>4</td>
 <td>150</td>
 <td>0</td>
 <td>50</td>
@@ -13402,48 +13839,10 @@
 <td>德约科维奇</td>
 <td>谢尔顿</td>
 <td></td>
+<td>4</td>
 <td>150</td>
 <td>0</td>
 <td>50</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td><del>0</del></td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-</tr>
-<tr>
-<td>336</td>
-<td>晋***皮</td>
-<td>200</td>
-<td>
-<span style="display: inline-flex; align-items: center;">
-<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
-<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
-</svg>23
-                        </span>
-</td>
-<td>未参赛</td>
-<td></td>
-<td></td>
-<td></td>
-<td>0</td>
-<td>200</td>
-<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -13480,6 +13879,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>0</td>
 <td>10</td>
@@ -13519,6 +13919,7 @@
 <td></td>
 <td></td>
 <td>沙波瓦洛夫</td>
+<td>1</td>
 <td>30</td>
 <td>0</td>
 <td>50</td>
@@ -13545,45 +13946,6 @@
 </tr>
 <tr>
 <td>342</td>
-<td>jmlkkk</td>
-<td>190</td>
-<td>
-<span style="display: inline-flex; align-items: center;">
-<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
-<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
-</svg>22
-                        </span>
-</td>
-<td>未参赛</td>
-<td></td>
-<td></td>
-<td></td>
-<td>0</td>
-<td>150</td>
-<td>0</td>
-<td>0</td>
-<td>20</td>
-<td>10</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>10</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td><del>0</del></td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-</tr>
-<tr>
-<td>342</td>
 <td>秦***i</td>
 <td>190</td>
 <td>
@@ -13597,6 +13959,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>2</td>
 <td>50</td>
 <td>0</td>
 <td>50</td>
@@ -13621,6 +13984,46 @@
 <td>0</td>
 <td><del>0</del></td>
 </tr>
+<tr>
+<td>342</td>
+<td>jmlkkk</td>
+<td>190</td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>22
+                        </span>
+</td>
+<td>未参赛</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+<td>0</td>
+<td>150</td>
+<td>0</td>
+<td>0</td>
+<td>20</td>
+<td>10</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>10</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><del>0</del></td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+</tr>
 <tr style="background-color: #e6f7ff;">
 <td>344</td>
 <td>此号已废16</td>
@@ -13633,9 +14036,10 @@
                         </span>
 </td>
 <td>存活</td>
+<td>NaN</td>
+<td>NaN</td>
 <td></td>
-<td></td>
-<td></td>
+<td>4</td>
 <td>150</td>
 <td>0</td>
 <td>36</td>
@@ -13675,6 +14079,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>2</td>
 <td>50</td>
 <td>0</td>
 <td>50</td>
@@ -13714,6 +14119,7 @@
 <td></td>
 <td></td>
 <td>贝雷蒂尼</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>50</td>
@@ -13757,6 +14163,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>30</td>
 <td>0</td>
 <td>0</td>
@@ -13777,29 +14184,30 @@
 <td>0</td>
 <td><del>0</del></td>
 </tr>
-<tr>
+<tr style="background-color: #e6f7ff;">
 <td>348</td>
-<td>星***子</td>
+<td>风***虚</td>
 <td>175</td>
 <td>
 <span style="display: inline-flex; align-items: center;">
 <svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
 <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
-</svg>3
+</svg>141
                         </span>
 </td>
-<td>自杀(退赛)</td>
+<td>存活</td>
+<td>德米纳尔</td>
+<td>西里奇</td>
 <td></td>
-<td></td>
-<td></td>
-<td>50</td>
+<td>4</td>
+<td>150</td>
 <td>0</td>
-<td>10</td>
 <td>0</td>
-<td>10</td>
-<td>30</td>
-<td>30</td>
-<td>20</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -13816,29 +14224,30 @@
 <td>0</td>
 <td>25</td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr>
 <td>348</td>
-<td>风***虚</td>
+<td>星***子</td>
 <td>175</td>
 <td>
 <span style="display: inline-flex; align-items: center;">
 <svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
 <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
-</svg>141
+</svg>3
                         </span>
 </td>
-<td>存活</td>
+<td>自杀(退赛)</td>
 <td></td>
 <td></td>
 <td></td>
-<td>150</td>
+<td>2</td>
+<td>50</td>
 <td>0</td>
+<td>10</td>
 <td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>10</td>
+<td>30</td>
+<td>30</td>
+<td>20</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -13870,6 +14279,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>75</td>
 <td>0</td>
@@ -13909,6 +14319,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>0</td>
 <td>0</td>
@@ -13949,6 +14360,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>36</td>
 <td>0</td>
 <td>0</td>
@@ -13987,6 +14399,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>36</td>
@@ -13995,45 +14408,6 @@
 <td>0</td>
 <td>40</td>
 <td>10</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td><del>0</del></td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-</tr>
-<tr style="background-color: #e6f7ff;">
-<td>354</td>
-<td>新人逛吧</td>
-<td>160</td>
-<td>
-<span style="display: inline-flex; align-items: center;">
-<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
-<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
-</svg>188
-                        </span>
-</td>
-<td>存活</td>
-<td></td>
-<td></td>
-<td></td>
-<td>150</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>10</td>
-<td>0</td>
-<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -14065,6 +14439,47 @@
 <td>迪米特洛夫</td>
 <td></td>
 <td></td>
+<td>4</td>
+<td>150</td>
+<td>0</td>
+<td>10</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><del>0</del></td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+</tr>
+<tr style="background-color: #e6f7ff;">
+<td>354</td>
+<td>普***粉</td>
+<td>160</td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
+</svg>188
+                        </span>
+</td>
+<td>存活</td>
+<td>谢尔顿</td>
+<td>迪米特洛夫</td>
+<td></td>
+<td>4</td>
 <td>150</td>
 <td>0</td>
 <td>10</td>
@@ -14105,6 +14520,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>75</td>
 <td>0</td>
 <td>0</td>
@@ -14130,7 +14546,7 @@
 </tr>
 <tr style="background-color: #e6f7ff;">
 <td>354</td>
-<td>普***粉</td>
+<td>新人逛吧</td>
 <td>160</td>
 <td>
 <span style="display: inline-flex; align-items: center;">
@@ -14140,15 +14556,16 @@
                         </span>
 </td>
 <td>存活</td>
-<td>谢尔顿</td>
-<td>迪米特洛夫</td>
+<td>NaN</td>
+<td>NaN</td>
 <td></td>
+<td>4</td>
 <td>150</td>
 <td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 <td>10</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -14182,6 +14599,7 @@
 <td></td>
 <td></td>
 <td>马哈奇</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>10</td>
@@ -14208,6 +14626,46 @@
 </tr>
 <tr>
 <td>359</td>
+<td>葱姜蒜瓣sky</td>
+<td>156</td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>24
+                        </span>
+</td>
+<td>未参赛</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+<td>0</td>
+<td>36</td>
+<td>0</td>
+<td>0</td>
+<td>10</td>
+<td>10</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100</td>
+<td><del>0</del></td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+</tr>
+<tr>
+<td>359</td>
 <td>刘宏阳manutdliu</td>
 <td>156</td>
 <td>
@@ -14221,6 +14679,7 @@
 <td></td>
 <td></td>
 <td>沙波瓦洛夫</td>
+<td>1</td>
 <td>30</td>
 <td>36</td>
 <td>10</td>
@@ -14261,6 +14720,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>50</td>
 <td>23</td>
 <td>0</td>
@@ -14280,45 +14740,6 @@
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>13</td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-</tr>
-<tr>
-<td>359</td>
-<td>葱姜蒜瓣sky</td>
-<td>156</td>
-<td>
-<span style="display: inline-flex; align-items: center;">
-<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
-<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
-</svg>24
-                        </span>
-</td>
-<td>未参赛</td>
-<td></td>
-<td></td>
-<td></td>
-<td>0</td>
-<td>36</td>
-<td>0</td>
-<td>0</td>
-<td>10</td>
-<td>10</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>100</td>
-<td><del>0</del></td>
-<td><del>0</del></td>
-<td>0</td>
 <td><del>0</del></td>
 <td>0</td>
 <td><del>0</del></td>
@@ -14347,6 +14768,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td>0</td>
 <td>0</td>
@@ -14359,45 +14781,6 @@
 <td><del>0</del></td>
 <td>13</td>
 <td>38</td>
-<td>0</td>
-<td><del>0</del></td>
-</tr>
-<tr style="background-color: #e6f7ff;">
-<td>363</td>
-<td>寻***9</td>
-<td>150</td>
-<td>
-<span style="display: inline-flex; align-items: center;">
-<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
-<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
-</svg>231
-                        </span>
-</td>
-<td>存活</td>
-<td></td>
-<td></td>
-<td></td>
-<td>150</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td><del>0</del></td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
 <td>0</td>
 <td><del>0</del></td>
 </tr>
@@ -14417,85 +14800,8 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>150</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td><del>0</del></td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-</tr>
-<tr style="background-color: #e6f7ff;">
-<td>363</td>
-<td>pin2pin</td>
-<td>150</td>
-<td>
-<span style="display: inline-flex; align-items: center;">
-<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
-<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
-</svg>231
-                        </span>
-</td>
-<td>存活</td>
-<td></td>
-<td></td>
-<td></td>
-<td>150</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td><del>0</del></td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-</tr>
-<tr style="background-color: #e6f7ff;">
-<td>363</td>
-<td>远***咻</td>
-<td>150</td>
-<td>
-<span style="display: inline-flex; align-items: center;">
-<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
-<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
-</svg>231
-                        </span>
-</td>
-<td>存活</td>
-<td>迪米特洛夫</td>
-<td>谢尔顿</td>
-<td></td>
-<td>150</td>
-<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -14530,9 +14836,50 @@
                         </span>
 </td>
 <td>存活</td>
+<td>NaN</td>
+<td>NaN</td>
 <td></td>
+<td>4</td>
+<td>150</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><del>0</del></td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+</tr>
+<tr style="background-color: #e6f7ff;">
+<td>363</td>
+<td>pin2pin</td>
+<td>150</td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
+</svg>231
+                        </span>
+</td>
+<td>存活</td>
+<td>NaN</td>
+<td>NaN</td>
 <td></td>
-<td></td>
+<td>4</td>
 <td>150</td>
 <td>0</td>
 <td>0</td>
@@ -14569,87 +14916,10 @@
                         </span>
 </td>
 <td>存活</td>
+<td>德米纳尔</td>
 <td></td>
 <td></td>
-<td></td>
-<td>150</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td><del>0</del></td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-</tr>
-<tr>
-<td>363</td>
-<td>W***r</td>
-<td>150</td>
-<td>
-<span style="display: inline-flex; align-items: center;">
-<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
-<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
-</svg>61
-                        </span>
-</td>
-<td>球员输球</td>
-<td></td>
-<td></td>
-<td>丰塞卡</td>
-<td>100</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-<td>0</td>
-<td>50</td>
-</tr>
-<tr style="background-color: #e6f7ff;">
-<td>363</td>
-<td>m***n</td>
-<td>150</td>
-<td>
-<span style="display: inline-flex; align-items: center;">
-<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
-<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
-</svg>231
-                        </span>
-</td>
-<td>存活</td>
-<td></td>
-<td></td>
-<td></td>
+<td>4</td>
 <td>150</td>
 <td>0</td>
 <td>0</td>
@@ -14686,9 +14956,10 @@
                         </span>
 </td>
 <td>存活</td>
+<td>NaN</td>
+<td>NaN</td>
 <td></td>
-<td></td>
-<td></td>
+<td>4</td>
 <td>150</td>
 <td>0</td>
 <td>0</td>
@@ -14728,6 +14999,87 @@
 <td>迪米特洛夫</td>
 <td>门希克</td>
 <td></td>
+<td>4</td>
+<td>150</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><del>0</del></td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+</tr>
+<tr>
+<td>363</td>
+<td>W***r</td>
+<td>150</td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
+</svg>61
+                        </span>
+</td>
+<td>球员输球</td>
+<td></td>
+<td></td>
+<td>丰塞卡</td>
+<td>4</td>
+<td>100</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+<td>0</td>
+<td>50</td>
+</tr>
+<tr style="background-color: #e6f7ff;">
+<td>363</td>
+<td>LHLLDZ</td>
+<td>150</td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
+</svg>231
+                        </span>
+</td>
+<td>存活</td>
+<td>德米纳尔</td>
+<td>西里奇</td>
+<td></td>
+<td>4</td>
 <td>150</td>
 <td>0</td>
 <td>0</td>
@@ -14754,7 +15106,7 @@
 </tr>
 <tr style="background-color: #e6f7ff;">
 <td>363</td>
-<td>LHLLDZ</td>
+<td>虎王_长弓</td>
 <td>150</td>
 <td>
 <span style="display: inline-flex; align-items: center;">
@@ -14764,9 +15116,50 @@
                         </span>
 </td>
 <td>存活</td>
-<td>德米纳尔</td>
-<td>西里奇</td>
+<td>迪米特洛夫</td>
 <td></td>
+<td></td>
+<td>4</td>
+<td>150</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><del>0</del></td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+</tr>
+<tr style="background-color: #e6f7ff;">
+<td>363</td>
+<td>远***咻</td>
+<td>150</td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
+</svg>231
+                        </span>
+</td>
+<td>存活</td>
+<td>迪米特洛夫</td>
+<td>谢尔顿</td>
+<td></td>
+<td>4</td>
 <td>150</td>
 <td>0</td>
 <td>0</td>
@@ -14800,6 +15193,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>0</td>
 <td>0</td>
@@ -14826,7 +15220,7 @@
 </tr>
 <tr style="background-color: #e6f7ff;">
 <td>363</td>
-<td>虎王_长弓</td>
+<td>大***一</td>
 <td>150</td>
 <td>
 <span style="display: inline-flex; align-items: center;">
@@ -14836,9 +15230,10 @@
                         </span>
 </td>
 <td>存活</td>
-<td>迪米特洛夫</td>
+<td>谢尔顿</td>
 <td></td>
 <td></td>
+<td>4</td>
 <td>150</td>
 <td>0</td>
 <td>0</td>
@@ -14865,7 +15260,7 @@
 </tr>
 <tr style="background-color: #e6f7ff;">
 <td>363</td>
-<td>大***一</td>
+<td>m***n</td>
 <td>150</td>
 <td>
 <span style="display: inline-flex; align-items: center;">
@@ -14875,9 +15270,50 @@
                         </span>
 </td>
 <td>存活</td>
+<td>迪米特洛夫</td>
+<td></td>
+<td></td>
+<td>4</td>
+<td>150</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><del>0</del></td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+</tr>
+<tr style="background-color: #e6f7ff;">
+<td>363</td>
+<td>寻***9</td>
+<td>150</td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
+</svg>231
+                        </span>
+</td>
+<td>存活</td>
+<td>西里奇</td>
 <td>谢尔顿</td>
 <td></td>
-<td></td>
+<td>4</td>
 <td>150</td>
 <td>0</td>
 <td>0</td>
@@ -14914,9 +15350,10 @@
                         </span>
 </td>
 <td>存活</td>
+<td>NaN</td>
+<td>NaN</td>
 <td></td>
-<td></td>
-<td></td>
+<td>4</td>
 <td>150</td>
 <td>0</td>
 <td>0</td>
@@ -14957,6 +15394,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -14995,6 +15433,7 @@
 <td></td>
 <td></td>
 <td>马哈奇</td>
+<td>3</td>
 <td>75</td>
 <td>23</td>
 <td>10</td>
@@ -15034,6 +15473,7 @@
 <td></td>
 <td></td>
 <td>波佩林</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>23</td>
@@ -15073,6 +15513,7 @@
 <td></td>
 <td></td>
 <td>沙波瓦洛夫</td>
+<td>1</td>
 <td>30</td>
 <td>23</td>
 <td>10</td>
@@ -15113,6 +15554,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>36</td>
 <td>0</td>
 <td>0</td>
@@ -15151,6 +15593,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>1</td>
 <td>30</td>
 <td>100</td>
 <td>0</td>
@@ -15190,6 +15633,7 @@
 <td></td>
 <td></td>
 <td>鲁内</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>50</td>
@@ -15216,46 +15660,7 @@
 </tr>
 <tr>
 <td>385</td>
-<td>v逍遥自在1</td>
-<td>125</td>
-<td>
-<span style="display: inline-flex; align-items: center;">
-<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
-<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
-</svg>6
-                        </span>
-</td>
-<td>球员输球</td>
-<td></td>
-<td></td>
-<td>莱赫奇卡</td>
-<td>50</td>
-<td>0</td>
-<td>50</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-<td>0</td>
-<td>25</td>
-</tr>
-<tr>
-<td>385</td>
-<td>青春欠我一个胡先煦</td>
+<td>相信科学是非明</td>
 <td>125</td>
 <td>
 <span style="display: inline-flex; align-items: center;">
@@ -15267,7 +15672,8 @@
 <td>球员输球</td>
 <td></td>
 <td></td>
-<td>保罗</td>
+<td>马哈奇</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>50</td>
@@ -15307,6 +15713,7 @@
 <td></td>
 <td></td>
 <td>沙波瓦洛夫</td>
+<td>1</td>
 <td>30</td>
 <td>0</td>
 <td>10</td>
@@ -15346,6 +15753,7 @@
 <td></td>
 <td></td>
 <td>马哈奇</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>0</td>
@@ -15372,7 +15780,47 @@
 </tr>
 <tr>
 <td>385</td>
-<td>相信科学是非明</td>
+<td>v逍遥自在1</td>
+<td>125</td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
+</svg>6
+                        </span>
+</td>
+<td>球员输球</td>
+<td></td>
+<td></td>
+<td>莱赫奇卡</td>
+<td>2</td>
+<td>50</td>
+<td>0</td>
+<td>50</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+<td>0</td>
+<td>25</td>
+</tr>
+<tr>
+<td>385</td>
+<td>青春欠我一个胡先煦</td>
 <td>125</td>
 <td>
 <span style="display: inline-flex; align-items: center;">
@@ -15384,49 +15832,11 @@
 <td>球员输球</td>
 <td></td>
 <td></td>
-<td>马哈奇</td>
+<td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>50</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td><del>0</del></td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-</tr>
-<tr>
-<td>385</td>
-<td>马儿不会飞_</td>
-<td>125</td>
-<td>
-<span style="display: inline-flex; align-items: center;">
-<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
-<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
-</svg>6
-                        </span>
-</td>
-<td>自杀(退赛)</td>
-<td></td>
-<td></td>
-<td></td>
-<td>50</td>
-<td>0</td>
-<td>75</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -15463,6 +15873,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>10</td>
@@ -15470,6 +15881,46 @@
 <td>0</td>
 <td>0</td>
 <td>40</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><del>0</del></td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+</tr>
+<tr>
+<td>385</td>
+<td>马儿不会飞_</td>
+<td>125</td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
+</svg>6
+                        </span>
+</td>
+<td>自杀(退赛)</td>
+<td></td>
+<td></td>
+<td></td>
+<td>2</td>
+<td>50</td>
+<td>0</td>
+<td>75</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -15502,6 +15953,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>0</td>
 <td>36</td>
@@ -15543,6 +15995,7 @@
 <td></td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>23</td>
 <td>0</td>
 <td>0</td>
@@ -15567,45 +16020,6 @@
 </tr>
 <tr>
 <td>394</td>
-<td>Kyle L</td>
-<td>121</td>
-<td>
-<span style="display: inline-flex; align-items: center;">
-<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
-<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
-</svg>41
-                        </span>
-</td>
-<td>未参赛</td>
-<td></td>
-<td></td>
-<td></td>
-<td>0</td>
-<td>23</td>
-<td>23</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-<td>0</td>
-<td>25</td>
-<td>50</td>
-<td>0</td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-</tr>
-<tr>
-<td>394</td>
 <td>A-ries_15</td>
 <td>121</td>
 <td>
@@ -15619,6 +16033,7 @@
 <td></td>
 <td></td>
 <td>波佩林</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>36</td>
@@ -15644,39 +16059,40 @@
 <td><del>0</del></td>
 </tr>
 <tr>
-<td>396</td>
-<td>荣拉法RaphaelCigar</td>
-<td>120</td>
+<td>394</td>
+<td>Kyle L</td>
+<td>121</td>
 <td>
 <span style="display: inline-flex; align-items: center;">
 <svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
 <path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
-</svg>15
+</svg>41
                         </span>
 </td>
-<td>球员输球</td>
+<td>未参赛</td>
 <td></td>
 <td></td>
-<td>沙波瓦洛夫</td>
-<td>30</td>
+<td></td>
 <td>0</td>
+<td>0</td>
+<td>23</td>
+<td>23</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+<td>0</td>
+<td>25</td>
 <td>50</td>
-<td>0</td>
-<td>0</td>
-<td>10</td>
-<td>10</td>
-<td>10</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>10</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td><del>0</del></td>
-<td><del>0</del></td>
 <td>0</td>
 <td><del>0</del></td>
 <td>0</td>
@@ -15697,6 +16113,7 @@
 <td></td>
 <td></td>
 <td>贝尔赫斯</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>10</td>
@@ -15722,6 +16139,46 @@
 <td><del>0</del></td>
 </tr>
 <tr>
+<td>396</td>
+<td>荣拉法RaphaelCigar</td>
+<td>120</td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>15
+                        </span>
+</td>
+<td>球员输球</td>
+<td></td>
+<td></td>
+<td>沙波瓦洛夫</td>
+<td>1</td>
+<td>30</td>
+<td>0</td>
+<td>50</td>
+<td>0</td>
+<td>0</td>
+<td>10</td>
+<td>10</td>
+<td>10</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>10</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><del>0</del></td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+</tr>
+<tr>
 <td>398</td>
 <td>啊啊啊啊啊啊-198210</td>
 <td>117</td>
@@ -15736,6 +16193,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -15776,6 +16234,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>75</td>
 <td>0</td>
 <td>0</td>
@@ -15815,6 +16274,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>75</td>
 <td>0</td>
 <td>0</td>
@@ -15853,51 +16313,13 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>36</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td><del>0</del></td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-</tr>
-<tr>
-<td>402</td>
-<td>懒奔头</td>
-<td>110</td>
-<td>
-<span style="display: inline-flex; align-items: center;">
-<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
-<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
-</svg>13
-                        </span>
-</td>
-<td>球员输球</td>
-<td></td>
-<td></td>
-<td>阿里斯</td>
-<td>30</td>
-<td>10</td>
-<td>50</td>
-<td>0</td>
-<td>0</td>
-<td>20</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -15931,6 +16353,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>0</td>
 <td>0</td>
@@ -15939,6 +16362,46 @@
 <td>10</td>
 <td>0</td>
 <td>10</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><del>0</del></td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+</tr>
+<tr>
+<td>402</td>
+<td>懒奔头</td>
+<td>110</td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>13
+                        </span>
+</td>
+<td>球员输球</td>
+<td></td>
+<td></td>
+<td>阿里斯</td>
+<td>1</td>
+<td>30</td>
+<td>10</td>
+<td>50</td>
+<td>0</td>
+<td>0</td>
+<td>20</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -15970,6 +16433,7 @@
 <td></td>
 <td></td>
 <td>西西帕斯</td>
+<td>0</td>
 <td>10</td>
 <td>10</td>
 <td>10</td>
@@ -16010,10 +16474,51 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>75</td>
 <td>10</td>
 <td>0</td>
 <td>20</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><del>0</del></td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+</tr>
+<tr>
+<td>406</td>
+<td>FedericoCina</td>
+<td>103</td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>2
+                        </span>
+</td>
+<td>球员输球</td>
+<td></td>
+<td></td>
+<td>阿里斯</td>
+<td>1</td>
+<td>30</td>
+<td>23</td>
+<td>50</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -16048,6 +16553,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>1</td>
 <td>30</td>
 <td>0</td>
 <td>23</td>
@@ -16065,162 +16571,6 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
-<td><del>0</del></td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-</tr>
-<tr>
-<td>406</td>
-<td>FedericoCina</td>
-<td>103</td>
-<td>
-<span style="display: inline-flex; align-items: center;">
-<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
-<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
-</svg>2
-                        </span>
-</td>
-<td>球员输球</td>
-<td></td>
-<td></td>
-<td>阿里斯</td>
-<td>30</td>
-<td>23</td>
-<td>50</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td><del>0</del></td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-</tr>
-<tr>
-<td>408</td>
-<td>135******08</td>
-<td>100</td>
-<td>
-<span style="display: inline-flex; align-items: center;">
-<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
-<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
-</svg>186
-                        </span>
-</td>
-<td>自杀(重复)</td>
-<td></td>
-<td></td>
-<td></td>
-<td>100</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td><del>0</del></td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-</tr>
-<tr>
-<td>408</td>
-<td>荞***记</td>
-<td>100</td>
-<td>
-<span style="display: inline-flex; align-items: center;">
-<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
-<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
-</svg>186
-                        </span>
-</td>
-<td>球员输球</td>
-<td></td>
-<td></td>
-<td>达尔德里</td>
-<td>100</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td><del>0</del></td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-</tr>
-<tr>
-<td>408</td>
-<td>继续继续快下课</td>
-<td>100</td>
-<td>
-<span style="display: inline-flex; align-items: center;">
-<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
-<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
-</svg>45
-                        </span>
-</td>
-<td>未参赛</td>
-<td></td>
-<td></td>
-<td></td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>100</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -16259,7 +16609,128 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>100</td>
+<td><del>0</del></td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+</tr>
+<tr>
+<td>408</td>
+<td>继续继续快下课</td>
+<td>100</td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>45
+                        </span>
+</td>
+<td>未参赛</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100</td>
+<td><del>0</del></td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+</tr>
+<tr>
+<td>408</td>
+<td>Chen Harry</td>
+<td>100</td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>45
+                        </span>
+</td>
+<td>未参赛</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100</td>
+<td><del>0</del></td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+</tr>
+<tr>
+<td>408</td>
+<td>荞***记</td>
+<td>100</td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
+</svg>186
+                        </span>
+</td>
+<td>球员输球</td>
+<td></td>
+<td></td>
+<td>达尔德里</td>
+<td>4</td>
+<td>100</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -16298,46 +16769,8 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>100</td>
-<td><del>0</del></td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-</tr>
-<tr>
-<td>408</td>
-<td>153******91</td>
-<td>100</td>
-<td>
-<span style="display: inline-flex; align-items: center;">
-<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
-<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
-</svg>1
-                        </span>
-</td>
-<td>自杀(退赛)</td>
-<td></td>
-<td></td>
-<td></td>
-<td>30</td>
-<td>0</td>
-<td>50</td>
-<td>0</td>
-<td>0</td>
-<td>10</td>
-<td>0</td>
-<td>10</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -16361,7 +16794,48 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>100</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><del>0</del></td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+</tr>
+<tr>
+<td>408</td>
+<td>135******08</td>
+<td>100</td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
+</svg>186
+                        </span>
+</td>
+<td>自杀(重复)</td>
+<td></td>
+<td></td>
+<td></td>
+<td>4</td>
+<td>100</td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -16415,6 +16889,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>100</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -16438,6 +16913,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>100</td>
@@ -16493,6 +16969,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>100</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -16516,6 +16993,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>2</td>
 <td>50</td>
 <td>0</td>
 <td>50</td>
@@ -16556,6 +17034,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>100</td>
 <td>0</td>
 <td>0</td>
@@ -16581,19 +17060,28 @@
 </tr>
 <tr>
 <td>408</td>
-<td>Chen Harry</td>
+<td>153******91</td>
 <td>100</td>
 <td>
 <span style="display: inline-flex; align-items: center;">
 <svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
 <path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
-</svg>45
+</svg>1
                         </span>
 </td>
-<td>未参赛</td>
+<td>自杀(退赛)</td>
 <td></td>
 <td></td>
 <td></td>
+<td>1</td>
+<td>30</td>
+<td>0</td>
+<td>50</td>
+<td>0</td>
+<td>0</td>
+<td>10</td>
+<td>0</td>
+<td>10</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -16603,14 +17091,6 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>100</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -16633,6 +17113,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>23</td>
@@ -16673,6 +17154,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>50</td>
 <td>0</td>
 <td>0</td>
@@ -16712,6 +17194,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>23</td>
 <td>75</td>
 <td>0</td>
@@ -16750,6 +17233,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>0</td>
 <td>0</td>
@@ -16789,6 +17273,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>0</td>
 <td>23</td>
@@ -16828,6 +17313,7 @@
 <td></td>
 <td></td>
 <td>波佩林</td>
+<td>0</td>
 <td>10</td>
 <td>36</td>
 <td>50</td>
@@ -16867,6 +17353,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>1</td>
 <td>30</td>
 <td>0</td>
 <td>23</td>
@@ -16910,6 +17397,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>50</td>
 <td>40</td>
 <td>0</td>
@@ -16945,6 +17433,7 @@
 <td></td>
 <td></td>
 <td>西西帕斯</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>10</td>
@@ -16985,6 +17474,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>36</td>
 <td>50</td>
 <td>0</td>
@@ -17023,6 +17513,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>2</td>
 <td>50</td>
 <td>0</td>
 <td>36</td>
@@ -17062,6 +17553,7 @@
 <td></td>
 <td></td>
 <td>洛夫哈根</td>
+<td>1</td>
 <td>30</td>
 <td>23</td>
 <td>23</td>
@@ -17103,6 +17595,7 @@
 <td></td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>75</td>
 <td>0</td>
 <td>0</td>
@@ -17140,6 +17633,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>1</td>
 <td>30</td>
 <td>0</td>
 <td>50</td>
@@ -17180,6 +17674,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>75</td>
 <td>0</td>
 <td>0</td>
@@ -17219,6 +17714,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>75</td>
 <td>0</td>
 <td>0</td>
@@ -17257,6 +17753,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>0</td>
@@ -17296,6 +17793,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>0</td>
@@ -17335,6 +17833,7 @@
 <td></td>
 <td></td>
 <td>德雷珀</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>0</td>
@@ -17374,6 +17873,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>0</td>
@@ -17413,6 +17913,7 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>0</td>
@@ -17452,6 +17953,7 @@
 <td></td>
 <td></td>
 <td>马哈奇</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>0</td>
@@ -17491,6 +17993,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>75</td>
 <td>0</td>
@@ -17532,6 +18035,7 @@
 <td></td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>75</td>
 <td>0</td>
 <td>0</td>
@@ -17569,6 +18073,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>75</td>
 <td>0</td>
@@ -17624,6 +18129,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>75</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -17647,6 +18153,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -17687,6 +18194,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>75</td>
 <td>0</td>
 <td>0</td>
@@ -17725,6 +18233,7 @@
 <td></td>
 <td></td>
 <td>马哈奇</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>0</td>
@@ -17764,6 +18273,7 @@
 <td></td>
 <td></td>
 <td>马哈奇</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>0</td>
@@ -17803,6 +18313,7 @@
 <td></td>
 <td></td>
 <td>马哈奇</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>0</td>
@@ -17842,47 +18353,9 @@
 <td></td>
 <td></td>
 <td>保罗</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td><del>0</del></td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-</tr>
-<tr>
-<td>435</td>
-<td>Steven Sze</td>
-<td>75</td>
-<td>
-<span style="display: inline-flex; align-items: center;">
-<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
-<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
-</svg>44
-                        </span>
-</td>
-<td>未参赛</td>
-<td></td>
-<td></td>
-<td></td>
-<td>0</td>
-<td>75</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -17936,46 +18409,8 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>75</td>
-<td><del>0</del></td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-</tr>
-<tr>
-<td>435</td>
-<td>法网冠军丰塞卡</td>
-<td>75</td>
-<td>
-<span style="display: inline-flex; align-items: center;">
-<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
-<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
-</svg>159
-                        </span>
-</td>
-<td>球员输球</td>
-<td></td>
-<td></td>
-<td>马哈奇</td>
-<td>75</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -17998,6 +18433,87 @@
 <td></td>
 <td></td>
 <td></td>
+<td>3</td>
+<td>75</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><del>0</del></td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+</tr>
+<tr>
+<td>435</td>
+<td>Steven Sze</td>
+<td>75</td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>44
+                        </span>
+</td>
+<td>未参赛</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+<td>0</td>
+<td>75</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><del>0</del></td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+</tr>
+<tr>
+<td>435</td>
+<td>法网冠军丰塞卡</td>
+<td>75</td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
+</svg>159
+                        </span>
+</td>
+<td>球员输球</td>
+<td></td>
+<td></td>
+<td>马哈奇</td>
+<td>3</td>
 <td>75</td>
 <td>0</td>
 <td>0</td>
@@ -18037,6 +18553,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>2</td>
 <td>50</td>
 <td>0</td>
 <td>23</td>
@@ -18076,6 +18593,7 @@
 <td></td>
 <td></td>
 <td>布勃利克</td>
+<td>1</td>
 <td>30</td>
 <td>0</td>
 <td>23</td>
@@ -18115,6 +18633,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>1</td>
 <td>30</td>
 <td>0</td>
 <td>23</td>
@@ -18156,6 +18675,7 @@
 <td></td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>50</td>
 <td>0</td>
 <td>0</td>
@@ -18193,6 +18713,7 @@
 <td></td>
 <td></td>
 <td>西西帕斯</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>50</td>
@@ -18232,6 +18753,7 @@
 <td></td>
 <td></td>
 <td>沙波瓦洛夫</td>
+<td>1</td>
 <td>30</td>
 <td>36</td>
 <td>0</td>
@@ -18275,6 +18797,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>10</td>
 <td>20</td>
 <td>0</td>
@@ -18310,6 +18833,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -18355,6 +18879,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>10</td>
 <td>50</td>
 <td>0</td>
@@ -18388,6 +18913,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>10</td>
@@ -18431,6 +18957,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>30</td>
 <td>30</td>
 <td>0</td>
@@ -18466,6 +18993,7 @@
 <td></td>
 <td></td>
 <td>蒂亚福</td>
+<td>2</td>
 <td>50</td>
 <td>0</td>
 <td>10</td>
@@ -18510,6 +19038,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>30</td>
 <td>0</td>
 <td>20</td>
@@ -18544,6 +19073,7 @@
 <td></td>
 <td></td>
 <td>贝雷蒂尼</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>50</td>
@@ -18583,6 +19113,7 @@
 <td></td>
 <td></td>
 <td>鲁内</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -18622,6 +19153,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>50</td>
@@ -18665,6 +19197,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>30</td>
 <td>0</td>
 <td>0</td>
@@ -18702,51 +19235,13 @@
 <td></td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>23</td>
 <td>0</td>
 <td>0</td>
 <td>10</td>
 <td>10</td>
 <td>10</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td><del>0</del></td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-</tr>
-<tr>
-<td>475</td>
-<td>袁***女</td>
-<td>50</td>
-<td>
-<span style="display: inline-flex; align-items: center;">
-<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
-<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
-</svg>119
-                        </span>
-</td>
-<td>自杀(退赛)</td>
-<td></td>
-<td></td>
-<td></td>
-<td>50</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -18778,162 +19273,7 @@
 <td></td>
 <td></td>
 <td>蒂亚福</td>
-<td>50</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td><del>0</del></td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-</tr>
-<tr>
-<td>475</td>
-<td>l***1</td>
-<td>50</td>
-<td>
-<span style="display: inline-flex; align-items: center;">
-<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
-<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
-</svg>119
-                        </span>
-</td>
-<td>自杀(退赛)</td>
-<td></td>
-<td></td>
-<td></td>
-<td>50</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td><del>0</del></td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-</tr>
-<tr>
-<td>475</td>
-<td>Ethan Liu</td>
-<td>50</td>
-<td>
-<span style="display: inline-flex; align-items: center;">
-<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
-<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
-</svg>119
-                        </span>
-</td>
-<td>自杀(重复)</td>
-<td></td>
-<td></td>
-<td></td>
-<td>50</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td><del>0</del></td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-</tr>
-<tr>
-<td>475</td>
-<td>白***超</td>
-<td>50</td>
-<td>
-<span style="display: inline-flex; align-items: center;">
-<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
-<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
-</svg>119
-                        </span>
-</td>
-<td>自杀(重复)</td>
-<td></td>
-<td></td>
-<td></td>
-<td>50</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td><del>0</del></td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-<td>0</td>
-<td><del>0</del></td>
-</tr>
-<tr>
-<td>475</td>
-<td>蓝风清水</td>
-<td>50</td>
-<td>
-<span style="display: inline-flex; align-items: center;">
-<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
-<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
-</svg>119
-                        </span>
-</td>
-<td>球员输球</td>
-<td></td>
-<td></td>
-<td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>0</td>
 <td>0</td>
@@ -18975,7 +19315,208 @@
 <td></td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>50</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><del>0</del></td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+</tr>
+<tr>
+<td>475</td>
+<td>Ethan Liu</td>
+<td>50</td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
+</svg>119
+                        </span>
+</td>
+<td>自杀(重复)</td>
+<td></td>
+<td></td>
+<td></td>
+<td>2</td>
+<td>50</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><del>0</del></td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+</tr>
+<tr>
+<td>475</td>
+<td>袁***女</td>
+<td>50</td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
+</svg>119
+                        </span>
+</td>
+<td>自杀(退赛)</td>
+<td></td>
+<td></td>
+<td></td>
+<td>2</td>
+<td>50</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><del>0</del></td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+</tr>
+<tr>
+<td>475</td>
+<td>白***超</td>
+<td>50</td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
+</svg>119
+                        </span>
+</td>
+<td>自杀(重复)</td>
+<td></td>
+<td></td>
+<td></td>
+<td>2</td>
+<td>50</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><del>0</del></td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+</tr>
+<tr>
+<td>475</td>
+<td>tuRquesa_Vida</td>
+<td>50</td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
+</svg>119
+                        </span>
+</td>
+<td>球员输球</td>
+<td></td>
+<td></td>
+<td>莱赫奇卡</td>
+<td>2</td>
+<td>50</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><del>0</del></td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+<td>0</td>
+<td><del>0</del></td>
+</tr>
+<tr>
+<td>475</td>
+<td>蓝风清水</td>
+<td>50</td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
+</svg>119
+                        </span>
+</td>
+<td>球员输球</td>
+<td></td>
+<td></td>
+<td>莱赫奇卡</td>
+<td>2</td>
+<td>50</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -19012,6 +19553,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>0</td>
 <td>0</td>
@@ -19052,6 +19594,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>50</td>
 <td>0</td>
 <td>0</td>
@@ -19090,6 +19633,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>50</td>
 <td>0</td>
@@ -19130,6 +19674,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>50</td>
 <td>0</td>
 <td>0</td>
@@ -19155,7 +19700,7 @@
 </tr>
 <tr>
 <td>475</td>
-<td>tuRquesa_Vida</td>
+<td>l***1</td>
 <td>50</td>
 <td>
 <span style="display: inline-flex; align-items: center;">
@@ -19164,10 +19709,11 @@
 </svg>119
                         </span>
 </td>
-<td>球员输球</td>
+<td>自杀(退赛)</td>
 <td></td>
 <td></td>
-<td>莱赫奇卡</td>
+<td></td>
+<td>2</td>
 <td>50</td>
 <td>0</td>
 <td>0</td>
@@ -19207,6 +19753,7 @@
 <td></td>
 <td></td>
 <td>莱赫奇卡</td>
+<td>2</td>
 <td>50</td>
 <td>0</td>
 <td>0</td>
@@ -19246,6 +19793,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>2</td>
 <td>50</td>
 <td>0</td>
 <td>0</td>
@@ -19285,6 +19833,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>2</td>
 <td>50</td>
 <td>0</td>
 <td>0</td>
@@ -19340,6 +19889,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>50</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -19363,6 +19913,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>50</td>
@@ -19406,6 +19957,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>40</td>
 <td>10</td>
 <td>0</td>
@@ -19441,6 +19993,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>50</td>
 <td>0</td>
@@ -19486,6 +20039,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>40</td>
 <td>10</td>
 <td>0</td>
@@ -19519,6 +20073,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>2</td>
 <td>50</td>
 <td>0</td>
 <td>0</td>
@@ -19558,6 +20113,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>50</td>
 <td>0</td>
@@ -19611,6 +20167,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>25</td>
 <td>25</td>
 <td>0</td>
@@ -19636,6 +20193,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>2</td>
 <td>50</td>
 <td>0</td>
 <td>0</td>
@@ -19677,6 +20235,7 @@
 <td></td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>50</td>
 <td>0</td>
 <td>0</td>
@@ -19714,6 +20273,7 @@
 <td></td>
 <td></td>
 <td>西西帕斯</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -19754,6 +20314,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -19792,6 +20353,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>23</td>
 <td>0</td>
@@ -19832,6 +20394,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>36</td>
 <td>0</td>
 <td>0</td>
@@ -19870,6 +20433,7 @@
 <td></td>
 <td></td>
 <td>波佩林</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>10</td>
@@ -19909,6 +20473,7 @@
 <td></td>
 <td></td>
 <td>瑟尔</td>
+<td>0</td>
 <td>10</td>
 <td>23</td>
 <td>10</td>
@@ -19952,6 +20517,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>10</td>
 <td>10</td>
 <td>10</td>
@@ -19987,6 +20553,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -20032,6 +20599,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>40</td>
 <td>0</td>
 <td>0</td>
@@ -20071,6 +20639,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>40</td>
 <td>0</td>
 <td>0</td>
@@ -20104,6 +20673,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>1</td>
 <td>30</td>
 <td>0</td>
 <td>0</td>
@@ -20143,6 +20713,7 @@
 <td></td>
 <td></td>
 <td>阿里斯</td>
+<td>1</td>
 <td>30</td>
 <td>0</td>
 <td>10</td>
@@ -20186,6 +20757,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>30</td>
 <td>10</td>
 <td>0</td>
@@ -20221,6 +20793,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>23</td>
 <td>0</td>
@@ -20261,6 +20834,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>36</td>
 <td>0</td>
 <td>0</td>
@@ -20299,6 +20873,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>36</td>
 <td>0</td>
@@ -20339,6 +20914,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>36</td>
 <td>0</td>
 <td>0</td>
@@ -20377,6 +20953,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>10</td>
 <td>0</td>
@@ -20417,6 +20994,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>36</td>
 <td>0</td>
 <td>0</td>
@@ -20455,6 +21033,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>36</td>
 <td>0</td>
@@ -20496,6 +21075,7 @@
 <td></td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>36</td>
 <td>0</td>
 <td>0</td>
@@ -20533,6 +21113,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>36</td>
 <td>0</td>
@@ -20573,6 +21154,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>36</td>
 <td>0</td>
 <td>0</td>
@@ -20611,6 +21193,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>36</td>
 <td>0</td>
@@ -20651,6 +21234,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>36</td>
 <td>0</td>
 <td>0</td>
@@ -20689,6 +21273,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>36</td>
 <td>0</td>
@@ -20729,6 +21314,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>36</td>
 <td>0</td>
 <td>0</td>
@@ -20768,6 +21354,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>36</td>
 <td>0</td>
 <td>0</td>
@@ -20806,6 +21393,7 @@
 <td></td>
 <td></td>
 <td>波佩林</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>23</td>
@@ -20846,6 +21434,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>23</td>
 <td>0</td>
 <td>0</td>
@@ -20884,6 +21473,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>10</td>
 <td>23</td>
@@ -20925,6 +21515,7 @@
 <td></td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -20962,6 +21553,7 @@
 <td></td>
 <td></td>
 <td>埃切韦里</td>
+<td>1</td>
 <td>30</td>
 <td>0</td>
 <td>0</td>
@@ -21001,6 +21593,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>1</td>
 <td>30</td>
 <td>0</td>
 <td>0</td>
@@ -21040,6 +21633,7 @@
 <td></td>
 <td></td>
 <td>埃切韦里</td>
+<td>1</td>
 <td>30</td>
 <td>0</td>
 <td>0</td>
@@ -21079,6 +21673,7 @@
 <td></td>
 <td></td>
 <td>沙波瓦洛夫</td>
+<td>1</td>
 <td>30</td>
 <td>0</td>
 <td>0</td>
@@ -21118,6 +21713,7 @@
 <td></td>
 <td></td>
 <td>沙波瓦洛夫</td>
+<td>1</td>
 <td>30</td>
 <td>0</td>
 <td>0</td>
@@ -21157,6 +21753,7 @@
 <td></td>
 <td></td>
 <td>沙波瓦洛夫</td>
+<td>1</td>
 <td>30</td>
 <td>0</td>
 <td>0</td>
@@ -21196,6 +21793,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>1</td>
 <td>30</td>
 <td>0</td>
 <td>0</td>
@@ -21235,6 +21833,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>1</td>
 <td>30</td>
 <td>0</td>
 <td>0</td>
@@ -21278,6 +21877,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>10</td>
 <td>10</td>
 <td>0</td>
@@ -21317,6 +21917,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>20</td>
 <td>10</td>
 <td>0</td>
@@ -21352,6 +21953,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>1</td>
 <td>30</td>
 <td>0</td>
 <td>0</td>
@@ -21397,6 +21999,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>10</td>
 <td>10</td>
 <td>0</td>
@@ -21430,6 +22033,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -21469,6 +22073,7 @@
 <td></td>
 <td></td>
 <td>阿里斯</td>
+<td>1</td>
 <td>30</td>
 <td>0</td>
 <td>0</td>
@@ -21508,6 +22113,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>1</td>
 <td>30</td>
 <td>0</td>
 <td>0</td>
@@ -21547,6 +22153,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>1</td>
 <td>30</td>
 <td>0</td>
 <td>0</td>
@@ -21586,6 +22193,7 @@
 <td></td>
 <td></td>
 <td>列迪</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>10</td>
@@ -21625,6 +22233,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>1</td>
 <td>30</td>
 <td>0</td>
 <td>0</td>
@@ -21664,6 +22273,7 @@
 <td></td>
 <td></td>
 <td>安贝尔</td>
+<td>1</td>
 <td>30</td>
 <td>0</td>
 <td>0</td>
@@ -21703,6 +22313,7 @@
 <td></td>
 <td></td>
 <td>布勃利克</td>
+<td>1</td>
 <td>30</td>
 <td>0</td>
 <td>0</td>
@@ -21748,6 +22359,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>30</td>
 <td>0</td>
 <td>0</td>
@@ -21781,6 +22393,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -21836,6 +22449,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>25</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -21859,6 +22473,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -21912,6 +22527,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>25</td>
 <td>0</td>
 <td>0</td>
@@ -21937,6 +22553,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -21990,6 +22607,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>25</td>
 <td>0</td>
 <td>0</td>
@@ -22029,6 +22647,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>25</td>
 <td>0</td>
 <td>0</td>
@@ -22054,6 +22673,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -22108,6 +22728,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>25</td>
 <td>0</td>
 <td><del>0</del></td>
@@ -22132,6 +22753,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -22187,6 +22809,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>25</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -22210,6 +22833,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>23</td>
 <td>0</td>
@@ -22250,6 +22874,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>23</td>
 <td>0</td>
 <td>0</td>
@@ -22288,6 +22913,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>23</td>
 <td>0</td>
@@ -22329,6 +22955,7 @@
 <td></td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>23</td>
 <td>0</td>
 <td>0</td>
@@ -22366,6 +22993,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>23</td>
 <td>0</td>
@@ -22407,6 +23035,7 @@
 <td></td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>23</td>
 <td>0</td>
 <td>0</td>
@@ -22444,6 +23073,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>23</td>
 <td>0</td>
@@ -22485,6 +23115,7 @@
 <td></td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>23</td>
 <td>0</td>
 <td>0</td>
@@ -22522,6 +23153,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>23</td>
 <td>0</td>
@@ -22562,6 +23194,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>23</td>
 <td>0</td>
 <td>0</td>
@@ -22600,6 +23233,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>23</td>
 <td>0</td>
@@ -22640,6 +23274,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>23</td>
 <td>0</td>
 <td>0</td>
@@ -22678,6 +23313,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>23</td>
 <td>0</td>
@@ -22718,6 +23354,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>23</td>
 <td>0</td>
 <td>0</td>
@@ -22756,6 +23393,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>23</td>
 <td>0</td>
@@ -22796,6 +23434,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>23</td>
 <td>0</td>
 <td>0</td>
@@ -22834,6 +23473,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>23</td>
 <td>0</td>
@@ -22874,6 +23514,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -22913,6 +23554,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>23</td>
 <td>0</td>
 <td>0</td>
@@ -22951,6 +23593,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>23</td>
 <td>0</td>
@@ -22995,6 +23638,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>20</td>
 <td>0</td>
 <td>0</td>
@@ -23029,6 +23673,7 @@
 <td></td>
 <td></td>
 <td>贝雷蒂尼</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>10</td>
@@ -23073,6 +23718,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -23107,6 +23753,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -23146,6 +23793,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>10</td>
 <td>0</td>
@@ -23190,6 +23838,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>20</td>
 <td>0</td>
 <td>0</td>
@@ -23224,6 +23873,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -23268,6 +23918,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>10</td>
 <td>10</td>
 <td>0</td>
@@ -23302,6 +23953,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>10</td>
@@ -23345,6 +23997,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>20</td>
 <td>0</td>
 <td>0</td>
@@ -23380,6 +24033,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>10</td>
@@ -23419,6 +24073,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>10</td>
@@ -23462,6 +24117,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>20</td>
 <td>0</td>
 <td>0</td>
@@ -23497,6 +24153,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -23549,6 +24206,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>17</td>
 <td>0</td>
 <td>0</td>
@@ -23575,6 +24233,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -23629,6 +24288,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td>0</td>
 <td>13</td>
@@ -23653,6 +24313,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -23709,6 +24370,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>13</td>
@@ -23731,6 +24393,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -23777,6 +24440,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -23809,6 +24473,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -23853,6 +24518,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -23887,6 +24553,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>10</td>
 <td>0</td>
@@ -23931,6 +24598,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -23965,6 +24633,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -24009,6 +24678,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -24048,6 +24718,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -24082,6 +24753,7 @@
 <td></td>
 <td></td>
 <td>梅德韦杰夫</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -24126,6 +24798,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -24160,6 +24833,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -24203,6 +24877,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -24238,6 +24913,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>10</td>
@@ -24279,6 +24955,7 @@
 <td></td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -24316,6 +24993,7 @@
 <td></td>
 <td></td>
 <td>贝雷蒂尼</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -24356,6 +25034,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -24394,6 +25073,7 @@
 <td></td>
 <td></td>
 <td>西西帕斯</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -24445,6 +25125,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -24472,6 +25153,7 @@
 <td></td>
 <td></td>
 <td>米索利奇</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -24511,6 +25193,7 @@
 <td></td>
 <td></td>
 <td>鲁内</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -24555,6 +25238,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -24589,6 +25273,7 @@
 <td></td>
 <td></td>
 <td>格里科斯普</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -24633,6 +25318,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -24667,6 +25353,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>10</td>
@@ -24706,6 +25393,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -24752,6 +25440,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -24784,6 +25473,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -24827,6 +25517,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -24862,6 +25553,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>10</td>
 <td>0</td>
@@ -24901,6 +25593,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>10</td>
@@ -24952,6 +25645,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -24979,6 +25673,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>10</td>
 <td>0</td>
@@ -25023,6 +25718,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -25057,6 +25753,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>10</td>
@@ -25102,6 +25799,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -25135,6 +25833,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -25186,6 +25885,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -25213,6 +25913,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -25253,6 +25954,7 @@
 <td></td>
 <td></td>
 <td>0</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -25291,6 +25993,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -25334,6 +26037,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -25369,6 +26073,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>10</td>
 <td>0</td>
@@ -25410,6 +26115,7 @@
 <td></td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -25447,6 +26153,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>10</td>
 <td>0</td>
@@ -25498,6 +26205,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -25525,6 +26233,7 @@
 <td></td>
 <td></td>
 <td>波佩林</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -25564,6 +26273,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>10</td>
 <td>0</td>
@@ -25607,6 +26317,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -25642,6 +26353,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>10</td>
 <td>0</td>
@@ -25681,6 +26393,7 @@
 <td></td>
 <td></td>
 <td>西西帕斯</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -25720,6 +26433,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -25764,6 +26478,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>10</td>
 <td>0</td>
 <td>0</td>
@@ -25798,6 +26513,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -25854,6 +26570,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -25876,6 +26593,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -25932,6 +26650,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -25954,6 +26673,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -26010,6 +26730,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -26032,6 +26753,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -26088,6 +26810,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -26110,6 +26833,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -26166,6 +26890,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -26188,6 +26913,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -26244,6 +26970,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -26266,6 +26993,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -26322,6 +27050,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -26344,6 +27073,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -26400,6 +27130,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -26422,6 +27153,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -26478,6 +27210,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -26500,6 +27233,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -26556,6 +27290,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -26578,6 +27313,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -26634,6 +27370,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -26656,6 +27393,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -26712,6 +27450,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -26734,6 +27473,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -26790,6 +27530,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -26812,6 +27553,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -26868,6 +27610,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -26890,6 +27633,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -26946,6 +27690,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -26968,6 +27713,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -27024,6 +27770,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -27046,6 +27793,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -27102,6 +27850,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -27124,6 +27873,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -27180,6 +27930,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -27202,6 +27953,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -27258,6 +28010,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -27280,6 +28033,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -27336,6 +28090,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -27358,6 +28113,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -27414,6 +28170,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -27436,6 +28193,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -27492,6 +28250,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -27514,6 +28273,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -27570,6 +28330,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -27592,6 +28353,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -27648,6 +28410,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -27670,6 +28433,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -27726,6 +28490,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -27748,6 +28513,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -27804,6 +28570,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -27826,6 +28593,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -27882,6 +28650,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -27904,6 +28673,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -27960,6 +28730,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -27982,6 +28753,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -28038,6 +28810,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -28060,6 +28833,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -28116,6 +28890,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -28138,6 +28913,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -28194,6 +28970,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -28216,6 +28993,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -28272,6 +29050,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -28294,6 +29073,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -28350,6 +29130,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -28372,6 +29153,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -28428,6 +29210,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -28450,6 +29233,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -28506,6 +29290,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -28528,6 +29313,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -28584,6 +29370,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -28606,6 +29393,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -28662,6 +29450,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -28684,6 +29473,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -28740,6 +29530,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -28762,6 +29553,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -28818,6 +29610,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -28840,6 +29633,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -28896,6 +29690,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -28918,6 +29713,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -28974,6 +29770,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -28996,6 +29793,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -29052,6 +29850,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -29074,6 +29873,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -29130,6 +29930,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -29152,6 +29953,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -29208,6 +30010,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -29230,6 +30033,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -29286,6 +30090,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -29308,6 +30113,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -29364,6 +30170,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -29386,6 +30193,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -29442,6 +30250,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -29464,6 +30273,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -29520,6 +30330,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -29542,6 +30353,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -29598,6 +30410,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -29620,6 +30433,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -29676,6 +30490,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -29698,6 +30513,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -29754,6 +30570,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -29776,6 +30593,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -29832,6 +30650,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -29854,6 +30673,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -29910,6 +30730,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -29932,6 +30753,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -29988,6 +30810,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -30010,6 +30833,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -30066,6 +30890,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -30088,6 +30913,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -30144,6 +30970,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -30166,6 +30993,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -30222,6 +31050,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -30244,6 +31073,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -30300,6 +31130,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -30322,6 +31153,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -30378,6 +31210,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -30400,6 +31233,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -30456,6 +31290,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -30478,6 +31313,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -30534,6 +31370,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -30556,6 +31393,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -30612,6 +31450,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -30634,6 +31473,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -30690,6 +31530,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -30712,6 +31553,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -30768,6 +31610,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -30790,6 +31633,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -30846,6 +31690,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -30868,6 +31713,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -30924,6 +31770,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -30946,6 +31793,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -31002,6 +31850,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -31024,6 +31873,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -31080,6 +31930,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -31102,6 +31953,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -31158,6 +32010,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -31180,6 +32033,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -31236,6 +32090,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -31258,6 +32113,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -31314,6 +32170,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -31336,6 +32193,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -31392,6 +32250,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -31414,6 +32273,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -31470,6 +32330,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -31492,6 +32353,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -31548,6 +32410,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -31570,6 +32433,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -31626,6 +32490,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -31648,6 +32513,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -31704,6 +32570,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -31726,6 +32593,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -31782,6 +32650,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -31804,6 +32673,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -31860,6 +32730,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -31882,6 +32753,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -31938,6 +32810,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -31960,6 +32833,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -32016,6 +32890,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -32038,6 +32913,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -32094,6 +32970,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -32116,6 +32993,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -32172,6 +33050,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -32194,6 +33073,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -32250,6 +33130,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -32272,6 +33153,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -32328,6 +33210,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -32350,6 +33233,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -32406,6 +33290,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -32428,6 +33313,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -32484,6 +33370,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -32506,6 +33393,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -32562,6 +33450,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -32584,6 +33473,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -32640,6 +33530,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -32662,6 +33553,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -32718,6 +33610,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -32740,6 +33633,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -32796,6 +33690,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -32818,6 +33713,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -32874,6 +33770,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -32896,6 +33793,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -32952,6 +33850,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -32974,6 +33873,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -33030,6 +33930,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -33052,6 +33953,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -33108,6 +34010,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -33130,6 +34033,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -33186,6 +34090,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -33208,6 +34113,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -33264,6 +34170,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -33286,6 +34193,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -33342,6 +34250,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -33364,6 +34273,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -33420,6 +34330,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -33442,6 +34353,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -33498,6 +34410,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -33520,6 +34433,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -33576,6 +34490,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -33598,6 +34513,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -33654,6 +34570,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -33676,6 +34593,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -33732,6 +34650,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -33754,6 +34673,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -33810,6 +34730,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -33832,6 +34753,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -33888,6 +34810,7 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td>0</td>
@@ -33910,6 +34833,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
