@@ -259,68 +259,82 @@
         <div class="container">
             <h1>ATP幸存者冠军排名</h1>
             <div style="text-align: center; color: #888; font-size: 0.9em; margin-bottom: 10px;">
-                页面数据更新时间：2025-07-05 17:13:51
+                页面数据更新时间：2025-07-05 17:29:36
             </div>
             <div class="participant-info"><strong>参赛人数：</strong> 417 <strong style="margin-left:10px;">存活人数：</strong> 71 </div> 
             <div class="choice-info"><strong>今日选择情况：</strong> 总选择人数：53 <ul><li>迪米特洛夫：15</li><li>德米纳尔：13</li><li>德约科维奇：11</li><li>谢尔顿：9</li><li>西里奇：3</li><li>中岛布兰登：2</li></ul></div>
             
-    <div style="margin: 20px auto; text-align: center; font-size: 0.95em;">
-        <h3 style="margin-bottom: 10px; font-size: 0.95em;">杀手球员统计</h3>
-        <table style="margin: 0 auto; border-collapse: collapse; border: 1px solid #ddd; font-size: 0.95em;">
-            <thead>
-                <tr style="background-color: #f2f2f2;">
-                    <th style="padding: 8px 12px; border: 1px solid #ddd;">天数</th>
-                    <th style="padding: 8px 12px; border: 1px solid #ddd;">杀手球员1</th>
-                    <th style="padding: 8px 12px; border: 1px solid #ddd;">死亡人数1</th>
-                    <th style="padding: 8px 12px; border: 1px solid #ddd;">杀手球员2</th>
-                    <th style="padding: 8px 12px; border: 1px solid #ddd;">死亡人数2</th>
-                </tr>
-            </thead>
-            <tbody>
-    
-            <tr>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">1</td>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">波佩林</td>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">35</td>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">贝雷蒂尼</td>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">20</td>
-            </tr>
+        <div style="margin: 20px auto; text-align: center; font-size: 0.95em;">
+            <button id="toggleStatsBtn" style="padding: 5px 15px; background-color: #2c3e50; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.95em;">
+                显示统计信息 ▼
+            </button>
+            <div id="statsTable" style="display: none; margin-top: 10px;">
+                <h3 style="margin-bottom: 10px; font-size: 0.95em;">各轮次杀手球员统计</h3>
+                <table style="margin: 0 auto; border-collapse: collapse; border: 1px solid #ddd; font-size: 0.95em;">
+                    <thead>
+                        <tr style="background-color: #f2f2f2;">
+                            <th style="padding: 8px 12px; border: 1px solid #ddd;">天数</th>
+                            <th style="padding: 8px 12px; border: 1px solid #ddd;">杀手球员1</th>
+                            <th style="padding: 8px 12px; border: 1px solid #ddd;">死亡人数1</th>
+                            <th style="padding: 8px 12px; border: 1px solid #ddd;">杀手球员2</th>
+                            <th style="padding: 8px 12px; border: 1px solid #ddd;">死亡人数2</th>
+                        </tr>
+                    </thead>
+                    <tbody>
         
-            <tr>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">2</td>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">沙波瓦洛夫</td>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">28</td>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">阿里斯</td>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">10</td>
-            </tr>
+                    <tr>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">1</td>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">波佩林</td>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">35</td>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">贝雷蒂尼</td>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">20</td>
+                    </tr>
         
-            <tr>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">3</td>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">莱赫奇卡</td>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">45</td>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">蒂亚福</td>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">6</td>
-            </tr>
+                    <tr>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">2</td>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">沙波瓦洛夫</td>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">28</td>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">阿里斯</td>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">10</td>
+                    </tr>
         
-            <tr>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">4</td>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">保罗</td>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">48</td>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">马哈奇</td>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">41</td>
-            </tr>
+                    <tr>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">3</td>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">莱赫奇卡</td>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">45</td>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">蒂亚福</td>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">6</td>
+                    </tr>
         
-            <tr>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">5</td>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">丰塞卡</td>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">6</td>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">达尔德里</td>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">2</td>
-            </tr>
+                    <tr>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">4</td>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">保罗</td>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">48</td>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">马哈奇</td>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">41</td>
+                    </tr>
         
-            </tbody>
-        </table>
+                    <tr>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">5</td>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">丰塞卡</td>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">6</td>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">达尔德里</td>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">2</td>
+                    </tr>
+        
+                </tbody>
+            </table>
+        </div>
     </div>
+    
+    <script>
+        document.getElementById('toggleStatsBtn').addEventListener('click', function() {
+            const statsTable = document.getElementById('statsTable');
+            const isHidden = statsTable.style.display === 'none';
+            statsTable.style.display = isHidden ? 'block' : 'none';
+            this.innerHTML = isHidden ? '隐藏统计信息 ▲' : '显示统计信息 ▼';
+        });
+    </script>
     
             <div class="controls-container">
                 <div>

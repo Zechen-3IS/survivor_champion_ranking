@@ -259,68 +259,82 @@
         <div class="container">
             <h1>WTA幸存者冠军排名</h1>
             <div style="text-align: center; color: #888; font-size: 0.9em; margin-bottom: 10px;">
-                页面数据更新时间：2025-07-05 17:09:27
+                页面数据更新时间：2025-07-05 17:26:55
             </div>
             <div class="participant-info"><strong>参赛人数：</strong> 458 <strong style="margin-left:10px;">存活人数：</strong> 61 </div> 
             <div class="choice-info"><strong>今日选择情况：</strong> 总选择人数：50 <ul><li>米-安德烈耶娃：12</li><li>亚历山德罗娃：12</li><li>雷巴金娜：9</li><li>本西奇：6</li><li>萨姆索诺娃：6</li><li>亚斯特列姆斯卡：3</li><li>埃-纳瓦罗：1</li><li>科林斯：1</li></ul></div>
             
-    <div style="margin: 20px auto; text-align: center; font-size: 0.95em;">
-        <h3 style="margin-bottom: 10px; font-size: 0.95em;">杀手球员统计</h3>
-        <table style="margin: 0 auto; border-collapse: collapse; border: 1px solid #ddd; font-size: 0.95em;">
-            <thead>
-                <tr style="background-color: #f2f2f2;">
-                    <th style="padding: 8px 12px; border: 1px solid #ddd;">天数</th>
-                    <th style="padding: 8px 12px; border: 1px solid #ddd;">杀手球员1</th>
-                    <th style="padding: 8px 12px; border: 1px solid #ddd;">死亡人数1</th>
-                    <th style="padding: 8px 12px; border: 1px solid #ddd;">杀手球员2</th>
-                    <th style="padding: 8px 12px; border: 1px solid #ddd;">死亡人数2</th>
-                </tr>
-            </thead>
-            <tbody>
-    
-            <tr>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">1</td>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">贾贝乌尔</td>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">25</td>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">张帅</td>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">4</td>
-            </tr>
+        <div style="margin: 20px auto; text-align: center; font-size: 0.95em;">
+            <button id="toggleStatsBtn" style="padding: 5px 15px; background-color: #2c3e50; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.95em;">
+                显示统计信息 ▼
+            </button>
+            <div id="statsTable" style="display: none; margin-top: 10px;">
+                <h3 style="margin-bottom: 10px; font-size: 0.95em;">各轮次杀手球员统计</h3>
+                <table style="margin: 0 auto; border-collapse: collapse; border: 1px solid #ddd; font-size: 0.95em;">
+                    <thead>
+                        <tr style="background-color: #f2f2f2;">
+                            <th style="padding: 8px 12px; border: 1px solid #ddd;">天数</th>
+                            <th style="padding: 8px 12px; border: 1px solid #ddd;">杀手球员1</th>
+                            <th style="padding: 8px 12px; border: 1px solid #ddd;">死亡人数1</th>
+                            <th style="padding: 8px 12px; border: 1px solid #ddd;">杀手球员2</th>
+                            <th style="padding: 8px 12px; border: 1px solid #ddd;">死亡人数2</th>
+                        </tr>
+                    </thead>
+                    <tbody>
         
-            <tr>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">2</td>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">科斯秋克</td>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">39</td>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">阿扎伦卡</td>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">34</td>
-            </tr>
+                    <tr>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">1</td>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">贾贝乌尔</td>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">25</td>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">张帅</td>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">4</td>
+                    </tr>
         
-            <tr>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">3</td>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">博尔特</td>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">68</td>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">保利尼</td>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">14</td>
-            </tr>
+                    <tr>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">2</td>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">科斯秋克</td>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">39</td>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">阿扎伦卡</td>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">34</td>
+                    </tr>
         
-            <tr>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">4</td>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">王欣瑜</td>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">20</td>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">克宁</td>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">1</td>
-            </tr>
+                    <tr>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">3</td>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">博尔特</td>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">68</td>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">保利尼</td>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">14</td>
+                    </tr>
         
-            <tr>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">5</td>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">凯斯</td>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">15</td>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">斯维托丽娜</td>
-                <td style="padding: 8px 12px; border: 1px solid #ddd;">15</td>
-            </tr>
+                    <tr>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">4</td>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">王欣瑜</td>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">20</td>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">克宁</td>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">1</td>
+                    </tr>
         
-            </tbody>
-        </table>
+                    <tr>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">5</td>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">凯斯</td>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">15</td>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">斯维托丽娜</td>
+                        <td style="padding: 8px 12px; border: 1px solid #ddd;">15</td>
+                    </tr>
+        
+                </tbody>
+            </table>
+        </div>
     </div>
+    
+    <script>
+        document.getElementById('toggleStatsBtn').addEventListener('click', function() {
+            const statsTable = document.getElementById('statsTable');
+            const isHidden = statsTable.style.display === 'none';
+            statsTable.style.display = isHidden ? 'block' : 'none';
+            this.innerHTML = isHidden ? '隐藏统计信息 ▲' : '显示统计信息 ▼';
+        });
+    </script>
     
             <div class="controls-container">
                 <div>
