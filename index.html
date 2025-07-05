@@ -5,6 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>签表幸存者排名</title>
     <style>
+        :root {
+            --bg-color: #f5f5f5;          /* 浅色模式背景 */
+            --text-color: #333;            /* 浅色模式文字 */
+            --box-color: #ffffff;          /* 浅色模式白框 */
+            --box-border: #2c3e50;         /* 浅色模式边框 */
+            --box-hover: #2c3e50;          /* 浅色模式悬停 */
+            --box-hover-text: white;       /* 浅色模式悬停文字 */
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #000000;       /* 纯黑背景 */
+                --text-color: #ffffff;      /* 白色文字 */
+                --box-color: transparent;   /* 透明框 */
+                --box-border: #ffffff;      /* 白色边框 */
+                --box-hover: #ffffff;       /* 悬停白底 */
+                --box-hover-text: #000000;  /* 悬停黑字 */
+            }
+        }
+
         body {
             font-family: Arial, sans-serif;
             display: flex;
@@ -13,12 +33,17 @@
             justify-content: center;
             height: 100vh;
             margin: 0;
-            background-color: #f5f5f5;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: all 0.3s ease;
         }
+
         h1 {
             margin-bottom: 40px;
-            color: #333;
+            font-weight: normal;
+            letter-spacing: 1px;
         }
+
         .links {
             display: flex;
             flex-wrap: wrap;
@@ -26,20 +51,23 @@
             justify-content: center;
             max-width: 600px;
         }
+
         a {
             text-decoration: none;
-            color: #2c3e50;
+            color: var(--text-color);
             font-size: 18px;
-            padding: 10px 20px;
-            border: 1px solid #2c3e50;
-            border-radius: 4px;
+            padding: 12px 24px;
+            border: 1px solid var(--box-border);
+            border-radius: 0;              /* 直角矩形 */
             transition: all 0.3s;
             text-align: center;
             min-width: 180px;
+            background-color: var(--box-color);
         }
+
         a:hover {
-            background-color: #2c3e50;
-            color: white;
+            background-color: var(--box-hover);
+            color: var(--box-hover-text);
         }
     </style>
 </head>
