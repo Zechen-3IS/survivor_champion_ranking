@@ -7,13 +7,69 @@
         <title>ATP幸存者即时排名</title>
         
     <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --table-header-bg: #2c3e50;
+            --table-header-text: #ffffff;
+            --table-row-even: #f3f3f3;
+            --table-row-hover: #f1f1f1;
+            --table-border: #dddddd;
+            --button-bg: #2c3e50;
+            --button-text: white;
+            --button-hover: #1a252f;
+            --button-disabled: #95a5a6;
+            --filter-bg: white;
+            --filter-text: #333;
+            --filter-hover: #f1f1f1;
+            --filter-border: #ddd;
+            --filter-shadow: rgba(0,0,0,0.2);
+            --participant-info: #333;
+            --choice-info: #333;
+            --stats-bg: #f2f2f2;
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #121212;
+                --text-color: #e0e0e0;
+                --table-header-bg: #1a1a1a;
+                --table-header-text: #ffffff;
+                --table-row-even: #1e1e1e;
+                --table-row-hover: #2a2a2a;
+                --table-border: #444;
+                --button-bg: #3a3a3a;
+                --button-text: #e0e0e0;
+                --button-hover: #4a4a4a;
+                --button-disabled: #2a2a2a;
+                --filter-bg: #2a2a2a;
+                --filter-text: #e0e0e0;
+                --filter-hover: #3a3a3a;
+                --filter-border: #444;
+                --filter-shadow: rgba(0,0,0,0.4);
+                --participant-info: #e0e0e0;
+                --choice-info: #e0e0e0;
+                --stats-bg: #2a2a2a;
+            }
+            
+            .data-table tbody tr[style*="background-color: #e6f7ff"] {
+                background-color: #003545 !important;
+            }
+            
+            del {
+                color: #777;
+            }
+        }
+        
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
         }
         h1 {
             text-align: center;
-            color: #333;
+            color: var(--text-color);
             margin-bottom: 30px;
         }
         .container {
@@ -32,32 +88,30 @@
             min-width: 800px;
         }
         .data-table thead tr {
-            background-color: #2c3e50;
-            color: #ffffff;
+            background-color: var(--table-header-bg);
+            color: var(--table-header-text);
             text-align: left;
         }
         .data-table th, 
         .data-table td {
             padding: 12px 15px;
             text-align: center;
-        }
-        .data-table tbody tr {
-            border-bottom: 1px solid #dddddd;
+            border-bottom: 1px solid var(--table-border);
         }
         .data-table tbody tr:nth-of-type(even) {
-            background-color: #f3f3f3;
+            background-color: var(--table-row-even);
         }
         .data-table tbody tr:last-of-type {
-            border-bottom: 2px solid #2c3e50;
+            border-bottom: 2px solid var(--table-border);
         }
         .data-table tbody tr:hover {
-            background-color: #f1f1f1;
+            background-color: var(--table-row-hover);
             font-weight: bold;
         }
         .data-table th {
             position: sticky;
             top: 0;
-            background-color: #2c3e50;
+            background-color: var(--table-header-bg);
             z-index: 2;
         }
         .data-table thead {
@@ -77,13 +131,17 @@
         #searchInput {
             padding: 10px;
             width: 300px;
-            border: 1px solid #ddd;
+            border: 1px solid var(--filter-border);
             border-radius: 4px;
+            background-color: var(--filter-bg);
+            color: var(--filter-text);
         }
         #rowsPerPage {
             padding: 10px;
-            border: 1px solid #ddd;
+            border: 1px solid var(--filter-border);
             border-radius: 4px;
+            background-color: var(--filter-bg);
+            color: var(--filter-text);
         }
         .pagination {
             display: flex;
@@ -93,17 +151,17 @@
         }
         .pagination button {
             padding: 8px 16px;
-            background-color: #2c3e50;
-            color: white;
+            background-color: var(--button-bg);
+            color: var(--button-text);
             border: none;
             border-radius: 4px;
             cursor: pointer;
         }
         .pagination button:hover {
-            background-color: #1a252f;
+            background-color: var(--button-hover);
         }
         .pagination button:disabled {
-            background-color: #95a5a6;
+            background-color: var(--button-disabled);
             cursor: not-allowed;
         }
         .page-info {
@@ -118,7 +176,7 @@
             margin: 10px auto 20px;
             text-align: center;
             font-size: 0.95em;
-            color: #333;
+            color: var(--choice-info);
         }
         .choice-info ul {
             list-style: none;
@@ -133,7 +191,7 @@
             margin: 10px auto 20px;
             text-align: center;
             font-size: 0.95em;
-            color: #333;
+            color: var(--participant-info);
         }
         /* 多选筛选控件样式 */
         .filter-container {
@@ -151,15 +209,15 @@
             width: 100px;
             padding: 3px;
             font-size: 12px;
-            border: 1px solid #ddd;
+            border: 1px solid var(--filter-border);
             border-radius: 3px;
-            background-color: white;
+            background-color: var(--filter-bg);
             cursor: pointer;
             text-align: left;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
-            color: #333;
+            color: var(--filter-text);
         }
         .filter-button::after {
             content: "▼";
@@ -169,14 +227,14 @@
         .filter-options {
             display: none;
             position: absolute;
-            background-color: white;
+            background-color: var(--filter-bg);
             min-width: 120px;
             max-height: 200px;
             overflow-y: auto;
-            border: 1px solid #ddd;
+            border: 1px solid var(--filter-border);
             border-radius: 3px;
             z-index: 100;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 5px var(--filter-shadow);
         }
         .filter-options.show {
             display: block;
@@ -186,15 +244,15 @@
             cursor: pointer;
             display: flex;
             align-items: center;
-            color: #333;
-            background-color: white;
+            color: var(--filter-text);
+            background-color: var(--filter-bg);
         }
         .filter-option:hover {
-            background-color: #f1f1f1;
+            background-color: var(--filter-hover);
         }
         .filter-option label {
             cursor: pointer;
-            color: #333;
+            color: var(--filter-text);
             margin-left: 5px;
             width: 100%;
         }
@@ -204,11 +262,10 @@
         }
         .filter-option input:checked + label {
             font-weight: bold;
-            color: #2c3e50;
         }
         .filter-summary {
             font-size: 11px;
-            color: #666;
+            color: var(--text-color);
             margin-top: 3px;
             text-align: center;
         }
@@ -229,28 +286,46 @@
             text-align: center;
             margin: 10px 0;
             font-size: 14px;
-            color: #2c3e50;
+            color: var(--text-color);
             font-weight: bold;
         }
         .select-all-container {
             display: flex;
             justify-content: space-between;
             padding: 5px 10px;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid var(--table-border);
         }
         .select-all-btn, .deselect-all-btn {
             padding: 2px 5px;
             font-size: 11px;
-            border: 1px solid #ddd;
+            border: 1px solid var(--filter-border);
             border-radius: 3px;
-            background-color: #f8f8f8;
+            background-color: var(--filter-bg);
             cursor: pointer;
+            color: var(--filter-text);
         }
         .select-all-btn:hover {
-            background-color: #e6f7ff;
+            background-color: var(--filter-hover);
         }
         .deselect-all-btn:hover {
-            background-color: #fff2f0;
+            background-color: var(--filter-hover);
+        }
+        
+        /* 统计表格样式 */
+        #statsTable table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            border: 1px solid var(--table-border);
+            font-size: 0.95em;
+        }
+        #statsTable th {
+            background-color: var(--stats-bg);
+            padding: 8px 12px;
+            border: 1px solid var(--table-border);
+        }
+        #statsTable td {
+            padding: 8px 12px;
+            border: 1px solid var(--table-border);
         }
     </style>
     
@@ -259,7 +334,7 @@
         <div class="container">
             <h1>ATP幸存者即时排名</h1>
             <div style="text-align: center; color: #888; font-size: 0.9em; margin-bottom: 10px;">
-                页面数据更新时间：2025-07-05 17:29:41
+                页面数据更新时间：2025-07-05 17:40:15
             </div>
             <div class="participant-info"><strong>参赛人数：</strong> 417 <strong style="margin-left:10px;">存活人数：</strong> 71 </div> 
             <div class="choice-info"><strong>今日选择情况：</strong> 总选择人数：53 <ul><li>迪米特洛夫：15</li><li>德米纳尔：13</li><li>德约科维奇：11</li><li>谢尔顿：9</li><li>西里奇：3</li><li>中岛布兰登：2</li></ul></div>
