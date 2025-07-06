@@ -24,7 +24,6 @@
             --filter-hover: #f1f1f1;
             --filter-border: #ddd;
             --filter-shadow: rgba(0,0,0,0.2);
-            --participant-info: #333;
             --choice-info: #333;
             --stats-bg: #f2f2f2;
         }
@@ -47,7 +46,6 @@
                 --filter-hover: #3a3a3a;
                 --filter-border: #444;
                 --filter-shadow: rgba(0,0,0,0.4);
-                --participant-info: #e0e0e0;
                 --choice-info: #e0e0e0;
                 --stats-bg: #2a2a2a;
             }
@@ -186,12 +184,6 @@
         .choice-info li {
             display: inline-block;
             margin: 0 12px;
-        }
-        .participant-info {
-            margin: 10px auto 20px;
-            text-align: center;
-            font-size: 0.95em;
-            color: var(--participant-info);
         }
         /* 多选筛选控件样式 */
         .filter-container {
@@ -438,11 +430,10 @@
         <div class="container">
             <h1>WTA幸存者冠军排名</h1>
             <div style="text-align: center; color: #888; font-size: 0.9em; margin-bottom: 10px;">
-                页面数据更新时间：2025-07-06 12:02:52
+                页面数据更新时间：2025-07-06 12:27:52
             </div>
             
-            <div class="participant-info"><strong>参赛人数：</strong> 458 <strong style="margin-left:10px;">存活人数：</strong> 45 </div> 
-            <div class="choice-info"><strong>今日选择情况：</strong> 总选择人数：24 <ul><li>西格蒙德：15</li><li>萨巴莲卡：4</li><li>帕芙柳琴科娃：2</li><li>阿尼西莫娃：1</li><li>卡塔尔：1</li><li>谢拉：1</li></ul></div>
+            <div class="choice-info"><strong>今日选择情况：</strong> 总选择人数：26 <ul><li>西格蒙德：16</li><li>萨巴莲卡：5</li><li>帕芙柳琴科娃：2</li><li>阿尼西莫娃：1</li><li>卡塔尔：1</li><li>谢拉：1</li></ul></div>
             
     <div class="stats-container">
         <button class="toggle-stats-btn" onclick="toggleStatsTable('statsTable1')">
@@ -8753,8 +8744,8 @@
                         </span>
 </td>
 <td>存活</td>
-<td></td>
-<td></td>
+<td>西格蒙德</td>
+<td>卡塔尔</td>
 <td></td>
 <td>亚历山德罗娃</td>
 <td>6</td>
@@ -14987,8 +14978,8 @@
                         </span>
 </td>
 <td>存活</td>
-<td></td>
-<td></td>
+<td>萨巴莲卡</td>
+<td>西格蒙德</td>
 <td></td>
 <td>米-安德烈耶娃</td>
 <td>6</td>
