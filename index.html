@@ -10,28 +10,36 @@
             :root {
                 --bg-color: #f8f9fa;
                 --text-color: #212529;
-                --primary-color: #000000;
-                --secondary-color: #003049;
-                --success-color: #2a9d8f;
+                --primary-color: #005f73;
+                --secondary-color: #0a9396;
+                --success-color: #94d2bd;
                 --light-border: #dee2e6;
                 --card-bg: #ffffff;
                 --card-shadow: 0 2px 8px rgba(0,0,0,0.1);
                 --defending-color: #6c757d;
-                --champion-color: #d62828;
+                --champion-color: #ae2012;
+                --ranking-bg: #ffffff;
+                --ranking-hover: #e9ecef;
+                --hover-bg: #e9ecef;
+                --hover-text: #212529;
             }
     
             @media (prefers-color-scheme: dark) {
                 :root {
                     --bg-color: #121212;
                     --text-color: #e1e1e1;
-                    --primary-color: #ffffff;
+                    --primary-color: #83c5be;
                     --secondary-color: #43aa8b;
                     --success-color: #90be6d;
                     --light-border: #333333;
                     --card-bg: #1e1e1e;
                     --card-shadow: 0 2px 8px rgba(0,0,0,0.3);
                     --defending-color: #a0a0a0;
-                    --champion-color: #ff6b6b;
+                    --champion-color: #ff9b54;
+                    --ranking-bg: #1e1e1e;
+                    --ranking-hover: #2d2d2d;
+                    --hover-bg: #2d2d2d;
+                    --hover-text: #ffffff;
                 }
             }
     
@@ -83,7 +91,7 @@
                 padding: 20px;
                 box-shadow: var(--card-shadow);
                 display: flex;
-                transition: transform 0.3s ease;
+                transition: all 0.3s ease;
                 position: relative;
             }
             
@@ -93,6 +101,18 @@
             }
             
             .card-link:hover .card {
+                transform: translateY(-5px);
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            }
+            
+            /* 本周赛事卡片悬停效果 */
+            .current-week-card {
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+            
+            .current-week-card:hover {
+                background: var(--hover-bg);
                 transform: translateY(-5px);
                 box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             }
@@ -126,19 +146,20 @@
                 opacity: 0.8;
             }
     
-            .nav-links {
+            /* 排名卡片样式 */
+            .ranking-grid {
                 display: grid;
                 grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
                 gap: 15px;
-                margin-top: 30px;
+                margin-bottom: 30px;
             }
-    
-            .nav-link {
-                background: var(--card-bg);
+            
+            .ranking-card {
+                background: var(--ranking-bg);
                 color: var(--text-color);
                 text-decoration: none;
-                padding: 15px;
-                border-radius: 8px;
+                padding: 20px;
+                border-radius: 10px;
                 text-align: center;
                 font-weight: 500;
                 box-shadow: var(--card-shadow);
@@ -146,18 +167,26 @@
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+                justify-content: center;
+                min-height: 120px;
             }
-    
-            .nav-link:hover {
-                background: var(--primary-color);
-                color: white;
-                transform: translateY(-3px);
+            
+            .ranking-card:hover {
+                background: var(--hover-bg);
+                transform: translateY(-5px);
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             }
-    
-            .nav-link i {
-                font-size: 1.5rem;
-                margin-bottom: 8px;
+            
+            .ranking-icon {
+                font-size: 2rem;
+                margin-bottom: 12px;
             }
+            
+            .ranking-title {
+                font-size: 1.1rem;
+                font-weight: 600;
+            }
+            
             /* 新增赛事名称样式 */
             .tournament-name {
                 font-weight: 600;
@@ -237,7 +266,7 @@
                 .card-container {
                     grid-template-columns: 1fr;
                 }
-                .nav-links {
+                .ranking-grid {
                     grid-template-columns: 1fr;
                 }
             }
@@ -250,10 +279,35 @@
                 <p class="subtitle">开发者：旧纳</p>
             </header>
             
+            <h2>排名查询</h2>
+            <div class="ranking-grid">
+                
+        <a href="atp_ranking.html" class="ranking-card">
+            <div class="ranking-icon">👑</div>
+            <div class="ranking-title">ATP冠军排名</div>
+        </a>
+        
+        <a href="wta_ranking.html" class="ranking-card">
+            <div class="ranking-icon">👑</div>
+            <div class="ranking-title">WTA冠军排名</div>
+        </a>
+        
+        <a href="atp_instant_ranking.html" class="ranking-card">
+            <div class="ranking-icon">📊</div>
+            <div class="ranking-title">ATP即时排名</div>
+        </a>
+        
+        <a href="wta_instant_ranking.html" class="ranking-card">
+            <div class="ranking-icon">📊</div>
+            <div class="ranking-title">WTA即时排名</div>
+        </a>
+        
+            </div>
+            
             <h2>上周赛事结果</h2>
             <div class="card-container">
                 
-            <div class="card champion-card">
+            <div class="card champion-card ">
                 <div class="card-icon">🏆</div>
                 <div class="card-content">
                     <h3>WTA上周赛事</h3>
@@ -268,7 +322,7 @@
             </div>
             
                 
-            <div class="card champion-card">
+            <div class="card champion-card ">
                 <div class="card-icon">🏆</div>
                 <div class="card-content">
                     <h3>ATP上周赛事</h3>
@@ -288,7 +342,7 @@
             <div class="card-container">
                 
             <a href="https://www.live-tennis.cn/zh/survivor/event/WC/2025/WS/my" class="card-link">
-                <div class="card ">
+                <div class="card  current-week-card">
                     <div class="card-icon">🎾</div>
                     <div class="card-content">
                         <h3>WTA本周赛事</h3>
@@ -309,7 +363,7 @@
             
                 
             <a href="https://www.live-tennis.cn/zh/survivor/event/WC/2025/MS/my" class="card-link">
-                <div class="card ">
+                <div class="card  current-week-card">
                     <div class="card-icon">🎾</div>
                     <div class="card-content">
                         <h3>ATP本周赛事</h3>
@@ -328,26 +382,6 @@
                 </div>
             </a>
             
-            </div>
-            
-            <h2>排名查询</h2>
-            <div class="nav-links">
-                <a href="atp_ranking.html" class="nav-link">
-                    <i>👑</i>
-                    ATP冠军排名
-                </a>
-                <a href="wta_ranking.html" class="nav-link">
-                    <i>👑</i>
-                    WTA冠军排名
-                </a>
-                <a href="atp_instant_ranking.html" class="nav-link">
-                    <i>📊</i>
-                    ATP即时排名
-                </a>
-                <a href="wta_instant_ranking.html" class="nav-link">
-                    <i>📊</i>
-                    WTA即时排名
-                </a>
             </div>
         </div>
     </body>
