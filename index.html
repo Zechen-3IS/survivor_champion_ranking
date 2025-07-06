@@ -16,6 +16,8 @@
                 --light-border: #dee2e6;
                 --card-bg: #ffffff;
                 --card-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                --defending-color: #6c757d;
+                --champion-color: #d62828;
             }
     
             @media (prefers-color-scheme: dark) {
@@ -28,6 +30,8 @@
                     --light-border: #333333;
                     --card-bg: #1e1e1e;
                     --card-shadow: 0 2px 8px rgba(0,0,0,0.3);
+                    --defending-color: #a0a0a0;
+                    --champion-color: #ff6b6b;
                 }
             }
     
@@ -80,6 +84,7 @@
                 box-shadow: var(--card-shadow);
                 display: flex;
                 transition: transform 0.3s ease;
+                position: relative;
             }
             
             .card-link {
@@ -153,6 +158,80 @@
                 font-size: 1.5rem;
                 margin-bottom: 8px;
             }
+            /* 新增赛事名称样式 */
+            .tournament-name {
+                font-weight: 600;
+                color: var(--primary-color);
+                background: linear-gradient(transparent 60%, rgba(214, 40, 40, 0.15) 40%);
+                padding: 0 2px;
+                transition: all 0.3s ease;
+            }
+            
+            .tournament-level {
+                font-weight: 500;
+                color: var(--secondary-color);
+                background-color: rgba(0, 48, 73, 0.1);
+                padding: 2px 6px;
+                border-radius: 4px;
+                font-size: 0.9em;
+                margin-left: 5px;
+                white-space: nowrap;
+            }
+            
+            .card:hover .tournament-name {
+                background: linear-gradient(transparent 60%, rgba(214, 40, 40, 0.25) 40%);
+            }
+            
+            .trophy-badge {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                font-size: 1.5rem;
+                opacity: 0.8;
+                animation: pulse 2s infinite;
+            }
+            
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.1); }
+                100% { transform: scale(1); }
+            }
+            
+            /* 卡片内容调整 */
+            .card-content p {
+                margin: 10px 0 0;
+                line-height: 1.6;
+            }
+            
+            .card-content p:first-child {
+                margin-top: 0;
+            }
+            
+            /* 卫冕赛事样式 */
+            .defending-section {
+                margin-top: 15px;
+                padding-top: 15px;
+                border-top: 1px dashed var(--light-border);
+                color: var(--defending-color);
+            }
+            
+            .defending-title {
+                font-weight: 600;
+                margin-bottom: 5px;
+                font-size: 0.95em;
+            }
+            
+            .defending-champion {
+                margin-top: 8px;
+                font-weight: 500;
+                color: var(--champion-color);
+            }
+            
+            .defending-no-champion {
+                margin-top: 8px;
+                font-style: italic;
+                opacity: 0.8;
+            }
     
             @media (max-width: 600px) {
                 .card-container {
@@ -178,8 +257,14 @@
                 <div class="card-icon">🏆</div>
                 <div class="card-content">
                     <h3>WTA上周赛事</h3>
-                    <p>巴特洪堡<br>恭喜wennuan78夺冠</p>
+                    <div class="card-content-wrapper">
+                <div class="match-info">
+                    <span class="tournament-name">巴特洪堡</span>
+                    <span class="tournament-level">500赛</span>
                 </div>
+                <div class="champion-info">恭喜wennuan78夺冠</div></div>
+                </div>
+                <div class="trophy-badge">🏆</div>
             </div>
             
                 
@@ -187,8 +272,14 @@
                 <div class="card-icon">🏆</div>
                 <div class="card-content">
                     <h3>ATP上周赛事</h3>
-                    <p>马洛卡<br>恭喜Dagenais, 木的讷, 543236280, 浙江土特产, 跟我一起摆烂, 顶***家, 客家阿V2夺冠</p>
+                    <div class="card-content-wrapper">
+                <div class="match-info">
+                    <span class="tournament-name">马洛卡</span>
+                    <span class="tournament-level">250赛</span>
                 </div>
+                <div class="champion-info">恭喜Dagenais, 木的讷, 543236280, 浙江土特产, 跟我一起摆烂, 顶***家, 客家阿V2夺冠</div></div>
+                </div>
+                <div class="trophy-badge">🏆</div>
             </div>
             
             </div>
@@ -201,8 +292,18 @@
                     <div class="card-icon">🎾</div>
                     <div class="card-content">
                         <h3>WTA本周赛事</h3>
-                        <p>温网</p>
+                        <div class="card-content-wrapper">
+                <div class="match-info">
+                    <span class="tournament-name">温网</span>
+                    <span class="tournament-level">大满贯</span>
+                </div>
+                
+                    <div class="defending-section">
+                        <div class="defending-no-champion">卫冕赛事无人生还</div>
                     </div>
+                    </div>
+                    </div>
+                    
                 </div>
             </a>
             
@@ -212,8 +313,18 @@
                     <div class="card-icon">🎾</div>
                     <div class="card-content">
                         <h3>ATP本周赛事</h3>
-                        <p>温网</p>
+                        <div class="card-content-wrapper">
+                <div class="match-info">
+                    <span class="tournament-name">温网</span>
+                    <span class="tournament-level">大满贯</span>
+                </div>
+                
+                    <div class="defending-section">
+                        <div class="defending-no-champion">卫冕赛事无人生还</div>
                     </div>
+                    </div>
+                    </div>
+                    
                 </div>
             </a>
             
