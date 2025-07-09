@@ -448,7 +448,7 @@
                 }
                 
                 .ranking-grid {
-                    grid-template-columns: 1fr;
+                    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
                 }
                 
                 .card {
@@ -477,7 +477,7 @@
             
             <h2>排名查询</h2>
             <div class="ranking-grid">
-                
+               
         <a href="atp_ranking.html" class="ranking-card">
             <div class="ranking-icon">👑</div>
             <div class="ranking-title">ATP冠军排名</div>
@@ -488,6 +488,11 @@
             <div class="ranking-title">WTA冠军排名</div>
         </a>
         
+        <a href="combined_ranking.html" class="ranking-card">
+            <div class="ranking-icon">👑</div>
+            <div class="ranking-title">联合冠军排名</div>
+        </a>
+        </div><div class='ranking-grid'>
         <a href="atp_instant_ranking.html" class="ranking-card">
             <div class="ranking-icon">📊</div>
             <div class="ranking-title">ATP即时排名</div>
@@ -496,6 +501,11 @@
         <a href="wta_instant_ranking.html" class="ranking-card">
             <div class="ranking-icon">📊</div>
             <div class="ranking-title">WTA即时排名</div>
+        </a>
+        
+        <a href="combined_instant_ranking.html" class="ranking-card">
+            <div class="ranking-icon">📊</div>
+            <div class="ranking-title">联合即时排名</div>
         </a>
         
             </div>
