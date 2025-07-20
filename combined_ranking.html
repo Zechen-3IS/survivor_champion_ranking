@@ -430,7 +430,7 @@
         <div class="container">
             <h1>幸存者冠军联合排名</h1>
             <div style="text-align: center; color: #888; font-size: 0.9em; margin-bottom: 10px;">
-                页面数据更新时间：2025-07-20 17:58:38
+                页面数据更新时间：2025-07-20 23:55:58
             </div>
             
             
@@ -12823,14 +12823,28 @@
                 // 不再从本地存储加载
                 Array.from(columnValues)
                     .sort((a, b) => {
-                        if (index >= 8) {
-                            const numA = parseFloat(a.replace(/[^0-9.\-]/g, ''));
-                            const numB = parseFloat(b.replace(/[^0-9.\-]/g, ''));
-                            const isNumA = !isNaN(numA);
-                            const isNumB = !isNaN(numB);
-                            if (isNumA && isNumB) return numB - numA;
+                        // 尝试将值转换为数字
+                        const numA = parseFloat(a.replace(/[^0-9.\-]/g, ''));
+                        const numB = parseFloat(b.replace(/[^0-9.\-]/g, ''));
+                        const isNumA = !isNaN(numA);
+                        const isNumB = !isNaN(numB);
+                        
+                        // 情况1：两个值都是数字 -> 按数值降序
+                        if (isNumA && isNumB) {
+                            return numB - numA; // 降序排列
                         }
-                        return a.localeCompare(b, 'zh');
+                        // 情况2：只有A是数字 -> 数字排在前面（降序时大数在前）
+                        else if (isNumA) {
+                            return -1;
+                        }
+                        // 情况3：只有B是数字 -> 数字排在前面
+                        else if (isNumB) {
+                            return 1;
+                        }
+                        // 情况4：都不是数字 -> 按中文拼音升序
+                        else {
+                            return a.localeCompare(b, 'zh');
+                        }
                     })
                     .forEach(value => {
                         const option = document.createElement('div');
