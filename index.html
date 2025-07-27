@@ -512,78 +512,91 @@
                     font-size: 1.2rem;
                     font-weight: 600;
                 }
-                .announcement-container {
-                    margin: 25px auto 20px;
-                    max-width: 800px;
-                    border-radius: 12px;
-                    overflow: hidden;
-                    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-                    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-                    border: 1px solid #e0e0e0;
-                    animation: slideIn 0.5s ease-out;
-                    position: relative;
-                }
                 
-                @keyframes slideIn {
-                    0% { transform: translateY(-20px); opacity: 0; }
-                    100% { transform: translateY(0); opacity: 1; }
-                }
-                
-                .announcement-header {
-                    display: flex;
-                    align-items: center;
-                    padding: 15px 20px;
-                    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-                    color: white;
-                    font-weight: 500;
-                }
-                
-                .announcement-icon {
-                    font-size: 1.8rem;
-                    margin-right: 12px;
-                }
-                
-                .announcement-header h3 {
-                    margin: 0;
-                    flex-grow: 1;
-                    font-size: 1.4rem;
-                    font-weight: 600;
-                }
-                
-                .announcement-close {
-                    font-size: 1.8rem;
-                    cursor: pointer;
-                    padding: 0 10px;
-                    transition: transform 0.2s;
-                }
-                
-                .announcement-close:hover {
-                    transform: scale(1.2);
-                }
-                
-                .announcement-content {
-                    padding: 20px 25px;
-                    font-size: 1.1rem;
-                    line-height: 1.7;
-                    color: var(--text-color);
-                    background: var(--card-bg);
-                }
-                
-                .announcement-content p {
-                    margin: 15px 0;
-                }
-                
-                .announcement-content a {
-                    color: var(--primary-color);
-                    text-decoration: none;
-                    border-bottom: 1px dotted var(--primary-color);
-                    transition: all 0.2s;
-                }
-                
-                .announcement-content a:hover {
-                    color: var(--secondary-color);
-                    border-bottom-style: solid;
-                }
+            /* 新增公告栏样式 - 支持多行 */
+            .announcement-container {
+                margin: 25px auto 20px;
+                max-width: 800px;
+                border-radius: 12px;
+                overflow: hidden;
+                box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+                background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+                border: 1px solid #e0e0e0;
+                animation: slideIn 0.5s ease-out;
+                position: relative;
+            }
+            
+            @keyframes slideIn {
+                0% { transform: translateY(-20px); opacity: 0; }
+                100% { transform: translateY(0); opacity: 1; }
+            }
+            
+            .announcement-header {
+                display: flex;
+                align-items: center;
+                padding: 15px 20px;
+                background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+                color: white;
+                font-weight: 500;
+            }
+            
+            .announcement-icon {
+                font-size: 1.8rem;
+                margin-right: 12px;
+            }
+            
+            .announcement-header h3 {
+                margin: 0;
+                flex-grow: 1;
+                font-size: 1.4rem;
+                font-weight: 600;
+            }
+            
+            .announcement-close {
+                font-size: 1.8rem;
+                cursor: pointer;
+                padding: 0 10px;
+                transition: transform 0.2s;
+                line-height: 1;
+            }
+            
+            .announcement-close:hover {
+                transform: scale(1.2);
+            }
+            
+            .announcement-content {
+                padding: 15px 20px 20px;
+                font-size: 1.1rem;
+                line-height: 1.7;
+                color: var(--text-color);
+                background: var(--card-bg);
+            }
+            
+            .announcement-line {
+                display: flex;
+                margin: 15px 0;
+                padding: 10px 15px;
+                border-radius: 8px;
+                background: rgba(0, 0, 0, 0.03);
+                transition: all 0.3s ease;
+                align-items: center;
+            }
+            
+            .announcement-line:hover {
+                background: rgba(44, 110, 73, 0.08);
+                transform: translateX(5px);
+            }
+            
+            .line-icon {
+                font-size: 1.3rem;
+                margin-right: 15px;
+                min-width: 30px;
+                text-align: center;
+            }
+            
+            .line-content {
+                flex-grow: 1;
+            }
             
             /* 深色模式适配 */
             @media (prefers-color-scheme: dark) {
@@ -594,6 +607,14 @@
                 
                 .announcement-content {
                     background: var(--card-bg);
+                }
+                
+                .announcement-line {
+                    background: rgba(255, 255, 255, 0.05);
+                }
+                
+                .announcement-line:hover {
+                    background: rgba(76, 149, 108, 0.15);
                 }
             }
             @media (max-width: 480px) {
@@ -611,22 +632,32 @@
                 <p class="subtitle">开发者：旧纳 </p>
                 <p class="subtitle">数据源：丘的网球</p>
                 <div style="text-align: center; color: #888; font-size: 0.9em; margin-bottom: 10px;">
-                页面数据更新时间：2025-07-27 19:50:51
+                页面数据更新时间：2025-07-27 20:43:40
             </div>
             </header>
              <!-- 公告栏 -->
             
-        <div class="announcement-container">
-            <div class="announcement-header">
-                <div class="announcement-icon">📢</div>
-                <h3>公告</h3>
-                <div class="announcement-close" onclick="this.parentElement.parentElement.style.display='none'">×</div>
+            <div class="announcement-container">
+                <div class="announcement-header">
+                    <div class="announcement-icon">📢</div>
+                    <h3>公告通知</h3>
+                    <div class="announcement-close" onclick="closeAnnouncement(this)">×</div>
+                </div>
+                <div class="announcement-content">
+                    
+                    <div class="announcement-line">
+                        <div class="line-icon">📌</div>
+                        <div class="line-content">因赛制原因，ATP华盛顿站比分暂未计入总分，明天比赛结束之后会修复。</div>
+                    </div>
+                    
+                    <div class="announcement-line">
+                        <div class="line-icon">📌</div>
+                        <div class="line-content">恭喜德约的粉丝, 板尼哟, 嗨嗨嗨改名字好难, 大***一, 说出吾名_吓汝一跳-获得WTA首冠！</div>
+                    </div>
+                    
+                </div>
             </div>
-            <div class="announcement-content">
-                因赛制原因，ATP华盛顿站比分暂未计入总分，明天比赛结束之后会修复。
-            </div>
-        </div>
-        
+            
             
             <h2>排名查询</h2>
             <div class="ranking-grid">
@@ -855,26 +886,40 @@
             </div>
         </div>
         <script>
-            // 关闭按钮动画
-            document.querySelectorAll('.announcement-close').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const container = this.closest('.announcement-container');
-                    container.style.opacity = '1';
-                    
-                    const animation = container.animate(
-                        [
-                            { opacity: 1, transform: 'translateY(0)' },
-                            { opacity: 0, transform: 'translateY(-20px)' }
-                        ],
-                        {
-                            duration: 300,
-                            easing: 'ease-in'
-                        }
-                    );
-                    
-                    animation.onfinish = () => {
-                        container.style.display = 'none';
-                    };
+            // 关闭公告栏函数
+            function closeAnnouncement(btn) {
+                const container = btn.closest('.announcement-container');
+                container.style.opacity = '1';
+                
+                const animation = container.animate(
+                    [
+                        { opacity: 1, transform: 'translateY(0)' },
+                        { opacity: 0, transform: 'translateY(-20px)' }
+                    ],
+                    {
+                        duration: 300,
+                        easing: 'ease-in'
+                    }
+                );
+                
+                animation.onfinish = () => {
+                    container.style.display = 'none';
+                };
+            }
+            
+            // 点击公告行复制内容
+            document.querySelectorAll('.announcement-line').forEach(line => {
+                line.addEventListener('click', function() {
+                    const content = this.querySelector('.line-content').textContent;
+                    navigator.clipboard.writeText(content).then(() => {
+                        // 显示复制成功反馈
+                        const originalContent = this.querySelector('.line-content').innerHTML;
+                        this.querySelector('.line-content').innerHTML = '<span style="color: var(--primary-color);">✓ 已复制到剪贴板</span>';
+                        
+                        setTimeout(() => {
+                            this.querySelector('.line-content').innerHTML = originalContent;
+                        }, 300);
+                    });
                 });
             });
         </script>
