@@ -512,6 +512,90 @@
                     font-size: 1.2rem;
                     font-weight: 600;
                 }
+                .announcement-container {
+                    margin: 25px auto 20px;
+                    max-width: 800px;
+                    border-radius: 12px;
+                    overflow: hidden;
+                    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+                    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+                    border: 1px solid #e0e0e0;
+                    animation: slideIn 0.5s ease-out;
+                    position: relative;
+                }
+                
+                @keyframes slideIn {
+                    0% { transform: translateY(-20px); opacity: 0; }
+                    100% { transform: translateY(0); opacity: 1; }
+                }
+                
+                .announcement-header {
+                    display: flex;
+                    align-items: center;
+                    padding: 15px 20px;
+                    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+                    color: white;
+                    font-weight: 500;
+                }
+                
+                .announcement-icon {
+                    font-size: 1.8rem;
+                    margin-right: 12px;
+                }
+                
+                .announcement-header h3 {
+                    margin: 0;
+                    flex-grow: 1;
+                    font-size: 1.4rem;
+                    font-weight: 600;
+                }
+                
+                .announcement-close {
+                    font-size: 1.8rem;
+                    cursor: pointer;
+                    padding: 0 10px;
+                    transition: transform 0.2s;
+                }
+                
+                .announcement-close:hover {
+                    transform: scale(1.2);
+                }
+                
+                .announcement-content {
+                    padding: 20px 25px;
+                    font-size: 1.1rem;
+                    line-height: 1.7;
+                    color: var(--text-color);
+                    background: var(--card-bg);
+                }
+                
+                .announcement-content p {
+                    margin: 15px 0;
+                }
+                
+                .announcement-content a {
+                    color: var(--primary-color);
+                    text-decoration: none;
+                    border-bottom: 1px dotted var(--primary-color);
+                    transition: all 0.2s;
+                }
+                
+                .announcement-content a:hover {
+                    color: var(--secondary-color);
+                    border-bottom-style: solid;
+                }
+            
+            /* 深色模式适配 */
+            @media (prefers-color-scheme: dark) {
+                .announcement-container {
+                    background: linear-gradient(135deg, #1a1a1a, #222222);
+                    border-color: #333;
+                }
+                
+                .announcement-content {
+                    background: var(--card-bg);
+                }
+            }
             @media (max-width: 480px) {
                 .survivor-stats {
                     flex-direction: column;
@@ -527,9 +611,22 @@
                 <p class="subtitle">开发者：旧纳 </p>
                 <p class="subtitle">数据源：丘的网球</p>
                 <div style="text-align: center; color: #888; font-size: 0.9em; margin-bottom: 10px;">
-                页面数据更新时间：2025-07-27 16:32:45
+                页面数据更新时间：2025-07-27 19:50:51
             </div>
             </header>
+             <!-- 公告栏 -->
+            
+        <div class="announcement-container">
+            <div class="announcement-header">
+                <div class="announcement-icon">📢</div>
+                <h3>公告</h3>
+                <div class="announcement-close" onclick="this.parentElement.parentElement.style.display='none'">×</div>
+            </div>
+            <div class="announcement-content">
+                因赛制原因，ATP华盛顿站比分暂未计入总分，明天比赛结束之后会修复。
+            </div>
+        </div>
+        
             
             <h2>排名查询</h2>
             <div class="ranking-grid">
@@ -757,6 +854,30 @@
         
             </div>
         </div>
+        <script>
+            // 关闭按钮动画
+            document.querySelectorAll('.announcement-close').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const container = this.closest('.announcement-container');
+                    container.style.opacity = '1';
+                    
+                    const animation = container.animate(
+                        [
+                            { opacity: 1, transform: 'translateY(0)' },
+                            { opacity: 0, transform: 'translateY(-20px)' }
+                        ],
+                        {
+                            duration: 300,
+                            easing: 'ease-in'
+                        }
+                    );
+                    
+                    animation.onfinish = () => {
+                        container.style.display = 'none';
+                    };
+                });
+            });
+        </script>
     </body>
     </html>
     
