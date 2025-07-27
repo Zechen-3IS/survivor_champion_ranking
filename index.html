@@ -632,7 +632,7 @@
                 <p class="subtitle">开发者：旧纳 </p>
                 <p class="subtitle">数据源：丘的网球</p>
                 <div style="text-align: center; color: #888; font-size: 0.9em; margin-bottom: 10px;">
-                页面数据更新时间：2025-07-27 20:50:47
+                页面数据更新时间：2025-07-27 21:05:20
             </div>
             </header>
              <!-- 公告栏 -->
@@ -912,20 +912,33 @@
                 };
             }
             
+            // 防抖函数
+            function debounce(func, wait) {
+                let timeout;
+                return function(...args) {
+                    clearTimeout(timeout);
+                    timeout = setTimeout(() => func.apply(this, args), wait);
+                };
+            }
+            
             // 点击公告行复制内容
             document.querySelectorAll('.announcement-line').forEach(line => {
-                line.addEventListener('click', function() {
-                    const content = this.querySelector('.line-content').textContent;
+                const contentElement = line.querySelector('.line-content');
+                const originalContent = contentElement.innerHTML;
+                
+                line.addEventListener('click', debounce(function() {
+                    const content = line.getAttribute('data-original');
+                    
+                    if (contentElement.innerHTML.includes('✓')) return;
+                    
                     navigator.clipboard.writeText(content).then(() => {
-                        // 显示复制成功反馈
-                        const originalContent = this.querySelector('.line-content').innerHTML;
-                        this.querySelector('.line-content').innerHTML = '<span style="color: var(--primary-color);">✓ 已复制到剪贴板</span>';
+                        contentElement.innerHTML = '<span style="color: var(--primary-color);">✓ 已复制到剪贴板</span>';
                         
                         setTimeout(() => {
-                            this.querySelector('.line-content').innerHTML = originalContent;
+                            contentElement.innerHTML = originalContent;
                         }, 300);
                     });
-                });
+                }, 300));
             });
         </script>
     </body>
