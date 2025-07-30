@@ -1,0 +1,274 @@
+
+        <!DOCTYPE html>
+        <html lang="zh-CN">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>幸存者历史新闻</title>
+            <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+            <style>
+                :root {
+                    --bg-color: #f8f9fa;
+                    --text-color: #333;
+                    --primary-color: #2c6e49;
+                    --secondary-color: #4c956c;
+                    --accent-color: #d68c45;
+                    --light-border: #e9ecef;
+                    --card-bg: #ffffff;
+                    --card-shadow: 0 4px 12px rgba(0,0,0,0.05);
+                    --history-bg: #f5f2e9;
+                    --history-border: #e0d6c2;
+                }
+                
+                @media (prefers-color-scheme: dark) {
+                    :root {
+                        --bg-color: #121212;
+                        --text-color: #e0e0e0;
+                        --primary-color: #4db6ac;
+                        --secondary-color: #81c784;
+                        --accent-color: #ffb74d;
+                        --light-border: #333333;
+                        --card-bg: #1e1e1e;
+                        --card-shadow: 0 4px 12px rgba(0,0,0,0.5);
+                        --history-bg: #2a2620;
+                        --history-border: #3d362d;
+                    }
+                }
+                
+                body {
+                    font-family: 'Noto Sans SC', sans-serif;
+                    background-color: var(--bg-color);
+                    color: var(--text-color);
+                    margin: 0;
+                    padding: 0;
+                    min-height: 100vh;
+                    line-height: 1.6;
+                }
+                
+                .history-container {
+                    max-width: 1000px;
+                    margin: 0 auto;
+                    padding: 30px 20px;
+                }
+                
+                .history-header {
+                    text-align: center;
+                    margin-bottom: 40px;
+                    padding-bottom: 20px;
+                    border-bottom: 1px solid var(--light-border);
+                }
+                
+                .history-title {
+                    font-weight: 600;
+                    color: var(--primary-color);
+                    font-size: 2.8rem;
+                    margin-bottom: 10px;
+                    letter-spacing: -0.5px;
+                    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                }
+                
+                .history-nav {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 15px;
+                    justify-content: center;
+                    margin-bottom: 40px;
+                    padding: 20px;
+                    background: var(--history-bg);
+                    border-radius: 12px;
+                    border: 1px solid var(--history-border);
+                }
+                
+                .date-link {
+                    padding: 8px 15px;
+                    background: rgba(44, 110, 73, 0.1);
+                    border-radius: 20px;
+                    color: var(--primary-color);
+                    text-decoration: none;
+                    font-weight: 500;
+                    transition: all 0.3s;
+                }
+                
+                .date-link:hover {
+                    background: rgba(44, 110, 73, 0.2);
+                    transform: translateY(-3px);
+                }
+                
+                .history-date-section {
+                    margin-bottom: 50px;
+                    padding-bottom: 30px;
+                    border-bottom: 1px dashed var(--light-border);
+                }
+                
+                .history-date-header {
+                    font-size: 1.8rem;
+                    font-weight: 600;
+                    color: var(--primary-color);
+                    margin-bottom: 25px;
+                    padding-bottom: 10px;
+                    border-bottom: 2px solid var(--secondary-color);
+                }
+                
+                .history-news-container {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                    gap: 25px;
+                }
+                
+                .history-news-item {
+                    background: var(--card-bg);
+                    border-radius: 12px;
+                    padding: 20px;
+                    box-shadow: var(--card-shadow);
+                    display: flex;
+                    transition: all 0.3s ease;
+                    position: relative;
+                    border: 1px solid var(--light-border);
+                }
+                
+                .history-news-item:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+                }
+                
+                .history-news-icon {
+                    font-size: 1.8rem;
+                    margin-right: 15px;
+                    color: var(--accent-color);
+                }
+                
+                .history-news-content {
+                    font-size: 1.1rem;
+                    line-height: 1.7;
+                }
+                
+                .back-to-home {
+                    display: block;
+                    text-align: center;
+                    margin-top: 40px;
+                    padding: 15px;
+                    background: var(--history-bg);
+                    border-radius: 12px;
+                    border: 1px solid var(--history-border);
+                    color: var(--primary-color);
+                    text-decoration: none;
+                    font-weight: 500;
+                    transition: all 0.3s;
+                }
+                
+                .back-to-home:hover {
+                    background: rgba(44, 110, 73, 0.1);
+                    transform: translateY(-3px);
+                }
+                
+                @media (max-width: 768px) {
+                    .history-container {
+                        padding: 20px 15px;
+                    }
+                    
+                    .history-title {
+                        font-size: 2.2rem;
+                    }
+                    
+                    .history-nav {
+                        flex-direction: column;
+                        align-items: center;
+                    }
+                }
+            </style>
+        </head>
+        <body>
+            <div class="history-container">
+                <div class="history-header">
+                    <h1 class="history-title">幸存者历史新闻</h1>
+                    <p class="subtitle">探索过往网球世界的重要时刻</p>
+                </div>
+                
+                <div class="history-nav">
+                    <a href="#2025-07-30" class="date-link">2025年07月30日</a><a href="#2025-07-29" class="date-link">2025年07月29日</a>
+                </div>
+                
+                <div class="history-date-section"><div class="history-date-header" id="2025-07-30">2025年07月30日</div><div class="history-news-container">
+                <div class="history-news-item">
+                    <div class="history-news-icon">📌</div>
+                    <div class="history-news-content">顶级编剧✍️：压力娃难堪重任，朱编复出二连胜含泪送走46人。</div>
+                </div>
+                
+                <div class="history-news-item">
+                    <div class="history-news-icon">📌</div>
+                    <div class="history-news-content">心善茉莉花：保总错失赛点，67UE送伊藤葵top10首胜，附赠41张辛辛那提机票✈️</div>
+                </div>
+                
+                <div class="history-news-item">
+                    <div class="history-news-icon">📌</div>
+                    <div class="history-news-content">无人问津的🇺🇸德比：麦克纳莉和高芙决胜盘抢七丑胜同胞，累计救活3人。</div>
+                </div>
+                
+                <div class="history-news-item">
+                    <div class="history-news-icon">📌</div>
+                    <div class="history-news-content">WTA惊魂夜 👻v.s. ATP平安夜🧑‍🎄：一边是120人睡梦中被带走，一边是95%的单日存活率，有人欢喜有人忧。</div>
+                </div>
+                
+                <div class="history-news-item">
+                    <div class="history-news-icon">📌</div>
+                    <div class="history-news-content">顶级编剧✍️：压力娃难堪重任，朱编复出二连胜含泪送走46人。</div>
+                </div>
+                
+                <div class="history-news-item">
+                    <div class="history-news-icon">📌</div>
+                    <div class="history-news-content">心善茉莉花：保总错失赛点，67UE送伊藤葵top10首胜，附赠41张辛辛那提机票✈️</div>
+                </div>
+                
+                <div class="history-news-item">
+                    <div class="history-news-icon">📌</div>
+                    <div class="history-news-content">无人问津的🇺🇸德比：麦克纳莉和高芙决胜盘抢七丑胜同胞，累计救活3人。</div>
+                </div>
+                
+                <div class="history-news-item">
+                    <div class="history-news-icon">📌</div>
+                    <div class="history-news-content">WTA惊魂夜 👻v.s. ATP平安夜🧑‍🎄：一边是120人睡梦中被带走，一边是95%的单日存活率，有人欢喜有人忧。</div>
+                </div>
+                
+                <div class="history-news-item">
+                    <div class="history-news-icon">📌</div>
+                    <div class="history-news-content">顶级编剧✍️：压力娃难堪重任，朱编复出二连胜含泪送走46人。</div>
+                </div>
+                
+                <div class="history-news-item">
+                    <div class="history-news-icon">📌</div>
+                    <div class="history-news-content">心善茉莉花：保总错失赛点，67UE送伊藤葵top10首胜，附赠41张辛辛那提机票✈️</div>
+                </div>
+                
+                <div class="history-news-item">
+                    <div class="history-news-icon">📌</div>
+                    <div class="history-news-content">无人问津的🇺🇸德比：麦克纳莉和高芙决胜盘抢七丑胜同胞，累计救活3人。</div>
+                </div>
+                
+                <div class="history-news-item">
+                    <div class="history-news-icon">📌</div>
+                    <div class="history-news-content">WTA惊魂夜 👻v.s. ATP平安夜🧑‍🎄：一边是120人睡梦中被带走，一边是95%的单日存活率，有人欢喜有人忧。</div>
+                </div>
+                </div></div><div class="history-date-section"><div class="history-date-header" id="2025-07-29">2025年07月29日</div><div class="history-news-container">
+                <div class="history-news-item">
+                    <div class="history-news-icon">📌</div>
+                    <div class="history-news-content">人的悲欢并不相通：郭涵煜巡回赛首胜送走67人。</div>
+                </div>
+                
+                <div class="history-news-item">
+                    <div class="history-news-icon">📌</div>
+                    <div class="history-news-content">wta即时排名前三携10巨分飞🇺🇸。</div>
+                </div>
+                
+                <div class="history-news-item">
+                    <div class="history-news-icon">📌</div>
+                    <div class="history-news-content">丰塞卡0:2脆败，21人不幸落难，83人首日逃过一劫。</div>
+                </div>
+                </div></div>
+                
+                <a href="index.html" class="back-to-home">返回首页</a>
+            </div>
+        </body>
+        </html>
+        
