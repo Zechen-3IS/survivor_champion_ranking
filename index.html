@@ -762,7 +762,219 @@
                 .news-content {
                     padding-left: 15px;
                 }
-            }            
+            }
+            
+            /* 新增新闻部分样式 */
+            .news-section {
+                margin: 40px auto;
+                max-width: 800px;
+                position: relative;
+            }
+            
+            .section-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 25px;
+                padding-bottom: 10px;
+                border-bottom: 2px solid var(--secondary-color);
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+            
+            .news-date {
+                font-size: 1.1rem;
+                font-weight: 500;
+                color: var(--secondary-color);
+                background: rgba(76, 149, 108, 0.1);
+                padding: 5px 12px;
+                border-radius: 20px;
+                order: 2;
+            }
+            
+            /* 新增历史新闻按钮样式 */
+            .history-button {
+                display: flex;
+                align-items: center;
+                padding: 8px 15px;
+                background: rgba(139, 90, 43, 0.1);
+                border-radius: 30px;
+                text-decoration: none;
+                color: #8b5a2b;
+                font-weight: 500;
+                transition: all 0.3s;
+                order: 3;
+                margin-left: auto;
+                border: 1px solid rgba(139, 90, 43, 0.2);
+            }
+            
+            .history-button:hover {
+                background: rgba(139, 90, 43, 0.2);
+                transform: translateY(-3px);
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            }
+            
+            .history-icon {
+                font-size: 1.2rem;
+                margin-right: 8px;
+            }
+            
+            .history-text {
+                margin-right: 5px;
+            }
+            
+            .history-count {
+                font-weight: 600;
+            }
+            
+            .news-container {
+                position: relative;
+                padding-left: 30px;
+            }
+            
+            .news-container::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 5px;
+                width: 4px;
+                background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
+                border-radius: 2px;
+                z-index: 1;
+            }
+            
+            .news-item {
+                position: relative;
+                margin-bottom: 25px;
+                padding: 20px;
+                border-radius: 12px;
+                background: var(--card-bg);
+                box-shadow: var(--card-shadow);
+                border: 1px solid var(--light-border);
+                opacity: 0;
+                transform: translateY(20px);
+                animation-fill-mode: forwards;
+            }
+            
+            .news-icon {
+                position: absolute;
+                left: -40px;
+                top: 20px;
+                width: 60px;
+                height: 60px;
+                background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.8rem;
+                color: white;
+                z-index: 2;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            }
+            
+            .news-content {
+                padding-left: 30px;
+            }
+            
+            .news-content p {
+                margin: 0;
+                font-size: 1.1rem;
+                line-height: 1.7;
+            }
+            
+            .news-timeline {
+                position: absolute;
+                left: -26px;
+                top: 80px;
+                bottom: -25px;
+                width: 2px;
+                background: var(--secondary-color);
+                z-index: 1;
+            }
+            
+            .news-item:last-child .news-timeline {
+                display: none;
+            }
+            
+            .fade-in {
+                animation: fadeInUp 0.6s ease-out forwards;
+            }
+            
+            .slide-in {
+                animation: slideInRight 0.5s ease-out forwards;
+            }
+            
+            @keyframes fadeInUp {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            
+            @keyframes slideInRight {
+                from { opacity: 0; transform: translateX(30px); }
+                to { opacity: 1; transform: translateX(0); }
+            }
+            
+            /* 深色模式适配 */
+            @media (prefers-color-scheme: dark) {
+                .news-item {
+                    background: linear-gradient(145deg, #1a1a1a, #222222);
+                    border: 1px solid #333;
+                }
+                
+                .news-icon {
+                    background: linear-gradient(135deg, var(--primary-color), #3a8c6e);
+                    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+                }
+                
+                .history-button {
+                    background: rgba(212, 168, 106, 0.1);
+                    color: #d4a86a;
+                    border-color: rgba(212, 168, 106, 0.2);
+                }
+                
+                .history-button:hover {
+                    background: rgba(212, 168, 106, 0.2);
+                }
+            }
+            
+            @media (max-width: 768px) {
+                .section-header {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+                
+                .news-date {
+                    order: 3;
+                    margin-top: 10px;
+                }
+                
+                .history-button {
+                    order: 2;
+                    margin-left: 0;
+                    margin-top: 10px;
+                }
+                
+                .news-container {
+                    padding-left: 20px;
+                }
+                
+                .news-container::before {
+                    left: 0;
+                }
+                
+                .news-icon {
+                    left: -30px;
+                    width: 50px;
+                    height: 50px;
+                    font-size: 1.5rem;
+                }
+                
+                .news-content {
+                    padding-left: 15px;
+                }
+            }           
             @media (max-width: 480px) {
                 .survivor-stats {
                     flex-direction: column;
@@ -778,7 +990,7 @@
                 <p class="subtitle">开发者：旧纳 </p>
                 <p class="subtitle">数据源：丘的网球</p>
                 <div style="text-align: center; color: #888; font-size: 0.9em; margin-bottom: 10px;">
-                页面数据更新时间：2025-07-29 13:05:53
+                页面数据更新时间：2025-07-30 12:36:36
             </div>
             </header>
              <!-- 公告栏 -->
@@ -818,15 +1030,22 @@
             
         <div class="news-section">
             <div class="section-header">
-                <h2>每日新闻</h2>
-                <div class="news-date">2025年07月29日</div>
+                <h2>每日网球新闻</h2>
+                <div class="news-date">2025年07月30日</div>
+                
+            <a href="history_news.html" class="history-button">
+                <span class="history-icon">📚</span>
+                <span class="history-text">查看历史新闻</span>
+                <span class="history-count">(7条)</span>
+            </a>
+            
             </div>
             <div class="news-container">
                 
                 <div class="news-item fade-in" style="animation-delay: 0.0s;">
                     <div class="news-icon">📰</div>
                     <div class="news-content">
-                        <p>人的悲欢并不相通：郭涵煜巡回赛首胜送走67人。</p>
+                        <p>顶级编剧✍️：压力娃难堪重任，朱编复出二连胜含泪送走46人。</p>
                     </div>
                     <div class="news-timeline"></div>
                 </div>
@@ -834,7 +1053,7 @@
                 <div class="news-item fade-in" style="animation-delay: 0.1s;">
                     <div class="news-icon">🔥</div>
                     <div class="news-content">
-                        <p>wta即时排名前三携10巨分飞🇺🇸。</p>
+                        <p>心善茉莉花：保总错失赛点，67UE送伊藤葵top10首胜，附赠41张辛辛那提机票✈️</p>
                     </div>
                     <div class="news-timeline"></div>
                 </div>
@@ -842,7 +1061,15 @@
                 <div class="news-item fade-in" style="animation-delay: 0.2s;">
                     <div class="news-icon">💡</div>
                     <div class="news-content">
-                        <p>丰塞卡0:2脆败，21人不幸落难，83人首日逃过一劫。</p>
+                        <p>无人问津的🇺🇸德比：麦克纳莉和高芙决胜盘抢七丑胜同胞，累计救活3人。</p>
+                    </div>
+                    <div class="news-timeline"></div>
+                </div>
+                
+                <div class="news-item slide-in" style="animation-delay: 0.30000000000000004s;">
+                    <div class="news-icon">👏</div>
+                    <div class="news-content">
+                        <p>WTA惊魂夜 👻v.s. ATP平安夜🧑‍🎄：一边是120人睡梦中被带走，一边是95%的单日存活率，有人欢喜有人忧。</p>
                     </div>
                     <div class="news-timeline"></div>
                 </div>
@@ -850,6 +1077,7 @@
             </div>
         </div>
         
+
             
             <h2>排名查询</h2>
             <div class="ranking-grid">
@@ -943,7 +1171,7 @@
                 <span class="survivor-count">
                     <span class="stat-icon">✅</span>
                     <span class="stat-label">幸存: </span>
-                    <span class="stat-value">190</span>
+                    <span class="stat-value">70</span>
                 </span>
             </div>
             
@@ -995,7 +1223,7 @@
                 <span class="survivor-count">
                     <span class="stat-icon">✅</span>
                     <span class="stat-label">幸存: </span>
-                    <span class="stat-value">158</span>
+                    <span class="stat-value">150</span>
                 </span>
             </div>
             
@@ -1098,6 +1326,22 @@
                     container.style.display = 'none';
                 };
             }
+            // 新增：新闻项的交互动画
+            document.addEventListener('DOMContentLoaded', function() {
+                const newsItems = document.querySelectorAll('.news-item');
+                
+                newsItems.forEach(item => {
+                    item.addEventListener('mouseenter', function() {
+                        this.style.transform = 'translateY(-5px)';
+                        this.style.boxShadow = '0 8px 25px rgba(0,0,0,0.15)';
+                    });
+                    
+                    item.addEventListener('mouseleave', function() {
+                        this.style.transform = '';
+                        this.style.boxShadow = '';
+                    });
+                });
+            });
             // 新增：新闻项的交互动画
             document.addEventListener('DOMContentLoaded', function() {
                 const newsItems = document.querySelectorAll('.news-item');
