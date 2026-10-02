@@ -110,10 +110,6 @@ def generate(tours: list[str], output_dir: Path) -> list[Path]:
         built[tennis_type] = champ
         built[f"{tennis_type}_instant"] = inst
         print(f"已生成 {tennis_type} 冠军榜和即时榜")
-        print(f"统计 {tennis_type.upper()} 球员成绩...")
-        show = build_player_stats(client, tennis_type, event)
-        written.append(render_ranking_page(f"{tennis_type}_show", show, None, None, output_dir))
-        print(f"已生成 {tennis_type} 球员统计")
 
     if "atp" in built and "wta" in built:
         combined = build_combined(built["atp"], built["wta"], instant=False)
@@ -130,14 +126,32 @@ def generate(tours: list[str], output_dir: Path) -> list[Path]:
     return written
 
 
+def generate_stats(tours: list[str], output_dir: Path) -> list[Path]:
+    client = LiveTennisClient()
+    current = client.discover_current_events()
+    written: list[Path] = []
+    for tennis_type in tours:
+        events = current.get(tennis_type) or []
+        event = _primary_event(events)
+        print(f"统计 {tennis_type.upper()} 球员成绩（每周增量）...")
+        show = build_player_stats(client, tennis_type, event)
+        written.append(render_ranking_page(f"{tennis_type}_show", show, None, None, output_dir))
+        print(f"已生成 {tennis_type} 球员统计")
+    return written
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="从 live-tennis 抓取幸存者数据并生成排名页")
     parser.add_argument("--tour", choices=["atp", "wta", "all"], default="all")
     parser.add_argument("--output", default=str(ROOT))
+    parser.add_argument("--stats", action="store_true", help="只更新球员成绩统计（每周增量）")
     parser.add_argument("--push", action="store_true", help="只提交并推送 HTML 到 GitHub")
     args = parser.parse_args()
     tours = ["atp", "wta"] if args.tour == "all" else [args.tour]
-    generate(tours, Path(args.output))
+    if args.stats:
+        generate_stats(tours, Path(args.output))
+    else:
+        generate(tours, Path(args.output))
     if args.push:
         publish_html(Path(args.output))
 

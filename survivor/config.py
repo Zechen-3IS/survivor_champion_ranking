@@ -55,6 +55,22 @@ PUBLISH_FILES = [
     "wta_show.html",
 ]
 
+STATS_CACHE = ROOT / "data" / "player_events.json"
+RANK_PUBLISH_FILES = [
+    "index.html",
+    "atp_ranking.html",
+    "wta_ranking.html",
+    "atp_instant_ranking.html",
+    "wta_instant_ranking.html",
+    "combined_ranking.html",
+    "combined_instant_ranking.html",
+]
+STATS_PUBLISH_FILES = [
+    "atp_show.html",
+    "wta_show.html",
+    "data/player_events.json",
+]
+
 REMOTE_SSH = "git@github.com:Zechen-3IS/survivor_champion_ranking.git"
 
 RANK_PAGE = {

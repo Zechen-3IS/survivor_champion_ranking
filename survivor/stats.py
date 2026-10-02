@@ -1,12 +1,13 @@
 from __future__ import annotations
 
+import json
 from collections import defaultdict
 from datetime import datetime, timedelta
 from typing import Any
 
 import pandas as pd
 
-from .config import TourRules
+from .config import STATS_CACHE, TourRules
 from .fetch import LiveTennisClient, WeekEvent, strip_username
 from .process import _as_key, row_total
 
@@ -87,6 +88,140 @@ def _unique_event_name(name: str, year: str, used: set[str]) -> str:
     return labeled
 
 
+def _event_cache_key(info: dict[str, Any]) -> str:
+    return f"{info.get('year')}:{info.get('id')}"
+
+
+def _load_cache() -> dict[str, Any]:
+    if not STATS_CACHE.exists():
+        return {"atp": {}, "wta": {}}
+    try:
+        payload = json.loads(STATS_CACHE.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {"atp": {}, "wta": {}}
+    if not isinstance(payload, dict):
+        return {"atp": {}, "wta": {}}
+    payload.setdefault("atp", {})
+    payload.setdefault("wta", {})
+    return payload
+
+
+def _save_cache(cache: dict[str, Any]) -> None:
+    STATS_CACHE.parent.mkdir(parents=True, exist_ok=True)
+    STATS_CACHE.write_text(json.dumps(cache, ensure_ascii=False), encoding="utf-8")
+
+
+def _hydrate_records(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    hydrated = []
+    for row in rows:
+        item = dict(row)
+        monday = item.get("monday")
+        if isinstance(monday, str):
+            item["monday"] = datetime.strptime(monday[:10], "%Y-%m-%d")
+        hydrated.append(item)
+    return hydrated
+
+
+def _serialize_records(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    serialized = []
+    for row in rows:
+        item = dict(row)
+        monday = item.get("monday")
+        if isinstance(monday, datetime):
+            item["monday"] = monday.strftime("%Y-%m-%d")
+        serialized.append(item)
+    return serialized
+
+
+def _records_from_event(
+    info: dict[str, Any],
+    rows: list[dict[str, Any]],
+    in_progress: bool,
+) -> list[dict[str, Any]]:
+    played_rows = [row for row in rows if _played(row)]
+    if not played_rows:
+        return []
+    max_day = max(_day(row) for row in played_rows)
+    champions = {
+        _as_key(row.get("user_id"))
+        for row in played_rows
+        if row.get("fill_status") == "存活" and not in_progress
+    }
+    dead_days = [_day(row) for row in played_rows if _as_key(row.get("user_id")) not in champions]
+    runner_day = max(dead_days) if dead_days and champions else -1
+    label = f"{info.get('year')}-{info.get('name')}"
+    records = []
+    for row in played_rows:
+        uid = _as_key(row.get("user_id"))
+        if not uid:
+            continue
+        records.append(
+            {
+                "主键": uid,
+                "用户名": strip_username(row.get("username")),
+                "name": info.get("name") or "",
+                "year": str(info.get("year") or ""),
+                "monday": info["monday"],
+                "season_year": int(info.get("season_year") or info["monday"].year),
+                "label": label,
+                "day": _day(row),
+                "score": _score(row),
+                "max_day": max_day,
+                "champion": uid in champions,
+                "runner": bool(champions) and uid not in champions and _day(row) == runner_day,
+                "completed": not in_progress,
+            }
+        )
+    return records
+
+
+def _collect_history(
+    client: LiveTennisClient,
+    tennis_type: str,
+    current_event: WeekEvent | None = None,
+) -> list[dict[str, Any]]:
+    live_key = (
+        (current_event.name, str(current_event.year))
+        if current_event and current_event.name
+        else None
+    )
+    cache = _load_cache()
+    tour_cache = cache.setdefault(tennis_type, {})
+    catalog = client.list_tour_events(tennis_type)
+    records: list[dict[str, Any]] = []
+    changed = False
+    for index, info in enumerate(catalog, start=1):
+        key = _event_cache_key(info)
+        in_progress = live_key == (info.get("name"), str(info.get("year") or ""))
+        cached = tour_cache.get(key) if isinstance(tour_cache.get(key), dict) else None
+        if in_progress:
+            print(f"  跳过进行中 {info.get('year')}-{info.get('name')}")
+            continue
+        if cached and cached.get("completed"):
+            records.extend(_hydrate_records(cached.get("records") or []))
+            continue
+        print(f"  增量抓取 {tennis_type.upper()} {index}/{len(catalog)} {info.get('year')}-{info.get('name')}")
+        rows = client.fetch_event_results(info)
+        event_records = _records_from_event(info, rows, in_progress=False)
+        if not event_records:
+            continue
+        tour_cache[key] = {
+            "id": info.get("id"),
+            "name": info.get("name"),
+            "year": str(info.get("year") or ""),
+            "completed": True,
+            "records": _serialize_records(event_records),
+        }
+        changed = True
+        records.extend(event_records)
+    if changed:
+        _save_cache(cache)
+        print(f"  已写入增量缓存 {STATS_CACHE}")
+    else:
+        print("  无新完赛站，使用缓存")
+    return records
+
+
 def build_player_stats(
     client: LiveTennisClient,
     tennis_type: str,
@@ -96,54 +231,7 @@ def build_player_stats(
     this_monday = client.week_monday()
     season_year = this_monday.year
     window_start = this_monday - timedelta(weeks=52)
-    live_key = (
-        (current_event.name, str(current_event.year))
-        if current_event and current_event.name
-        else None
-    )
-
-    catalog = client.list_tour_events(tennis_type)
-    records: list[dict[str, Any]] = []
-    for index, info in enumerate(catalog, start=1):
-        print(f"  球员统计 {tennis_type.upper()} {index}/{len(catalog)} {info.get('year')}-{info.get('name')}")
-        rows = client.fetch_event_results(info)
-        if not rows:
-            continue
-        played_rows = [row for row in rows if _played(row)]
-        if not played_rows:
-            continue
-        max_day = max(_day(row) for row in played_rows)
-        in_progress = live_key == (info.get("name"), str(info.get("year") or ""))
-        champions = {
-            _as_key(row.get("user_id"))
-            for row in played_rows
-            if row.get("fill_status") == "存活" and not in_progress
-        }
-        dead_days = [_day(row) for row in played_rows if _as_key(row.get("user_id")) not in champions]
-        runner_day = max(dead_days) if dead_days and champions else -1
-        label = f"{info.get('year')}-{info.get('name')}"
-        for row in played_rows:
-            uid = _as_key(row.get("user_id"))
-            if not uid:
-                continue
-            day = _day(row)
-            records.append(
-                {
-                    "主键": uid,
-                    "用户名": strip_username(row.get("username")),
-                    "name": info.get("name") or "",
-                    "year": str(info.get("year") or ""),
-                    "monday": info["monday"],
-                    "season_year": int(info.get("season_year") or info["monday"].year),
-                    "label": label,
-                    "day": day,
-                    "score": _score(row),
-                    "max_day": max_day,
-                    "champion": uid in champions,
-                    "runner": bool(champions) and uid not in champions and day == runner_day,
-                    "completed": not in_progress,
-                }
-            )
+    records = _collect_history(client, tennis_type, current_event)
 
     if not records:
         empty = pd.DataFrame(columns=DISPLAY_COLS)

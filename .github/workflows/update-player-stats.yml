@@ -1,12 +1,12 @@
-name: Update rankings
+name: Update player stats
 
 on:
   schedule:
-    - cron: "0,30 * * * *"
+    - cron: "0 14 * * 1"
   workflow_dispatch:
 
 concurrency:
-  group: survivor-ranking
+  group: survivor-player-stats
   cancel-in-progress: true
 
 permissions:
@@ -15,7 +15,7 @@ permissions:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
 
@@ -26,20 +26,19 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Fetch and generate HTML
-        run: python -m survivor
+      - name: Incremental player stats
+        run: python -m survivor --stats
 
-      - name: Commit and push HTML
+      - name: Commit and push stats
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- index.html atp_ranking.html wta_ranking.html \
-            atp_instant_ranking.html wta_instant_ranking.html \
-            combined_ranking.html combined_instant_ranking.html
+          mkdir -p data
+          git add -- atp_show.html wta_show.html data/player_events.json
           if git diff --cached --quiet; then
-            echo "HTML unchanged"
+            echo "stats unchanged"
             exit 0
           fi
-          git commit -m "自动更新幸存者排名"
+          git commit -m "每周更新球员成绩统计"
           git pull --rebase --autostash origin main
           git push
