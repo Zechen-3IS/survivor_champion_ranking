@@ -1,0 +1,141 @@
+from __future__ import annotations
+
+import argparse
+from pathlib import Path
+from typing import Any
+
+from .config import ROOT
+from .fetch import LiveTennisClient, WeekEvent
+from .home import render_index_page
+from .process import build_combined, build_ranking
+from .publish import publish_html
+from .render import render_ranking_page
+
+
+def _primary_event(events: list[WeekEvent] | None) -> WeekEvent | None:
+    return events[0] if events else None
+
+
+def _build_tour(
+    tennis_type: str,
+    event: WeekEvent | None,
+    season_rows: list[dict[str, Any]],
+    week_scores: list[dict[str, Any]],
+    week_details: list[dict[str, Any]],
+    drop_events: list[str],
+    instant: bool,
+    this_week_year: str | None = None,
+    prior_years: dict[str, str] | None = None,
+):
+    return build_ranking(
+        tennis_type,
+        season_rows,
+        week_event_name=event.name if event else None,
+        week_score_rows=week_scores,
+        week_detail_rows=week_details,
+        drop_events=drop_events if instant else None,
+        instant=instant,
+        this_week_year=this_week_year if instant else None,
+        prior_years=prior_years if instant else None,
+    )
+
+
+def generate(tours: list[str], output_dir: Path) -> list[Path]:
+    client = LiveTennisClient()
+    print("发现本周赛事...")
+    current = client.discover_current_events()
+    this_monday = client.week_monday()
+    written: list[Path] = []
+    built: dict[str, Any] = {}
+
+    for tennis_type in tours:
+        events = current.get(tennis_type) or []
+        event = _primary_event(events)
+        if event:
+            print(f"{tennis_type.upper()} 本周：{event.name} ({event.page_id})")
+        else:
+            print(f"{tennis_type.upper()} 未发现本周赛事")
+
+        print(f"抓取 {tennis_type.upper()} 冠军榜 / 52周榜...")
+        race_rows = client.fetch_race_rank(tennis_type)
+        year_rows, year_monday = client.fetch_year_rank(tennis_type)
+        week_scores = client.fetch_week_scores(event) if event else []
+        week_details = client.fetch_week_details(event) if event else []
+        pair = client.week_pair(this_monday, tennis_type)
+        drop_events = pair.last_names
+        prior_years: dict[str, str] = {}
+        if event and event.name not in drop_events:
+            old_year = client.prior_event_year(
+                event.name, tennis_type, pair.last_monday, pair.this_monday
+            )
+            if old_year:
+                prior_years[event.name] = old_year
+        print(
+            f"  赛季 {len(race_rows)}，52周 {len(year_rows)}（窗口 {year_monday}），"
+            f"本周积分 {len(week_scores)}，明细 {len(week_details)}"
+        )
+        print(
+            f"  今年周一 {pair.this_monday.date()}：{pair.this_names or ([event.name] if event else [])}；"
+            f"去年周一 {pair.last_monday.date()}：{drop_events or '无'}"
+            + (" → 替换" if drop_events else " → 去年同期无赛事")
+            + (f"；同名保留 {prior_years}" if prior_years else "")
+        )
+
+        champ, champ_stats, champ_seeds, champ_summary = _build_tour(
+            tennis_type, event, race_rows, week_scores, week_details, drop_events, False
+        )
+        inst, inst_stats, inst_seeds, inst_summary = _build_tour(
+            tennis_type,
+            event,
+            year_rows,
+            week_scores,
+            week_details,
+            drop_events,
+            True,
+            this_week_year=event.year if event else None,
+            prior_years=prior_years,
+        )
+        written.append(render_ranking_page(tennis_type, champ, champ_stats, champ_summary, output_dir))
+        written.append(
+            render_ranking_page(
+                f"{tennis_type}_instant",
+                inst,
+                inst_stats,
+                inst_summary,
+                output_dir,
+                extra_stats=inst_seeds,
+            )
+        )
+        built[tennis_type] = champ
+        built[f"{tennis_type}_instant"] = inst
+        print(f"已生成 {tennis_type} 冠军榜和即时榜")
+
+    if "atp" in built and "wta" in built:
+        combined = build_combined(built["atp"], built["wta"], instant=False)
+        combined_instant = build_combined(built["atp_instant"], built["wta_instant"], instant=True)
+        written.append(render_ranking_page("combined", combined, None, None, output_dir))
+        written.append(render_ranking_page("combined_instant", combined_instant, None, None, output_dir))
+        print("已生成联合冠军榜和联合即时榜")
+    index_path = output_dir / "index.html"
+    if index_path.exists():
+        print("更新首页...")
+        render_index_page(client, index_path)
+        written.append(index_path)
+        print("已更新 index.html")
+    return written
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="从 live-tennis 抓取幸存者数据并生成排名页")
+    parser.add_argument("--tour", choices=["atp", "wta", "all"], default="all")
+    parser.add_argument("--output", default=str(ROOT))
+    parser.add_argument("--push", action="store_true", help="只提交并推送 HTML 到 GitHub")
+    args = parser.parse_args()
+    tours = ["atp", "wta"] if args.tour == "all" else [args.tour]
+    generate(tours, Path(args.output))
+    if args.push:
+        publish_html(Path(args.output))
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>com.zechen.survivor-ranking</string>
+	<key>WorkingDirectory</key>
+	<string>/Users/yinzechen/程序/chen_web</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/usr/bin/python3</string>
+		<string>-m</string>
+		<string>survivor</string>
+		<string>--push</string>
+	</array>
+	<key>StartCalendarInterval</key>
+	<array>
+		<dict>
+			<key>Minute</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Minute</key>
+			<integer>30</integer>
+		</dict>
+	</array>
+	<key>StandardOutPath</key>
+	<string>/Users/yinzechen/程序/chen_web/.update.log</string>
+	<key>StandardErrorPath</key>
+	<string>/Users/yinzechen/程序/chen_web/.update.log</string>
+	<key>EnvironmentVariables</key>
+	<dict>
+		<key>PATH</key>
+		<string>/usr/local/bin:/usr/bin:/bin</string>
+		<key>GIT_SSH_COMMAND</key>
+		<string>ssh -o IdentitiesOnly=yes -o BatchMode=yes</string>
+	</dict>
+</dict>
+</plist>

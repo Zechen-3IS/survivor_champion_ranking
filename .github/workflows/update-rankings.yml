@@ -1,0 +1,45 @@
+name: Update rankings
+
+on:
+  schedule:
+    - cron: "0,30 * * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: survivor-ranking
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Fetch and generate HTML
+        run: python -m survivor
+
+      - name: Commit and push HTML
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- index.html atp_ranking.html wta_ranking.html \
+            atp_instant_ranking.html wta_instant_ranking.html \
+            combined_ranking.html combined_instant_ranking.html
+          if git diff --cached --quiet; then
+            echo "HTML unchanged"
+            exit 0
+          fi
+          git commit -m "自动更新幸存者排名"
+          git pull --rebase --autostash origin main
+          git push

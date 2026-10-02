@@ -1,0 +1,418 @@
+<style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --table-header-bg: #2c3e50;
+            --table-header-text: #ffffff;
+            --table-row-even: #f3f3f3;
+            --table-row-hover: #f1f1f1;
+            --table-border: #dddddd;
+            --button-bg: #2c3e50;
+            --button-text: white;
+            --button-hover: #1a252f;
+            --button-disabled: #95a5a6;
+            --filter-bg: white;
+            --filter-text: #333;
+            --filter-hover: #f1f1f1;
+            --filter-border: #ddd;
+            --filter-shadow: rgba(0,0,0,0.2);
+            --choice-info: #333;
+            --stats-bg: #f2f2f2;
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #121212;
+                --text-color: #e0e0e0;
+                --table-header-bg: #1a1a1a;
+                --table-header-text: #ffffff;
+                --table-row-even: #1e1e1e;
+                --table-row-hover: #2a2a2a;
+                --table-border: #444;
+                --button-bg: #3a3a3a;
+                --button-text: #e0e0e0;
+                --button-hover: #4a4a4a;
+                --button-disabled: #2a2a2a;
+                --filter-bg: #2a2a2a;
+                --filter-text: #e0e0e0;
+                --filter-hover: #3a3a3a;
+                --filter-border: #444;
+                --filter-shadow: rgba(0,0,0,0.4);
+                --choice-info: #e0e0e0;
+                --stats-bg: #2a2a2a;
+            }
+            
+            .data-table tbody tr[style*="background-color: #e6f7ff"] {
+                background-color: #003545 !important;
+            }
+            
+            del {
+                color: #777;
+            }
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+        h1 {
+            text-align: center;
+            color: var(--text-color);
+            margin-bottom: 30px;
+        }
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            overflow-x: auto;
+            overflow-y: auto;
+            min-height: 300px;
+            max-height: 100vh;
+        }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            min-width: 800px;
+        }
+        .data-table thead tr {
+            background-color: var(--table-header-bg);
+            color: var(--table-header-text);
+            text-align: left;
+        }
+        .data-table th, 
+        .data-table td {
+            padding: 12px 15px;
+            text-align: center;
+            border-bottom: 1px solid var(--table-border);
+        }
+        .data-table tbody tr:nth-of-type(even) {
+            background-color: var(--table-row-even);
+        }
+        .data-table tbody tr:last-of-type {
+            border-bottom: 2px solid var(--table-border);
+        }
+        .data-table tbody tr:hover {
+            background-color: var(--table-row-hover);
+            font-weight: bold;
+        }
+        .data-table th {
+            position: sticky;
+            top: 0;
+            background-color: var(--table-header-bg);
+            z-index: 2;
+        }
+        .data-table thead {
+            position: sticky;
+            top: 0;
+            z-index: 3;
+        }
+        .controls-container {
+            margin: 20px 0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        #searchInput {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid var(--filter-border);
+            border-radius: 4px;
+            background-color: var(--filter-bg);
+            color: var(--filter-text);
+        }
+        #rowsPerPage {
+            padding: 10px;
+            border: 1px solid var(--filter-border);
+            border-radius: 4px;
+            background-color: var(--filter-bg);
+            color: var(--filter-text);
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            gap: 10px;
+        }
+        .pagination button {
+            padding: 8px 16px;
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .pagination button:hover {
+            background-color: var(--button-hover);
+        }
+        .pagination button:disabled {
+            background-color: var(--button-disabled);
+            cursor: not-allowed;
+        }
+        .page-info {
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+        }
+        .hidden {
+            display: none;
+        }
+        .choice-info {
+            margin: 10px auto 20px;
+            text-align: center;
+            font-size: 0.95em;
+            color: var(--choice-info);
+        }
+        .choice-info ul {
+            list-style: none;
+            padding: 0;
+            margin: 5px 0 0;
+        }
+        .choice-info li {
+            display: inline-block;
+            margin: 0 12px;
+        }
+        /* 多选筛选控件样式 */
+        .filter-container {
+            display: flex;
+            flex-direction: column;
+            margin-top: 5px;
+            align-items: center;
+            justify-content: center;
+        }
+        .filter-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .filter-button {
+            width: 100px;
+            padding: 3px;
+            font-size: 12px;
+            border: 1px solid var(--filter-border);
+            border-radius: 3px;
+            background-color: var(--filter-bg);
+            cursor: pointer;
+            text-align: left;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: var(--filter-text);
+        }
+        .filter-button::after {
+            content: "▼";
+            float: right;
+            font-size: 10px;
+        }
+        .filter-options {
+            display: none;
+            position: absolute;
+            background-color: var(--filter-bg);
+            min-width: 120px;
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid var(--filter-border);
+            border-radius: 3px;
+            z-index: 100;
+            box-shadow: 0 2px 5px var(--filter-shadow);
+        }
+        .filter-options.show {
+            display: block;
+        }
+        .filter-option {
+            padding: 5px 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            color: var(--filter-text);
+            background-color: var(--filter-bg);
+        }
+        .filter-option:hover {
+            background-color: var(--filter-hover);
+        }
+        .filter-option label {
+            cursor: pointer;
+            color: var(--filter-text);
+            margin-left: 5px;
+            width: 100%;
+        }
+        .filter-option input {
+            margin-right: 5px;
+            cursor: pointer;
+        }
+        .filter-option input:checked + label {
+            font-weight: bold;
+        }
+        .filter-summary {
+            font-size: 11px;
+            color: var(table-header-text);
+            margin-top: 3px;
+            text-align: center;
+        }
+        .clear-button {
+            padding: 3px 6px;
+            margin-top: 3px;
+            font-size: 12px;
+            border: none;
+            border-radius: 3px;
+            background-color: #f44336;
+            color: white;
+            cursor: pointer;
+        }
+        .clear-button:hover {
+            background-color: #d32f2f;
+        }
+        .match-count {
+            text-align: center;
+            margin: 10px 0;
+            font-size: 14px;
+            color: var(--text-color);
+            font-weight: bold;
+        }
+        .select-all-container {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 10px;
+            border-bottom: 1px solid var(--table-border);
+        }
+        .select-all-btn, .deselect-all-btn {
+            padding: 2px 5px;
+            font-size: 11px;
+            border: 1px solid var(--filter-border);
+            border-radius: 3px;
+            background-color: var(--filter-bg);
+            cursor: pointer;
+            color: var(--filter-text);
+        }
+        .select-all-btn:hover {
+            background-color: var(--filter-hover);
+        }
+        .deselect-all-btn:hover {
+            background-color: var(--filter-hover);
+        }
+        
+        /* 统计表格样式 */
+        #statsTable table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            border: 1px solid var(--table-border);
+            font-size: 0.95em;
+        }
+        #statsTable th {
+            background-color: var(--stats-bg);
+            padding: 8px 12px;
+            border: 1px solid var(--table-border);
+        }
+        #statsTable td {
+            padding: 8px 12px;
+            border: 1px solid var(--table-border);
+        }
+        .stats-container {
+            margin: 20px auto;
+            text-align: center;
+            max-width: 800px;
+        }
+        .toggle-stats-btn {
+            padding: 8px 16px;
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .toggle-stats-btn:hover {
+            background-color: var(--button-hover);
+        }
+        .btn-text {
+            font-weight: bold;
+        }
+        .arrow-icon {
+            font-size: 0.8em;
+            transition: transform 0.3s;
+        }
+        .stats-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+            font-size: 0.9em;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+        .stats-table th {
+            background-color: var(--table-header-bg);
+            color: var(--table-header-text);
+            padding: 8px 12px;
+            border: 1px solid var(--table-border);
+            text-align: center;
+        }
+        .stats-table td {
+            padding: 8px 12px;
+            border: 1px solid var(--table-border);
+            text-align: center;
+            background-color: var(--bg-color);
+        }
+        .stats-table tr:nth-child(even) td {
+            background-color: var(--table-row-even);
+        }
+        .stats-table tr:hover td {
+            background-color: var(--table-row-hover);
+            font-weight: bold;
+        }
+        .hidden {
+            display: none;
+        }
+        /* 新增的展开/收起按钮样式 */
+        .controls-wrapper {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .controls-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: var(--table-row-even);
+            padding: 10px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .expand-toggle-btn {
+            padding: 8px 16px;
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        
+        .expand-toggle-btn:hover {
+            background-color: var(--button-hover);
+        }
+        
+        .expand-icon {
+            font-size: 0.9em;
+        }
+        
+        .collapsed .expandable-column {
+            display: none;
+        }       
+    </style>

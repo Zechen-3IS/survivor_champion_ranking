@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+secrets.yaml
+.DS_Store
+.update.log
+.launchd/
+.vscode/
+champion_ranking.ipynb
+utils.py
+
