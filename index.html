@@ -513,110 +513,6 @@
                     font-weight: 600;
                 }
                 
-            /* 新增公告栏样式 - 支持多行 */
-            .announcement-container {
-                margin: 25px auto 20px;
-                max-width: 800px;
-                border-radius: 12px;
-                overflow: hidden;
-                box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-                background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-                border: 1px solid #e0e0e0;
-                animation: slideIn 0.5s ease-out;
-                position: relative;
-            }
-            
-            @keyframes slideIn {
-                0% { transform: translateY(-20px); opacity: 0; }
-                100% { transform: translateY(0); opacity: 1; }
-            }
-            
-            .announcement-header {
-                display: flex;
-                align-items: center;
-                padding: 15px 20px;
-                background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-                color: white;
-                font-weight: 500;
-            }
-            
-            .announcement-icon {
-                font-size: 1.8rem;
-                margin-right: 12px;
-            }
-            
-            .announcement-header h3 {
-                margin: 0;
-                flex-grow: 1;
-                font-size: 1.4rem;
-                font-weight: 600;
-            }
-            
-            .announcement-close {
-                font-size: 1.8rem;
-                cursor: pointer;
-                padding: 0 10px;
-                transition: transform 0.2s;
-                line-height: 1;
-            }
-            
-            .announcement-close:hover {
-                transform: scale(1.2);
-            }
-            
-            .announcement-content {
-                padding: 15px 20px 20px;
-                font-size: 1.1rem;
-                line-height: 1.7;
-                color: var(--text-color);
-                background: var(--card-bg);
-            }
-            
-            .announcement-line {
-                display: flex;
-                margin: 15px 0;
-                padding: 10px 15px;
-                border-radius: 8px;
-                background: rgba(0, 0, 0, 0.03);
-                transition: all 0.3s ease;
-                align-items: center;
-            }
-            
-            .announcement-line:hover {
-                background: rgba(44, 110, 73, 0.08);
-                transform: translateX(5px);
-            }
-            
-            .line-icon {
-                font-size: 1.3rem;
-                margin-right: 15px;
-                min-width: 30px;
-                text-align: center;
-            }
-            
-            .line-content {
-                flex-grow: 1;
-            }
-            
-            /* 深色模式适配 */
-            @media (prefers-color-scheme: dark) {
-                .announcement-container {
-                    background: linear-gradient(135deg, #1a1a1a, #222222);
-                    border-color: #333;
-                }
-                
-                .announcement-content {
-                    background: var(--card-bg);
-                }
-                
-                .announcement-line {
-                    background: rgba(255, 255, 255, 0.05);
-                }
-                
-                .announcement-line:hover {
-                    background: rgba(76, 149, 108, 0.15);
-                }
-            }
             /* 新增新闻部分样式 */
             .news-section {
                 margin: 40px auto;
@@ -990,32 +886,9 @@
                 <p class="subtitle">开发者：旧纳 </p>
                 <p class="subtitle">数据源：丘的网球</p>
                 <div style="text-align: center; color: #888; font-size: 0.9em; margin-bottom: 10px;">
-                页面数据更新时间：2025-10-31 10:02:30
+                页面数据更新时间：2026-10-02 10:13:59
             </div>
             </header>
-             <!-- 公告栏 -->
-            
-            <div class="announcement-container">
-                <div class="announcement-header">
-                    <div class="announcement-icon">📢</div>
-                    <h3>公告通知</h3>
-                    <div class="announcement-close" onclick="closeAnnouncement(this)">×</div>
-                </div>
-                <div class="announcement-content">
-                    
-                    <div class="announcement-line">
-                        <div class="line-icon">📌</div>
-                        <div class="line-content">联合年终入围及计分规则：截止本周(10.27-11.02)，冠军联合排名前8的选手可以同时参加atp和wta年终，取二者得分的平均值计入琛网的联合排名中。注：atp和wta单独的年终得分不当作一站计入联合排名中。</div>
-                    </div>
-                    
-                    <div class="announcement-line">
-                        <div class="line-icon">📌</div>
-                        <div class="line-content">联合杯计分及入围规则：联合杯作为联合排名的开年第一站，采用邀请制，强制计入联合排名中，全胜夺冠可得1500分。<br>入围规则：参考上一年的年终排名确认18名选手的入围名单，其中atp和wta单项前5分别直接入围，再依靠联合排名确认剩余的8名选手。<br>特有规则：参赛名单确认后，基于排名和入围方式与参与联合杯的国家一一对应，确认小组赛名单。小组赛期间，每名选手在自己所在的组内选择幸存的国家，国家获胜则当天幸存。小组赛阶段存活，则可以参加淘汰赛，淘汰赛阶段可以重新选择小组赛选过的国家。<br>计分规则：小组赛采用竞猜规则，选手需要对自己组内每场比赛的胜者进行预测，预测成功得到150分。3场比赛成功预测2场以上可以进入淘汰赛。1/4决赛获胜得到200分，半决赛获胜得到350分，决赛获胜得到500分。其中，以小组赛2场胜利进入淘汰赛的选手，淘汰赛阶段获得分分数*0.8计入总分。</div>
-                    </div>
-                    
-                </div>
-            </div>
-            
             <!-- 新增的每日新闻部分 -->
             <!---->
 
@@ -1057,77 +930,61 @@
             
             <h2>上周赛事结果</h2>
             <div class="card-container">
-                
-            <div class="card champion-card ">
-                <div class="card-icon">🏆</div>
+            <div class="card  ">
+                <div class="card-icon">🎾</div>
                 <div class="card-content">
                     <h3>WTA上周赛事</h3>
                     <div class="card-content-wrapper">
             <div class="match-info">
-                <span class="tournament-name">东京</span>
+                <span class="tournament-name">新加坡</span>
                 <span class="tournament-level">500赛</span>
             </div>
-            <div class="champion-info">恭喜samsonyip, AdonisZhang, Ryan-Tennis夺冠</div></div>
+            <div class="no-champion">本站无人生还</div><div class="champion-info">恭喜人怪黄-, 无***痕, Hakulamatata_-B, 流星飞舞啦啦啦, s***3, Rockylababy, 温网冠军诺斯科娃, 塔姆科尔涅娃我老婆, PoppyBagel获得赛事最高分：195</div></div>
                 </div>
-                <div class="trophy-badge">🏆</div>
             </div>
-            
-                
-            <div class="card  ">
-                <div class="card-icon">🎾</div>
+
+            <div class="card champion-card ">
+                <div class="card-icon">🏆</div>
                 <div class="card-content">
                     <h3>ATP上周赛事</h3>
                     <div class="card-content-wrapper">
             <div class="match-info">
-                <span class="tournament-name">上海</span>
-                <span class="tournament-level">1000赛</span>
+                <span class="tournament-name">杭州</span>
+                <span class="tournament-level">250赛</span>
             </div>
-            <div class="no-champion">本站无人生还</div><div class="champion-info">恭喜德米永远至上获得赛事最高分：150</div></div>
+            <div class="champion-info">恭喜马戏团冠军, samsonyip, 法网冠军丰塞卡, 131*****034, Zoey夺冠</div></div>
                 </div>
-                
+                <div class="trophy-badge">🏆</div>
             </div>
-            
             </div>
             
             <h2>本周赛事</h2>
             <div class="card-container">
                 
-            <a href="https://www.live-tennis.cn/zh/survivor/event/31077/2025/WS/my" class="card-link">
+            <a href="https://www.live-tennis.cn/zh/survivor/event/31020/2026/WS/my" class="card-link">
                 <div class="card  current-week-card">
                     <div class="card-icon">🎾</div>
                     <div class="card-content">
                         <h3>WTA本周赛事</h3>
                         <div class="card-content-wrapper">
             <div class="match-info">
-                <span class="tournament-name">九江</span>
-                <span class="tournament-level">250赛</span>
+                <span class="tournament-name">北京</span>
+                <span class="tournament-level">1000赛</span>
             </div>
             
             <div class="survivor-stats">
                 <span class="participant-count">
                     <span class="stat-icon">👥</span>
                     <span class="stat-label">参赛: </span>
-                    <span class="stat-value">258</span>
+                    <span class="stat-value">409</span>
                 </span>
                 <span class="survivor-count">
                     <span class="stat-icon">✅</span>
                     <span class="stat-label">幸存: </span>
-                    <span class="stat-value">3</span>
+                    <span class="stat-value">286</span>
                 </span>
             </div>
             
-            <div class="defending-section">
-                <div class="defending-title">卫冕赛事：</div>
-                <div class="defending-match-block">
-                    
-            <div class="match-info">
-                <span class="tournament-name">香港</span>
-                <span class="tournament-level">250赛</span>
-            </div>
-            <div class="defending-champion">卫冕冠军：Pomelo琛, 逍遥笑叹红尘, Aaron-Rodgers, 和楼盘规模破破, h***t, r***i, 围加漂流事务所, WillKris锴, 镇远神, victorgc, 银***0, 弗外外茨, A***y, 有***包, 麦迪还是洋葱</div>
-                </div>
-                
-            </div>
             </div>
                     </div>
                     
@@ -1135,27 +992,27 @@
             </a>
             
                 
-            <a href="https://www.live-tennis.cn/zh/survivor/event/20352/2025/MS/my" class="card-link">
+            <a href="https://www.live-tennis.cn/zh/survivor/event/20747/2026/MS/my" class="card-link">
                 <div class="card  current-week-card">
                     <div class="card-icon">🎾</div>
                     <div class="card-content">
                         <h3>ATP本周赛事</h3>
                         <div class="card-content-wrapper">
             <div class="match-info">
-                <span class="tournament-name">巴黎</span>
-                <span class="tournament-level">1000赛</span>
+                <span class="tournament-name">北京</span>
+                <span class="tournament-level">500赛</span>
             </div>
             
             <div class="survivor-stats">
                 <span class="participant-count">
                     <span class="stat-icon">👥</span>
                     <span class="stat-label">参赛: </span>
-                    <span class="stat-value">297</span>
+                    <span class="stat-value">362</span>
                 </span>
                 <span class="survivor-count">
                     <span class="stat-icon">✅</span>
                     <span class="stat-label">幸存: </span>
-                    <span class="stat-value">67</span>
+                    <span class="stat-value">248</span>
                 </span>
             </div>
             
@@ -1164,28 +1021,10 @@
                 <div class="defending-match-block">
                     
             <div class="match-info">
-                <span class="tournament-name">巴黎</span>
+                <span class="tournament-name">上海</span>
                 <span class="tournament-level">1000赛</span>
             </div>
-            <div class="defending-no-champion">卫冕赛事无人生还</div><div class="defending-champion">victorgc, liu8322925, 萨卡外, __Novak__, 九O墨, A***4, 一***酒, 深***名, r***i, 荞麦皮, -Frictionless, w***w, z***4, 网球爱好者Schur, lasvegadgt, Schurkel Yeein, jellyddfish, A1_K, 公务员男友获得赛事最高分：650</div>
-                </div>
-                <hr class="defending-divider">
-                <div class="defending-match-block">
-                    
-            <div class="match-info">
-                <span class="tournament-name">巴塞尔</span>
-                <span class="tournament-level">500赛</span>
-            </div>
-            <div class="defending-champion">卫冕冠军：victorgc</div>
-                </div>
-                <hr class="defending-divider">
-                <div class="defending-match-block">
-                    
-            <div class="match-info">
-                <span class="tournament-name">阿拉木图</span>
-                <span class="tournament-level">250赛</span>
-            </div>
-            <div class="defending-no-champion">卫冕赛事无人生还</div><div class="defending-champion">摸鱼大师荞麦皮获得赛事最高分：165</div>
+            <div class="defending-no-champion">卫冕赛事无人生还</div><div class="defending-champion">做丞琳永远的歌迷ya获得赛事最高分：150</div>
                 </div>
                 
             </div>
@@ -1200,31 +1039,21 @@
             <!-- 新增下周赛事预告板块 -->
             <h2>下周赛事预告</h2>
             <div class="card-container">
-                
-            <div class="card  ">
-                <div class="card-icon">📅</div>
+            <div class="card rest-card ">
+                <div class="card-icon">⏸️</div>
                 <div class="card-content">
                     <h3>WTA下周赛事</h3>
-                    <div class="card-content-wrapper">
-            <div class="match-info">
-                <span class="tournament-name">利雅得</span>
-                <span class="tournament-level">总决赛</span>
-            </div>
-            </div>
+                    <div class="card-content-wrapper"><div class="defending-no-champion">休赛期</div></div>
                 </div>
-                
             </div>
-            
-                
+
             <div class="card rest-card ">
                 <div class="card-icon">⏸️</div>
                 <div class="card-content">
                     <h3>ATP下周赛事</h3>
                     <div class="card-content-wrapper"><div class="defending-no-champion">休赛期</div></div>
                 </div>
-                
             </div>
-            
             </div>
             <h2>球员成绩统计</h2>
             <div class="stats-grid">
@@ -1242,26 +1071,6 @@
             </div>
         </div>
         <script>
-            // 关闭公告栏函数
-            function closeAnnouncement(btn) {
-                const container = btn.closest('.announcement-container');
-                container.style.opacity = '1';
-                
-                const animation = container.animate(
-                    [
-                        { opacity: 1, transform: 'translateY(0)' },
-                        { opacity: 0, transform: 'translateY(-20px)' }
-                    ],
-                    {
-                        duration: 300,
-                        easing: 'ease-in'
-                    }
-                );
-                
-                animation.onfinish = () => {
-                    container.style.display = 'none';
-                };
-            }
             // 新增：新闻项的交互动画
             document.addEventListener('DOMContentLoaded', function() {
                 const newsItems = document.querySelectorAll('.news-item');
