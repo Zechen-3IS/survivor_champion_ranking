@@ -142,9 +142,9 @@ def render_ranking_page(
 ) -> Path:
     title = TITLES[board]
     this_week = _as_list(frame.attrs.get("this_week"))
-    event_columns = frame.attrs.get("event_columns") or [
-        col for col in frame.columns if col not in META_COLS
-    ]
+    event_columns = frame.attrs.get("event_columns")
+    if event_columns is None:
+        event_columns = [col for col in frame.columns if col not in META_COLS]
     rules = frame.attrs.get("rules")
     uncounted = frame.attrs.get("uncounted_columns") or []
     table_html = _decorate_table(frame, rules, event_columns, this_week, uncounted)
@@ -155,7 +155,15 @@ def render_ranking_page(
         extra_stats if extra_stats is not None else pd.DataFrame(), "statsTable2", "死亡种子统计"
     )
     filter_skip = int(frame.attrs.get("filter_skip") or 4)
+    start_collapsed = frame.attrs.get("start_collapsed")
+    if start_collapsed is None:
+        start_collapsed = True
     script = _read_asset("ranking.js").replace("const tag = 4;", f"const tag = {filter_skip};", 1)
+    script = script.replace(
+        "const startCollapsed = true;",
+        f"const startCollapsed = {str(bool(start_collapsed)).lower()};",
+        1,
+    )
     page = f"""
     <!DOCTYPE html>
     <html lang="zh-CN">

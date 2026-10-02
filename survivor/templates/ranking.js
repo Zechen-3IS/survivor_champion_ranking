@@ -2,6 +2,7 @@
         const table = document.querySelector('.data-table');
         const allRows = Array.from(table.querySelectorAll('tbody tr'));
         const tag = 4;
+        const startCollapsed = true;
         let filteredRows = [...allRows];
         let currentPage = 1;
         let rowsPerPage = 10;
@@ -318,8 +319,13 @@
             if (!expandBtn) return;
             
             const tableContainer = document.querySelector('.container');
-            expandBtn.innerHTML = '<span class="btn-text">展开列</span><span class="expand-icon">▶</span>';
-            tableContainer.classList.add('collapsed');
+            if (startCollapsed) {
+                tableContainer.classList.add('collapsed');
+                expandBtn.innerHTML = '<span class="btn-text">展开列</span><span class="expand-icon">▶</span>';
+            } else {
+                tableContainer.classList.remove('collapsed');
+                expandBtn.innerHTML = '<span class="btn-text">收起列</span><span class="expand-icon">▼</span>';
+            }
             
             expandBtn.addEventListener('click', function() {
                 const isCollapsed = tableContainer.classList.contains('collapsed');

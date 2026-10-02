@@ -12,7 +12,6 @@ from .fetch import LiveTennisClient, WeekEvent, strip_username
 from .process import _as_key, row_total
 
 PLAYED_STATUS = {"存活", "球员输球", "自杀(退赛)", "自杀(重复)", "自杀(主备冲突)"}
-EXPAND_COLS = ["夺冠明细", "夺亚明细", "连胜细节", "连败细节"]
 DISPLAY_COLS = [
     "排名",
     "用户名",
@@ -238,10 +237,12 @@ def build_player_stats(
         empty.attrs.update(
             {
                 "this_week": [],
-                "event_columns": EXPAND_COLS,
+                "event_columns": [],
                 "display_columns": DISPLAY_COLS,
                 "rules": None,
                 "uncounted_columns": [],
+                "filter_skip": 2,
+                "start_collapsed": False,
             }
         )
         return empty
@@ -327,22 +328,23 @@ def build_player_stats(
         )
 
     frame = pd.DataFrame(rows_out)
-    frame["_资格"] = (frame["周期参赛数"] < 8).astype(int)
+    frame["_最佳排名"] = frame["历史最佳排名"].replace(0, 10**9)
     frame = frame.sort_values(
-        ["_资格", "历史最高得分", "历史冠军数", "赛季存活率", "周期冠军数"],
-        ascending=[True, False, False, False, False],
+        ["历史冠军数", "历史亚军数", "_最佳排名"],
+        ascending=[False, False, True],
     ).reset_index(drop=True)
-    frame = frame.drop(columns=["_资格"])
+    frame = frame.drop(columns=["_最佳排名"])
     frame["排名"] = range(1, len(frame) + 1)
     view = frame[DISPLAY_COLS].copy()
     view.attrs.update(
         {
             "this_week": [],
-            "event_columns": EXPAND_COLS,
+            "event_columns": [],
             "display_columns": DISPLAY_COLS,
             "rules": None,
             "uncounted_columns": [],
             "filter_skip": 2,
+            "start_collapsed": False,
         }
     )
     return view
