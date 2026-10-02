@@ -164,12 +164,14 @@ class LiveTennisClient:
         self._current_events = dict(found)
         return self._current_events
 
-    def _fill_ajax_ids(self, event: WeekEvent) -> None:
+    def _fill_ajax_ids(self, event: WeekEvent, fill_details: bool = True) -> None:
         score_html = self._get(event.score_page).text
         score_match = SCORE_AJAX_RE.search(score_html)
         if not score_match:
             raise FetchError(f"找不到本周积分接口: {event.score_page}")
         event.ajax_id = score_match.group(1).rstrip("/").split("/")[-2]
+        if not fill_details:
+            return
         detail_html = self._get(event.detail_page).text
         if not DETAIL_AJAX_RE.search(detail_html):
             raise FetchError(f"找不到本周明细接口: {event.detail_page}")
@@ -323,6 +325,47 @@ class LiveTennisClient:
                     found.append((delta, event))
         found.sort(key=lambda item: item[0])
         return [item[1] for item in found[:1]]
+
+    def list_tour_events(self, tennis_type: str, years: list[int] | None = None) -> list[dict[str, Any]]:
+        current_year = datetime.now().year
+        years = years or list(range(current_year - 2, current_year + 1))
+        events: list[dict[str, Any]] = []
+        for year in years:
+            rows = self.calendar_events(year)
+            for index, row in enumerate(rows):
+                mmdd = row.get("date") or ""
+                try:
+                    month = int(str(mmdd).split("-")[0])
+                    actual_year = year - 1 if month >= 11 and index < 10 else year
+                    monday = datetime.strptime(f"{actual_year}-{mmdd}", "%Y-%m-%d")
+                except (TypeError, ValueError):
+                    continue
+                for info in row.get(tennis_type) or []:
+                    if not info.get("id") or not info.get("name"):
+                        continue
+                    events.append({**info, "monday": monday, "season_year": year})
+        events.sort(key=lambda item: (item["monday"], item.get("name") or ""))
+        return events
+
+    def fetch_event_results(self, info: dict[str, Any]) -> list[dict[str, Any]]:
+        event = WeekEvent(
+            tennis_type="atp" if str(info.get("gender") or "").upper() == "MS" else "wta",
+            name=str(info.get("name") or ""),
+            page_id=str(info.get("id") or ""),
+            year=str(info.get("year") or ""),
+            gender=str(info.get("gender") or ""),
+        )
+        try:
+            self._fill_ajax_ids(event, fill_details=False)
+        except (FetchError, requests.RequestException):
+            return []
+        if not event.ajax_id:
+            return []
+        url = f"https://www.live-tennis.cn/zh/survivor/event/{event.ajax_id}/score"
+        try:
+            return self._post_datatable(url, event.score_page, page_size=1000)
+        except (FetchError, requests.RequestException):
+            return []
 
 
 def strip_username(raw: str | None) -> str:

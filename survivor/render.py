@@ -154,6 +154,8 @@ def render_ranking_page(
     extra_block = _stats_html(
         extra_stats if extra_stats is not None else pd.DataFrame(), "statsTable2", "死亡种子统计"
     )
+    filter_skip = int(frame.attrs.get("filter_skip") or 4)
+    script = _read_asset("ranking.js").replace("const tag = 4;", f"const tag = {filter_skip};", 1)
     page = f"""
     <!DOCTYPE html>
     <html lang="zh-CN">
@@ -202,7 +204,7 @@ def render_ranking_page(
                 <button id="nextPage">下一页</button>
             </div>
         </div>
-        {_read_asset("ranking.js")}
+        {script}
     </body>
     </html>
     """

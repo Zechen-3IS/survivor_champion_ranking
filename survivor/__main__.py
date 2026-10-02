@@ -10,6 +10,7 @@ from .home import render_index_page
 from .process import build_combined, build_ranking
 from .publish import publish_html
 from .render import render_ranking_page
+from .stats import build_player_stats
 
 
 def _primary_event(events: list[WeekEvent] | None) -> WeekEvent | None:
@@ -109,6 +110,10 @@ def generate(tours: list[str], output_dir: Path) -> list[Path]:
         built[tennis_type] = champ
         built[f"{tennis_type}_instant"] = inst
         print(f"已生成 {tennis_type} 冠军榜和即时榜")
+        print(f"统计 {tennis_type.upper()} 球员成绩...")
+        show = build_player_stats(client, tennis_type, event)
+        written.append(render_ranking_page(f"{tennis_type}_show", show, None, None, output_dir))
+        print(f"已生成 {tennis_type} 球员统计")
 
     if "atp" in built and "wta" in built:
         combined = build_combined(built["atp"], built["wta"], instant=False)

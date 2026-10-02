@@ -28,6 +28,8 @@ TITLES = {
     "wta_instant": "WTA幸存者即时排名",
     "combined": "幸存者冠军联合排名",
     "combined_instant": "幸存者即时联合排名",
+    "atp_show": "ATP球员成绩统计",
+    "wta_show": "WTA球员成绩统计",
 }
 
 OUTPUT_FILES = {
@@ -37,6 +39,8 @@ OUTPUT_FILES = {
     "wta_instant": "wta_instant_ranking.html",
     "combined": "combined_ranking.html",
     "combined_instant": "combined_instant_ranking.html",
+    "atp_show": "atp_show.html",
+    "wta_show": "wta_show.html",
 }
 
 PUBLISH_FILES = [
@@ -47,6 +51,8 @@ PUBLISH_FILES = [
     "wta_instant_ranking.html",
     "combined_ranking.html",
     "combined_instant_ranking.html",
+    "atp_show.html",
+    "wta_show.html",
 ]
 
 REMOTE_SSH = "git@github.com:Zechen-3IS/survivor_champion_ranking.git"
