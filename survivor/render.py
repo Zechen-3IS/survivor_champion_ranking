@@ -1,13 +1,12 @@
 from __future__ import annotations
 
-from datetime import datetime
 from html import escape
 from pathlib import Path
 
 import pandas as pd
 from bs4 import BeautifulSoup
 
-from .config import META_COLS, OUTPUT_FILES, TEMPLATE_DIR, TITLES, TourRules
+from .config import META_COLS, OUTPUT_FILES, TEMPLATE_DIR, TITLES, TourRules, beijing_now
 from .process import counted_events
 
 UP_ARROW = """
@@ -148,7 +147,7 @@ def render_ranking_page(
     rules = frame.attrs.get("rules")
     uncounted = frame.attrs.get("uncounted_columns") or []
     table_html = _decorate_table(frame, rules, event_columns, this_week, uncounted)
-    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    now = beijing_now().strftime("%Y-%m-%d %H:%M:%S")
     choice_block = _choice_info_html(summary or []) if summary is not None else ""
     stats_block = _stats_html(stats if stats is not None else pd.DataFrame(), "statsTable1", "每日杀手统计")
     extra_block = _stats_html(

@@ -18,6 +18,7 @@ from .config import (
     YEAR_AJAX,
     YEAR_PAGE,
     WeekEvent,
+    beijing_now,
 )
 
 CSRF_RE = re.compile(
@@ -257,7 +258,7 @@ class LiveTennisClient:
         elif isinstance(value, datetime):
             current = value
         else:
-            current = datetime.now()
+            current = beijing_now()
         current = current.replace(hour=0, minute=0, second=0, microsecond=0)
         return current - timedelta(days=current.weekday())
 
@@ -327,7 +328,7 @@ class LiveTennisClient:
         return [item[1] for item in found[:1]]
 
     def list_tour_events(self, tennis_type: str, years: list[int] | None = None) -> list[dict[str, Any]]:
-        current_year = datetime.now().year
+        current_year = beijing_now().year
         years = years or list(range(current_year - 2, current_year + 1))
         events: list[dict[str, Any]] = []
         for year in years:

@@ -1,10 +1,10 @@
 from __future__ import annotations
 
 import re
-from datetime import datetime, timedelta
+from datetime import timedelta
 from html import escape
 
-from .config import WeekEvent
+from .config import WeekEvent, beijing_now
 from .fetch import LiveTennisClient, strip_username
 
 TOUR_LABEL = {"wta": "WTA", "atp": "ATP"}
@@ -230,7 +230,7 @@ def build_home_sections(client: LiveTennisClient) -> dict[str, str]:
 
 def render_index_page(client: LiveTennisClient, output_path) -> None:
     html = output_path.read_text(encoding="utf-8")
-    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    now = beijing_now().strftime("%Y-%m-%d %H:%M:%S")
     html = re.sub(r"页面数据更新时间：\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}", f"页面数据更新时间：{now}", html, count=1)
     sections = build_home_sections(client)
     heading = {"上周赛事结果", "本周赛事", "下周赛事预告"}
