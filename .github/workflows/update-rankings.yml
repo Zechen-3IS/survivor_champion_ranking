@@ -18,6 +18,8 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
@@ -31,15 +33,12 @@ jobs:
 
       - name: Commit and push HTML
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- index.html atp_ranking.html wta_ranking.html \
-            atp_instant_ranking.html wta_instant_ranking.html \
-            combined_ranking.html combined_instant_ranking.html
-          if git diff --cached --quiet; then
-            echo "HTML unchanged"
-            exit 0
-          fi
-          git commit -m "自动更新幸存者排名"
-          git pull --rebase --autostash origin main
-          git push
+          chmod +x .github/scripts/push-generated.sh
+          .github/scripts/push-generated.sh "自动更新幸存者排名" \
+            index.html \
+            atp_ranking.html \
+            wta_ranking.html \
+            atp_instant_ranking.html \
+            wta_instant_ranking.html \
+            combined_ranking.html \
+            combined_instant_ranking.html

@@ -18,6 +18,8 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
@@ -31,14 +33,9 @@ jobs:
 
       - name: Commit and push stats
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          chmod +x .github/scripts/push-generated.sh
           mkdir -p data
-          git add -- atp_show.html wta_show.html data/player_events.json
-          if git diff --cached --quiet; then
-            echo "stats unchanged"
-            exit 0
-          fi
-          git commit -m "每周更新球员成绩统计"
-          git pull --rebase --autostash origin main
-          git push
+          .github/scripts/push-generated.sh "每周更新球员成绩统计" \
+            atp_show.html \
+            wta_show.html \
+            data/player_events.json
