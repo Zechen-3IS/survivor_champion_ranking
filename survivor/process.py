@@ -61,6 +61,12 @@ def parse_player_list(details: str | None) -> list[str]:
     return PLAYER_PATTERN.findall(text)
 
 
+def _killer_player(status: str, players: list[str]) -> str:
+    if players and status == "球员输球":
+        return players[-1]
+    return ""
+
+
 def _event_bucket(name: str, rules: TourRules) -> str:
     base = base_event_name(name)
     if name in rules.slams or base in rules.slams:
@@ -209,16 +215,17 @@ def _week_score_frame(rows: list[dict[str, Any]], event_name: str) -> pd.DataFra
     parsed = []
     for item in rows:
         players = parse_player_list(item.get("players"))
+        status = item.get("fill_status") or ""
         parsed.append(
             {
                 "主键": _as_key(item.get("user_id")),
                 "用户名": strip_username(item.get("username")),
-                "状态": item.get("fill_status") or "",
+                "状态": status,
                 "存活天数": item.get("day"),
                 event_name: int(item.get("score") or 0),
                 "明细": players,
                 "上轮球员": players[-2] if len(players) >= 2 else "",
-                "杀手球员": players[-1] if players and item.get("fill_status") != "存活" else "",
+                "杀手球员": _killer_player(status, players),
             }
         )
     return pd.DataFrame(parsed)
@@ -250,7 +257,7 @@ def killer_stats(week_scores: pd.DataFrame) -> pd.DataFrame:
         return pd.DataFrame()
     by_day: dict[Any, Counter] = defaultdict(Counter)
     for _, row in week_scores.iterrows():
-        if row.get("状态") == "存活":
+        if row.get("状态") != "球员输球":
             continue
         players = row.get("明细") or []
         if not players:
