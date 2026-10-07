@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import re
-from collections import defaultdict
 from dataclasses import dataclass
 from datetime import datetime, timedelta
 from typing import Any
@@ -11,7 +10,6 @@ from bs4 import BeautifulSoup
 
 from .config import (
     CALENDAR_URL,
-    MENU_URL,
     RANK_AJAX,
     RANK_PAGE,
     USER_AGENT,
@@ -24,10 +22,6 @@ from .config import (
 CSRF_RE = re.compile(
     r'name=["\']csrf-token["\'][^>]*content=["\']([^"\']+)|'
     r'content=["\']([^"\']+)["\'][^>]*name=["\']csrf-token["\']',
-    re.I,
-)
-EVENT_RE = re.compile(
-    r'href="https://www\.live-tennis\.cn/zh/survivor/event/([^/]+)/(\d+)/((?:MS|WS))/my"\s*>\s*(ATP|WTA)\s+([^<]+)',
     re.I,
 )
 SCORE_AJAX_RE = re.compile(r"url:\s*\"(https://www\.live-tennis\.cn/zh/survivor/event/\d+/score)\"")
@@ -68,6 +62,23 @@ class WeekPair:
     @property
     def last_names(self) -> list[str]:
         return [event["name"] for event in self.last_events if event.get("name")]
+
+
+@dataclass
+class TourWeek:
+    this_monday: datetime
+    current_start: datetime
+    current_events: list[dict[str, str]]
+    previous_events: list[dict[str, str]]
+    next_events: list[dict[str, str]]
+
+    @property
+    def current_names(self) -> list[str]:
+        return [event["name"] for event in self.current_events if event.get("name")]
+
+    @property
+    def drop_monday(self) -> datetime:
+        return self.current_start - timedelta(weeks=52)
 
 
 class LiveTennisClient:
@@ -139,30 +150,24 @@ class LiveTennisClient:
     def discover_current_events(self) -> dict[str, list[WeekEvent]]:
         if self._current_events is not None:
             return self._current_events
-        html = self._get(MENU_URL).text
-        parts = re.split(r"<li><a disabled", html)
-        current_html = parts[2] if len(parts) > 2 else html
-        found: dict[str, list[WeekEvent]] = defaultdict(list)
-        seen: set[tuple[str, str]] = set()
-        for page_id, year, gender, label, name in EVENT_RE.findall(current_html):
-            tennis_type = "atp" if label.upper() == "ATP" else "wta"
-            key = (tennis_type, page_id)
-            if key in seen:
-                continue
-            seen.add(key)
-            found[tennis_type].append(
-                WeekEvent(
+        found: dict[str, list[WeekEvent]] = {}
+        for tennis_type in ("atp", "wta"):
+            events: list[WeekEvent] = []
+            for info in self.tour_week(tennis_type).current_events:
+                if not info.get("id"):
+                    continue
+                event = WeekEvent(
                     tennis_type=tennis_type,
-                    name=name.strip(),
-                    page_id=page_id,
-                    year=year,
-                    gender=gender.upper(),
+                    name=info.get("name") or "",
+                    page_id=info["id"],
+                    year=info.get("year") or "",
+                    gender=info.get("gender") or "",
+                    level=info.get("level") or "",
                 )
-            )
-        for events in found.values():
-            for event in events:
                 self._fill_ajax_ids(event)
-        self._current_events = dict(found)
+                events.append(event)
+            found[tennis_type] = events
+        self._current_events = found
         return self._current_events
 
     def _fill_ajax_ids(self, event: WeekEvent, fill_details: bool = True) -> None:
@@ -270,14 +275,55 @@ class LiveTennisClient:
                 return list(row.get(tennis_type) or [])
         return []
 
+    def tour_schedule(self, tennis_type: str) -> list[tuple[datetime, list[dict[str, str]]]]:
+        grouped: dict[datetime, list[dict[str, str]]] = {}
+        year = beijing_now().year
+        for item in self.list_tour_events(tennis_type, years=[year - 1, year]):
+            monday = item.get("monday")
+            if not isinstance(monday, datetime):
+                continue
+            key = monday.replace(hour=0, minute=0, second=0, microsecond=0)
+            grouped.setdefault(key, []).append(
+                {
+                    "name": item.get("name") or "",
+                    "id": item.get("id") or "",
+                    "year": item.get("year") or "",
+                    "gender": item.get("gender") or "",
+                    "level": item.get("level") or "",
+                }
+            )
+        return sorted(grouped.items(), key=lambda item: item[0])
+
+    def tour_week(self, tennis_type: str, this_monday: datetime | str | None = None) -> TourWeek:
+        monday = self.week_monday(this_monday)
+        schedule = self.tour_schedule(tennis_type)
+        this_events = [event for start, events in schedule if start.date() == monday.date() for event in events]
+        before = [(start, events) for start, events in schedule if start.date() < monday.date()]
+        after = [(start, events) for start, events in schedule if start.date() > monday.date()]
+        if this_events:
+            current_start, current = monday, this_events
+            previous = before[-1][1] if before else []
+        elif before:
+            current_start, current = before[-1]
+            previous = before[-2][1] if len(before) > 1 else []
+        else:
+            current_start, current, previous = monday, [], []
+        return TourWeek(
+            this_monday=monday,
+            current_start=current_start,
+            current_events=current,
+            previous_events=previous,
+            next_events=after[0][1] if after else [],
+        )
+
     def week_pair(self, this_monday: datetime | str | None, tennis_type: str) -> WeekPair:
-        current = self.week_monday(this_monday)
-        previous = current - timedelta(weeks=52)
+        week = self.tour_week(tennis_type, this_monday)
+        last_monday = week.drop_monday
         return WeekPair(
-            this_monday=current,
-            last_monday=previous,
-            this_events=self.events_on_monday(current, tennis_type),
-            last_events=self.events_on_monday(previous, tennis_type),
+            this_monday=week.current_start,
+            last_monday=last_monday,
+            this_events=week.current_events,
+            last_events=self.events_on_monday(last_monday, tennis_type),
         )
 
     def prior_event_year(
@@ -342,7 +388,7 @@ class LiveTennisClient:
                 except (TypeError, ValueError):
                     continue
                 for info in row.get(tennis_type) or []:
-                    if not info.get("id") or not info.get("name"):
+                    if not info.get("name"):
                         continue
                     events.append({**info, "monday": monday, "season_year": year})
         events.sort(key=lambda item: (item["monday"], item.get("name") or ""))

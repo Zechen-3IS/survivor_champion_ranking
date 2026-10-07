@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import re
-from datetime import timedelta
 from html import escape
 
 from .config import WeekEvent, beijing_now
@@ -187,37 +186,29 @@ def _empty_week_card(label: str, kind: str) -> str:
 
 
 def build_home_sections(client: LiveTennisClient) -> dict[str, str]:
-    this_monday = client.week_monday()
-    prev_monday = this_monday - timedelta(weeks=1)
-    next_monday = this_monday + timedelta(weeks=1)
     last_week: list[str] = []
     this_week: list[str] = []
     next_week: list[str] = []
-    current_live = client.discover_current_events()
 
     for tennis_type in ("wta", "atp"):
         label = TOUR_LABEL[tennis_type]
-        prev_events = client.events_on_monday(prev_monday, tennis_type)
+        week = client.tour_week(tennis_type)
+        prev_events = week.previous_events
         if prev_events:
             last_week.append(_result_card(label, _summarize(client, _week_event(tennis_type, prev_events[0]))))
         else:
             last_week.append(_empty_week_card(label, "last"))
 
-        live = (current_live.get(tennis_type) or [None])[0]
-        calendar_now = client.events_on_monday(this_monday, tennis_type)
-        current = live or (_week_event(tennis_type, calendar_now[0]) if calendar_now else None)
-        if current:
-            if calendar_now and not current.level:
-                current.level = calendar_now[0].get("level") or ""
-            defending_events = client.previous_edition(current.name, tennis_type, this_monday)
+        if week.current_events:
+            current = _week_event(tennis_type, week.current_events[0])
+            defending_events = client.previous_edition(current.name, tennis_type, week.current_start)
             defending = [_summarize(client, _week_event(tennis_type, item)) for item in defending_events]
             this_week.append(_this_week_card(label, _summarize(client, current), defending))
         else:
             this_week.append(_empty_week_card(label, "this"))
 
-        upcoming = client.events_on_monday(next_monday, tennis_type)
-        if upcoming:
-            next_week.append(_preview_card(label, _week_event(tennis_type, upcoming[0])))
+        if week.next_events:
+            next_week.append(_preview_card(label, _week_event(tennis_type, week.next_events[0])))
         else:
             next_week.append(_rest_card(label))
 

@@ -62,6 +62,7 @@ def generate(tours: list[str], output_dir: Path) -> list[Path]:
         year_rows, year_monday = client.fetch_year_rank(tennis_type)
         week_scores = client.fetch_week_scores(event) if event else []
         week_details = client.fetch_week_details(event) if event else []
+        week = client.tour_week(tennis_type, this_monday)
         pair = client.week_pair(this_monday, tennis_type)
         drop_events = pair.last_names
         prior_years: dict[str, str] = {}
@@ -76,8 +77,10 @@ def generate(tours: list[str], output_dir: Path) -> list[Path]:
             f"本周积分 {len(week_scores)}，明细 {len(week_details)}"
         )
         print(
-            f"  今年周一 {pair.this_monday.date()}：{pair.this_names or ([event.name] if event else [])}；"
-            f"去年周一 {pair.last_monday.date()}：{drop_events or '无'}"
+            f"  日历周 {week.this_monday.date()}，开赛周 {week.current_start.date()}："
+            f"{pair.this_names or ([event.name] if event else [])}；"
+            f"上周完赛 {week.previous_events[0]['name'] if week.previous_events else '无'}；"
+            f"去年同期 {pair.last_monday.date()}：{drop_events or '无'}"
             + (" → 替换" if drop_events else " → 去年同期无赛事")
             + (f"；同名保留 {prior_years}" if prior_years else "")
         )
