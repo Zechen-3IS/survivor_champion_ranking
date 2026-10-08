@@ -27,6 +27,21 @@ CSRF_RE = re.compile(
 SCORE_AJAX_RE = re.compile(r"url:\s*\"(https://www\.live-tennis\.cn/zh/survivor/event/\d+/score)\"")
 DETAIL_AJAX_RE = re.compile(r"url:\s*\"(https://www\.live-tennis\.cn/zh/survivor/event/\d+/\d+/detail)\"")
 LEVEL_RE = re.compile(r"level_logo/(?:ATP|WTA)-([^./]+)", re.I)
+DRAW_NAME_PREFIX_RE = re.compile(r"^(?:[WQL]|\d+)\s*")
+ROUND_ORDER = {
+    "R128": 1,
+    "R64": 2,
+    "R32": 3,
+    "R16": 4,
+    "QF": 5,
+    "SF": 6,
+    "F": 7,
+    "W": 8,
+    "冠军": 8,
+    "决赛": 7,
+    "半决赛": 6,
+    "四分之一决赛": 5,
+}
 
 
 def event_level_label(src: str | None) -> str:
@@ -46,6 +61,142 @@ def event_level_label(src: str | None) -> str:
 
 class FetchError(RuntimeError):
     pass
+
+
+@dataclass
+class DrawPlayer:
+    player_id: str
+    name: str
+    round: str = ""
+    eliminated: bool = False
+    live: bool = False
+
+    @property
+    def round_rank(self) -> int:
+        return ROUND_ORDER.get(self.round, 0)
+
+
+@dataclass
+class DrawStatus:
+    by_id: dict[str, DrawPlayer]
+    by_name: dict[str, DrawPlayer]
+
+    def lookup(self, player_id: str | None, name: str | None) -> DrawPlayer | None:
+        pid = str(player_id or "").strip()
+        if pid and pid != "0" and pid in self.by_id:
+            return self.by_id[pid]
+        label = str(name or "").strip()
+        if label and label in self.by_name:
+            return self.by_name[label]
+        return None
+
+
+def _clean_draw_name(tag) -> str:
+    return DRAW_NAME_PREFIX_RE.sub("", tag.get_text(" ", strip=True)).strip()
+
+
+def _draw_row_cells(tr) -> list[dict[str, Any]]:
+    cells = []
+    for td in tr.find_all("td", recursive=False):
+        classes = td.get("class") or []
+        if "cDrawSeq" in classes:
+            continue
+        pnames = td.select("pname")
+        players = []
+        for pname in pnames:
+            pid = str(pname.get("data-id") or "").strip()
+            if not pid or pid in {"LIVE", "0"}:
+                continue
+            players.append((pid, _clean_draw_name(pname)))
+        text = " ".join(td.get_text(" ", strip=True).split())
+        cells.append(
+            {
+                "players": players,
+                "live": "进行中" in text or any(p.get("data-id") == "LIVE" for p in pnames),
+                "text": text,
+            }
+        )
+    return cells
+
+
+def _first_player_in_rows(rows: list[list[dict[str, Any]]], col: int) -> tuple[str, str] | None:
+    for cells in rows:
+        if col < len(cells) and cells[col]["players"]:
+            return cells[col]["players"][0]
+    return None
+
+
+def _live_pairs_from_table(table) -> list[tuple[tuple[str, str] | None, tuple[str, str] | None]]:
+    body = table.find("tbody") or table
+    rows = [_draw_row_cells(tr) for tr in body.find_all("tr", recursive=False)]
+    if not rows:
+        rows = [_draw_row_cells(tr) for tr in table.select("tr")]
+    pairs = []
+    for index, cells in enumerate(rows):
+        for col, cell in enumerate(cells):
+            if not cell["live"]:
+                continue
+            player_col = col - 1 if col > 0 else 0
+            span = 2 ** (player_col + 1)
+            start = (index // span) * span
+            group = rows[start : start + span]
+            if len(group) < span:
+                continue
+            half = span // 2
+            pairs.append(
+                (
+                    _first_player_in_rows(group[:half], player_col),
+                    _first_player_in_rows(group[half:], player_col),
+                )
+            )
+    return pairs
+
+
+def parse_draw_status(html: str, gender: str) -> DrawStatus:
+    soup = BeautifulSoup(html, "html.parser")
+    part_id = f"{gender}_ENTRY"
+    entry = soup.find("div", class_="cDrawPart", attrs={"data-id": part_id})
+    by_id: dict[str, DrawPlayer] = {}
+    if entry:
+        for item in entry.select(".cDrawEntry"):
+            player_id = ""
+            img = item.select_one(".cDrawEntryPortraitImg")
+            if img and img.get("data-original"):
+                player_id = str(img["data-original"]).rstrip("/").split("/")[-1]
+            name_el = item.select_one(".cDrawEntryPlayer")
+            name = name_el.get_text(" ", strip=True) if name_el else ""
+            name = DRAW_NAME_PREFIX_RE.sub("", name).strip()
+            round_el = item.select_one(".cDrawEntryRank")
+            round_name = round_el.get_text(strip=True) if round_el else ""
+            eliminated = bool(item.select_one(".cDrawEntryEliminated"))
+            if not player_id and not name:
+                continue
+            player = DrawPlayer(
+                player_id=player_id,
+                name=name,
+                round=round_name,
+                eliminated=eliminated,
+            )
+            if player_id:
+                by_id[player_id] = player
+    live_ids: set[str] = set()
+    live_names: set[str] = set()
+    for part in soup.select(".cDrawPart"):
+        if part.get("data-id") != gender:
+            continue
+        for table in part.select("table.cDrawBlock"):
+            for left, right in _live_pairs_from_table(table):
+                for item in (left, right):
+                    if not item:
+                        continue
+                    live_ids.add(item[0])
+                    if item[1]:
+                        live_names.add(item[1])
+    for player in by_id.values():
+        if player.player_id in live_ids or player.name in live_names:
+            player.live = True
+    by_name = {player.name: player for player in by_id.values() if player.name}
+    return DrawStatus(by_id=by_id, by_name=by_name)
 
 
 @dataclass
@@ -218,6 +369,21 @@ class LiveTennisClient:
             self._fill_ajax_ids(event)
         url = f"https://www.live-tennis.cn/zh/survivor/event/{event.ajax_id}/{event.year}/detail"
         return self._post_datatable(url, event.detail_page)
+
+    def fetch_draw_status(self, event: WeekEvent) -> DrawStatus:
+        url = f"https://www.live-tennis.cn/zh/draw/ajax/{event.page_id}/{event.year}/device/0/horizontal/true"
+        try:
+            html = self.session.get(
+                url,
+                headers={
+                    "X-Requested-With": "XMLHttpRequest",
+                    "Referer": f"https://www.live-tennis.cn/zh/draw/{event.page_id}/{event.year}",
+                },
+                timeout=30,
+            ).text
+        except requests.RequestException:
+            return DrawStatus(by_id={}, by_name={})
+        return parse_draw_status(html, event.gender)
 
     def calendar_events(self, year: int) -> list[dict[str, Any]]:
         if year in self._calendars:

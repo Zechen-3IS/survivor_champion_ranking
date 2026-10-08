@@ -5,6 +5,7 @@ from html import escape
 
 from .config import WeekEvent, beijing_now
 from .fetch import LiveTennisClient, strip_username
+from .process import _week_score_frame, apply_live_settlement
 
 TOUR_LABEL = {"wta": "WTA", "atp": "ATP"}
 SECTION_RE = re.compile(
@@ -35,8 +36,15 @@ def _match_info(name: str, level: str) -> str:
 
 def _summarize(client: LiveTennisClient, event: WeekEvent) -> dict:
     rows = client.fetch_week_scores(event) if event.page_id else []
-    alive = [strip_username(item.get("username")) for item in rows if item.get("fill_status") == "存活"]
-    alive = [name for name in alive if name]
+    if event.page_id:
+        details = client.fetch_week_details(event)
+        draw = client.fetch_draw_status(event)
+        frame = _week_score_frame(rows, event.name)
+        frame, _ = apply_live_settlement(frame, details, draw)
+        alive = [name for name in frame.loc[frame["状态"] == "存活", "用户名"].tolist() if name]
+    else:
+        alive = [strip_username(item.get("username")) for item in rows if item.get("fill_status") == "存活"]
+        alive = [name for name in alive if name]
     scores = [int(item.get("score") or 0) for item in rows]
     top = max(scores) if scores else 0
     top_names = [

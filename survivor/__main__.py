@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import Any
 
 from .config import ROOT
-from .fetch import LiveTennisClient, WeekEvent
+from .fetch import DrawStatus, LiveTennisClient, WeekEvent
 from .home import render_index_page
 from .process import build_combined, build_ranking
 from .publish import publish_html
@@ -27,6 +27,7 @@ def _build_tour(
     instant: bool,
     this_week_year: str | None = None,
     prior_years: dict[str, str] | None = None,
+    draw_status: DrawStatus | None = None,
 ):
     return build_ranking(
         tennis_type,
@@ -38,6 +39,7 @@ def _build_tour(
         instant=instant,
         this_week_year=this_week_year if instant else None,
         prior_years=prior_years if instant else None,
+        draw_status=draw_status,
     )
 
 
@@ -62,6 +64,11 @@ def generate(tours: list[str], output_dir: Path) -> list[Path]:
         year_rows, year_monday = client.fetch_year_rank(tennis_type)
         week_scores = client.fetch_week_scores(event) if event else []
         week_details = client.fetch_week_details(event) if event else []
+        draw_status = client.fetch_draw_status(event) if event else None
+        if draw_status and draw_status.by_id:
+            live_n = sum(1 for player in draw_status.by_id.values() if player.live)
+            elim_n = sum(1 for player in draw_status.by_id.values() if player.eliminated)
+            print(f"  签表 {len(draw_status.by_id)} 人，淘汰 {elim_n}，进行中 {live_n}")
         week = client.tour_week(tennis_type, this_monday)
         pair = client.week_pair(this_monday, tennis_type)
         drop_events = pair.last_names
@@ -86,7 +93,14 @@ def generate(tours: list[str], output_dir: Path) -> list[Path]:
         )
 
         champ, champ_stats, champ_seeds, champ_summary = _build_tour(
-            tennis_type, event, race_rows, week_scores, week_details, drop_events, False
+            tennis_type,
+            event,
+            race_rows,
+            week_scores,
+            week_details,
+            drop_events,
+            False,
+            draw_status=draw_status,
         )
         inst, inst_stats, inst_seeds, inst_summary = _build_tour(
             tennis_type,
@@ -98,6 +112,7 @@ def generate(tours: list[str], output_dir: Path) -> list[Path]:
             True,
             this_week_year=event.year if event else None,
             prior_years=prior_years,
+            draw_status=draw_status,
         )
         written.append(render_ranking_page(tennis_type, champ, champ_stats, champ_summary, output_dir))
         written.append(
@@ -112,6 +127,13 @@ def generate(tours: list[str], output_dir: Path) -> list[Path]:
         )
         built[tennis_type] = champ
         built[f"{tennis_type}_instant"] = inst
+        settled = champ.attrs.get("settlement") or {}
+        if any(settled.values()):
+            print(
+                f"  实时结算 胜 {settled.get('win', 0)}，"
+                f"负 {settled.get('loss', 0)}，"
+                f"未完赛 {settled.get('pending', 0)}"
+            )
         print(f"已生成 {tennis_type} 冠军榜和即时榜")
 
     if "atp" in built and "wta" in built:
