@@ -380,7 +380,7 @@ def apply_live_settlement(
                 result.at[index, "明细"] = used
                 result.at[index, "状态"] = "球员输球"
                 result.at[index, "杀手球员"] = pick
-                result.at[index, "存活天数"] = day
+                result.at[index, "存活天数"] = official_day
                 counts["loss"] += 1
                 pending = False
                 break
