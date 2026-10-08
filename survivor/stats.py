@@ -52,6 +52,39 @@ def _played(row: dict[str, Any]) -> bool:
     return status in PLAYED_STATUS and (_day(row) > 0 or status == "存活")
 
 
+def _win_streak(person: pd.DataFrame) -> tuple[int, str]:
+    rows = list(person.sort_values(["monday", "name"]).itertuples())
+    best_days = -1
+    best: list[tuple[str, int]] = []
+
+    def consider(chain: list[tuple[str, int]]) -> None:
+        nonlocal best_days, best
+        total = sum(item[1] for item in chain)
+        if chain and total > best_days:
+            best_days = total
+            best = chain
+
+    index = 0
+    while index < len(rows):
+        row = rows[index]
+        if row.champion:
+            chain = [(row.label, int(row.day))]
+            cursor = index + 1
+            while cursor < len(rows):
+                nxt = rows[cursor]
+                chain.append((nxt.label, int(nxt.day)))
+                if int(nxt.day) <= 0 or not nxt.champion:
+                    break
+                cursor += 1
+            consider(chain)
+        elif int(row.day) > 0:
+            consider([(row.label, int(row.day))])
+        index += 1
+    if best_days < 0:
+        return 0, ""
+    return best_days, ", ".join(f"{name}({days})" for name, days in best)
+
+
 def _longest_streak(flags: list[tuple[bool, str, int]], with_days: bool) -> tuple[int, str]:
     best: list[tuple[str, int]] = []
     current: list[tuple[str, int]] = []
@@ -118,6 +151,7 @@ def _hydrate_records(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
         if isinstance(monday, str):
             item["monday"] = datetime.strptime(monday[:10], "%Y-%m-%d")
         hydrated.append(item)
+    _apply_outcome_flags(hydrated)
     return hydrated
 
 
@@ -130,6 +164,19 @@ def _serialize_records(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
             item["monday"] = monday.strftime("%Y-%m-%d")
         serialized.append(item)
     return serialized
+
+
+def _apply_outcome_flags(records: list[dict[str, Any]]) -> None:
+    if not records:
+        return
+    champions = {row.get("主键") for row in records if row.get("champion")}
+    dead_days = [int(row.get("day") or 0) for row in records if row.get("主键") not in champions]
+    runner_day = max(dead_days) if dead_days else -1
+    for row in records:
+        uid = row.get("主键")
+        row["runner"] = (
+            uid not in champions and int(row.get("day") or 0) == runner_day and runner_day > 0
+        )
 
 
 def _records_from_event(
@@ -146,8 +193,6 @@ def _records_from_event(
         for row in played_rows
         if row.get("fill_status") == "存活" and not in_progress
     }
-    dead_days = [_day(row) for row in played_rows if _as_key(row.get("user_id")) not in champions]
-    runner_day = max(dead_days) if dead_days and champions else -1
     label = f"{info.get('year')}-{info.get('name')}"
     records = []
     for row in played_rows:
@@ -167,10 +212,11 @@ def _records_from_event(
                 "score": _score(row),
                 "max_day": max_day,
                 "champion": uid in champions,
-                "runner": bool(champions) and uid not in champions and _day(row) == runner_day,
+                "runner": False,
                 "completed": not in_progress,
             }
         )
+    _apply_outcome_flags(records)
     return records
 
 
@@ -197,7 +243,14 @@ def _collect_history(
             print(f"  跳过进行中 {info.get('year')}-{info.get('name')}")
             continue
         if cached and cached.get("completed"):
-            records.extend(_hydrate_records(cached.get("records") or []))
+            event_records = _hydrate_records(cached.get("records") or [])
+            cached_records = cached.get("records") or []
+            if [
+                (row.get("主键"), bool(row.get("runner"))) for row in cached_records
+            ] != [(row.get("主键"), bool(row.get("runner"))) for row in event_records]:
+                tour_cache[key]["records"] = _serialize_records(event_records)
+                changed = True
+            records.extend(event_records)
             continue
         print(f"  增量抓取 {tennis_type.upper()} {index}/{len(catalog)} {info.get('year')}-{info.get('name')}")
         rows = client.fetch_event_results(info)
@@ -256,11 +309,24 @@ def build_player_stats(
     )
 
     completed = history[history["completed"]]
-    weeks = sorted({value for value in completed["monday"].tolist() if isinstance(value, datetime)})
+    event_mondays = sorted(
+        {value for value in completed["monday"].tolist() if isinstance(value, datetime)}
+    )
+    rank_points = []
+    if event_mondays:
+        rank_points = sorted(
+            {
+                value
+                for value in event_mondays
+                + [value + timedelta(weeks=52) for value in event_mondays]
+                + [this_monday]
+                if event_mondays[0] <= value <= this_monday
+            }
+        )
     best_rank: dict[str, int] = {}
     best_score: dict[str, int] = {}
     weeks_at_one: dict[str, int] = defaultdict(int)
-    for monday in weeks:
+    for index, monday in enumerate(rank_points):
         window = completed[(completed["monday"] > monday - timedelta(weeks=52)) & (completed["monday"] <= monday)]
         if window.empty:
             continue
@@ -274,6 +340,8 @@ def build_player_stats(
         events = list(scores.columns)
         totals = scores.apply(lambda row: row_total(row, rules, events), axis=1)
         ranks = totals.rank(ascending=False, method="min")
+        nxt = rank_points[index + 1] if index + 1 < len(rank_points) else monday + timedelta(weeks=1)
+        nweeks = max((nxt - monday).days // 7, 0)
         for uid, total in totals.items():
             total_int = int(total)
             rank_int = int(ranks.loc[uid])
@@ -282,7 +350,7 @@ def build_player_stats(
             if uid not in best_rank or rank_int < best_rank[uid]:
                 best_rank[uid] = rank_int
             if rank_int == 1:
-                weeks_at_one[uid] += 1
+                weeks_at_one[uid] += nweeks
 
     rows_out: list[dict[str, Any]] = []
     for uid, meta in users.iterrows():
@@ -291,15 +359,11 @@ def build_player_stats(
         season = person[person["season_year"] == season_year]
         titles = person[person["champion"]]
         runners = person[person["runner"]]
-        win_flags = [
-            (bool(row.champion), row.label, int(row.day))
-            for row in person.itertuples()
-        ]
         lose_flags = [
             ((not row.champion) and int(row.day) <= 1, row.label, int(row.day))
             for row in person.itertuples()
         ]
-        win_days, win_detail = _longest_streak(win_flags, True)
+        win_days, win_detail = _win_streak(person)
         lose_days, lose_detail = _longest_streak(lose_flags, False)
         season_possible = int(season["max_day"].sum()) if not season.empty else 0
         all_possible = int(person["max_day"].sum()) if not person.empty else 0
