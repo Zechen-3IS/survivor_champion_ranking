@@ -11,6 +11,7 @@ concurrency:
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
   update:
@@ -42,3 +43,38 @@ jobs:
             wta_instant_ranking.html \
             combined_ranking.html \
             combined_instant_ranking.html
+
+  next:
+    name: Queue next half hour
+    needs: update
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Wait until next :00 or :30 UTC
+        run: |
+          python3 - <<'PY'
+          import time
+          from datetime import datetime, timedelta, timezone
+
+          now = datetime.now(timezone.utc)
+          if now.minute < 30:
+              target = now.replace(minute=30, second=8, microsecond=0)
+          else:
+              target = now.replace(minute=0, second=8, microsecond=0) + timedelta(hours=1)
+          delay = (target - now).total_seconds()
+          if delay < 45:
+              target += timedelta(minutes=30)
+              delay = (target - now).total_seconds()
+          print(f"now={now.isoformat()} target={target.isoformat()} sleep={delay:.0f}s", flush=True)
+          time.sleep(delay)
+          PY
+
+      - name: Dispatch next run
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api --method POST \
+            -H "Accept: application/vnd.github+json" \
+            "/repos/${GITHUB_REPOSITORY}/actions/workflows/update-rankings.yml/dispatches" \
+            -f ref="${{ github.event.repository.default_branch }}"
