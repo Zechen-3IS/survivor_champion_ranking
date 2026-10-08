@@ -414,5 +414,30 @@
         
         .collapsed .expandable-column {
             display: none;
-        }       
+        }
+
+        .data-table tbody tr.has-picks {
+            cursor: pointer;
+        }
+
+        .data-table tbody tr.has-picks:hover {
+            background-color: var(--table-row-hover);
+        }
+
+        .data-table tbody tr.picks-open {
+            box-shadow: inset 3px 0 0 #3498db;
+        }
+
+        .pick-detail-row td {
+            background-color: var(--stats-bg);
+            text-align: left;
+            padding: 10px 16px;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .pick-detail-label {
+            font-weight: bold;
+            margin-right: 8px;
+        }
     </style>

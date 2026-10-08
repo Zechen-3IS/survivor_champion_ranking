@@ -224,7 +224,6 @@ def _week_score_frame(rows: list[dict[str, Any]], event_name: str) -> pd.DataFra
                 "存活天数": item.get("day"),
                 event_name: int(item.get("score") or 0),
                 "明细": players,
-                "上轮球员": players[-2] if len(players) >= 2 else "",
                 "杀手球员": _killer_player(status, players),
             }
         )
@@ -308,7 +307,7 @@ def seed_death_stats(frame: pd.DataFrame, week_scores: pd.DataFrame, seed_cutoff
 
 
 def _merge_week(result: pd.DataFrame, week_scores: pd.DataFrame, event_name: str) -> pd.DataFrame:
-    merge_cols = ["主键", "用户名", "状态", event_name, "存活天数", "杀手球员", "上轮球员", "明细"]
+    merge_cols = ["主键", "用户名", "状态", event_name, "存活天数", "杀手球员", "明细"]
     merge_cols = [col for col in merge_cols if col in week_scores.columns]
     week_part = week_scores[merge_cols].rename(columns={"用户名": "用户名_week"})
     result = result.drop(columns=[event_name], errors="ignore")
@@ -436,7 +435,7 @@ def build_ranking(
             result["用户名"] = result["用户名"].fillna(result["用户名_choice"])
             result = result.drop(columns=["用户名_choice"])
 
-    for col in ["主选球员", "备选球员", "杀手球员", "上轮球员"]:
+    for col in ["主选球员", "备选球员", "杀手球员"]:
         if col not in result.columns:
             result[col] = ""
         result[col] = result[col].fillna("")
@@ -452,6 +451,11 @@ def build_ranking(
         result["备选球员"] = result.apply(lambda row: _hide(row, "备选球员"), axis=1)
         result["主选球员"] = result.apply(lambda row: _hide(row, "主选球员"), axis=1)
 
+    if "明细" in result.columns:
+        result["选人明细"] = result["明细"].map(
+            lambda value: " → ".join(str(item) for item in value if item) if isinstance(value, list) else ""
+        )
+        result["选人明细"] = result["选人明细"].fillna("")
     result = result.drop(columns=["明细"], errors="ignore")
     for col in scoring_events:
         if col not in result.columns:
@@ -472,7 +476,7 @@ def build_ranking(
     display_events = [name for name in scoring_events if name not in drop_events or name in this_week_names]
     display_events = _ordered_events(display_events, rules, this_week_names)
     display_cols = ["排名", "用户名", "总分", "升降", "状态", "主选球员", "备选球员"]
-    extra = [col for col in ["杀手球员", "上轮球员", "存活天数", "替换赛事"] if col in result.columns]
+    extra = [col for col in ["杀手球员", "存活天数", "替换赛事"] if col in result.columns]
     html_columns = display_cols + extra + display_events
 
     stats = killer_stats(week_scores) if not week_scores.empty else pd.DataFrame()

@@ -223,12 +223,49 @@
             filterTable();
         }
         
+        function closePickDetails() {
+            document.querySelectorAll('.pick-detail-row').forEach(row => row.remove());
+            document.querySelectorAll('.picks-open').forEach(row => row.classList.remove('picks-open'));
+        }
+
+        function escapeHtml(text) {
+            const node = document.createElement('div');
+            node.textContent = text;
+            return node.innerHTML;
+        }
+
+        function initPickDetails() {
+            allRows.forEach(row => {
+                const picks = row.getAttribute('data-picks');
+                if (!picks) return;
+                row.addEventListener('click', function(event) {
+                    if (event.target.closest('a, button, input, .filter-button')) return;
+                    const existing = row.nextElementSibling;
+                    if (existing && existing.classList.contains('pick-detail-row')) {
+                        existing.remove();
+                        row.classList.remove('picks-open');
+                        return;
+                    }
+                    closePickDetails();
+                    const detail = document.createElement('tr');
+                    detail.className = 'pick-detail-row';
+                    const cell = document.createElement('td');
+                    cell.colSpan = Math.max(row.children.length, 1);
+                    cell.innerHTML = '<span class="pick-detail-label">选人明细：</span>' + escapeHtml(picks);
+                    detail.appendChild(cell);
+                    row.after(detail);
+                    row.classList.add('picks-open');
+                });
+            });
+        }
+
         function updateTable() {
             const totalRows = filteredRows.length;
             const totalPages = rowsPerPage === 0 ? 1 : Math.ceil(totalRows / rowsPerPage);
             const startIndex = (currentPage - 1) * rowsPerPage;
             const endIndex = rowsPerPage === 0 ? totalRows : startIndex + rowsPerPage;
             
+            closePickDetails();
             allRows.forEach(row => row.classList.add('hidden'));
             filteredRows.slice(startIndex, endIndex).forEach(row => {
                 row.classList.remove('hidden');
@@ -346,5 +383,6 @@
         document.addEventListener('DOMContentLoaded', function() {
             initPagination();
             initExpandToggle();
+            initPickDetails();
         });
     </script>

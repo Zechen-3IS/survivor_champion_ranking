@@ -102,6 +102,7 @@ def _decorate_table(
 
     status_index = column_names.index("状态") if "状态" in column_names else None
     trend_index = column_names.index("升降") if "升降" in column_names else None
+    pick_values = frame["选人明细"].tolist() if "选人明细" in frame.columns else None
 
     for row_idx, tr in enumerate(soup.select("tbody tr")):
         cells = tr.find_all("td")
@@ -128,6 +129,12 @@ def _decorate_table(
         if status_index is not None and status_index < len(cells):
             if cells[status_index].get_text(strip=True) == "存活":
                 tr["style"] = "background-color: #e6f7ff;"
+        if pick_values is not None and row_idx < len(pick_values):
+            picks = str(pick_values[row_idx] or "").strip()
+            if picks:
+                tr["data-picks"] = picks
+                tr["class"] = tr.get("class", []) + ["has-picks"]
+                tr["title"] = "点击查看选人明细"
     return str(soup)
 
 
