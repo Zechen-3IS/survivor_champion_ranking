@@ -253,18 +253,6 @@ def _week_choice_frame(rows: list[dict[str, Any]]) -> pd.DataFrame:
     return frame[keep].drop_duplicates(subset=["主键"], keep="last")
 
 
-def _latest_detail_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    latest: dict[str, dict[str, Any]] = {}
-    for item in rows:
-        uid = _as_key(item.get("user_id"))
-        if not uid:
-            continue
-        current = latest.get(uid)
-        if current is None or (item.get("day") or 0) >= (current.get("day") or 0):
-            latest[uid] = item
-    return list(latest.values())
-
-
 def _today_detail_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
     if not rows:
         return []
@@ -272,30 +260,88 @@ def _today_detail_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return [item for item in rows if item.get("day") == latest]
 
 
+def _details_by_user(rows: list[dict[str, Any]]) -> dict[str, list[dict[str, Any]]]:
+    grouped: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for item in rows:
+        uid = _as_key(item.get("user_id"))
+        if uid:
+            grouped[uid].append(item)
+    for uid, items in grouped.items():
+        items.sort(key=lambda row: row.get("day") or 0)
+    return grouped
+
+
+def _pick_outcome(
+    detail: dict[str, Any],
+    draw: DrawStatus,
+    fills_by_match: dict[Any, set[str]],
+    live_round: int,
+    max_elim_round: int,
+    min_still_round: int,
+) -> str | None:
+    pick = str(detail.get("player") or "").strip()
+    if pick == "轮空":
+        return "win"
+    player = draw.lookup(detail.get("fill"), pick)
+    if player is None:
+        return None
+    if player.eliminated:
+        return "loss"
+    if player.live:
+        return None
+    fill = str(detail.get("fill") or "").strip()
+    for opp_id in fills_by_match.get(detail.get("normal_match_id")) or set():
+        if opp_id == fill:
+            continue
+        opp = draw.lookup(opp_id, None)
+        if opp and opp.eliminated:
+            return "win"
+    if live_round and player.round_rank > live_round:
+        return "win"
+    if (not live_round) and max_elim_round and player.round_rank > max_elim_round:
+        return "win"
+    if min_still_round and player.round_rank > min_still_round:
+        return "win"
+    return None
+
+
+def _settled_event_points(draw: DrawStatus, detail: dict[str, Any], current: int, day: int) -> int:
+    current = int(current or 0)
+    if draw.day_points and 1 <= day <= len(draw.day_points):
+        return max(current, int(draw.day_points[day - 1]))
+    player = draw.lookup(detail.get("fill"), detail.get("player"))
+    if player is None or not player.round:
+        return current
+    points = draw.round_points.get(player.round)
+    if points is None:
+        return current
+    return max(current, int(points))
+
+
 def apply_live_settlement(
     week_scores: pd.DataFrame,
     detail_rows: list[dict[str, Any]],
     draw: DrawStatus | None,
+    event_name: str | None = None,
 ) -> tuple[pd.DataFrame, dict[str, int]]:
     empty = {"win": 0, "loss": 0, "pending": 0}
     if week_scores.empty or not detail_rows or draw is None or not draw.by_id:
         return week_scores, empty
 
-    today = _latest_detail_rows(detail_rows)
-    today_by_user = {_as_key(item.get("user_id")): item for item in today}
-    today_players = []
+    grouped = _details_by_user(detail_rows)
     fills_by_match: dict[Any, set[str]] = defaultdict(set)
-    for item in today:
+    pick_players = []
+    for item in detail_rows:
         player = draw.lookup(item.get("fill"), item.get("player"))
         if player:
-            today_players.append(player)
+            pick_players.append(player)
         match_id = item.get("normal_match_id")
         fill = str(item.get("fill") or "").strip()
         if match_id and fill:
             fills_by_match[match_id].add(fill)
-    live_round = min((p.round_rank for p in today_players if p.live and p.round_rank), default=0)
-    max_elim_round = max((p.round_rank for p in today_players if p.eliminated and p.round_rank), default=0)
-    still_ranks = [p.round_rank for p in today_players if not p.eliminated and not p.live and p.round_rank]
+    live_round = min((p.round_rank for p in pick_players if p.live and p.round_rank), default=0)
+    max_elim_round = max((p.round_rank for p in pick_players if p.eliminated and p.round_rank), default=0)
+    still_ranks = [p.round_rank for p in pick_players if not p.eliminated and not p.live and p.round_rank]
     min_still_round = min(still_ranks) if still_ranks else 0
 
     result = week_scores.copy()
@@ -303,60 +349,78 @@ def apply_live_settlement(
     for index, row in result.iterrows():
         if row.get("状态") != "存活":
             continue
-        detail = today_by_user.get(_as_key(row.get("主键")))
-        if not detail:
-            continue
-        pick = str(detail.get("player") or "").strip()
-        if not pick:
-            continue
         used = list(row.get("明细") or [])
-        already = pick in used
-        if pick == "轮空":
-            outcome = "win"
-            player = None
-        else:
-            player = draw.lookup(detail.get("fill"), pick)
-            if player is None:
-                counts["pending"] += 1
+        official_day = int(pd.to_numeric(row.get("存活天数"), errors="coerce") or len(used) or 0)
+        pending = False
+        for detail in grouped.get(_as_key(row.get("主键")), []):
+            day = int(detail.get("day") or 0)
+            if day <= official_day:
                 continue
-            if player.eliminated:
-                outcome = "loss"
-            elif player.live:
-                outcome = None
-            else:
-                outcome = None
-                fill = str(detail.get("fill") or "").strip()
-                for opp_id in fills_by_match.get(detail.get("normal_match_id")) or set():
-                    if opp_id == fill:
-                        continue
-                    opp = draw.lookup(opp_id, None)
-                    if opp and opp.eliminated:
-                        outcome = "win"
-                        break
-                if outcome is None and live_round and player.round_rank > live_round:
-                    outcome = "win"
-                elif outcome is None and (not live_round) and max_elim_round and player.round_rank > max_elim_round:
-                    outcome = "win"
-                elif outcome is None and min_still_round and player.round_rank > min_still_round:
-                    outcome = "win"
-        if outcome == "win":
-            if not already:
+            pick = str(detail.get("player") or "").strip()
+            if not pick:
+                pending = True
+                break
+            outcome = _pick_outcome(
+                detail, draw, fills_by_match, live_round, max_elim_round, min_still_round
+            )
+            if outcome == "win":
+                used.append(pick)
+                official_day = day
+                result.at[index, "明细"] = used
+                result.at[index, "存活天数"] = day
+                result.at[index, "杀手球员"] = ""
+                if event_name and event_name in result.columns:
+                    result.at[index, event_name] = _settled_event_points(
+                        draw, detail, int(result.at[index, event_name] or 0), day
+                    )
+                counts["win"] += 1
+                continue
+            if outcome == "loss":
                 used.append(pick)
                 result.at[index, "明细"] = used
-            result.at[index, "存活天数"] = detail.get("day") or row.get("存活天数")
-            result.at[index, "杀手球员"] = ""
-            counts["win"] += 1
-        elif outcome == "loss":
-            if not already:
-                used.append(pick)
-                result.at[index, "明细"] = used
-            result.at[index, "状态"] = "球员输球"
-            result.at[index, "杀手球员"] = pick
-            result.at[index, "存活天数"] = detail.get("day") or row.get("存活天数")
-            counts["loss"] += 1
-        else:
+                result.at[index, "状态"] = "球员输球"
+                result.at[index, "杀手球员"] = pick
+                result.at[index, "存活天数"] = day
+                counts["loss"] += 1
+                pending = False
+                break
+            pending = True
+            break
+        if pending:
             counts["pending"] += 1
     return result, counts
+
+
+def _unsettled_choice_frame(
+    week_scores: pd.DataFrame,
+    detail_rows: list[dict[str, Any]],
+) -> pd.DataFrame:
+    if week_scores.empty:
+        return pd.DataFrame(columns=["主键", "用户名", "主选球员", "备选球员"])
+    grouped = _details_by_user(detail_rows)
+    rows = []
+    for _, row in week_scores.iterrows():
+        if row.get("状态") != "存活":
+            continue
+        used = row.get("明细") or []
+        next_day = len(used) + 1
+        match = next(
+            (item for item in grouped.get(_as_key(row.get("主键")), []) if int(item.get("day") or 0) == next_day),
+            None,
+        )
+        if not match:
+            continue
+        rows.append(
+            {
+                "主键": _as_key(row.get("主键")),
+                "用户名": strip_username(match.get("username")),
+                "主选球员": str(match.get("player") or "").strip(),
+                "备选球员": str(match.get("player_alt") or "").strip(),
+            }
+        )
+    if not rows:
+        return pd.DataFrame(columns=["主键", "用户名", "主选球员", "备选球员"])
+    return pd.DataFrame(rows)
 
 
 def killer_stats(week_scores: pd.DataFrame) -> pd.DataFrame:
@@ -453,8 +517,14 @@ def build_ranking(
     )
     settlement = {"win": 0, "loss": 0, "pending": 0}
     if not week_scores.empty:
-        week_scores, settlement = apply_live_settlement(week_scores, week_detail_rows or [], draw_status)
-    choices = _week_choice_frame(week_detail_rows or [])
+        week_scores, settlement = apply_live_settlement(
+            week_scores, week_detail_rows or [], draw_status, event_name=week_event_name
+        )
+    choices = (
+        _unsettled_choice_frame(week_scores, week_detail_rows or [])
+        if not week_scores.empty
+        else _week_choice_frame(week_detail_rows or [])
+    )
 
     all_events = [col for col in result.columns if col not in ("用户名", "主键")]
     year_event_names = set(all_events)
@@ -552,16 +622,10 @@ def build_ranking(
             result[col] = ""
         result[col] = result[col].fillna("")
 
-    if hide_used_picks and "明细" in result.columns:
-        def _hide(row: pd.Series, field: str) -> str:
-            if row.get("状态") != "存活":
-                return ""
-            used = row.get("明细") or []
-            value = row.get(field) or ""
-            return value if value and value not in used else ""
-
-        result["备选球员"] = result.apply(lambda row: _hide(row, "备选球员"), axis=1)
-        result["主选球员"] = result.apply(lambda row: _hide(row, "主选球员"), axis=1)
+    if hide_used_picks:
+        alive = result["状态"].eq("存活")
+        result.loc[~alive, ["主选球员", "备选球员"]] = ""
+        result.loc[result["主选球员"].fillna("").astype(str).str.strip() == "", "备选球员"] = ""
 
     if "明细" in result.columns:
         result["选人明细"] = result["明细"].map(

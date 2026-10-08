@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import re
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import datetime, timedelta
 from typing import Any
 
@@ -28,6 +28,7 @@ SCORE_AJAX_RE = re.compile(r"url:\s*\"(https://www\.live-tennis\.cn/zh/survivor/
 DETAIL_AJAX_RE = re.compile(r"url:\s*\"(https://www\.live-tennis\.cn/zh/survivor/event/\d+/\d+/detail)\"")
 LEVEL_RE = re.compile(r"level_logo/(?:ATP|WTA)-([^./]+)", re.I)
 DRAW_NAME_PREFIX_RE = re.compile(r"^(?:[WQL]|\d+)\s*")
+DAY_SCORE_RE = re.compile(r"当前分数：(\d+)")
 ROUND_ORDER = {
     "R128": 1,
     "R64": 2,
@@ -80,6 +81,8 @@ class DrawPlayer:
 class DrawStatus:
     by_id: dict[str, DrawPlayer]
     by_name: dict[str, DrawPlayer]
+    round_points: dict[str, int] = field(default_factory=dict)
+    day_points: list[int] = field(default_factory=list)
 
     def lookup(self, player_id: str | None, name: str | None) -> DrawPlayer | None:
         pid = str(player_id or "").strip()
@@ -196,7 +199,26 @@ def parse_draw_status(html: str, gender: str) -> DrawStatus:
         if player.player_id in live_ids or player.name in live_names:
             player.live = True
     by_name = {player.name: player for player in by_id.values() if player.name}
-    return DrawStatus(by_id=by_id, by_name=by_name)
+    return DrawStatus(by_id=by_id, by_name=by_name, round_points=_parse_round_points(soup, gender))
+
+
+def _parse_round_points(soup: BeautifulSoup, gender: str) -> dict[str, int]:
+    pap = soup.find("div", class_="cDrawPart", attrs={"data-id": "PAP"})
+    if not pap:
+        return {}
+    table = pap.find("table", class_="cDrawPointAndPrizeTable", attrs={"data-id": gender})
+    if not table:
+        return {}
+    points: dict[str, int] = {}
+    for row in table.select("tbody tr"):
+        cells = [cell.get_text(strip=True) for cell in row.find_all("td")]
+        if len(cells) < 2 or not cells[0]:
+            continue
+        try:
+            points[cells[0]] = int(cells[1].replace(",", ""))
+        except ValueError:
+            continue
+    return points
 
 
 @dataclass
@@ -383,7 +405,13 @@ class LiveTennisClient:
             ).text
         except requests.RequestException:
             return DrawStatus(by_id={}, by_name={})
-        return parse_draw_status(html, event.gender)
+        status = parse_draw_status(html, event.gender)
+        try:
+            my_html = self._get(event.my_page).text
+        except requests.RequestException:
+            my_html = ""
+        status.day_points = [int(value) for value in DAY_SCORE_RE.findall(my_html)]
+        return status
 
     def calendar_events(self, year: int) -> list[dict[str, Any]]:
         if year in self._calendars:

@@ -40,19 +40,29 @@ def _summarize(client: LiveTennisClient, event: WeekEvent) -> dict:
         details = client.fetch_week_details(event)
         draw = client.fetch_draw_status(event)
         frame = _week_score_frame(rows, event.name)
-        frame, _ = apply_live_settlement(frame, details, draw)
+        frame, _ = apply_live_settlement(frame, details, draw, event_name=event.name)
         alive = [name for name in frame.loc[frame["状态"] == "存活", "用户名"].tolist() if name]
+        if event.name in frame.columns:
+            event_scores = [int(value or 0) for value in frame[event.name].tolist()]
+            top = max(event_scores) if event_scores else 0
+            top_names = [
+                name
+                for name, value in zip(frame["用户名"].tolist(), event_scores)
+                if name and value == top
+            ]
+        else:
+            top, top_names = 0, []
     else:
         alive = [strip_username(item.get("username")) for item in rows if item.get("fill_status") == "存活"]
         alive = [name for name in alive if name]
-    scores = [int(item.get("score") or 0) for item in rows]
-    top = max(scores) if scores else 0
-    top_names = [
-        strip_username(item.get("username"))
-        for item in rows
-        if int(item.get("score") or 0) == top
-    ]
-    top_names = [name for name in top_names if name]
+        scores = [int(item.get("score") or 0) for item in rows]
+        top = max(scores) if scores else 0
+        top_names = [
+            strip_username(item.get("username"))
+            for item in rows
+            if int(item.get("score") or 0) == top
+        ]
+        top_names = [name for name in top_names if name]
     return {
         "event": event,
         "count": len(rows),
