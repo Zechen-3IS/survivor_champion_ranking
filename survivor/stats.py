@@ -143,7 +143,7 @@ def _save_cache(cache: dict[str, Any]) -> None:
     STATS_CACHE.write_text(json.dumps(cache, ensure_ascii=False), encoding="utf-8")
 
 
-def _hydrate_records(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+def _hydrate_records(rows: list[dict[str, Any]], day_points: list[int] | None = None) -> list[dict[str, Any]]:
     hydrated = []
     for row in rows:
         item = dict(row)
@@ -151,7 +151,7 @@ def _hydrate_records(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
         if isinstance(monday, str):
             item["monday"] = datetime.strptime(monday[:10], "%Y-%m-%d")
         hydrated.append(item)
-    _apply_outcome_flags(hydrated)
+    _apply_outcome_flags(hydrated, day_points)
     return hydrated
 
 
@@ -166,16 +166,17 @@ def _serialize_records(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return serialized
 
 
-def _apply_outcome_flags(records: list[dict[str, Any]]) -> None:
+def _apply_outcome_flags(records: list[dict[str, Any]], day_points: list[int] | None = None) -> None:
     if not records:
         return
+    runner_score = int(day_points[-2]) if day_points and len(day_points) >= 2 else None
     champions = {row.get("主键") for row in records if row.get("champion")}
-    dead_days = [int(row.get("day") or 0) for row in records if row.get("主键") not in champions]
-    runner_day = max(dead_days) if dead_days else -1
     for row in records:
         uid = row.get("主键")
         row["runner"] = (
-            uid not in champions and int(row.get("day") or 0) == runner_day and runner_day > 0
+            uid not in champions
+            and runner_score is not None
+            and int(row.get("score") or 0) == runner_score
         )
 
 
@@ -183,6 +184,7 @@ def _records_from_event(
     info: dict[str, Any],
     rows: list[dict[str, Any]],
     in_progress: bool,
+    day_points: list[int] | None = None,
 ) -> list[dict[str, Any]]:
     played_rows = [row for row in rows if _played(row)]
     if not played_rows:
@@ -216,7 +218,7 @@ def _records_from_event(
                 "completed": not in_progress,
             }
         )
-    _apply_outcome_flags(records)
+    _apply_outcome_flags(records, day_points)
     return records
 
 
@@ -236,6 +238,8 @@ def _collect_history(
     records: list[dict[str, Any]] = []
     changed = False
     for index, info in enumerate(catalog, start=1):
+        if not info.get("id") or not info.get("year"):
+            continue
         key = _event_cache_key(info)
         in_progress = live_key == (info.get("name"), str(info.get("year") or ""))
         cached = tour_cache.get(key) if isinstance(tour_cache.get(key), dict) else None
@@ -243,7 +247,13 @@ def _collect_history(
             print(f"  跳过进行中 {info.get('year')}-{info.get('name')}")
             continue
         if cached and cached.get("completed"):
-            event_records = _hydrate_records(cached.get("records") or [])
+            points = list(cached.get("day_points") or [])
+            if len(points) < 2:
+                points = client.fetch_event_day_points(info)
+                cached["day_points"] = points
+                cached["event_days"] = len(points)
+                changed = True
+            event_records = _hydrate_records(cached.get("records") or [], points)
             cached_records = cached.get("records") or []
             if [
                 (row.get("主键"), bool(row.get("runner"))) for row in cached_records
@@ -254,7 +264,8 @@ def _collect_history(
             continue
         print(f"  增量抓取 {tennis_type.upper()} {index}/{len(catalog)} {info.get('year')}-{info.get('name')}")
         rows = client.fetch_event_results(info)
-        event_records = _records_from_event(info, rows, in_progress=False)
+        points = client.fetch_event_day_points(info)
+        event_records = _records_from_event(info, rows, in_progress=False, day_points=points)
         if not event_records:
             continue
         tour_cache[key] = {
@@ -262,6 +273,8 @@ def _collect_history(
             "name": info.get("name"),
             "year": str(info.get("year") or ""),
             "completed": True,
+            "event_days": len(points),
+            "day_points": points,
             "records": _serialize_records(event_records),
         }
         changed = True

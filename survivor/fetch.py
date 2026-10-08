@@ -608,6 +608,22 @@ class LiveTennisClient:
         except (FetchError, requests.RequestException):
             return []
 
+    def fetch_event_day_points(self, info: dict[str, Any]) -> list[int]:
+        event = WeekEvent(
+            tennis_type="atp" if str(info.get("gender") or "").upper() == "MS" else "wta",
+            name=str(info.get("name") or ""),
+            page_id=str(info.get("id") or ""),
+            year=str(info.get("year") or ""),
+            gender=str(info.get("gender") or ""),
+        )
+        if not event.page_id or not event.year:
+            return []
+        try:
+            html = self._get(event.my_page).text
+        except requests.RequestException:
+            return []
+        return [int(value) for value in DAY_SCORE_RE.findall(html)]
+
 
 def strip_username(raw: str | None) -> str:
     if not raw:
