@@ -276,7 +276,6 @@ def _pick_outcome(
     draw: DrawStatus,
     fills_by_match: dict[Any, set[str]],
     live_round: int,
-    max_elim_round: int,
     min_still_round: int,
 ) -> str | None:
     pick = str(detail.get("player") or "").strip()
@@ -297,8 +296,6 @@ def _pick_outcome(
         if opp and opp.eliminated:
             return "win"
     if live_round and player.round_rank > live_round:
-        return "win"
-    if (not live_round) and max_elim_round and player.round_rank > max_elim_round:
         return "win"
     if min_still_round and player.round_rank > min_still_round:
         return "win"
@@ -340,7 +337,6 @@ def apply_live_settlement(
         if match_id and fill:
             fills_by_match[match_id].add(fill)
     live_round = min((p.round_rank for p in pick_players if p.live and p.round_rank), default=0)
-    max_elim_round = max((p.round_rank for p in pick_players if p.eliminated and p.round_rank), default=0)
     still_ranks = [p.round_rank for p in pick_players if not p.eliminated and not p.live and p.round_rank]
     min_still_round = min(still_ranks) if still_ranks else 0
 
@@ -361,7 +357,7 @@ def apply_live_settlement(
                 pending = True
                 break
             outcome = _pick_outcome(
-                detail, draw, fills_by_match, live_round, max_elim_round, min_still_round
+                detail, draw, fills_by_match, live_round, min_still_round
             )
             if outcome == "win":
                 used.append(pick)
