@@ -139,6 +139,9 @@ def _live_pairs_from_table(table) -> list[tuple[tuple[str, str] | None, tuple[st
         for col, cell in enumerate(cells):
             if not cell["live"]:
                 continue
+            # 对手格里的「进行中」只说明下一轮对手未产生，不代表这一侧正在打球。
+            if cell["players"] or col == 0:
+                continue
             player_col = col - 1 if col > 0 else 0
             span = 2 ** (player_col + 1)
             start = (index // span) * span
@@ -146,12 +149,13 @@ def _live_pairs_from_table(table) -> list[tuple[tuple[str, str] | None, tuple[st
             if len(group) < span:
                 continue
             half = span // 2
-            pairs.append(
-                (
-                    _first_player_in_rows(group[:half], player_col),
-                    _first_player_in_rows(group[half:], player_col),
-                )
-            )
+            left = _first_player_in_rows(group[:half], player_col)
+            right = _first_player_in_rows(group[half:], player_col)
+            if not left or not right:
+                continue
+            if left[0] in {"LIVE", "COMEUP"} or right[0] in {"LIVE", "COMEUP"}:
+                continue
+            pairs.append((left, right))
     return pairs
 
 
@@ -265,6 +269,11 @@ class LiveTennisClient:
         )
         self._calendars: dict[int, list[dict[str, Any]]] = {}
         self._current_events: dict[str, list[WeekEvent]] | None = None
+        self._tour_weeks: dict[tuple[str, Any], TourWeek] = {}
+        self._event_open: dict[str, bool] = {}
+        self._event_live: dict[str, bool] = {}
+        self._event_scores: dict[str, list[dict[str, Any]]] = {}
+        self._event_details: dict[str, list[dict[str, Any]]] = {}
 
     def _csrf(self, html: str) -> str:
         match = CSRF_RE.search(html)
@@ -384,13 +393,22 @@ class LiveTennisClient:
         if not event.ajax_id:
             self._fill_ajax_ids(event)
         url = f"https://www.live-tennis.cn/zh/survivor/event/{event.ajax_id}/score"
-        return self._post_datatable(url, event.score_page)
+        rows = self._post_datatable(url, event.score_page)
+        if rows:
+            return rows
+        return _scores_from_details(self.fetch_week_details(event))
 
     def fetch_week_details(self, event: WeekEvent) -> list[dict[str, Any]]:
+        key = f"{event.page_id}|{event.year}|{event.name}"
+        cached = self._event_details.get(key)
+        if cached is not None:
+            return cached
         if not event.ajax_id:
             self._fill_ajax_ids(event)
         url = f"https://www.live-tennis.cn/zh/survivor/event/{event.ajax_id}/{event.year}/detail"
-        return self._post_datatable(url, event.detail_page)
+        rows = self._post_datatable(url, event.detail_page)
+        self._event_details[key] = rows
+        return rows
 
     def fetch_draw_status(self, event: WeekEvent) -> DrawStatus:
         url = f"https://www.live-tennis.cn/zh/draw/ajax/{event.page_id}/{event.year}/device/0/horizontal/true"
@@ -488,27 +506,125 @@ class LiveTennisClient:
             )
         return sorted(grouped.items(), key=lambda item: item[0])
 
+    @staticmethod
+    def _event_cache_key(info: dict[str, Any]) -> str:
+        return f"{info.get('id')}|{info.get('year')}|{info.get('name')}"
+
+    def _event_score_rows(self, info: dict[str, Any]) -> list[dict[str, Any]]:
+        key = self._event_cache_key(info)
+        if key not in self._event_scores:
+            self._event_scores[key] = self.fetch_event_results(info)
+        return self._event_scores[key]
+
+    def _event_detail_rows(self, info: dict[str, Any]) -> list[dict[str, Any]]:
+        key = self._event_cache_key(info)
+        if key in self._event_details:
+            return self._event_details[key]
+        event = WeekEvent(
+            tennis_type="atp" if str(info.get("gender") or "").upper() == "MS" else "wta",
+            name=str(info.get("name") or ""),
+            page_id=str(info.get("id") or ""),
+            year=str(info.get("year") or ""),
+            gender=str(info.get("gender") or ""),
+            level=str(info.get("level") or ""),
+        )
+        try:
+            self._fill_ajax_ids(event)
+            rows = self.fetch_week_details(event)
+        except (FetchError, requests.RequestException):
+            rows = []
+        self._event_details[key] = rows
+        return rows
+
+    def _draw_has_live(self, info: dict[str, Any]) -> bool:
+        if not info.get("id"):
+            return False
+        event = WeekEvent(
+            tennis_type="atp" if str(info.get("gender") or "").upper() == "MS" else "wta",
+            name=str(info.get("name") or ""),
+            page_id=str(info.get("id") or ""),
+            year=str(info.get("year") or ""),
+            gender=str(info.get("gender") or ""),
+            level=str(info.get("level") or ""),
+        )
+        try:
+            status = self.fetch_draw_status(event)
+        except (FetchError, requests.RequestException):
+            return False
+        return any(player.live for player in status.by_id.values())
+
+    def _event_still_live(self, info: dict[str, Any]) -> bool:
+        key = self._event_cache_key(info)
+        cached = self._event_live.get(key)
+        if cached is not None:
+            return cached
+        rows = self._event_score_rows(info)
+        live = any(item.get("fill_status") == "存活" for item in rows)
+        if not live:
+            live = self._draw_has_live(info)
+        self._event_live[key] = live
+        return live
+
+    def _events_still_live(self, events: list[dict[str, str]]) -> bool:
+        return any(self._event_still_live(info) for info in events if info.get("id"))
+
+    def _events_already_open(self, events: list[dict[str, str]]) -> bool:
+        for info in events:
+            if not info.get("id"):
+                continue
+            key = self._event_cache_key(info)
+            if key not in self._event_open:
+                self._event_open[key] = bool(self._event_score_rows(info) or self._event_detail_rows(info))
+            if self._event_open[key]:
+                return True
+        return False
+
     def tour_week(self, tennis_type: str, this_monday: datetime | str | None = None) -> TourWeek:
         monday = self.week_monday(this_monday)
+        cache_key = (tennis_type, monday.date())
+        cached = self._tour_weeks.get(cache_key)
+        if cached is not None:
+            return cached
         schedule = self.tour_schedule(tennis_type)
         this_events = [event for start, events in schedule if start.date() == monday.date() for event in events]
         before = [(start, events) for start, events in schedule if start.date() < monday.date()]
         after = [(start, events) for start, events in schedule if start.date() > monday.date()]
+        next_start, upcoming = after[0] if after else (None, [])
+        later = after[1][1] if len(after) > 1 else []
         if this_events:
             current_start, current = monday, this_events
             previous = before[-1][1] if before else []
+            nxt = upcoming
         elif before:
-            current_start, current = before[-1]
-            previous = before[-2][1] if len(before) > 1 else []
+            last_start, last_events = before[-1]
+            previous_of_last = before[-2][1] if len(before) > 1 else []
+            if self._events_still_live(last_events):
+                current_start, current = last_start, last_events
+                previous = previous_of_last
+                nxt = upcoming
+            elif upcoming and self._events_already_open(upcoming):
+                current_start, current = next_start or monday, upcoming
+                previous = last_events
+                nxt = later
+            else:
+                current_start, current = monday, []
+                previous = last_events
+                nxt = upcoming
+        elif upcoming and self._events_already_open(upcoming):
+            current_start, current = next_start or monday, upcoming
+            previous = []
+            nxt = later
         else:
-            current_start, current, previous = monday, [], []
-        return TourWeek(
+            current_start, current, previous, nxt = monday, [], [], upcoming
+        week = TourWeek(
             this_monday=monday,
             current_start=current_start,
             current_events=current,
             previous_events=previous,
-            next_events=after[0][1] if after else [],
+            next_events=nxt,
         )
+        self._tour_weeks[cache_key] = week
+        return week
 
     def week_pair(self, this_monday: datetime | str | None, tennis_type: str) -> WeekPair:
         week = self.tour_week(tennis_type, this_monday)
@@ -623,6 +739,23 @@ class LiveTennisClient:
         except requests.RequestException:
             return []
         return [int(value) for value in DAY_SCORE_RE.findall(html)]
+
+
+def _scores_from_details(details: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    rows: dict[Any, dict[str, Any]] = {}
+    for item in details:
+        uid = item.get("user_id")
+        if uid is None or uid in rows:
+            continue
+        rows[uid] = {
+            "user_id": uid,
+            "username": item.get("username"),
+            "fill_status": "存活",
+            "day": 0,
+            "score": 0,
+            "players": "",
+        }
+    return list(rows.values())
 
 
 def strip_username(raw: str | None) -> str:

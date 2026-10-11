@@ -41,12 +41,34 @@ def _trend_html(value: object) -> str:
     return ""
 
 
-def _choice_info_html(summary: list[tuple[str, int]]) -> str:
-    total = sum(count for _, count in summary)
-    items = "".join(f"<li>{escape(str(name))}：{count}</li>" for name, count in summary)
+RESULT_CLASS = {"win": "choice-win", "loss": "choice-loss", "pending": "choice-pending"}
+
+
+def _choice_info_html(summary: list) -> str:
+    rows: list[dict] = []
+    for item in summary or []:
+        if isinstance(item, dict):
+            rows.append(item)
+            continue
+        name, count = item
+        rows.append({"player": name, "count": count, "result": "pending"})
+    if not rows:
+        return ""
+    total = sum(int(item.get("count") or 0) for item in rows)
+    items = []
+    for index, item in enumerate(rows):
+        extra = " choice-extra" if index >= 5 else ""
+        kind = RESULT_CLASS.get(str(item.get("result") or "pending"), "choice-pending")
+        items.append(
+            f'<li class="choice-item {kind}{extra}">'
+            f'{escape(str(item.get("player") or ""))}：{int(item.get("count") or 0)}</li>'
+        )
+    toggle = ""
+    if len(rows) > 5:
+        toggle = '<button type="button" class="choice-toggle" data-open="0">展开全部</button>'
     return (
-        f'<div class="choice-info"><strong>今日选择情况：</strong> 总选择人数：{total} '
-        f"<ul>{items}</ul></div>"
+        f'<div class="choice-info"><strong>今日选择情况：</strong> 总选择人数：{total}'
+        f'<ul class="choice-list">{"".join(items)}</ul>{toggle}</div>'
     )
 
 
@@ -142,7 +164,7 @@ def render_ranking_page(
     board: str,
     frame: pd.DataFrame,
     stats: pd.DataFrame | None,
-    summary: list[tuple[str, int]] | None,
+    summary: list | None,
     output_dir: Path,
     extra_stats: pd.DataFrame | None = None,
 ) -> Path:

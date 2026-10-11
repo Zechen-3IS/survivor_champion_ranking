@@ -379,10 +379,22 @@
             });
         }
         
+        function initChoiceToggle() {
+            const btn = document.querySelector('.choice-toggle');
+            const list = document.querySelector('.choice-list');
+            if (!btn || !list) return;
+            btn.addEventListener('click', function() {
+                const open = list.classList.toggle('is-open');
+                btn.dataset.open = open ? '1' : '0';
+                btn.textContent = open ? '收起' : '展开全部';
+            });
+        }
+
         // 初始化所有功能
         document.addEventListener('DOMContentLoaded', function() {
             initPagination();
             initExpandToggle();
             initPickDetails();
+            initChoiceToggle();
         });
     </script>

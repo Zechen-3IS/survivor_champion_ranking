@@ -132,6 +132,7 @@ def generate(tours: list[str], output_dir: Path) -> list[Path]:
             print(
                 f"  实时结算 胜 {settled.get('win', 0)}，"
                 f"负 {settled.get('loss', 0)}，"
+                f"自杀 {settled.get('suicide', 0)}，"
                 f"未完赛 {settled.get('pending', 0)}"
             )
         print(f"已生成 {tennis_type} 冠军榜和即时榜")
