@@ -253,13 +253,6 @@ def _week_choice_frame(rows: list[dict[str, Any]]) -> pd.DataFrame:
     return frame[keep].drop_duplicates(subset=["主键"], keep="last")
 
 
-def _today_detail_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    if not rows:
-        return []
-    latest = max((item.get("day") or 0) for item in rows)
-    return [item for item in rows if item.get("day") == latest]
-
-
 def _details_by_user(rows: list[dict[str, Any]]) -> dict[str, list[dict[str, Any]]]:
     grouped: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for item in rows:
@@ -652,7 +645,7 @@ def build_ranking(
     html_columns = display_cols + extra + display_events
 
     stats = killer_stats(week_scores) if not week_scores.empty else pd.DataFrame()
-    summary = choice_summary(_week_choice_frame(_today_detail_rows(week_detail_rows or [])))
+    summary = choice_summary(choices)
     result.attrs["this_week"] = this_week_names
     result.attrs["event_columns"] = display_events
     result.attrs["drop_events"] = drop_events

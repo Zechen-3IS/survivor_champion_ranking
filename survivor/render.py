@@ -155,7 +155,7 @@ def render_ranking_page(
     uncounted = frame.attrs.get("uncounted_columns") or []
     table_html = _decorate_table(frame, rules, event_columns, this_week, uncounted)
     now = beijing_now().strftime("%Y-%m-%d %H:%M:%S")
-    choice_block = _choice_info_html(summary or []) if summary is not None else ""
+    choice_block = _choice_info_html(summary) if summary else ""
     stats_block = _stats_html(stats if stats is not None else pd.DataFrame(), "statsTable1", "每日杀手统计")
     extra_block = _stats_html(
         extra_stats if extra_stats is not None else pd.DataFrame(), "statsTable2", "死亡种子统计"
