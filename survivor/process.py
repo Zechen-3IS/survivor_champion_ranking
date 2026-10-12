@@ -8,7 +8,7 @@ import pandas as pd
 from bs4 import BeautifulSoup
 
 from .config import TourRules, beijing_now
-from .fetch import DrawStatus, opening_round_name, opening_round_rank, strip_username
+from .fetch import ROUND_ORDER, DrawStatus, opening_round_name, opening_round_rank, strip_username
 
 DETAIL_PATTERN = re.compile(r"【([^【】（）()]+)\((\d+)\)】")
 PLAYER_PATTERN = re.compile(r"【([^【】]+)】")
@@ -293,6 +293,26 @@ def _suicide_reason(detail: dict[str, Any], used: list[str]) -> str | None:
     return None
 
 
+def _play_round_rank(draw: DrawStatus, day: int) -> int:
+    if draw.day_points and 1 <= day <= len(draw.day_points) and draw.round_points:
+        points = int(draw.day_points[day - 1])
+        for name, value in draw.round_points.items():
+            try:
+                if int(value) == points:
+                    rank = ROUND_ORDER.get(str(name), 0)
+                    if rank:
+                        return rank
+            except (TypeError, ValueError):
+                continue
+    field_n = len(draw.by_id)
+    current = next((item for item in draw.pick_days if int(item.get("day") or 0) == day), None)
+    rank = _survivor_round_rank(str((current or {}).get("round") or ""), field_n)
+    if rank:
+        return rank
+    opening = opening_round_rank(field_n)
+    return opening + day - 1 if opening else 0
+
+
 def _pick_outcome(
     detail: dict[str, Any],
     draw: DrawStatus,
@@ -317,9 +337,11 @@ def _pick_outcome(
         opp = draw.lookup(opp_id, None)
         if opp and opp.eliminated:
             return "win"
-    if live_round and player.round_rank > live_round:
+    day = int(detail.get("day") or 0)
+    if player.bye and day == 1:
         return "win"
-    if min_still_round and player.round_rank > min_still_round:
+    play_round = _play_round_rank(draw, day) if day else 0
+    if play_round and player.round_rank > play_round:
         return "win"
     return None
 
