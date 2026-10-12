@@ -28,7 +28,11 @@ SCORE_AJAX_RE = re.compile(r"url:\s*\"(https://www\.live-tennis\.cn/zh/survivor/
 DETAIL_AJAX_RE = re.compile(r"url:\s*\"(https://www\.live-tennis\.cn/zh/survivor/event/\d+/\d+/detail)\"")
 LEVEL_RE = re.compile(r"level_logo/(?:ATP|WTA)-([^./]+)", re.I)
 DRAW_NAME_PREFIX_RE = re.compile(r"^(?:[WQL]|\d+)\s*")
+SEED_PREFIX_RE = re.compile(r"^(\d+)\s*")
 DAY_SCORE_RE = re.compile(r"当前分数：(\d+)")
+FIRST_DAY_BYE_RE = re.compile(r"本站有(\d+)个首日轮空")
+PICK_ROUND_RE = re.compile(r"当前轮次：(\S+)")
+PICK_SELECTOR_RE = re.compile(r"Day\s+(\d+)\s+(\d{1,2})/(\d{1,2})")
 ROUND_ORDER = {
     "R128": 1,
     "R64": 2,
@@ -43,6 +47,37 @@ ROUND_ORDER = {
     "半决赛": 6,
     "四分之一决赛": 5,
 }
+BRACKET_OPENING_ROUND = {
+    128: "R128",
+    64: "R64",
+    32: "R32",
+    16: "R16",
+    8: "QF",
+}
+
+
+def field_bracket_size(n: int) -> int:
+    if n <= 1:
+        return max(n, 0)
+    return 1 << (n - 1).bit_length()
+
+
+def opening_round_name(n: int) -> str:
+    return BRACKET_OPENING_ROUND.get(field_bracket_size(n), "")
+
+
+def opening_round_rank(n: int) -> int:
+    return ROUND_ORDER.get(opening_round_name(n), 0)
+
+
+def assign_draw_byes(players: dict[str, DrawPlayer] | list[DrawPlayer]) -> None:
+    items = list(players.values()) if isinstance(players, dict) else list(players)
+    n_byes = field_bracket_size(len(items)) - len(items)
+    if n_byes <= 0:
+        return
+    ranked = sorted((player for player in items if player.seed), key=lambda player: player.seed or 0)
+    for player in ranked[:n_byes]:
+        player.bye = True
 
 
 def event_level_label(src: str | None) -> str:
@@ -71,6 +106,8 @@ class DrawPlayer:
     round: str = ""
     eliminated: bool = False
     live: bool = False
+    seed: int | None = None
+    bye: bool = False
 
     @property
     def round_rank(self) -> int:
@@ -83,6 +120,11 @@ class DrawStatus:
     by_name: dict[str, DrawPlayer]
     round_points: dict[str, int] = field(default_factory=dict)
     day_points: list[int] = field(default_factory=list)
+    tennis_bye_count: int = 0
+    bracket_size: int = 0
+    first_day_bye_quota: int = 0
+    is_slam: bool = False
+    pick_days: list[dict[str, Any]] = field(default_factory=list)
 
     def lookup(self, player_id: str | None, name: str | None) -> DrawPlayer | None:
         pid = str(player_id or "").strip()
@@ -94,8 +136,16 @@ class DrawStatus:
         return None
 
 
+def _parse_seed_and_name(text: str) -> tuple[int | None, str]:
+    text = " ".join(str(text or "").split())
+    match = SEED_PREFIX_RE.match(text)
+    if match:
+        return int(match.group(1)), text[match.end() :].strip()
+    return None, DRAW_NAME_PREFIX_RE.sub("", text).strip()
+
+
 def _clean_draw_name(tag) -> str:
-    return DRAW_NAME_PREFIX_RE.sub("", tag.get_text(" ", strip=True)).strip()
+    return _parse_seed_and_name(tag.get_text(" ", strip=True))[1]
 
 
 def _draw_row_cells(tr) -> list[dict[str, Any]]:
@@ -171,8 +221,7 @@ def parse_draw_status(html: str, gender: str) -> DrawStatus:
             if img and img.get("data-original"):
                 player_id = str(img["data-original"]).rstrip("/").split("/")[-1]
             name_el = item.select_one(".cDrawEntryPlayer")
-            name = name_el.get_text(" ", strip=True) if name_el else ""
-            name = DRAW_NAME_PREFIX_RE.sub("", name).strip()
+            seed, name = _parse_seed_and_name(name_el.get_text(" ", strip=True) if name_el else "")
             round_el = item.select_one(".cDrawEntryRank")
             round_name = round_el.get_text(strip=True) if round_el else ""
             eliminated = bool(item.select_one(".cDrawEntryEliminated"))
@@ -183,6 +232,7 @@ def parse_draw_status(html: str, gender: str) -> DrawStatus:
                 name=name,
                 round=round_name,
                 eliminated=eliminated,
+                seed=seed,
             )
             if player_id:
                 by_id[player_id] = player
@@ -202,8 +252,55 @@ def parse_draw_status(html: str, gender: str) -> DrawStatus:
     for player in by_id.values():
         if player.player_id in live_ids or player.name in live_names:
             player.live = True
+    for part in soup.select(".cDrawPart"):
+        if part.get("data-id") != gender:
+            continue
+        for pname in part.select("pname"):
+            pid = str(pname.get("data-id") or "").strip()
+            player = by_id.get(pid)
+            if player is None:
+                continue
+            seed, name = _parse_seed_and_name(pname.get_text(" ", strip=True))
+            if seed and not player.seed:
+                player.seed = seed
+            if name and not player.name:
+                player.name = name
+    assign_draw_byes(by_id)
     by_name = {player.name: player for player in by_id.values() if player.name}
     return DrawStatus(by_id=by_id, by_name=by_name, round_points=_parse_round_points(soup, gender))
+
+
+def parse_pick_days(html: str, year: str | int | None = None) -> list[dict[str, Any]]:
+    soup = BeautifulSoup(html, "html.parser")
+    year_int = int(year) if str(year or "").isdigit() else beijing_now().year
+    by_day: dict[int, dict[str, Any]] = {}
+    for selector in soup.select(".cSurvivorDayPickSelector"):
+        text = selector.get_text(" ", strip=True)
+        match = PICK_SELECTOR_RE.search(text)
+        if not match:
+            continue
+        day = int(match.group(1))
+        date = datetime(year_int, int(match.group(2)), int(match.group(3))).date()
+        by_day[day] = {"day": day, "date": date, "round": "", "open": False, "has_cards": False}
+    for info in soup.select(".cSurvivorDayPickInfo"):
+        cards = info.select(".cSurvivorSmallCard, .cSurvivorCard")
+        card_days = [int(card.get("data-day") or 0) for card in cards if card.get("data-day")]
+        card_dates = [card.get("data-date") for card in cards if card.get("data-date")]
+        fillable = {str(card.get("data-fillable") or "") for card in cards}
+        notice = " ".join(node.get_text(" ", strip=True) for node in info.select(".cSurvivorFillNotice"))
+        round_match = PICK_ROUND_RE.search(notice)
+        day = card_days[0] if card_days else int(info.get("data-id") or 0) + 1
+        item = by_day.setdefault(day, {"day": day, "date": None, "round": "", "open": False, "has_cards": False})
+        if card_dates and not item.get("date"):
+            try:
+                item["date"] = datetime.strptime(card_dates[0][:10], "%Y-%m-%d").date()
+            except ValueError:
+                pass
+        if round_match:
+            item["round"] = round_match.group(1).strip()
+        item["has_cards"] = bool(cards)
+        item["open"] = item["open"] or ("0" in fillable or "1" in fillable)
+    return [by_day[day] for day in sorted(by_day)]
 
 
 def _parse_round_points(soup: BeautifulSoup, gender: str) -> dict[str, int]:
@@ -424,11 +521,19 @@ class LiveTennisClient:
         except requests.RequestException:
             return DrawStatus(by_id={}, by_name={})
         status = parse_draw_status(html, event.gender)
+        field = len(status.by_id)
+        status.bracket_size = field_bracket_size(field)
+        status.tennis_bye_count = max(status.bracket_size - field, 0)
+        status.is_slam = event.level == "大满贯"
         try:
             my_html = self._get(event.my_page).text
         except requests.RequestException:
             my_html = ""
         status.day_points = [int(value) for value in DAY_SCORE_RE.findall(my_html)]
+        notice = FIRST_DAY_BYE_RE.search(my_html)
+        if notice:
+            status.first_day_bye_quota = int(notice.group(1))
+        status.pick_days = parse_pick_days(my_html, event.year)
         return status
 
     def calendar_events(self, year: int) -> list[dict[str, Any]]:

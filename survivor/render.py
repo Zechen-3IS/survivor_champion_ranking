@@ -44,7 +44,7 @@ def _trend_html(value: object) -> str:
 RESULT_CLASS = {"win": "choice-win", "loss": "choice-loss", "pending": "choice-pending"}
 
 
-def _choice_info_html(summary: list) -> str:
+def _choice_info_html(summary: list, stats: dict | None = None) -> str:
     rows: list[dict] = []
     for item in summary or []:
         if isinstance(item, dict):
@@ -52,9 +52,11 @@ def _choice_info_html(summary: list) -> str:
             continue
         name, count = item
         rows.append({"player": name, "count": count, "result": "pending"})
-    if not rows:
+    if not rows and not stats:
         return ""
-    total = sum(int(item.get("count") or 0) for item in rows)
+    total = int((stats or {}).get("total") or 0) or sum(int(item.get("count") or 0) for item in rows)
+    alive = int((stats or {}).get("alive") or 0)
+    pending = int((stats or {}).get("pending") or 0)
     items = []
     for index, item in enumerate(rows):
         extra = " choice-extra" if index >= 5 else ""
@@ -66,8 +68,9 @@ def _choice_info_html(summary: list) -> str:
     toggle = ""
     if len(rows) > 5:
         toggle = '<button type="button" class="choice-toggle" data-open="0">展开全部</button>'
+    header = f"总选择人数：{total}　存活人数：{alive}　未判定人数：{pending}"
     return (
-        f'<div class="choice-info"><strong>今日选择情况：</strong> 总选择人数：{total}'
+        f'<div class="choice-info"><strong>今日选择情况：</strong> {header}'
         f'<ul class="choice-list">{"".join(items)}</ul>{toggle}</div>'
     )
 
@@ -177,7 +180,7 @@ def render_ranking_page(
     uncounted = frame.attrs.get("uncounted_columns") or []
     table_html = _decorate_table(frame, rules, event_columns, this_week, uncounted)
     now = beijing_now().strftime("%Y-%m-%d %H:%M:%S")
-    choice_block = _choice_info_html(summary) if summary else ""
+    choice_block = _choice_info_html(summary, frame.attrs.get("choice_stats")) if summary or frame.attrs.get("choice_stats") else ""
     stats_block = _stats_html(stats if stats is not None else pd.DataFrame(), "statsTable1", "每日杀手统计")
     extra_block = _stats_html(
         extra_stats if extra_stats is not None else pd.DataFrame(), "statsTable2", "死亡种子统计"

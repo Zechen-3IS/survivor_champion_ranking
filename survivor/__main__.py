@@ -4,10 +4,10 @@ import argparse
 from pathlib import Path
 from typing import Any
 
-from .config import ROOT
+from .config import ROOT, TourRules
 from .fetch import DrawStatus, LiveTennisClient, WeekEvent
 from .home import render_index_page
-from .process import build_combined, build_ranking
+from .process import build_combined, build_ranking, current_play_day, user_rank_map
 from .publish import publish_html
 from .render import render_ranking_page
 from .stats import build_player_stats
@@ -28,6 +28,7 @@ def _build_tour(
     this_week_year: str | None = None,
     prior_years: dict[str, str] | None = None,
     draw_status: DrawStatus | None = None,
+    bye_rank_by_id: dict[str, int] | None = None,
 ):
     return build_ranking(
         tennis_type,
@@ -40,6 +41,7 @@ def _build_tour(
         this_week_year=this_week_year if instant else None,
         prior_years=prior_years if instant else None,
         draw_status=draw_status,
+        bye_rank_by_id=bye_rank_by_id,
     )
 
 
@@ -68,7 +70,14 @@ def generate(tours: list[str], output_dir: Path) -> list[Path]:
         if draw_status and draw_status.by_id:
             live_n = sum(1 for player in draw_status.by_id.values() if player.live)
             elim_n = sum(1 for player in draw_status.by_id.values() if player.eliminated)
-            print(f"  签表 {len(draw_status.by_id)} 人，淘汰 {elim_n}，进行中 {live_n}")
+            extra = ""
+            if draw_status.tennis_bye_count:
+                extra = (
+                    f"，网球轮空 {draw_status.tennis_bye_count}/{draw_status.bracket_size}"
+                    f"，首日轮空 {draw_status.first_day_bye_quota or '?'}"
+                )
+            extra += f"，展示第 {current_play_day(draw_status, week_details)} 天"
+            print(f"  签表 {len(draw_status.by_id)} 人，淘汰 {elim_n}，进行中 {live_n}{extra}")
         week = client.tour_week(tennis_type, this_monday)
         pair = client.week_pair(this_monday, tennis_type)
         drop_events = pair.last_names
@@ -92,6 +101,11 @@ def generate(tours: list[str], output_dir: Path) -> list[Path]:
             + (f"；同名保留 {prior_years}" if prior_years else "")
         )
 
+        bye_ranks = user_rank_map(
+            year_rows,
+            TourRules.for_tour(tennis_type),
+            event.name if event else None,
+        )
         champ, champ_stats, champ_seeds, champ_summary = _build_tour(
             tennis_type,
             event,
@@ -101,6 +115,7 @@ def generate(tours: list[str], output_dir: Path) -> list[Path]:
             drop_events,
             False,
             draw_status=draw_status,
+            bye_rank_by_id=bye_ranks,
         )
         inst, inst_stats, inst_seeds, inst_summary = _build_tour(
             tennis_type,
@@ -113,6 +128,7 @@ def generate(tours: list[str], output_dir: Path) -> list[Path]:
             this_week_year=event.year if event else None,
             prior_years=prior_years,
             draw_status=draw_status,
+            bye_rank_by_id=bye_ranks,
         )
         written.append(render_ranking_page(tennis_type, champ, champ_stats, champ_summary, output_dir))
         written.append(
@@ -132,6 +148,7 @@ def generate(tours: list[str], output_dir: Path) -> list[Path]:
             print(
                 f"  实时结算 胜 {settled.get('win', 0)}，"
                 f"负 {settled.get('loss', 0)}，"
+                f"轮空 {settled.get('bye', 0)}，"
                 f"自杀 {settled.get('suicide', 0)}，"
                 f"未完赛 {settled.get('pending', 0)}"
             )

@@ -7,8 +7,8 @@ from typing import Any
 import pandas as pd
 from bs4 import BeautifulSoup
 
-from .config import TourRules
-from .fetch import DrawStatus, strip_username
+from .config import TourRules, beijing_now
+from .fetch import DrawStatus, opening_round_name, opening_round_rank, strip_username
 
 DETAIL_PATTERN = re.compile(r"【([^【】（）()]+)\((\d+)\)】")
 PLAYER_PATTERN = re.compile(r"【([^【】]+)】")
@@ -324,10 +324,24 @@ def _pick_outcome(
     return None
 
 
-def _settled_event_points(draw: DrawStatus, detail: dict[str, Any], current: int, day: int) -> int:
+def _settled_event_points(
+    draw: DrawStatus,
+    detail: dict[str, Any],
+    current: int,
+    day: int,
+    user_bye: bool = False,
+) -> int:
     current = int(current or 0)
+    if user_bye:
+        day = 1
     if draw.day_points and 1 <= day <= len(draw.day_points):
         return max(current, int(draw.day_points[day - 1]))
+    if user_bye:
+        opening = opening_round_name(len(draw.by_id))
+        points = draw.round_points.get(opening) if opening else None
+        if points is not None:
+            return max(current, int(points))
+        return current
     player = draw.lookup(detail.get("fill"), detail.get("player"))
     if player is None or not player.round:
         return current
@@ -337,17 +351,170 @@ def _settled_event_points(draw: DrawStatus, detail: dict[str, Any], current: int
     return max(current, int(points))
 
 
+def first_day_bye_quota(draw: DrawStatus | None, n_fillers: int) -> int:
+    if draw is None or draw.is_slam or n_fillers <= 0:
+        return 0
+    if draw.first_day_bye_quota > 0:
+        return int(draw.first_day_bye_quota)
+    seeds, bracket = draw.tennis_bye_count, draw.bracket_size
+    if seeds <= 0 or bracket <= 0:
+        return 0
+    return seeds * n_fillers // bracket
+
+
+def first_day_bye_users(
+    detail_rows: list[dict[str, Any]],
+    draw: DrawStatus | None,
+    rank_by_id: dict[str, int] | None,
+) -> set[str]:
+    fillers: list[str] = []
+    seen: set[str] = set()
+    for item in detail_rows:
+        if int(item.get("day") or 0) != 1:
+            continue
+        if not str(item.get("player") or "").strip():
+            continue
+        uid = _as_key(item.get("user_id"))
+        if not uid or uid in seen:
+            continue
+        seen.add(uid)
+        fillers.append(uid)
+    quota = first_day_bye_quota(draw, len(fillers))
+    ranks = rank_by_id or {}
+    if quota <= 0 or not fillers or not ranks:
+        return set()
+    fillers.sort(key=lambda uid: (ranks.get(uid, 10**9), uid))
+    return set(fillers[:quota])
+
+
+def user_rank_map(
+    rows: list[dict[str, Any]],
+    rules: TourRules,
+    exclude_event: str | None = None,
+) -> dict[str, int]:
+    return _rank_map_from_frame(_race_frame(rows), rules, exclude_event)
+
+
+def _rank_map_from_frame(
+    frame: pd.DataFrame,
+    rules: TourRules,
+    exclude_event: str | None = None,
+) -> dict[str, int]:
+    if frame.empty or "主键" not in frame.columns:
+        return {}
+    skip = {"用户名", "主键", "上周总分", "上周排名", "排名", "总分", "升降", "状态"}
+    events = [
+        col
+        for col in frame.columns
+        if col not in skip and not str(col).startswith("替换")
+    ]
+    if exclude_event:
+        events = [col for col in events if col != exclude_event]
+    if not events:
+        return {}
+    totals = frame.apply(lambda row: row_total(row, rules, events), axis=1)
+    ranks = totals.rank(ascending=False, method="min")
+    return {_as_key(uid): int(rank) for uid, rank in zip(frame["主键"], ranks)}
+
+
+def _survivor_round_rank(label: str, field_n: int) -> int:
+    text = str(label or "").strip().upper().replace("轮", "")
+    opening = opening_round_rank(field_n)
+    if not text:
+        return 0
+    if text in {"R1", "1"}:
+        return opening
+    if text in {"R2", "2"}:
+        return opening + 1 if opening else 0
+    if text in {"R3", "3"}:
+        return opening + 2 if opening else 0
+    if text in {"R4", "4"}:
+        return opening + 3 if opening else 0
+    return {
+        "R128": 1,
+        "R64": 2,
+        "R32": 3,
+        "R16": 4,
+        "QF": 5,
+        "SF": 6,
+        "F": 7,
+        "W": 8,
+    }.get(text, 0)
+
+
+def _round_still_going(draw: DrawStatus | None, round_rank: int) -> bool:
+    if draw is None or not draw.by_id or not round_rank:
+        return bool(draw and any(player.live for player in draw.by_id.values()))
+    return any(
+        player.round_rank == round_rank and (player.live or not player.eliminated)
+        for player in draw.by_id.values()
+    )
+
+
+def _next_day_open(
+    draw: DrawStatus | None,
+    detail_rows: list[dict[str, Any]],
+    day: int,
+) -> bool:
+    nxt = day + 1
+    for item in draw.pick_days if draw else []:
+        if int(item.get("day") or 0) == nxt and (item.get("open") or item.get("has_cards")):
+            return True
+    return any(int(item.get("day") or 0) == nxt and str(item.get("player") or "").strip() for item in detail_rows)
+
+
+def current_play_day(
+    draw: DrawStatus | None,
+    detail_rows: list[dict[str, Any]] | None = None,
+) -> int:
+    detail_rows = detail_rows or []
+    today = beijing_now().date()
+    schedule = [item for item in (draw.pick_days if draw else []) if item.get("day")]
+    if not schedule:
+        days = sorted({int(item.get("day") or 0) for item in detail_rows if int(item.get("day") or 0) > 0})
+        return days[0] if days else 1
+    play = int(schedule[0]["day"])
+    for item in schedule:
+        date = item.get("date")
+        if date is None or date <= today:
+            play = int(item["day"])
+        if date == today:
+            break
+        if date is not None and date > today:
+            break
+    field_n = len(draw.by_id) if draw else 0
+    while True:
+        nxt = play + 1
+        if not _next_day_open(draw, detail_rows, play):
+            break
+        current = next((item for item in schedule if int(item.get("day") or 0) == play), None)
+        round_rank = _survivor_round_rank(str((current or {}).get("round") or ""), field_n)
+        if not round_rank:
+            round_rank = opening_round_rank(field_n) + play - 1
+        if _round_still_going(draw, round_rank):
+            break
+        nxt_item = next((item for item in schedule if int(item.get("day") or 0) == nxt), None)
+        nxt_date = (nxt_item or {}).get("date")
+        play = nxt
+        if nxt_date is not None and nxt_date > today:
+            break
+    return play
+
+
 def apply_live_settlement(
     week_scores: pd.DataFrame,
     detail_rows: list[dict[str, Any]],
     draw: DrawStatus | None,
     event_name: str | None = None,
+    rank_by_id: dict[str, int] | None = None,
 ) -> tuple[pd.DataFrame, dict[str, int]]:
-    empty = {"win": 0, "loss": 0, "pending": 0, "suicide": 0}
+    empty = {"win": 0, "loss": 0, "pending": 0, "suicide": 0, "bye": 0}
     if week_scores.empty or not detail_rows:
         return week_scores, empty
 
     grouped = _details_by_user(detail_rows)
+    bye_users = first_day_bye_users(detail_rows, draw, rank_by_id)
+    play_day = current_play_day(draw, detail_rows)
     fills_by_match: dict[Any, set[str]] = defaultdict(set)
     pick_players = []
     if draw is not None and draw.by_id:
@@ -364,14 +531,24 @@ def apply_live_settlement(
     min_still_round = min(still_ranks) if still_ranks else 0
 
     result = week_scores.copy()
+    result["首日轮空"] = False
     counts = dict(empty)
     for index, row in result.iterrows():
         if row.get("状态") != "存活":
             continue
         used = list(row.get("明细") or [])
         official_day = int(pd.to_numeric(row.get("存活天数"), errors="coerce") or len(used) or 0)
+        uid = _as_key(row.get("主键"))
+        day1_pick = any(
+            int(item.get("day") or 0) == 1 and str(item.get("player") or "").strip()
+            for item in grouped.get(uid, [])
+        )
+        if official_day <= 0 and not day1_pick:
+            result.at[index, "状态"] = "未参赛"
+            result.at[index, "杀手球员"] = ""
+            continue
         pending = False
-        for detail in grouped.get(_as_key(row.get("主键")), []):
+        for detail in grouped.get(uid, []):
             day = int(detail.get("day") or 0)
             if day <= official_day:
                 continue
@@ -389,6 +566,25 @@ def apply_live_settlement(
                 counts["suicide"] += 1
                 pending = False
                 break
+            if day > play_day:
+                break
+            if day == 1 and uid in bye_users:
+                official_day = 1
+                result.at[index, "存活天数"] = 1
+                result.at[index, "状态"] = "存活"
+                result.at[index, "首日轮空"] = True
+                result.at[index, "杀手球员"] = ""
+                if draw is not None and event_name and event_name in result.columns:
+                    result.at[index, event_name] = _settled_event_points(
+                        draw,
+                        detail,
+                        int(result.at[index, event_name] or 0),
+                        day,
+                        user_bye=True,
+                    )
+                counts["win"] += 1
+                counts["bye"] += 1
+                continue
             if draw is None or not draw.by_id:
                 pending = True
                 break
@@ -426,18 +622,29 @@ def apply_live_settlement(
 def _unsettled_choice_frame(
     week_scores: pd.DataFrame,
     detail_rows: list[dict[str, Any]],
+    play_day: int | None = None,
 ) -> pd.DataFrame:
     if week_scores.empty:
         return pd.DataFrame(columns=["主键", "用户名", "主选球员", "备选球员"])
     grouped = _details_by_user(detail_rows)
+    display_day = play_day or 1
     rows = []
     for _, row in week_scores.iterrows():
         if row.get("状态") != "存活":
             continue
-        used = row.get("明细") or []
-        next_day = len(used) + 1
+        if bool(row.get("首日轮空")) and display_day == 1:
+            rows.append(
+                {
+                    "主键": _as_key(row.get("主键")),
+                    "用户名": str(row.get("用户名") or ""),
+                    "主选球员": "轮空",
+                    "备选球员": "",
+                }
+            )
+            continue
+        items = grouped.get(_as_key(row.get("主键")), [])
         match = next(
-            (item for item in grouped.get(_as_key(row.get("主键")), []) if int(item.get("day") or 0) == next_day),
+            (item for item in items if int(item.get("day") or 0) == display_day),
             None,
         )
         if not match:
@@ -482,36 +689,46 @@ def choice_summary(
     week_scores: pd.DataFrame,
     detail_rows: list[dict[str, Any]] | None = None,
     draw: DrawStatus | None = None,
-) -> list[dict[str, Any]]:
+    play_day: int | None = None,
+) -> tuple[list[dict[str, Any]], dict[str, int]]:
+    empty_stats = {"total": 0, "alive": 0, "pending": 0}
     if week_scores.empty or not detail_rows or "状态" not in week_scores.columns:
-        return []
-    alive_ids = {
-        _as_key(uid)
-        for uid in week_scores.loc[week_scores["状态"].eq("存活"), "主键"].tolist()
+        return [], empty_stats
+    status_by_id = {
+        _as_key(uid): str(status or "")
+        for uid, status in zip(week_scores["主键"], week_scores["状态"])
         if _as_key(uid)
     }
-    if not alive_ids:
-        return []
-    grouped = _details_by_user(detail_rows)
-    pick_days = [
-        int(item.get("day") or 0)
-        for uid in alive_ids
-        for item in grouped.get(uid, [])
-    ]
-    if not pick_days:
-        return []
-    pick_day = max(pick_days)
-    today = [item for item in detail_rows if int(item.get("day") or 0) == pick_day]
+    bye_ids: set[str] = set()
+    if "首日轮空" in week_scores.columns:
+        bye_ids = {
+            _as_key(uid)
+            for uid in week_scores.loc[week_scores["首日轮空"].fillna(False).astype(bool), "主键"].tolist()
+            if _as_key(uid)
+        }
+    pick_day = play_day or current_play_day(draw, detail_rows)
+    seen: set[str] = set()
+    today: list[dict[str, Any]] = []
+    for item in detail_rows:
+        if int(item.get("day") or 0) != pick_day:
+            continue
+        uid = _as_key(item.get("user_id"))
+        name = str(item.get("player") or "").strip()
+        if not uid or not name or uid in seen:
+            continue
+        seen.add(uid)
+        today.append(item)
+    if not today:
+        return [], empty_stats
     counts: Counter[str] = Counter()
     samples: dict[str, dict[str, Any]] = {}
     for item in today:
-        name = str(item.get("player") or "").strip()
-        if not name:
+        uid = _as_key(item.get("user_id"))
+        if uid in bye_ids:
             continue
+        name = str(item.get("player") or "").strip()
         counts[name] += 1
         samples.setdefault(name, item)
-    if not counts:
-        return []
     fills_by_match: dict[Any, set[str]] = defaultdict(set)
     pick_players = []
     if draw is not None and draw.by_id:
@@ -526,7 +743,19 @@ def choice_summary(
     live_round = min((p.round_rank for p in pick_players if p.live and p.round_rank), default=0)
     still_ranks = [p.round_rank for p in pick_players if not p.eliminated and not p.live and p.round_rank]
     min_still_round = min(still_ranks) if still_ranks else 0
+    pending_ids: set[str] = set()
+    for item in today:
+        uid = _as_key(item.get("user_id"))
+        if uid in bye_ids or status_by_id.get(uid) != "存活":
+            continue
+        outcome = _pick_outcome(
+            item, draw, fills_by_match, live_round, min_still_round
+        ) if draw is not None and draw.by_id else None
+        if outcome not in {"win", "loss"}:
+            pending_ids.add(uid)
     rows = []
+    if bye_ids and pick_day == 1:
+        rows.append({"player": "轮空", "count": len(bye_ids), "result": "win"})
     for name, count in counts.most_common():
         result = "pending"
         if draw is not None and draw.by_id:
@@ -536,7 +765,12 @@ def choice_summary(
             if outcome in {"win", "loss"}:
                 result = outcome
         rows.append({"player": name, "count": int(count), "result": result})
-    return rows
+    stats = {
+        "total": len(today),
+        "alive": int((week_scores["状态"] == "存活").sum()),
+        "pending": len(pending_ids),
+    }
+    return rows, stats
 
 
 def seed_death_stats(frame: pd.DataFrame, week_scores: pd.DataFrame, seed_cutoff: int = 16) -> pd.DataFrame:
@@ -585,6 +819,7 @@ def build_ranking(
     this_week_year: str | None = None,
     prior_years: dict[str, str] | None = None,
     draw_status: DrawStatus | None = None,
+    bye_rank_by_id: dict[str, int] | None = None,
 ) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, list[tuple[str, int]]]:
     rules = TourRules.for_tour(tennis_type)
     result = _race_frame(race_rows)
@@ -600,13 +835,19 @@ def build_ranking(
         if week_event_name and week_score_rows
         else pd.DataFrame()
     )
-    settlement = {"win": 0, "loss": 0, "pending": 0}
+    settlement = {"win": 0, "loss": 0, "pending": 0, "suicide": 0, "bye": 0}
+    play_day = current_play_day(draw_status, week_detail_rows or [])
     if not week_scores.empty:
+        ranks = bye_rank_by_id or _rank_map_from_frame(result, rules, week_event_name)
         week_scores, settlement = apply_live_settlement(
-            week_scores, week_detail_rows or [], draw_status, event_name=week_event_name
+            week_scores,
+            week_detail_rows or [],
+            draw_status,
+            event_name=week_event_name,
+            rank_by_id=ranks,
         )
     choices = (
-        _unsettled_choice_frame(week_scores, week_detail_rows or [])
+        _unsettled_choice_frame(week_scores, week_detail_rows or [], play_day)
         if not week_scores.empty
         else _week_choice_frame(week_detail_rows or [])
     )
@@ -717,7 +958,7 @@ def build_ranking(
             lambda value: " → ".join(str(item) for item in value if item) if isinstance(value, list) else ""
         )
         result["选人明细"] = result["选人明细"].fillna("")
-    result = result.drop(columns=["明细"], errors="ignore")
+    result = result.drop(columns=["明细", "首日轮空"], errors="ignore")
     for col in scoring_events:
         if col not in result.columns:
             result[col] = 0
@@ -741,7 +982,10 @@ def build_ranking(
     html_columns = display_cols + extra + display_events
 
     stats = killer_stats(week_scores) if not week_scores.empty else pd.DataFrame()
-    summary = choice_summary(week_scores, week_detail_rows or [], draw_status)
+    summary, choice_stats = choice_summary(
+        week_scores, week_detail_rows or [], draw_status, play_day
+    )
+    result.attrs["choice_stats"] = choice_stats
     result.attrs["this_week"] = this_week_names
     result.attrs["event_columns"] = display_events
     result.attrs["drop_events"] = drop_events

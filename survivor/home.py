@@ -3,9 +3,9 @@ from __future__ import annotations
 import re
 from html import escape
 
-from .config import WeekEvent, beijing_now
+from .config import TourRules, WeekEvent, beijing_now
 from .fetch import LiveTennisClient, strip_username
-from .process import _week_score_frame, apply_live_settlement
+from .process import _week_score_frame, apply_live_settlement, user_rank_map
 
 TOUR_LABEL = {"wta": "WTA", "atp": "ATP"}
 SECTION_RE = re.compile(
@@ -40,7 +40,15 @@ def _summarize(client: LiveTennisClient, event: WeekEvent) -> dict:
         details = client.fetch_week_details(event)
         draw = client.fetch_draw_status(event)
         frame = _week_score_frame(rows, event.name)
-        frame, _ = apply_live_settlement(frame, details, draw, event_name=event.name)
+        year_rows, _ = client.fetch_year_rank(event.tennis_type)
+        ranks = user_rank_map(
+            year_rows,
+            TourRules.for_tour(event.tennis_type),
+            event.name,
+        )
+        frame, _ = apply_live_settlement(
+            frame, details, draw, event_name=event.name, rank_by_id=ranks
+        )
         alive = [name for name in frame.loc[frame["状态"] == "存活", "用户名"].tolist() if name]
         if event.name in frame.columns:
             event_scores = [int(value or 0) for value in frame[event.name].tolist()]
