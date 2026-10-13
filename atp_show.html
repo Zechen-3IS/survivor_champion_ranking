@@ -24,6 +24,8 @@
             --filter-border: #ddd;
             --filter-shadow: rgba(0,0,0,0.2);
             --choice-info: #333;
+            --choice-win: #1b7f3a;
+            --choice-loss: #c62828;
             --stats-bg: #f2f2f2;
         }
         
@@ -46,6 +48,8 @@
                 --filter-border: #444;
                 --filter-shadow: rgba(0,0,0,0.4);
                 --choice-info: #e0e0e0;
+                --choice-win: #4caf50;
+                --choice-loss: #ef5350;
                 --stats-bg: #2a2a2a;
             }
             
@@ -178,11 +182,42 @@
         .choice-info ul {
             list-style: none;
             padding: 0;
-            margin: 5px 0 0;
+            margin: 8px 0 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
         }
         .choice-info li {
-            display: inline-block;
-            margin: 0 12px;
+            display: block;
+            margin: 0;
+        }
+        .choice-info li.choice-extra {
+            display: none;
+        }
+        .choice-list.is-open li.choice-extra {
+            display: block;
+        }
+        .choice-item.choice-win {
+            color: var(--choice-win);
+            font-weight: 600;
+        }
+        .choice-item.choice-loss {
+            color: var(--choice-loss);
+            font-weight: 600;
+        }
+        .choice-toggle {
+            margin-top: 10px;
+            padding: 4px 14px;
+            font-size: 13px;
+            border: 1px solid var(--filter-border);
+            border-radius: 4px;
+            background: var(--button-bg);
+            color: var(--button-text);
+            cursor: pointer;
+        }
+        .choice-toggle:hover {
+            background: var(--button-hover);
         }
         /* 多选筛选控件样式 */
         .filter-container {
@@ -453,7 +488,7 @@
         <div class="container">
             <h1>ATP球员成绩统计</h1>
             <div style="text-align: center; color: #888; font-size: 0.9em; margin-bottom: 10px;">
-                页面数据更新时间：2026-10-08 23:53:54
+                页面数据更新时间：2026-10-13 05:59:33
             </div>
             
             
@@ -1087,7 +1122,7 @@
 <td>2024-北京(7), 2024-上海(8)</td>
 <td>2</td>
 <td>2025-温网, 2025-华盛顿</td>
-<td>6</td>
+<td>7</td>
 <td>4508</td>
 <td>0.544186</td>
 <td>0.497890</td>
@@ -23845,11 +23880,23 @@
             });
         }
         
+        function initChoiceToggle() {
+            const btn = document.querySelector('.choice-toggle');
+            const list = document.querySelector('.choice-list');
+            if (!btn || !list) return;
+            btn.addEventListener('click', function() {
+                const open = list.classList.toggle('is-open');
+                btn.dataset.open = open ? '1' : '0';
+                btn.textContent = open ? '收起' : '展开全部';
+            });
+        }
+
         // 初始化所有功能
         document.addEventListener('DOMContentLoaded', function() {
             initPagination();
             initExpandToggle();
             initPickDetails();
+            initChoiceToggle();
         });
     </script>
     </body>
