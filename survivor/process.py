@@ -721,6 +721,14 @@ def choice_summary(
         for uid, status in zip(week_scores["主键"], week_scores["状态"])
         if _as_key(uid)
     }
+    survive_days = (
+        week_scores["存活天数"] if "存活天数" in week_scores.columns else [0] * len(week_scores)
+    )
+    survived_by_id = {
+        _as_key(uid): int(pd.to_numeric(day, errors="coerce") or 0)
+        for uid, day in zip(week_scores["主键"], survive_days)
+        if _as_key(uid)
+    }
     bye_ids: set[str] = set()
     if "首日轮空" in week_scores.columns:
         bye_ids = {
@@ -742,14 +750,27 @@ def choice_summary(
         today.append(item)
     if not today:
         return [], empty_stats
+
+    def _counts_today(uid: str) -> bool:
+        if uid in bye_ids:
+            return False
+        status = status_by_id.get(uid, "")
+        if status == "存活":
+            return True
+        if status == "球员输球" or str(status).startswith("自杀"):
+            return survived_by_id.get(uid, -1) == pick_day - 1
+        return False
+
     counts: Counter[str] = Counter()
     samples: dict[str, dict[str, Any]] = {}
+    counted_ids: set[str] = set()
     for item in today:
         uid = _as_key(item.get("user_id"))
-        if uid in bye_ids:
+        if not _counts_today(uid):
             continue
         name = str(item.get("player") or "").strip()
         counts[name] += 1
+        counted_ids.add(uid)
         samples.setdefault(name, item)
     fills_by_match: dict[Any, set[str]] = defaultdict(set)
     pick_players = []
@@ -787,8 +808,9 @@ def choice_summary(
             if outcome in {"win", "loss"}:
                 result = outcome
         rows.append({"player": name, "count": int(count), "result": result})
+    bye_shown = len(bye_ids) if bye_ids and pick_day == 1 else 0
     stats = {
-        "total": len(today),
+        "total": len(counted_ids) + bye_shown,
         "alive": int((week_scores["状态"] == "存活").sum()),
         "pending": len(pending_ids),
     }
