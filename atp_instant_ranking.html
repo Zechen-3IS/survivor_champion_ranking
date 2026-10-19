@@ -488,10 +488,39 @@
         <div class="container">
             <h1>ATP幸存者即时排名</h1>
             <div style="text-align: center; color: #888; font-size: 0.9em; margin-bottom: 10px;">
-                页面数据更新时间：2026-10-19 15:31:02
+                页面数据更新时间：2026-10-19 16:00:57
             </div>
-            <div class="choice-info"><strong>今日选择情况：</strong> 总选择人数：292　存活人数：292　未判定人数：256<ul class="choice-list"><li class="choice-item choice-win">轮空：36</li><li class="choice-item choice-pending">蒂兰特：94</li><li class="choice-item choice-pending">萨克拉里迪斯：60</li><li class="choice-item choice-pending">凯茨曼诺维奇：42</li><li class="choice-item choice-pending">曼纳里诺：27</li><li class="choice-item choice-pending choice-extra">西里奇：19</li><li class="choice-item choice-pending choice-extra">巴斯拉什维利：6</li><li class="choice-item choice-pending choice-extra">库库什金：5</li><li class="choice-item choice-pending choice-extra">武基奇：3</li></ul><button type="button" class="choice-toggle" data-open="0">展开全部</button></div>
+            <div class="choice-info"><strong>今日选择情况：</strong> 总选择人数：293　存活人数：251　未判定人数：215<ul class="choice-list"><li class="choice-item choice-win">轮空：36</li><li class="choice-item choice-pending">蒂兰特：94</li><li class="choice-item choice-pending">萨克拉里迪斯：60</li><li class="choice-item choice-loss">凯茨曼诺维奇：42</li><li class="choice-item choice-pending">曼纳里诺：28</li><li class="choice-item choice-pending choice-extra">西里奇：19</li><li class="choice-item choice-pending choice-extra">巴斯拉什维利：6</li><li class="choice-item choice-pending choice-extra">库库什金：5</li><li class="choice-item choice-pending choice-extra">武基奇：3</li></ul><button type="button" class="choice-toggle" data-open="0">展开全部</button></div>
             
+            <div class="stats-container">
+                <button class="toggle-stats-btn" onclick="toggleStatsTable('statsTable1')">
+                    <span class="btn-text">显示每日杀手统计</span>
+                    <span class="arrow-icon">▼</span>
+                </button>
+                <div id="statsTable1" class="hidden">
+                    <table class="dataframe dataframe stats-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>天数</th>
+      <th>杀手球员1</th>
+      <th>死亡人数1</th>
+      <th>杀手球员2</th>
+      <th>死亡人数2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>凯茨曼诺维奇</td>
+      <td>42</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+                </div>
+            </div>
+    
             
             <div class="controls-wrapper">
                 <div class="controls-container">
@@ -2814,15 +2843,15 @@
 <td class="expandable-column"><del>13</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>51</td>
 <td>寻***9</td>
 <td>3125</td>
 <td></td>
-<td>存活</td>
+<td>球员输球</td>
+<td></td>
+<td></td>
 <td>凯茨曼诺维奇</td>
-<td></td>
-<td></td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -2904,15 +2933,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>53</td>
 <td>九_墨_</td>
 <td>3101</td>
 <td></td>
-<td>存活</td>
-<td>凯茨曼诺维奇</td>
-<td>蒂兰特</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>凯茨曼诺维奇</td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -3129,15 +3158,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>58</td>
 <td>最爱KG的阿杰</td>
 <td>2964</td>
 <td></td>
-<td>存活</td>
-<td>凯茨曼诺维奇</td>
-<td>西里奇</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>凯茨曼诺维奇</td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -3264,15 +3293,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>50</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>61</td>
 <td>Zoey</td>
 <td>2921</td>
 <td></td>
-<td>存活</td>
-<td>凯茨曼诺维奇</td>
-<td>蒂兰特</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>凯茨曼诺维奇</td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -4434,15 +4463,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>87</td>
 <td>我叫LCW</td>
 <td>2695</td>
 <td></td>
-<td>存活</td>
-<td>凯茨曼诺维奇</td>
-<td>蒂兰特</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>凯茨曼诺维奇</td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -4614,15 +4643,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>91</td>
 <td>Oreache</td>
 <td>2679</td>
 <td></td>
-<td>存活</td>
-<td>凯茨曼诺维奇</td>
-<td>西里奇</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>凯茨曼诺维奇</td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -4839,15 +4868,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>96</td>
 <td>德不驴</td>
 <td>2610</td>
 <td></td>
-<td>存活</td>
+<td>球员输球</td>
+<td></td>
+<td></td>
 <td>凯茨曼诺维奇</td>
-<td></td>
-<td></td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -4929,15 +4958,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column">165</td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>98</td>
 <td>萨卡外</td>
 <td>2586</td>
 <td></td>
-<td>存活</td>
-<td>凯茨曼诺维奇</td>
-<td>蒂兰特</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>凯茨曼诺维奇</td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -5874,15 +5903,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>119</td>
 <td>猫崽孑丶</td>
 <td>2409</td>
 <td></td>
-<td>存活</td>
-<td>凯茨曼诺维奇</td>
-<td>萨克拉里迪斯</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>凯茨曼诺维奇</td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -6909,15 +6938,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>142</td>
 <td>法网冠军丰塞卡</td>
 <td>2231</td>
 <td></td>
-<td>存活</td>
-<td>凯茨曼诺维奇</td>
-<td>蒂兰特</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>凯茨曼诺维奇</td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -7134,15 +7163,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>147</td>
 <td>na_go_h</td>
 <td>2196</td>
 <td></td>
-<td>存活</td>
-<td>凯茨曼诺维奇</td>
-<td>曼纳里诺</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>凯茨曼诺维奇</td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -7404,15 +7433,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>153</td>
 <td>Ryan-Tennis</td>
 <td>2131</td>
 <td></td>
-<td>存活</td>
+<td>球员输球</td>
+<td></td>
+<td></td>
 <td>凯茨曼诺维奇</td>
-<td></td>
-<td></td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -7584,15 +7613,15 @@
 <td class="expandable-column">100</td>
 <td class="expandable-column"><del>50</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>157</td>
 <td>Elroy ZHANG</td>
 <td>2106</td>
 <td></td>
-<td>存活</td>
-<td>凯茨曼诺维奇</td>
-<td>蒂兰特</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>凯茨曼诺维奇</td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -8079,15 +8108,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>168</td>
 <td>杰***鞋</td>
 <td>2014</td>
 <td></td>
-<td>存活</td>
+<td>球员输球</td>
+<td></td>
+<td></td>
 <td>凯茨曼诺维奇</td>
-<td></td>
-<td></td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -9294,15 +9323,15 @@
 <td class="expandable-column">25</td>
 <td class="expandable-column">165</td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>195</td>
 <td>啦***拉</td>
 <td>1798</td>
 <td></td>
-<td>存活</td>
-<td>凯茨曼诺维奇</td>
-<td>萨克拉里迪斯</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>凯茨曼诺维奇</td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -9429,15 +9458,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>198</td>
 <td>YJkCarl</td>
 <td>1788</td>
 <td></td>
-<td>存活</td>
-<td>凯茨曼诺维奇</td>
-<td>西里奇</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>凯茨曼诺维奇</td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -9699,15 +9728,15 @@
 <td class="expandable-column"><del>13</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>204</td>
 <td>A-ries_15</td>
 <td>1778</td>
 <td></td>
-<td>存活</td>
+<td>球员输球</td>
+<td></td>
+<td></td>
 <td>凯茨曼诺维奇</td>
-<td></td>
-<td></td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -9834,15 +9863,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>207</td>
 <td>是月牙呦</td>
 <td>1760</td>
 <td></td>
-<td>存活</td>
-<td>凯茨曼诺维奇</td>
-<td>蒂兰特</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>凯茨曼诺维奇</td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -10059,15 +10088,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>212</td>
 <td>Raymond Wong</td>
 <td>1709</td>
 <td></td>
-<td>存活</td>
-<td>凯茨曼诺维奇</td>
-<td>蒂兰特</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>凯茨曼诺维奇</td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -10149,15 +10178,15 @@
 <td class="expandable-column"><del>13</del></td>
 <td class="expandable-column"><del>38</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>214</td>
 <td>林强行长的小挎包</td>
 <td>1701</td>
 <td></td>
-<td>存活</td>
-<td>凯茨曼诺维奇</td>
-<td>蒂兰特</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>凯茨曼诺维奇</td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -10194,15 +10223,15 @@
 <td class="expandable-column"><del>13</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>215</td>
 <td>小煜v0</td>
 <td>1699</td>
 <td></td>
-<td>存活</td>
-<td>凯茨曼诺维奇</td>
-<td>曼纳里诺</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>凯茨曼诺维奇</td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -10374,15 +10403,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>218</td>
 <td>白云静水</td>
 <td>1673</td>
 <td></td>
-<td>存活</td>
-<td>凯茨曼诺维奇</td>
-<td>西里奇</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>凯茨曼诺维奇</td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -10824,15 +10853,15 @@
 <td class="expandable-column"><del>13</del></td>
 <td class="expandable-column">250</td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>229</td>
 <td>Wild Chicken</td>
 <td>1619</td>
 <td></td>
-<td>存活</td>
-<td>凯茨曼诺维奇</td>
-<td>蒂兰特</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>凯茨曼诺维奇</td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -11319,15 +11348,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>240</td>
 <td>Iridescent29</td>
 <td>1551</td>
 <td></td>
-<td>存活</td>
-<td>凯茨曼诺维奇</td>
-<td>萨克拉里迪斯</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>凯茨曼诺维奇</td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -11679,15 +11708,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>248</td>
 <td>黑***友</td>
 <td>1500</td>
 <td></td>
-<td>存活</td>
-<td>凯茨曼诺维奇</td>
-<td>蒂兰特</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>凯茨曼诺维奇</td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -11724,15 +11753,15 @@
 <td class="expandable-column"><del>13</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>249</td>
 <td>-Frictionless</td>
 <td>1499</td>
 <td></td>
-<td>存活</td>
-<td>凯茨曼诺维奇</td>
-<td>萨克拉里迪斯</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>凯茨曼诺维奇</td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -11859,15 +11888,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column">165</td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>252</td>
 <td>Dylan B</td>
 <td>1485</td>
 <td></td>
-<td>存活</td>
-<td>凯茨曼诺维奇</td>
-<td>曼纳里诺</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>凯茨曼诺维奇</td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -12984,16 +13013,16 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr>
+<tr style="background-color: #e6f7ff;">
 <td>276</td>
 <td>奥索里奥科斯秋克阿瓦涅相我老婆</td>
 <td>1326</td>
 <td></td>
-<td>未参赛</td>
+<td>存活</td>
+<td>曼纳里诺</td>
+<td>萨克拉里迪斯</td>
 <td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td class="expandable-column">300</td>
@@ -13299,15 +13328,15 @@
 <td class="expandable-column">25</td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>284</td>
 <td>网球联赛TennisLeague</td>
 <td>1296</td>
 <td></td>
-<td>存活</td>
-<td>凯茨曼诺维奇</td>
-<td>萨克拉里迪斯</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>凯茨曼诺维奇</td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -13569,15 +13598,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>290</td>
 <td>德星星星</td>
 <td>1261</td>
 <td></td>
-<td>存活</td>
+<td>球员输球</td>
+<td></td>
+<td></td>
 <td>凯茨曼诺维奇</td>
-<td></td>
-<td></td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -14064,15 +14093,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>301</td>
 <td>别花里胡哨的</td>
 <td>1204</td>
 <td></td>
-<td>存活</td>
-<td>凯茨曼诺维奇</td>
-<td>曼纳里诺</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>凯茨曼诺维奇</td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -14154,15 +14183,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>303</td>
 <td>RiverFish_JHC</td>
 <td>1197</td>
 <td></td>
-<td>存活</td>
-<td>凯茨曼诺维奇</td>
-<td>萨克拉里迪斯</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>凯茨曼诺维奇</td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -14604,15 +14633,15 @@
 <td class="expandable-column"><del>13</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>313</td>
 <td>C***_</td>
 <td>1140</td>
 <td></td>
-<td>存活</td>
-<td>凯茨曼诺维奇</td>
-<td>蒂兰特</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>凯茨曼诺维奇</td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -15639,15 +15668,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>336</td>
 <td>Samuel Bao</td>
 <td>998</td>
 <td></td>
-<td>存活</td>
+<td>球员输球</td>
+<td></td>
+<td></td>
 <td>凯茨曼诺维奇</td>
-<td></td>
-<td></td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -15819,15 +15848,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>340</td>
 <td>WillKrisKai</td>
 <td>958</td>
 <td></td>
-<td>存活</td>
-<td>凯茨曼诺维奇</td>
-<td>蒂兰特</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>凯茨曼诺维奇</td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -19194,15 +19223,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>415</td>
 <td>猪尔代夫</td>
 <td>583</td>
 <td></td>
-<td>存活</td>
-<td>凯茨曼诺维奇</td>
-<td>蒂兰特</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>凯茨曼诺维奇</td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -19599,15 +19628,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>424</td>
 <td>果断土拨鼠玩剪纸</td>
 <td>525</td>
 <td></td>
-<td>存活</td>
-<td>凯茨曼诺维奇</td>
-<td>萨克拉里迪斯</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>凯茨曼诺维奇</td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -19779,15 +19808,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>427</td>
 <td>超级至尊芝心披萨</td>
 <td>520</td>
 <td></td>
-<td>存活</td>
-<td>凯茨曼诺维奇</td>
-<td>蒂兰特</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>凯茨曼诺维奇</td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -20769,15 +20798,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>450</td>
 <td>牛哈奇</td>
 <td>417</td>
 <td></td>
-<td>存活</td>
-<td>凯茨曼诺维奇</td>
-<td>曼纳里诺</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>凯茨曼诺维奇</td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -21264,15 +21293,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>461</td>
 <td>Gin_战</td>
 <td>373</td>
 <td></td>
-<td>存活</td>
-<td>凯茨曼诺维奇</td>
-<td>蒂兰特</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>凯茨曼诺维奇</td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -22659,15 +22688,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>492</td>
 <td>没意思摆烂</td>
 <td>246</td>
 <td></td>
-<td>存活</td>
+<td>球员输球</td>
+<td></td>
+<td></td>
 <td>凯茨曼诺维奇</td>
-<td></td>
-<td></td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -33144,15 +33173,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>708</td>
 <td>乖哥198310</td>
 <td>10</td>
 <td></td>
-<td>存活</td>
-<td>凯茨曼诺维奇</td>
-<td>曼纳里诺</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>凯茨曼诺维奇</td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -34539,15 +34568,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="凯茨曼诺维奇" title="点击查看选人明细">
 <td>744</td>
 <td>孔睿莺</td>
 <td>0</td>
 <td></td>
-<td>存活</td>
-<td>凯茨曼诺维奇</td>
-<td>蒂兰特</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>凯茨曼诺维奇</td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
