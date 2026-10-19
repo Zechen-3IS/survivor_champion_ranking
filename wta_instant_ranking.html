@@ -488,10 +488,39 @@
         <div class="container">
             <h1>WTA幸存者即时排名</h1>
             <div style="text-align: center; color: #888; font-size: 0.9em; margin-bottom: 10px;">
-                页面数据更新时间：2026-10-19 14:31:33
+                页面数据更新时间：2026-10-19 15:01:35
             </div>
-            <div class="choice-info"><strong>今日选择情况：</strong> 总选择人数：341　存活人数：341　未判定人数：299<ul class="choice-list"><li class="choice-item choice-win">轮空：42</li><li class="choice-item choice-pending">鲍兹科娃：161</li><li class="choice-item choice-pending">伊埃拉：74</li><li class="choice-item choice-pending">科斯蒂亚：21</li><li class="choice-item choice-pending">萨斯诺维奇：21</li><li class="choice-item choice-pending choice-extra">施晗：8</li><li class="choice-item choice-pending choice-extra">卡萨特金娜：6</li><li class="choice-item choice-pending choice-extra">梅尔滕斯：4</li><li class="choice-item choice-pending choice-extra">蕾-费尔南德斯：3</li><li class="choice-item choice-pending choice-extra">拉希莫娃：1</li></ul><button type="button" class="choice-toggle" data-open="0">展开全部</button></div>
+            <div class="choice-info"><strong>今日选择情况：</strong> 总选择人数：350　存活人数：346　未判定人数：300<ul class="choice-list"><li class="choice-item choice-win">轮空：43</li><li class="choice-item choice-pending">鲍兹科娃：165</li><li class="choice-item choice-pending">伊埃拉：76</li><li class="choice-item choice-pending">萨斯诺维奇：23</li><li class="choice-item choice-pending">科斯蒂亚：21</li><li class="choice-item choice-pending choice-extra">施晗：8</li><li class="choice-item choice-pending choice-extra">卡萨特金娜：6</li><li class="choice-item choice-loss choice-extra">梅尔滕斯：4</li><li class="choice-item choice-win choice-extra">蕾-费尔南德斯：3</li><li class="choice-item choice-pending choice-extra">拉希莫娃：1</li></ul><button type="button" class="choice-toggle" data-open="0">展开全部</button></div>
             
+            <div class="stats-container">
+                <button class="toggle-stats-btn" onclick="toggleStatsTable('statsTable1')">
+                    <span class="btn-text">显示每日杀手统计</span>
+                    <span class="arrow-icon">▼</span>
+                </button>
+                <div id="statsTable1" class="hidden">
+                    <table class="dataframe dataframe stats-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>天数</th>
+      <th>杀手球员1</th>
+      <th>死亡人数1</th>
+      <th>杀手球员2</th>
+      <th>死亡人数2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>梅尔滕斯</td>
+      <td>4</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+                </div>
+            </div>
+    
             
             <div class="controls-wrapper">
                 <div class="controls-container">
@@ -2731,12 +2760,12 @@
 </span>
 </td>
 <td>存活</td>
-<td>鲍兹科娃</td>
-<td>伊埃拉</td>
+<td>轮空</td>
 <td></td>
-<td>0</td>
+<td></td>
+<td>1</td>
 <td><del>108</del></td>
-<td><del>0</del></td>
+<td><del>30</del></td>
 <td class="expandable-column">430</td>
 <td class="expandable-column">50</td>
 <td class="expandable-column">185</td>
@@ -3291,7 +3320,7 @@
 <td class="expandable-column"><del>30</del></td>
 <td class="expandable-column">108</td>
 </tr>
-<tr>
+<tr style="background-color: #e6f7ff;">
 <td>54</td>
 <td>洋葱葱葱葱葱葱葱啊</td>
 <td>3862</td>
@@ -3302,11 +3331,11 @@
 </svg>2
 </span>
 </td>
-<td>未参赛</td>
+<td>存活</td>
+<td>鲍兹科娃</td>
+<td>伊埃拉</td>
 <td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td class="expandable-column">10</td>
@@ -9247,7 +9276,7 @@
 <td class="expandable-column"><del>30</del></td>
 <td class="expandable-column"><del>30</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="蕾-费尔南德斯" style="background-color: #e6f7ff;" title="点击查看选人明细">
 <td>169</td>
 <td>一杯思s</td>
 <td>2573</td>
@@ -9262,9 +9291,9 @@
 <td>蕾-费尔南德斯</td>
 <td>帕里</td>
 <td></td>
-<td>0</td>
+<td>1</td>
 <td><del>30</del></td>
-<td><del>0</del></td>
+<td><del>30</del></td>
 <td class="expandable-column">605</td>
 <td class="expandable-column">185</td>
 <td class="expandable-column">240</td>
@@ -11327,7 +11356,7 @@
 <td class="expandable-column"><del>30</del></td>
 <td class="expandable-column"><del>1</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="梅尔滕斯" title="点击查看选人明细">
 <td>209</td>
 <td>夕***阳</td>
 <td>2264</td>
@@ -11338,10 +11367,10 @@
 </svg>5
 </span>
 </td>
-<td>存活</td>
-<td>梅尔滕斯</td>
-<td>伊埃拉</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>梅尔滕斯</td>
 <td>0</td>
 <td><del>60</del></td>
 <td><del>0</del></td>
@@ -13557,7 +13586,7 @@
 <td class="expandable-column"><del>1</del></td>
 <td class="expandable-column">84</td>
 </tr>
-<tr>
+<tr style="background-color: #e6f7ff;">
 <td>251</td>
 <td>极昼9920</td>
 <td>2016</td>
@@ -13568,11 +13597,11 @@
 </svg>8
 </span>
 </td>
-<td>未参赛</td>
+<td>存活</td>
+<td>鲍兹科娃</td>
+<td>伊埃拉</td>
 <td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td class="expandable-column">0</td>
@@ -15169,7 +15198,7 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="梅尔滕斯" title="点击查看选人明细">
 <td>283</td>
 <td>1所大房子</td>
 <td>1783</td>
@@ -15180,10 +15209,10 @@
 </svg>6
 </span>
 </td>
-<td>存活</td>
-<td>梅尔滕斯</td>
-<td>科斯蒂亚</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>梅尔滕斯</td>
 <td>0</td>
 <td><del>60</del></td>
 <td><del>0</del></td>
@@ -15637,7 +15666,7 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column">60</td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="梅尔滕斯" title="点击查看选人明细">
 <td>292</td>
 <td>壶之力</td>
 <td>1711</td>
@@ -15648,10 +15677,10 @@
 </svg>3
 </span>
 </td>
-<td>存活</td>
+<td>球员输球</td>
+<td></td>
+<td></td>
 <td>梅尔滕斯</td>
-<td></td>
-<td></td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -16781,7 +16810,7 @@
 <td class="expandable-column"><del>30</del></td>
 <td class="expandable-column">60</td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="梅尔滕斯" title="点击查看选人明细">
 <td>314</td>
 <td>C***_</td>
 <td>1557</td>
@@ -16792,10 +16821,10 @@
 </svg>3
 </span>
 </td>
-<td>存活</td>
-<td>梅尔滕斯</td>
-<td>鲍兹科娃</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>梅尔滕斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
@@ -17821,7 +17850,7 @@
 <td class="expandable-column">30</td>
 <td class="expandable-column">84</td>
 </tr>
-<tr>
+<tr style="background-color: #e6f7ff;">
 <td>334</td>
 <td>会打逆风球的小米拉</td>
 <td>1481</td>
@@ -17832,11 +17861,11 @@
 </svg>1
 </span>
 </td>
-<td>未参赛</td>
+<td>存活</td>
+<td>伊埃拉</td>
+<td>鲍兹科娃</td>
 <td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td class="expandable-column">0</td>
@@ -20057,7 +20086,7 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr>
+<tr style="background-color: #e6f7ff;">
 <td>377</td>
 <td>卡萨布兰卡9920</td>
 <td>1169</td>
@@ -20068,11 +20097,11 @@
 </svg>3
 </span>
 </td>
-<td>未参赛</td>
+<td>存活</td>
+<td>萨斯诺维奇</td>
+<td>伊埃拉</td>
 <td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td class="expandable-column">0</td>
@@ -22333,7 +22362,7 @@
 <td class="expandable-column">1</td>
 <td class="expandable-column">1</td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="蕾-费尔南德斯" style="background-color: #e6f7ff;" title="点击查看选人明细">
 <td>421</td>
 <td>超级至尊芝心披萨</td>
 <td>893</td>
@@ -22348,9 +22377,9 @@
 <td>蕾-费尔南德斯</td>
 <td>施晗</td>
 <td></td>
-<td>0</td>
+<td>1</td>
 <td><del>0</del></td>
-<td><del>0</del></td>
+<td><del>30</del></td>
 <td class="expandable-column">0</td>
 <td class="expandable-column">10</td>
 <td class="expandable-column">70</td>
@@ -23685,7 +23714,7 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column">60</td>
 </tr>
-<tr>
+<tr style="background-color: #e6f7ff;">
 <td>447</td>
 <td>M***1</td>
 <td>790</td>
@@ -23696,11 +23725,11 @@
 </svg>2
 </span>
 </td>
-<td>未参赛</td>
+<td>存活</td>
+<td>鲍兹科娃</td>
+<td>萨斯诺维奇</td>
 <td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td class="expandable-column">0</td>
@@ -23945,7 +23974,7 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr>
+<tr style="background-color: #e6f7ff;">
 <td>452</td>
 <td>不羁灬的灵魂</td>
 <td>754</td>
@@ -23956,11 +23985,11 @@
 </svg>3
 </span>
 </td>
-<td>未参赛</td>
+<td>存活</td>
+<td>鲍兹科娃</td>
 <td></td>
 <td></td>
-<td></td>
-<td></td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td class="expandable-column">30</td>
@@ -25123,11 +25152,69 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr>
+<tr class="has-picks" data-picks="蕾-费尔南德斯" style="background-color: #e6f7ff;" title="点击查看选人明细">
 <td>475</td>
+<td>tennis幸存者</td>
+<td>619</td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
+</svg>3
+</span>
+</td>
+<td>存活</td>
+<td>蕾-费尔南德斯</td>
+<td></td>
+<td></td>
+<td>1</td>
+<td><del>0</del></td>
+<td>30</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">10</td>
+<td class="expandable-column">40</td>
+<td class="expandable-column">30</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">215</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">23</td>
+<td class="expandable-column">65</td>
+<td class="expandable-column">10</td>
+<td class="expandable-column">10</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column">38</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column">1</td>
+<td class="expandable-column"><del>1</del></td>
+<td class="expandable-column">1</td>
+<td class="expandable-column">1</td>
+<td class="expandable-column">1</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>1</del></td>
+<td class="expandable-column">84</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>1</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>1</del></td>
+<td class="expandable-column">60</td>
+</tr>
+<tr>
+<td>476</td>
 <td>M***C</td>
 <td>615</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -25170,10 +25257,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>476</td>
+<td>477</td>
 <td>J***o</td>
 <td>609</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -25216,10 +25309,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr style="background-color: #e6f7ff;">
-<td>477</td>
+<td>478</td>
 <td>本命草莓百香果</td>
 <td>603</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>存活</td>
 <td>鲍兹科娃</td>
 <td>梅尔滕斯</td>
@@ -25260,52 +25359,6 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
-</tr>
-<tr style="background-color: #e6f7ff;">
-<td>478</td>
-<td>tennis幸存者</td>
-<td>590</td>
-<td></td>
-<td>存活</td>
-<td>蕾-费尔南德斯</td>
-<td></td>
-<td></td>
-<td>0</td>
-<td><del>0</del></td>
-<td><del>0</del></td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">10</td>
-<td class="expandable-column">40</td>
-<td class="expandable-column">30</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">215</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">23</td>
-<td class="expandable-column">65</td>
-<td class="expandable-column">10</td>
-<td class="expandable-column">10</td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column">38</td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column">1</td>
-<td class="expandable-column">1</td>
-<td class="expandable-column">1</td>
-<td class="expandable-column">1</td>
-<td class="expandable-column">1</td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>1</del></td>
-<td class="expandable-column">84</td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>1</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>1</del></td>
-<td class="expandable-column">60</td>
 </tr>
 <tr>
 <td>479</td>
@@ -27803,7 +27856,7 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr>
+<tr style="background-color: #e6f7ff;">
 <td>527</td>
 <td>C***古</td>
 <td>340</td>
@@ -27814,11 +27867,11 @@
 </svg>7
 </span>
 </td>
-<td>未参赛</td>
+<td>存活</td>
+<td>萨斯诺维奇</td>
+<td>鲍兹科娃</td>
 <td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td class="expandable-column">0</td>
@@ -28271,7 +28324,7 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr>
+<tr style="background-color: #e6f7ff;">
 <td>536</td>
 <td>ChrisGu9920</td>
 <td>308</td>
@@ -28282,11 +28335,11 @@
 </svg>10
 </span>
 </td>
-<td>未参赛</td>
+<td>存活</td>
+<td>鲍兹科娃</td>
+<td>伊埃拉</td>
 <td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td class="expandable-column">0</td>
@@ -29981,7 +30034,7 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr>
+<tr style="background-color: #e6f7ff;">
 <td>569</td>
 <td>XPE奥特鹏</td>
 <td>206</td>
@@ -29992,11 +30045,11 @@
 </svg>4
 </span>
 </td>
-<td>未参赛</td>
+<td>存活</td>
+<td>伊埃拉</td>
 <td></td>
 <td></td>
-<td></td>
-<td></td>
+<td>0</td>
 <td><del>0</del></td>
 <td><del>0</del></td>
 <td class="expandable-column">0</td>
