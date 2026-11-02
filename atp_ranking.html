@@ -488,10 +488,39 @@
         <div class="container">
             <h1>ATP幸存者冠军排名</h1>
             <div style="text-align: center; color: #888; font-size: 0.9em; margin-bottom: 10px;">
-                页面数据更新时间：2026-11-02 19:01:01
+                页面数据更新时间：2026-11-02 19:31:10
             </div>
-            <div class="choice-info"><strong>今日选择情况：</strong> 总选择人数：314　存活人数：314　未判定人数：275<ul class="choice-list"><li class="choice-item choice-win">轮空：39</li><li class="choice-item choice-pending">贝尔赫斯：76</li><li class="choice-item choice-pending">霍达尔：64</li><li class="choice-item choice-pending">鲁德：46</li><li class="choice-item choice-pending">安贝尔：21</li><li class="choice-item choice-pending choice-extra">哈恰诺夫：12</li><li class="choice-item choice-pending choice-extra">土方凛辉：11</li><li class="choice-item choice-pending choice-extra">诺里：10</li><li class="choice-item choice-pending choice-extra">马哈奇：9</li><li class="choice-item choice-pending choice-extra">范阿舍：7</li><li class="choice-item choice-pending choice-extra">达尔德里：6</li><li class="choice-item choice-pending choice-extra">布洛克斯：3</li><li class="choice-item choice-pending choice-extra">梅里达：2</li><li class="choice-item choice-pending choice-extra">阿纳尔迪：2</li><li class="choice-item choice-pending choice-extra">胡-塞伦多洛：2</li><li class="choice-item choice-pending choice-extra">穆塞蒂：2</li><li class="choice-item choice-pending choice-extra">胡尔卡奇：1</li><li class="choice-item choice-pending choice-extra">马-贝鲁奇：1</li></ul><button type="button" class="choice-toggle" data-open="0">展开全部</button></div>
+            <div class="choice-info"><strong>今日选择情况：</strong> 总选择人数：320　存活人数：238　未判定人数：187<ul class="choice-list"><li class="choice-item choice-win">轮空：40</li><li class="choice-item choice-loss">贝尔赫斯：76</li><li class="choice-item choice-pending">霍达尔：64</li><li class="choice-item choice-pending">鲁德：47</li><li class="choice-item choice-pending">安贝尔：22</li><li class="choice-item choice-pending choice-extra">哈恰诺夫：13</li><li class="choice-item choice-win choice-extra">土方凛辉：11</li><li class="choice-item choice-pending choice-extra">马哈奇：10</li><li class="choice-item choice-pending choice-extra">诺里：10</li><li class="choice-item choice-pending choice-extra">范阿舍：7</li><li class="choice-item choice-loss choice-extra">达尔德里：6</li><li class="choice-item choice-pending choice-extra">布洛克斯：3</li><li class="choice-item choice-pending choice-extra">梅里达：2</li><li class="choice-item choice-pending choice-extra">阿纳尔迪：2</li><li class="choice-item choice-pending choice-extra">胡-塞伦多洛：2</li><li class="choice-item choice-pending choice-extra">穆塞蒂：2</li><li class="choice-item choice-pending choice-extra">莫尔坎：1</li><li class="choice-item choice-pending choice-extra">胡尔卡奇：1</li><li class="choice-item choice-pending choice-extra">马-贝鲁奇：1</li></ul><button type="button" class="choice-toggle" data-open="0">展开全部</button></div>
             
+            <div class="stats-container">
+                <button class="toggle-stats-btn" onclick="toggleStatsTable('statsTable1')">
+                    <span class="btn-text">显示每日杀手统计</span>
+                    <span class="arrow-icon">▼</span>
+                </button>
+                <div id="statsTable1" class="hidden">
+                    <table class="dataframe dataframe stats-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>天数</th>
+      <th>杀手球员1</th>
+      <th>死亡人数1</th>
+      <th>杀手球员2</th>
+      <th>死亡人数2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>贝尔赫斯</td>
+      <td>76</td>
+      <td>达尔德里</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+                </div>
+            </div>
+    
             
             <div class="controls-wrapper">
                 <div class="controls-container">
@@ -513,7 +542,7 @@
                     </button>
                 </div>
             </div>
-            <div id="matchCount" class="match-count">共找到 756 条记录</div>
+            <div id="matchCount" class="match-count">共找到 757 条记录</div>
             <div class="data-table-wrapper">
                 <table class="dataframe dataframe data-table">
 <thead>
@@ -2747,11 +2776,11 @@
 <td>3106</td>
 <td></td>
 <td>存活</td>
-<td>霍达尔</td>
+<td>轮空</td>
 <td></td>
 <td></td>
-<td>0</td>
-<td><del>0</del></td>
+<td>1</td>
+<td><del>30</del></td>
 <td class="expandable-column">75</td>
 <td class="expandable-column">200</td>
 <td class="expandable-column">36</td>
@@ -2917,15 +2946,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>53</td>
 <td>IggyAzaleaChina</td>
 <td>3061</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>霍达尔</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">600</td>
@@ -3005,15 +3034,15 @@
 <td class="expandable-column"><del>13</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>55</td>
 <td>陈***8</td>
 <td>3009</td>
 <td></td>
-<td>存活</td>
+<td>球员输球</td>
+<td></td>
+<td></td>
 <td>贝尔赫斯</td>
-<td></td>
-<td></td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">800</td>
@@ -3137,15 +3166,15 @@
 <td class="expandable-column"><del>13</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>58</td>
 <td>我宝儿子不露脸不改名</td>
 <td>2929</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>鲁德</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">800</td>
@@ -3181,15 +3210,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>59</td>
 <td>Jiakun Yi</td>
 <td>2928</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>范德尚舒尔普</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">150</td>
@@ -3225,15 +3254,15 @@
 <td class="expandable-column"><del>13</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>60</td>
 <td>Zoey</td>
 <td>2921</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>鲁德</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">200</td>
@@ -3269,15 +3298,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>61</td>
 <td>只***e</td>
 <td>2899</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>达尔德里</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">1300</td>
@@ -3313,15 +3342,15 @@
 <td class="expandable-column"><del>13</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>62</td>
 <td>吴三饼</td>
 <td>2876</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>霍达尔</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">150</td>
@@ -3357,15 +3386,15 @@
 <td class="expandable-column"><del>13</del></td>
 <td class="expandable-column">165</td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>63</td>
 <td>永远支持Queen文</td>
 <td>2859</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>霍达尔</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">300</td>
@@ -3401,7 +3430,7 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="土方凛辉" style="background-color: #e6f7ff;" title="点击查看选人明细">
 <td>64</td>
 <td>吴二饼</td>
 <td>2851</td>
@@ -3410,8 +3439,8 @@
 <td>土方凛辉</td>
 <td>霍达尔</td>
 <td></td>
-<td>0</td>
-<td><del>0</del></td>
+<td>1</td>
+<td><del>30</del></td>
 <td class="expandable-column">400</td>
 <td class="expandable-column">600</td>
 <td class="expandable-column">36</td>
@@ -3445,15 +3474,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>65</td>
 <td>梦***e</td>
 <td>2849</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>范阿舍</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">150</td>
@@ -3621,15 +3650,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>68</td>
 <td>爱网球的小女孩子</td>
 <td>2821</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>穆塞蒂</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">400</td>
@@ -3885,15 +3914,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>75</td>
 <td>刘小闹小闹闹呀</td>
 <td>2784</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>穆塞蒂</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">400</td>
@@ -3929,15 +3958,15 @@
 <td class="expandable-column"><del>13</del></td>
 <td class="expandable-column">38</td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>76</td>
 <td>Earth球球</td>
 <td>2776</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>鲁德</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">400</td>
@@ -4061,7 +4090,7 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="土方凛辉" style="background-color: #e6f7ff;" title="点击查看选人明细">
 <td>79</td>
 <td>爱网球的女孩子</td>
 <td>2751</td>
@@ -4070,8 +4099,8 @@
 <td>土方凛辉</td>
 <td>穆塞蒂</td>
 <td></td>
-<td>0</td>
-<td><del>0</del></td>
+<td>1</td>
+<td><del>30</del></td>
 <td class="expandable-column">400</td>
 <td class="expandable-column">100</td>
 <td class="expandable-column">36</td>
@@ -4325,15 +4354,15 @@
 <td class="expandable-column"><del>13</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>85</td>
 <td>Oreache</td>
 <td>2674</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>马哈奇</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">800</td>
@@ -4545,15 +4574,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>90</td>
 <td>说出吾名_吓汝一跳-</td>
 <td>2640</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>诺里</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">400</td>
@@ -4633,15 +4662,15 @@
 <td class="expandable-column"><del>13</del></td>
 <td class="expandable-column"><del>38</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>92</td>
 <td>板尼哟</td>
 <td>2621</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>鲁德</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">400</td>
@@ -4677,15 +4706,15 @@
 <td class="expandable-column"><del>13</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>93</td>
 <td>MobiusZH</td>
 <td>2618</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>霍达尔</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">300</td>
@@ -4809,16 +4838,16 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column">100</td>
 </tr>
-<tr>
+<tr style="background-color: #e6f7ff;">
 <td>96</td>
 <td>AlcarazTennis_bot</td>
 <td>2558</td>
 <td></td>
-<td>未参赛</td>
+<td>存活</td>
+<td>哈恰诺夫</td>
+<td>鲁德</td>
 <td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">1300</td>
 <td class="expandable-column">30</td>
@@ -4941,15 +4970,15 @@
 <td class="expandable-column"><del>13</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>99</td>
 <td>稀有气体hyk</td>
 <td>2529</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>霍达尔</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">300</td>
@@ -4985,15 +5014,15 @@
 <td class="expandable-column"><del>13</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>99</td>
 <td>锦暔</td>
 <td>2529</td>
 <td></td>
-<td>存活</td>
+<td>球员输球</td>
+<td></td>
+<td></td>
 <td>贝尔赫斯</td>
-<td></td>
-<td></td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">1300</td>
@@ -5161,15 +5190,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>104</td>
 <td>Kellan Li</td>
 <td>2511</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>索内戈</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">800</td>
@@ -5205,15 +5234,15 @@
 <td class="expandable-column"><del>13</del></td>
 <td class="expandable-column">50</td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>105</td>
 <td>刘***喽</td>
 <td>2510</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>穆塞蒂</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">400</td>
@@ -5293,15 +5322,15 @@
 <td class="expandable-column">100</td>
 <td class="expandable-column">50</td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>107</td>
 <td>卡尼TT</td>
 <td>2496</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>霍达尔</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">400</td>
@@ -5337,15 +5366,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>108</td>
 <td>WintheTiebreak</td>
 <td>2486</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>霍达尔</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">75</td>
@@ -5381,15 +5410,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>109</td>
 <td>octbt</td>
 <td>2478</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>安贝尔</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">75</td>
@@ -5469,15 +5498,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column">165</td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>110</td>
 <td>Leo_T1nyFo2est_autor</td>
 <td>2455</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>哈恰诺夫</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">75</td>
@@ -5689,16 +5718,16 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>25</del></td>
 </tr>
-<tr>
+<tr style="background-color: #e6f7ff;">
 <td>116</td>
 <td>法拉利策略组</td>
 <td>2408</td>
 <td></td>
-<td>未参赛</td>
+<td>存活</td>
+<td>霍达尔</td>
+<td>安贝尔</td>
 <td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">23</td>
 <td class="expandable-column">100</td>
@@ -5733,15 +5762,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>50</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>117</td>
 <td>Aeonbert</td>
 <td>2395</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>霍达尔</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">300</td>
@@ -5865,15 +5894,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>120</td>
 <td>法网冠军丰塞卡</td>
 <td>2381</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>霍达尔</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">400</td>
@@ -5909,22 +5938,22 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="土方凛辉" style="background-color: #e6f7ff;" title="点击查看选人明细">
 <td>121</td>
 <td>神秘的药</td>
-<td>2360</td>
+<td>2380</td>
 <td></td>
 <td>存活</td>
 <td>土方凛辉</td>
 <td>鲁德</td>
 <td></td>
-<td>0</td>
-<td><del>0</del></td>
+<td>1</td>
+<td>30</td>
 <td class="expandable-column">75</td>
 <td class="expandable-column">0</td>
 <td class="expandable-column">800</td>
 <td class="expandable-column">10</td>
-<td class="expandable-column">10</td>
+<td class="expandable-column"><del>10</del></td>
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>10</del></td>
 <td class="expandable-column">40</td>
@@ -6085,15 +6114,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>125</td>
 <td>用户7817136916</td>
 <td>2314</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>穆塞蒂</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">400</td>
@@ -6305,15 +6334,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column">165</td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>130</td>
 <td>弗外外茨</td>
 <td>2276</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>霍达尔</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">75</td>
@@ -6481,15 +6510,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>134</td>
 <td>na_go_h</td>
 <td>2221</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>霍达尔</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">50</td>
@@ -6525,15 +6554,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>135</td>
 <td>lovehuiruoqi</td>
 <td>2219</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>霍达尔</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">800</td>
@@ -7009,15 +7038,15 @@
 <td class="expandable-column"><del>13</del></td>
 <td class="expandable-column">50</td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>146</td>
 <td>薄荷奶绿不加冰_</td>
 <td>2121</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>霍达尔</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">100</td>
@@ -7097,15 +7126,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column">250</td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>148</td>
 <td>荞三皮</td>
 <td>2113</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>马哈奇</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">400</td>
@@ -7185,15 +7214,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column">165</td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>150</td>
 <td>Elroy ZHANG</td>
 <td>2101</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>霍达尔</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">10</td>
@@ -7273,15 +7302,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>152</td>
 <td>南柯一梦-mx</td>
 <td>2084</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>达尔德里</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">50</td>
@@ -7317,15 +7346,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>153</td>
 <td>大满贯的W</td>
 <td>2075</td>
 <td></td>
-<td>存活</td>
+<td>球员输球</td>
+<td></td>
+<td></td>
 <td>贝尔赫斯</td>
-<td></td>
-<td></td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">75</td>
@@ -7405,15 +7434,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column">100</td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>155</td>
 <td>羊哈奇</td>
 <td>2053</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>鲁德</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">75</td>
@@ -7449,15 +7478,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>156</td>
 <td>镇远神</td>
 <td>2050</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>霍达尔</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">150</td>
@@ -7757,15 +7786,15 @@
 <td class="expandable-column"><del>13</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>163</td>
 <td>Vegetable Chicken</td>
 <td>2005</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>德罗盖</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">75</td>
@@ -7889,15 +7918,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>166</td>
 <td>指纹Nongzw</td>
 <td>1997</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>霍达尔</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">150</td>
@@ -7933,15 +7962,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>166</td>
 <td>爱***森</td>
 <td>1997</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>霍达尔</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">36</td>
@@ -7977,15 +8006,15 @@
 <td class="expandable-column"><del>13</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>168</td>
 <td>yichun shan</td>
 <td>1993</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>霍达尔</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">10</td>
@@ -8021,15 +8050,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>169</td>
 <td>250赛的W</td>
 <td>1991</td>
 <td></td>
-<td>存活</td>
+<td>球员输球</td>
+<td></td>
+<td></td>
 <td>贝尔赫斯</td>
-<td></td>
-<td></td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">50</td>
@@ -8153,15 +8182,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="达尔德里" title="点击查看选人明细">
 <td>171</td>
 <td>宋承宪我老公</td>
 <td>1988</td>
 <td></td>
-<td>存活</td>
-<td>达尔德里</td>
-<td>贝尔赫斯</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>达尔德里</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">200</td>
@@ -8285,15 +8314,15 @@
 <td class="expandable-column">13</td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>175</td>
 <td>Pomelo琛</td>
 <td>1965</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>鲁德</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">1300</td>
@@ -8329,15 +8358,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>176</td>
 <td>M***1</td>
 <td>1964</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>胡尔卡奇</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">1300</td>
@@ -8549,15 +8578,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>181</td>
 <td>我是霍小耳</td>
 <td>1917</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>安贝尔</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">800</td>
@@ -8725,15 +8754,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>185</td>
 <td>是月牙呦</td>
 <td>1843</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>霍达尔</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">75</td>
@@ -9033,11 +9062,67 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr>
+<tr class="has-picks" data-picks="土方凛辉" style="background-color: #e6f7ff;" title="点击查看选人明细">
 <td>192</td>
+<td>李杨科-RM</td>
+<td>1811</td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
+</svg>7
+</span>
+</td>
+<td>存活</td>
+<td>土方凛辉</td>
+<td>贝尔赫斯</td>
+<td></td>
+<td>1</td>
+<td>30</td>
+<td class="expandable-column">400</td>
+<td class="expandable-column">100</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column">10</td>
+<td class="expandable-column">650</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">20</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column">500</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column">50</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column">25</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column">13</td>
+<td class="expandable-column">13</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+</tr>
+<tr>
+<td>193</td>
 <td>ET58202</td>
 <td>1802</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -9077,15 +9162,21 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
-<td>192</td>
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
+<td>193</td>
 <td>远***咻</td>
 <td>1802</td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
+<td>球员输球</td>
 <td></td>
-<td>存活</td>
+<td></td>
 <td>贝尔赫斯</td>
-<td>布洛克斯</td>
-<td></td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">200</td>
@@ -9121,16 +9212,22 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr>
-<td>194</td>
+<tr style="background-color: #e6f7ff;">
+<td>195</td>
 <td>Wild Chicken</td>
 <td>1799</td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
+<td>存活</td>
+<td>安贝尔</td>
+<td>霍达尔</td>
 <td></td>
-<td>未参赛</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">150</td>
 <td class="expandable-column">10</td>
@@ -9165,15 +9262,21 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>13</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
-<td>194</td>
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
+<td>195</td>
 <td>夕***阳</td>
 <td>1799</td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
+<td>球员输球</td>
 <td></td>
-<td>存活</td>
+<td></td>
 <td>贝尔赫斯</td>
-<td>范德尚舒尔普</td>
-<td></td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">50</td>
@@ -9210,10 +9313,16 @@
 <td class="expandable-column">38</td>
 </tr>
 <tr>
-<td>196</td>
+<td>197</td>
 <td>请微笑一下你</td>
 <td>1796</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -9254,10 +9363,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr style="background-color: #e6f7ff;">
-<td>197</td>
+<td>198</td>
 <td>吃货大爱凯凯_982</td>
 <td>1788</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>存活</td>
 <td>哈恰诺夫</td>
 <td>梅里达</td>
@@ -9298,10 +9413,16 @@
 <td class="expandable-column"><del>50</del></td>
 </tr>
 <tr>
-<td>198</td>
+<td>199</td>
 <td>松松松松松songsong</td>
 <td>1785</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -9341,59 +9462,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
-<td>199</td>
-<td>李杨科-RM</td>
-<td>1781</td>
-<td></td>
-<td>存活</td>
-<td>土方凛辉</td>
-<td>贝尔赫斯</td>
-<td></td>
-<td>0</td>
-<td><del>0</del></td>
-<td class="expandable-column">400</td>
-<td class="expandable-column">100</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">10</td>
-<td class="expandable-column">650</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">20</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column">500</td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column">50</td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column">25</td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column">13</td>
-<td class="expandable-column">13</td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-</tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>200</td>
 <td>A-ries_15</td>
 <td>1778</td>
 <td></td>
-<td>存活</td>
+<td>球员输球</td>
+<td></td>
+<td></td>
 <td>贝尔赫斯</td>
-<td></td>
-<td></td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">50</td>
@@ -9517,15 +9594,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column">250</td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>203</td>
 <td>啦***拉</td>
 <td>1768</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>土方凛辉</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">400</td>
@@ -9605,15 +9682,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>205</td>
 <td>迪***9</td>
 <td>1764</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>莫尔坎</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">100</td>
@@ -9825,15 +9902,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>210</td>
 <td>_被窝哲学家_-</td>
 <td>1731</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>霍达尔</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">300</td>
@@ -11145,15 +11222,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>240</td>
 <td>用户7918293245</td>
 <td>1540</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>鲁德</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">100</td>
@@ -11409,15 +11486,15 @@
 <td class="expandable-column"><del>13</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>246</td>
 <td>一***客</td>
 <td>1517</td>
 <td></td>
-<td>存活</td>
+<td>球员输球</td>
+<td></td>
+<td></td>
 <td>贝尔赫斯</td>
-<td></td>
-<td></td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">300</td>
@@ -11585,15 +11662,15 @@
 <td class="expandable-column"><del>13</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>250</td>
 <td>Pearlescent_69</td>
 <td>1488</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>霍达尔</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">75</td>
@@ -11937,15 +12014,15 @@
 <td class="expandable-column"><del>13</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="达尔德里" title="点击查看选人明细">
 <td>258</td>
 <td>底线老五</td>
 <td>1424</td>
 <td></td>
-<td>存活</td>
-<td>达尔德里</td>
-<td>纳沃内</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>达尔德里</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">50</td>
@@ -12245,15 +12322,15 @@
 <td class="expandable-column">13</td>
 <td class="expandable-column"><del>13</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>265</td>
 <td>极昼9920</td>
 <td>1375</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>范阿舍</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">400</td>
@@ -12377,15 +12454,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="达尔德里" title="点击查看选人明细">
 <td>268</td>
 <td>Verelzorro</td>
 <td>1360</td>
 <td></td>
-<td>存活</td>
-<td>达尔德里</td>
-<td>范阿舍</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>达尔德里</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">100</td>
@@ -12509,15 +12586,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>271</td>
 <td>SamanStosur</td>
 <td>1344</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>鲁德</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">150</td>
@@ -12949,15 +13026,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column">250</td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>281</td>
 <td>肥花太肥</td>
 <td>1310</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>安贝尔</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">75</td>
@@ -12993,11 +13070,67 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="土方凛辉" style="background-color: #e6f7ff;" title="点击查看选人明细">
 <td>282</td>
+<td>子***寒</td>
+<td>1305</td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
+</svg>1
+</span>
+</td>
+<td>存活</td>
+<td>土方凛辉</td>
+<td>贝尔赫斯</td>
+<td></td>
+<td>1</td>
+<td>30</td>
+<td class="expandable-column">10</td>
+<td class="expandable-column">30</td>
+<td class="expandable-column">75</td>
+<td class="expandable-column">10</td>
+<td class="expandable-column">75</td>
+<td class="expandable-column">30</td>
+<td class="expandable-column"><del>10</del></td>
+<td class="expandable-column">40</td>
+<td class="expandable-column"><del>10</del></td>
+<td class="expandable-column">40</td>
+<td class="expandable-column"><del>20</del></td>
+<td class="expandable-column"><del>10</del></td>
+<td class="expandable-column">100</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column">165</td>
+<td class="expandable-column">50</td>
+<td class="expandable-column">100</td>
+<td class="expandable-column">100</td>
+<td class="expandable-column">100</td>
+<td class="expandable-column">50</td>
+<td class="expandable-column">200</td>
+<td class="expandable-column"><del>1</del></td>
+<td class="expandable-column">100</td>
+<td class="expandable-column"><del>50</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>50</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>13</del></td>
+<td class="expandable-column"><del>50</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>38</del></td>
+</tr>
+<tr style="background-color: #e6f7ff;">
+<td>283</td>
 <td>网球联赛TennisLeague</td>
 <td>1296</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>存活</td>
 <td>鲁德</td>
 <td>贝尔赫斯</td>
@@ -13036,50 +13169,6 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
-</tr>
-<tr style="background-color: #e6f7ff;">
-<td>283</td>
-<td>子***寒</td>
-<td>1295</td>
-<td></td>
-<td>存活</td>
-<td>土方凛辉</td>
-<td>贝尔赫斯</td>
-<td></td>
-<td>0</td>
-<td><del>0</del></td>
-<td class="expandable-column">10</td>
-<td class="expandable-column">30</td>
-<td class="expandable-column">75</td>
-<td class="expandable-column">10</td>
-<td class="expandable-column">75</td>
-<td class="expandable-column">30</td>
-<td class="expandable-column"><del>10</del></td>
-<td class="expandable-column">40</td>
-<td class="expandable-column"><del>10</del></td>
-<td class="expandable-column">40</td>
-<td class="expandable-column">20</td>
-<td class="expandable-column"><del>10</del></td>
-<td class="expandable-column">100</td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column">165</td>
-<td class="expandable-column">50</td>
-<td class="expandable-column">100</td>
-<td class="expandable-column">100</td>
-<td class="expandable-column">100</td>
-<td class="expandable-column">50</td>
-<td class="expandable-column">200</td>
-<td class="expandable-column"><del>1</del></td>
-<td class="expandable-column">100</td>
-<td class="expandable-column"><del>50</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>50</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>13</del></td>
-<td class="expandable-column"><del>50</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>38</del></td>
 </tr>
 <tr>
 <td>284</td>
@@ -13389,15 +13478,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>291</td>
 <td>怀***蕴</td>
 <td>1259</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>马哈奇</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">75</td>
@@ -13565,15 +13654,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>295</td>
 <td>活宝哈u</td>
 <td>1240</td>
 <td></td>
-<td>存活</td>
+<td>球员输球</td>
+<td></td>
+<td></td>
 <td>贝尔赫斯</td>
-<td></td>
-<td></td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">10</td>
@@ -13653,15 +13742,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column">13</td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>297</td>
 <td>黑白_大山</td>
 <td>1227</td>
 <td></td>
-<td>存活</td>
+<td>球员输球</td>
+<td></td>
+<td></td>
 <td>贝尔赫斯</td>
-<td></td>
-<td></td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">10</td>
@@ -13785,15 +13874,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>25</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>300</td>
 <td>Tetrapod-0</td>
 <td>1213</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>霍达尔</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">400</td>
@@ -14005,15 +14094,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column">38</td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="达尔德里" title="点击查看选人明细">
 <td>305</td>
 <td>未来之匙</td>
 <td>1191</td>
 <td></td>
-<td>存活</td>
-<td>达尔德里</td>
-<td>胡尔卡奇</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>达尔德里</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">36</td>
@@ -14137,15 +14226,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="达尔德里" title="点击查看选人明细">
 <td>308</td>
 <td>德雨珀2</td>
 <td>1163</td>
 <td></td>
-<td>存活</td>
-<td>达尔德里</td>
-<td>胡尔卡奇</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>达尔德里</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">75</td>
@@ -14577,11 +14666,67 @@
 <td class="expandable-column"><del>13</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr>
+<tr class="has-picks" data-picks="土方凛辉" style="background-color: #e6f7ff;" title="点击查看选人明细">
 <td>318</td>
+<td>流星飞舞啦啦啦</td>
+<td>1108</td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
+</svg>1
+</span>
+</td>
+<td>存活</td>
+<td>土方凛辉</td>
+<td></td>
+<td></td>
+<td>1</td>
+<td>30</td>
+<td class="expandable-column">100</td>
+<td class="expandable-column">300</td>
+<td class="expandable-column">75</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">40</td>
+<td class="expandable-column"><del>10</del></td>
+<td class="expandable-column">50</td>
+<td class="expandable-column">20</td>
+<td class="expandable-column">30</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column">50</td>
+<td class="expandable-column">25</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column">50</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column">200</td>
+<td class="expandable-column">75</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column">50</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column">13</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+</tr>
+<tr>
+<td>319</td>
 <td>追星打工人</td>
 <td>1099</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -14614,50 +14759,6 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column">25</td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column">13</td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-</tr>
-<tr style="background-color: #e6f7ff;">
-<td>319</td>
-<td>流星飞舞啦啦啦</td>
-<td>1088</td>
-<td></td>
-<td>存活</td>
-<td>土方凛辉</td>
-<td></td>
-<td></td>
-<td>0</td>
-<td><del>0</del></td>
-<td class="expandable-column">100</td>
-<td class="expandable-column">300</td>
-<td class="expandable-column">75</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">40</td>
-<td class="expandable-column">10</td>
-<td class="expandable-column">50</td>
-<td class="expandable-column">20</td>
-<td class="expandable-column">30</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column">50</td>
-<td class="expandable-column">25</td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column">50</td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column">200</td>
-<td class="expandable-column">75</td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column">50</td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column">13</td>
@@ -14885,15 +14986,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>325</td>
 <td>q***1</td>
 <td>1031</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>霍达尔</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">200</td>
@@ -15061,11 +15162,67 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr>
+<tr class="has-picks" data-picks="土方凛辉" style="background-color: #e6f7ff;" title="点击查看选人明细">
 <td>329</td>
+<td>壶之力</td>
+<td>1013</td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
+</svg>3
+</span>
+</td>
+<td>存活</td>
+<td>土方凛辉</td>
+<td></td>
+<td></td>
+<td>1</td>
+<td>30</td>
+<td class="expandable-column">75</td>
+<td class="expandable-column">100</td>
+<td class="expandable-column">36</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column"><del>20</del></td>
+<td class="expandable-column">150</td>
+<td class="expandable-column">10</td>
+<td class="expandable-column">40</td>
+<td class="expandable-column"><del>10</del></td>
+<td class="expandable-column">30</td>
+<td class="expandable-column">100</td>
+<td class="expandable-column">200</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column">25</td>
+<td class="expandable-column">25</td>
+<td class="expandable-column">50</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column">25</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column">17</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column">50</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column">50</td>
+</tr>
+<tr>
+<td>330</td>
 <td>埃夫雷莫娃波娃小水果娃是我老婆</td>
 <td>1012</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -15106,10 +15263,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr style="background-color: #e6f7ff;">
-<td>330</td>
+<td>331</td>
 <td>会打逆风球的小米拉</td>
 <td>1011</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>存活</td>
 <td>梅里达</td>
 <td>范阿舍</td>
@@ -15150,10 +15313,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr style="background-color: #e6f7ff;">
-<td>331</td>
+<td>332</td>
 <td>WillKrisKai</td>
 <td>1008</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>存活</td>
 <td>鲁德</td>
 <td>贝尔赫斯</td>
@@ -15192,50 +15361,6 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column">38</td>
-</tr>
-<tr style="background-color: #e6f7ff;">
-<td>332</td>
-<td>壶之力</td>
-<td>1003</td>
-<td></td>
-<td>存活</td>
-<td>土方凛辉</td>
-<td></td>
-<td></td>
-<td>0</td>
-<td><del>0</del></td>
-<td class="expandable-column">75</td>
-<td class="expandable-column">100</td>
-<td class="expandable-column">36</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">20</td>
-<td class="expandable-column">150</td>
-<td class="expandable-column">10</td>
-<td class="expandable-column">40</td>
-<td class="expandable-column"><del>10</del></td>
-<td class="expandable-column">30</td>
-<td class="expandable-column">100</td>
-<td class="expandable-column">200</td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column">25</td>
-<td class="expandable-column">25</td>
-<td class="expandable-column">50</td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column">25</td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column">17</td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column">50</td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column">50</td>
 </tr>
 <tr style="background-color: #e6f7ff;">
 <td>333</td>
@@ -15545,15 +15670,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>340</td>
 <td>用户5472180102</td>
 <td>946</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>霍达尔</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">75</td>
@@ -16557,15 +16682,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>362</td>
 <td>n***6</td>
 <td>846</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>鲁德</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">300</td>
@@ -17789,11 +17914,67 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="土方凛辉" style="background-color: #e6f7ff;" title="点击查看选人明细">
 <td>391</td>
+<td>颔种别啄我</td>
+<td>718</td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
+</svg>5
+</span>
+</td>
+<td>存活</td>
+<td>土方凛辉</td>
+<td>胡尔卡奇</td>
+<td></td>
+<td>1</td>
+<td>30</td>
+<td class="expandable-column">50</td>
+<td class="expandable-column">75</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column">75</td>
+<td class="expandable-column">10</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">10</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column">25</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column">330</td>
+<td class="expandable-column">25</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column">50</td>
+<td class="expandable-column">25</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column">13</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+</tr>
+<tr style="background-color: #e6f7ff;">
+<td>392</td>
 <td>David726_</td>
 <td>715</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>存活</td>
 <td>霍达尔</td>
 <td></td>
@@ -17834,10 +18015,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr style="background-color: #e6f7ff;">
-<td>391</td>
+<td>392</td>
 <td>網球糕手_</td>
 <td>715</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>存活</td>
 <td>哈恰诺夫</td>
 <td></td>
@@ -17878,10 +18065,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr style="background-color: #e6f7ff;">
-<td>393</td>
+<td>394</td>
 <td>5ga-Swiatek</td>
 <td>713</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>存活</td>
 <td>阿纳尔迪</td>
 <td></td>
@@ -17922,10 +18115,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>394</td>
+<td>395</td>
 <td>餐帅吴承羲</td>
 <td>710</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -17966,10 +18165,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>395</td>
+<td>396</td>
 <td>唯爱保利尼</td>
 <td>701</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -18009,59 +18214,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
-<td>396</td>
-<td>颔种别啄我</td>
-<td>688</td>
-<td></td>
-<td>存活</td>
-<td>土方凛辉</td>
-<td>胡尔卡奇</td>
-<td></td>
-<td>0</td>
-<td><del>0</del></td>
-<td class="expandable-column">50</td>
-<td class="expandable-column">75</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">75</td>
-<td class="expandable-column">10</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">10</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column">25</td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column">330</td>
-<td class="expandable-column">25</td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column">50</td>
-<td class="expandable-column">25</td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column">13</td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-</tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>397</td>
 <td>阿***w</td>
 <td>675</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>安贝尔</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">100</td>
@@ -18229,15 +18390,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column">50</td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>401</td>
 <td>此号已废16</td>
 <td>659</td>
 <td></td>
-<td>存活</td>
+<td>球员输球</td>
+<td></td>
+<td></td>
 <td>贝尔赫斯</td>
-<td></td>
-<td></td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">300</td>
@@ -18449,15 +18610,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>406</td>
 <td>C***古</td>
 <td>635</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>霍达尔</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">400</td>
@@ -19285,15 +19446,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>425</td>
 <td>Canemefaitnichaudnifroid</td>
 <td>575</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>霍达尔</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">0</td>
@@ -19329,16 +19490,16 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr>
+<tr style="background-color: #e6f7ff;">
 <td>426</td>
 <td>土豆熬豆角</td>
 <td>548</td>
 <td></td>
-<td>未参赛</td>
+<td>存活</td>
+<td>马哈奇</td>
+<td>霍达尔</td>
 <td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">150</td>
 <td class="expandable-column">50</td>
@@ -19549,15 +19710,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="达尔德里" title="点击查看选人明细">
 <td>430</td>
 <td>敬***y</td>
 <td>520</td>
 <td></td>
-<td>存活</td>
-<td>达尔德里</td>
-<td>霍达尔</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>达尔德里</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">400</td>
@@ -20033,16 +20194,16 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr>
+<tr style="background-color: #e6f7ff;">
 <td>441</td>
 <td>蓝风清水</td>
 <td>460</td>
 <td></td>
-<td>未参赛</td>
+<td>存活</td>
+<td>鲁德</td>
+<td>莫尔坎</td>
 <td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">10</td>
 <td class="expandable-column">150</td>
@@ -20297,15 +20458,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>448</td>
 <td>一缕清风-55</td>
 <td>423</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>达尔德里</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">75</td>
@@ -20913,15 +21074,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>462</td>
 <td>乖哥198310</td>
 <td>340</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>安贝尔</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">0</td>
@@ -21089,15 +21250,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>466</td>
 <td>6***6</td>
 <td>330</td>
 <td></td>
-<td>存活</td>
+<td>球员输球</td>
+<td></td>
+<td></td>
 <td>贝尔赫斯</td>
-<td></td>
-<td></td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">0</td>
@@ -21705,15 +21866,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>480</td>
 <td>3ga-Swiatek</td>
 <td>285</td>
 <td></td>
-<td>存活</td>
+<td>球员输球</td>
+<td></td>
+<td></td>
 <td>贝尔赫斯</td>
-<td></td>
-<td></td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">150</td>
@@ -21735,6 +21896,56 @@
 <td class="expandable-column">0</td>
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column">75</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+</tr>
+<tr class="has-picks" data-picks="土方凛辉" style="background-color: #e6f7ff;" title="点击查看选人明细">
+<td>481</td>
+<td>4ga-Swiatek</td>
+<td>280</td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
+</svg>6
+</span>
+</td>
+<td>存活</td>
+<td>土方凛辉</td>
+<td></td>
+<td></td>
+<td>1</td>
+<td>30</td>
+<td class="expandable-column">10</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column">100</td>
+<td class="expandable-column">20</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">20</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column">100</td>
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
@@ -21794,10 +22005,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr style="background-color: #e6f7ff;">
-<td>482</td>
+<td>483</td>
 <td>1所大房子</td>
 <td>279</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>存活</td>
 <td>霍达尔</td>
 <td>达尔德里</td>
@@ -21838,10 +22055,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>483</td>
+<td>484</td>
 <td>用户7969887201</td>
 <td>261</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -21882,10 +22105,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr style="background-color: #e6f7ff;">
-<td>484</td>
+<td>485</td>
 <td>温网冠军诺斯科娃</td>
 <td>260</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>存活</td>
 <td>范阿舍</td>
 <td></td>
@@ -21926,10 +22155,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr style="background-color: #e6f7ff;">
-<td>485</td>
+<td>486</td>
 <td>TTMY__123</td>
 <td>255</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>存活</td>
 <td>霍达尔</td>
 <td>鲁德</td>
@@ -21970,10 +22205,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>485</td>
+<td>486</td>
 <td>美网冠军诺斯科娃</td>
 <td>255</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -22013,55 +22254,17 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
-<td>487</td>
-<td>4ga-Swiatek</td>
-<td>250</td>
-<td></td>
-<td>存活</td>
-<td>土方凛辉</td>
-<td></td>
-<td></td>
-<td>0</td>
-<td><del>0</del></td>
-<td class="expandable-column">10</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">100</td>
-<td class="expandable-column">20</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">20</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column">100</td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-</tr>
 <tr>
-<td>487</td>
+<td>488</td>
 <td>Roudric</td>
 <td>250</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -22102,10 +22305,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>487</td>
+<td>488</td>
 <td>sjpsdiufneo823</td>
 <td>250</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -22146,10 +22355,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>487</td>
+<td>488</td>
 <td>糖***e</td>
 <td>250</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -22190,10 +22405,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>487</td>
+<td>488</td>
 <td>萧***昼</td>
 <td>250</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -22629,6 +22850,56 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
+<tr class="has-picks" data-picks="土方凛辉" style="background-color: #e6f7ff;" title="点击查看选人明细">
+<td>501</td>
+<td>我***手</td>
+<td>230</td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
+</svg>8
+</span>
+</td>
+<td>存活</td>
+<td>土方凛辉</td>
+<td>贝尔赫斯</td>
+<td></td>
+<td>1</td>
+<td>30</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column">200</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+</tr>
 <tr>
 <td>501</td>
 <td>用户7010054011</td>
@@ -22674,10 +22945,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr style="background-color: #e6f7ff;">
-<td>502</td>
+<td>503</td>
 <td>197******55</td>
 <td>225</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>存活</td>
 <td>安贝尔</td>
 <td>贝尔赫斯</td>
@@ -22718,10 +22995,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>503</td>
+<td>504</td>
 <td>B***3</td>
 <td>222</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -22762,10 +23045,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>504</td>
+<td>505</td>
 <td>纯***依</td>
 <td>221</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -22806,10 +23095,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>504</td>
+<td>505</td>
 <td>霁夜茶Sweet</td>
 <td>221</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -22850,10 +23145,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>506</td>
+<td>507</td>
 <td>塔***婆</td>
 <td>218</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -22894,10 +23195,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr style="background-color: #e6f7ff;">
-<td>507</td>
+<td>508</td>
 <td>空***o</td>
 <td>216</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>存活</td>
 <td>霍达尔</td>
 <td>贝尔赫斯</td>
@@ -22938,10 +23245,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>508</td>
+<td>509</td>
 <td>小***m</td>
 <td>208</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -22981,55 +23294,17 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
-<td>509</td>
-<td>我***手</td>
-<td>200</td>
-<td></td>
-<td>存活</td>
-<td>土方凛辉</td>
-<td>贝尔赫斯</td>
-<td></td>
-<td>0</td>
-<td><del>0</del></td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column">200</td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-</tr>
 <tr>
-<td>509</td>
+<td>510</td>
 <td>旻***刘</td>
 <td>200</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -23070,10 +23345,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr style="background-color: #e6f7ff;">
-<td>509</td>
+<td>510</td>
 <td>果金灵灵</td>
 <td>200</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>存活</td>
 <td>鲁德</td>
 <td>纳沃内</td>
@@ -25049,15 +25330,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>556</td>
 <td>jellyddfish</td>
 <td>88</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>鲁德</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">0</td>
@@ -25753,15 +26034,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>567</td>
 <td>孔睿莺</td>
 <td>75</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>霍达尔</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">0</td>
@@ -26149,11 +26430,67 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
+<tr class="has-picks" data-picks="土方凛辉" style="background-color: #e6f7ff;" title="点击查看选人明细">
+<td>580</td>
+<td>红色拿破仑图哈</td>
+<td>65</td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
+</svg>53
+</span>
+</td>
+<td>存活</td>
+<td>土方凛辉</td>
+<td>索内戈</td>
+<td></td>
+<td>1</td>
+<td>30</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">10</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">25</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+</tr>
 <tr>
-<td>581</td>
+<td>582</td>
 <td>三分之二糖有点甜</td>
 <td>61</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -26194,10 +26531,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>582</td>
+<td>583</td>
 <td>哈***噢</td>
 <td>60</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -26238,10 +26581,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>582</td>
+<td>583</td>
 <td>大道至远1001</td>
 <td>60</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -26282,10 +26631,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>582</td>
+<td>583</td>
 <td>王左</td>
 <td>60</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -26326,10 +26681,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr style="background-color: #e6f7ff;">
-<td>582</td>
+<td>583</td>
 <td>秋日游弋</td>
 <td>60</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>存活</td>
 <td>安贝尔</td>
 <td>霍达尔</td>
@@ -26370,10 +26731,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>582</td>
+<td>583</td>
 <td>胡天翼</td>
 <td>60</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -26414,10 +26781,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>587</td>
+<td>588</td>
 <td>annezy</td>
 <td>55</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -26458,10 +26831,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>587</td>
+<td>588</td>
 <td>侯小知Moya</td>
 <td>55</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -26502,10 +26881,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>589</td>
+<td>590</td>
 <td>爱***猫</td>
 <td>53</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -26546,10 +26931,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>589</td>
+<td>590</td>
 <td>用户7984316467</td>
 <td>53</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -26590,10 +26981,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>591</td>
+<td>592</td>
 <td>10...2@qq.com</td>
 <td>50</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -26634,10 +27031,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>591</td>
+<td>592</td>
 <td>173******01</td>
 <td>50</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -26678,10 +27081,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>591</td>
+<td>592</td>
 <td>Ava世界和平</td>
 <td>50</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -26722,10 +27131,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>591</td>
+<td>592</td>
 <td>George Mason</td>
 <td>50</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -26766,10 +27181,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>591</td>
+<td>592</td>
 <td>W有话直说</td>
 <td>50</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -26810,10 +27231,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>591</td>
+<td>592</td>
 <td>Yilue Qian</td>
 <td>50</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -26854,10 +27281,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>591</td>
+<td>592</td>
 <td>i***h</td>
 <td>50</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -26898,10 +27331,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>591</td>
+<td>592</td>
 <td>play_better</td>
 <td>50</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -26942,10 +27381,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>591</td>
+<td>592</td>
 <td>勤奋让失败化成灰</td>
 <td>50</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -26986,10 +27431,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>591</td>
+<td>592</td>
 <td>大大Wolfgang</td>
 <td>50</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -27030,10 +27481,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>591</td>
+<td>592</td>
 <td>小德upupup</td>
 <td>50</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -27074,10 +27531,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>591</td>
+<td>592</td>
 <td>慕***杨</td>
 <td>50</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -27118,10 +27581,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>591</td>
+<td>592</td>
 <td>洛枫JOE</td>
 <td>50</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -27162,10 +27631,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>591</td>
+<td>592</td>
 <td>爱网球的男孩子</td>
 <td>50</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -27206,10 +27681,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>591</td>
+<td>592</td>
 <td>白白不嘻嘻</td>
 <td>50</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -27250,10 +27731,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>606</td>
+<td>607</td>
 <td>LilZao</td>
 <td>48</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -27294,10 +27781,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>606</td>
+<td>607</td>
 <td>天使布鞋</td>
 <td>48</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -27338,10 +27831,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>606</td>
+<td>607</td>
 <td>老五</td>
 <td>48</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -27382,10 +27881,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>606</td>
+<td>607</td>
 <td>超超wei_</td>
 <td>48</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -27426,10 +27931,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>610</td>
+<td>611</td>
 <td>小邱邱爱看球</td>
 <td>46</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -27470,10 +27981,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>611</td>
+<td>612</td>
 <td>Terry_Tiger_</td>
 <td>40</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -27514,10 +28031,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>611</td>
+<td>612</td>
 <td>星***泪</td>
 <td>40</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -27558,10 +28081,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>611</td>
+<td>612</td>
 <td>来份炸乌云</td>
 <td>40</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -27602,10 +28131,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>611</td>
+<td>612</td>
 <td>王翊翀</td>
 <td>40</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -27646,10 +28181,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>611</td>
+<td>612</td>
 <td>用户9009606163</td>
 <td>40</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -27690,10 +28231,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>611</td>
+<td>612</td>
 <td>花***天</td>
 <td>40</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -27734,10 +28281,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>611</td>
+<td>612</td>
 <td>荣拉法RaphaelCigar</td>
 <td>40</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -27778,10 +28331,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>611</td>
+<td>612</td>
 <td>风泽_2022</td>
 <td>40</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -27822,10 +28381,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>619</td>
+<td>620</td>
 <td>曙***裳</td>
 <td>38</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -27866,10 +28431,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>620</td>
+<td>621</td>
 <td>133******06</td>
 <td>36</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -27910,10 +28481,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>620</td>
+<td>621</td>
 <td>180******16</td>
 <td>36</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -27954,10 +28531,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>620</td>
+<td>621</td>
 <td>Jason Wang</td>
 <td>36</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -27998,10 +28581,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>620</td>
+<td>621</td>
 <td>Kyle L</td>
 <td>36</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -28042,10 +28631,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>620</td>
+<td>621</td>
 <td>L***5</td>
 <td>36</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -28086,10 +28681,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>620</td>
+<td>621</td>
 <td>melodrrrama</td>
 <td>36</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -28130,10 +28731,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>620</td>
+<td>621</td>
 <td>saturdaymoooon</td>
 <td>36</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -28174,10 +28781,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>620</td>
+<td>621</td>
 <td>卢浮宫的色彩</td>
 <td>36</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -28218,10 +28831,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>620</td>
+<td>621</td>
 <td>干啥啥不行呗66</td>
 <td>36</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -28262,10 +28881,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>620</td>
+<td>621</td>
 <td>当初83525</td>
 <td>36</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -28306,10 +28931,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>620</td>
+<td>621</td>
 <td>漏球小子</td>
 <td>36</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -28350,10 +28981,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>620</td>
+<td>621</td>
 <td>用户9062873867</td>
 <td>36</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -28394,10 +29031,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>620</td>
+<td>621</td>
 <td>脚***海</td>
 <td>36</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -28438,10 +29081,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>633</td>
+<td>634</td>
 <td>182******51</td>
 <td>35</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -28481,55 +29130,17 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
-<td>633</td>
-<td>红色拿破仑图哈</td>
-<td>35</td>
-<td></td>
-<td>存活</td>
-<td>土方凛辉</td>
-<td>索内戈</td>
-<td></td>
-<td>0</td>
-<td><del>0</del></td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">10</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">25</td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-</tr>
 <tr>
-<td>633</td>
+<td>634</td>
 <td>飛騎Hollis</td>
 <td>35</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -33057,15 +33668,15 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr style="background-color: #e6f7ff;">
+<tr class="has-picks" data-picks="贝尔赫斯" title="点击查看选人明细">
 <td>737</td>
 <td>175******97</td>
 <td>0</td>
 <td></td>
-<td>存活</td>
-<td>贝尔赫斯</td>
-<td>胡尔卡奇</td>
+<td>球员输球</td>
 <td></td>
+<td></td>
+<td>贝尔赫斯</td>
 <td>0</td>
 <td><del>0</del></td>
 <td class="expandable-column">0</td>
@@ -33725,6 +34336,50 @@
 <td>存活</td>
 <td>诺里</td>
 <td>鲁德</td>
+<td></td>
+<td>0</td>
+<td><del>0</del></td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+</tr>
+<tr style="background-color: #e6f7ff;">
+<td>737</td>
+<td>撸***g</td>
+<td>0</td>
+<td></td>
+<td>存活</td>
+<td>莫尔坎</td>
+<td>布洛克斯</td>
 <td></td>
 <td>0</td>
 <td><del>0</del></td>
