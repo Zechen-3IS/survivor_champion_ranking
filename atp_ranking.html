@@ -488,10 +488,39 @@
         <div class="container">
             <h1>ATP幸存者冠军排名</h1>
             <div style="text-align: center; color: #888; font-size: 0.9em; margin-bottom: 10px;">
-                页面数据更新时间：2026-11-16 21:01:11
+                页面数据更新时间：2026-11-16 22:11:41
             </div>
-            <div class="choice-info"><strong>今日选择情况：</strong> 总选择人数：8　存活人数：8　未判定人数：8<ul class="choice-list"><li class="choice-item choice-pending">亚-兹韦列夫：6</li><li class="choice-item choice-pending">菲斯：2</li></ul></div>
+            <div class="choice-info"><strong>今日选择情况：</strong> 总选择人数：9　存活人数：8　未判定人数：6<ul class="choice-list"><li class="choice-item choice-pending">亚-兹韦列夫：6</li><li class="choice-item choice-win">菲斯：2</li><li class="choice-item choice-loss">霍达尔：1</li></ul></div>
             
+            <div class="stats-container">
+                <button class="toggle-stats-btn" onclick="toggleStatsTable('statsTable1')">
+                    <span class="btn-text">显示每日杀手统计</span>
+                    <span class="arrow-icon">▼</span>
+                </button>
+                <div id="statsTable1" class="hidden">
+                    <table class="dataframe dataframe stats-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>天数</th>
+      <th>杀手球员1</th>
+      <th>死亡人数1</th>
+      <th>杀手球员2</th>
+      <th>死亡人数2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>霍达尔</td>
+      <td>1</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+                </div>
+            </div>
+    
             
             <div class="controls-wrapper">
                 <div class="controls-container">
@@ -611,11 +640,63 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr>
+<tr class="has-picks" data-picks="菲斯" style="background-color: #e6f7ff;" title="点击查看选人明细">
 <td>2</td>
+<td>逍遥笑叹红尘</td>
+<td>4456</td>
+<td></td>
+<td>存活</td>
+<td>菲斯</td>
+<td></td>
+<td></td>
+<td>1</td>
+<td>150</td>
+<td class="expandable-column">2000</td>
+<td class="expandable-column">200</td>
+<td class="expandable-column">36</td>
+<td class="expandable-column">10</td>
+<td class="expandable-column"><del>10</del></td>
+<td class="expandable-column">75</td>
+<td class="expandable-column">75</td>
+<td class="expandable-column">30</td>
+<td class="expandable-column"><del>10</del></td>
+<td class="expandable-column"><del>10</del></td>
+<td class="expandable-column">20</td>
+<td class="expandable-column">50</td>
+<td class="expandable-column">650</td>
+<td class="expandable-column"><del>75</del></td>
+<td class="expandable-column"><del>25</del></td>
+<td class="expandable-column">165</td>
+<td class="expandable-column"><del>38</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column">100</td>
+<td class="expandable-column">100</td>
+<td class="expandable-column">100</td>
+<td class="expandable-column"><del>50</del></td>
+<td class="expandable-column">100</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>50</del></td>
+<td class="expandable-column">330</td>
+<td class="expandable-column"><del>25</del></td>
+<td class="expandable-column"><del>25</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>13</del></td>
+<td class="expandable-column">100</td>
+<td class="expandable-column"><del>13</del></td>
+<td class="expandable-column">165</td>
+</tr>
+<tr>
+<td>3</td>
 <td>回破</td>
 <td>4306</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -656,52 +737,6 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
-</tr>
-<tr style="background-color: #e6f7ff;">
-<td>2</td>
-<td>逍遥笑叹红尘</td>
-<td>4306</td>
-<td></td>
-<td>存活</td>
-<td>菲斯</td>
-<td></td>
-<td></td>
-<td>0</td>
-<td>0</td>
-<td class="expandable-column">2000</td>
-<td class="expandable-column">200</td>
-<td class="expandable-column">36</td>
-<td class="expandable-column">10</td>
-<td class="expandable-column"><del>10</del></td>
-<td class="expandable-column">75</td>
-<td class="expandable-column">75</td>
-<td class="expandable-column">30</td>
-<td class="expandable-column"><del>10</del></td>
-<td class="expandable-column"><del>10</del></td>
-<td class="expandable-column">20</td>
-<td class="expandable-column">50</td>
-<td class="expandable-column">650</td>
-<td class="expandable-column"><del>75</del></td>
-<td class="expandable-column"><del>25</del></td>
-<td class="expandable-column">165</td>
-<td class="expandable-column"><del>38</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column">100</td>
-<td class="expandable-column">100</td>
-<td class="expandable-column">100</td>
-<td class="expandable-column"><del>50</del></td>
-<td class="expandable-column">100</td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>50</del></td>
-<td class="expandable-column">330</td>
-<td class="expandable-column"><del>25</del></td>
-<td class="expandable-column"><del>25</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>13</del></td>
-<td class="expandable-column">100</td>
-<td class="expandable-column"><del>13</del></td>
-<td class="expandable-column">165</td>
 </tr>
 <tr>
 <td>4</td>
@@ -6177,16 +6212,16 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>50</del></td>
 </tr>
-<tr>
+<tr class="has-picks" data-picks="霍达尔" title="点击查看选人明细">
 <td>123</td>
 <td>爱歪歪的坏宝贝</td>
 <td>2423</td>
 <td></td>
-<td>未参赛</td>
+<td>球员输球</td>
 <td></td>
 <td></td>
-<td></td>
-<td></td>
+<td>霍达尔</td>
+<td>0</td>
 <td>0</td>
 <td class="expandable-column">75</td>
 <td class="expandable-column">100</td>
@@ -8431,11 +8466,69 @@
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
-<tr>
+<tr class="has-picks" data-picks="菲斯" style="background-color: #e6f7ff;" title="点击查看选人明细">
 <td>172</td>
+<td>李杨科-RM</td>
+<td>2006</td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="green" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"></path>
+</svg>24
+</span>
+</td>
+<td>存活</td>
+<td>菲斯</td>
+<td></td>
+<td></td>
+<td>1</td>
+<td>150</td>
+<td class="expandable-column">400</td>
+<td class="expandable-column">100</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">50</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">10</td>
+<td class="expandable-column">650</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">20</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column">0</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column">500</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column">50</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column">25</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column">25</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column">13</td>
+<td class="expandable-column">13</td>
+<td class="expandable-column"><del>0</del></td>
+<td class="expandable-column"><del>0</del></td>
+</tr>
+<tr>
+<td>173</td>
 <td>Vegetable Chicken</td>
 <td>2005</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -8478,10 +8571,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>173</td>
+<td>174</td>
 <td>liu8322925</td>
 <td>2004</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -8524,10 +8623,16 @@
 <td class="expandable-column">100</td>
 </tr>
 <tr>
-<td>174</td>
+<td>175</td>
 <td>指纹Nongzw</td>
 <td>1997</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -8570,10 +8675,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>174</td>
+<td>175</td>
 <td>爱***森</td>
 <td>1997</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -8616,10 +8727,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>176</td>
+<td>177</td>
 <td>yichun shan</td>
 <td>1993</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -8662,10 +8779,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>177</td>
+<td>178</td>
 <td>250赛的W</td>
 <td>1991</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -8708,10 +8831,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>178</td>
+<td>179</td>
 <td>wroughtICE</td>
 <td>1989</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -8754,10 +8883,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr style="background-color: #e6f7ff;">
-<td>179</td>
+<td>180</td>
 <td>宋承宪我老公</td>
 <td>1988</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>存活</td>
 <td>亚-兹韦列夫</td>
 <td>霍达尔</td>
@@ -8800,10 +8935,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>180</td>
+<td>181</td>
 <td>M***1</td>
 <td>1974</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -8846,10 +8987,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>181</td>
+<td>182</td>
 <td>海狸先生的小翘臀</td>
 <td>1971</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -8892,10 +9039,16 @@
 <td class="expandable-column"><del>38</del></td>
 </tr>
 <tr>
-<td>181</td>
+<td>182</td>
 <td>网球联赛TennisLeague</td>
 <td>1971</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -8938,10 +9091,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>183</td>
+<td>184</td>
 <td>Cobolli Go</td>
 <td>1966</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -8984,10 +9143,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>184</td>
+<td>185</td>
 <td>用户7424117482</td>
 <td>1955</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -9030,10 +9195,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>185</td>
+<td>186</td>
 <td>Markwu0626</td>
 <td>1930</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -9076,10 +9247,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>186</td>
+<td>187</td>
 <td>我是霍小耳</td>
 <td>1927</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -9122,10 +9299,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>187</td>
+<td>188</td>
 <td>xxxjusAng</td>
 <td>1919</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -9168,10 +9351,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>188</td>
+<td>189</td>
 <td>和楼盘规模破破</td>
 <td>1915</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -9214,10 +9403,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>189</td>
+<td>190</td>
 <td>一***酒</td>
 <td>1906</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -9260,10 +9455,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>190</td>
+<td>191</td>
 <td>白云静水</td>
 <td>1898</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -9306,10 +9507,16 @@
 <td class="expandable-column">100</td>
 </tr>
 <tr>
-<td>191</td>
+<td>192</td>
 <td>Wild Chicken</td>
 <td>1879</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -9352,10 +9559,16 @@
 <td class="expandable-column"><del>13</del></td>
 </tr>
 <tr>
-<td>192</td>
+<td>193</td>
 <td>是月牙呦</td>
 <td>1873</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -9398,10 +9611,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>193</td>
+<td>194</td>
 <td>JuKKa_z</td>
 <td>1872</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -9444,10 +9663,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>194</td>
+<td>195</td>
 <td>C***_</td>
 <td>1870</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -9490,10 +9715,16 @@
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
-<td>195</td>
+<td>196</td>
 <td>夕***阳</td>
 <td>1861</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -9536,10 +9767,16 @@
 <td class="expandable-column"><del>38</del></td>
 </tr>
 <tr>
-<td>196</td>
+<td>197</td>
 <td>Poah优昙花_</td>
 <td>1856</td>
-<td></td>
+<td>
+<span style="display: inline-flex; align-items: center;">
+<svg fill="red" height="12" style="margin-right: 4px;" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12l-8 8-8-8z"></path>
+</svg>1
+</span>
+</td>
 <td>未参赛</td>
 <td></td>
 <td></td>
@@ -9579,52 +9816,6 @@
 <td class="expandable-column"><del>25</del></td>
 <td class="expandable-column"><del>0</del></td>
 <td class="expandable-column">100</td>
-<td class="expandable-column"><del>0</del></td>
-</tr>
-<tr style="background-color: #e6f7ff;">
-<td>196</td>
-<td>李杨科-RM</td>
-<td>1856</td>
-<td></td>
-<td>存活</td>
-<td>菲斯</td>
-<td></td>
-<td></td>
-<td>0</td>
-<td>0</td>
-<td class="expandable-column">400</td>
-<td class="expandable-column">100</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">50</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">10</td>
-<td class="expandable-column">650</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">20</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column">0</td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column">500</td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column">50</td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column">25</td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column">25</td>
-<td class="expandable-column"><del>0</del></td>
-<td class="expandable-column">13</td>
-<td class="expandable-column">13</td>
-<td class="expandable-column"><del>0</del></td>
 <td class="expandable-column"><del>0</del></td>
 </tr>
 <tr>
